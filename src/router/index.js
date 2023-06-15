@@ -1,24 +1,68 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import { createRouter, createWebHistory } from 'vue-router'
+// import Home from '../views/Home.vue'
 
 const routes = [
+  // {
+  //   path: '/',
+  //   name: 'home',
+  //   component: Home
+  // },
   {
-    path: '/',
-    name: 'home',
-    component: HomeView
+    path: '/guideline',
+    name: 'guideline',
+    component: () => import('../views/GuideLine.vue')
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    path: '/login',
+    name: 'login',
+    component: () => import('../views/LoginPage.vue')
+  },
+  {
+    path: '/dashboard',
+    name: 'dashboard',
+    component: () => import('../views/DashBoard.vue'),
+    children: [
+      {
+        path: 'products',
+        component: () => import('../views/DashProducts.vue')
+      }
+    ]
+  },
+  {
+    path: '/BrunchInCloud',
+    name: 'userboard',
+    component: () => import('../views/UserBoard.vue'),
+    children: [
+      {
+        path: 'home',
+        component: () => import('../views/Home.vue')
+      },
+      {
+        path: 'menu',
+        name: 'menu',
+        component: () => import('../views/Menu.vue')
+      },
+      {
+        path: 'checkout',
+        name: 'checkout',
+        component: () => import('../views/CheckOut.vue')
+      },
+      {
+        path: 'locations',
+        name: 'locations',
+        component: () => import('../views/LocationsPage.vue')
+      },
+      {
+        path: 'promotions',
+        name: 'promotions',
+        component: () => import('../views/PromotionNews.vue')
+      }
+    ]
   }
 ]
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes
 })
 
