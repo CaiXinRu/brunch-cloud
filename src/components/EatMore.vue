@@ -14,6 +14,7 @@
   width: max-content;
   left: 85%;
   top: 18%;
+  cursor: pointer;
 }
 .e-div{
   height: 52px;

@@ -14,7 +14,7 @@ export default {
     return {
       showHeader: true,
       lastScrollPosition: 0,
-      scrollOffset: 100
+      scrollOffset: 40
     }
   },
   components: {
@@ -55,7 +55,7 @@ export default {
   left:0px;
   top:0px;
   width: 100vw;
-  z-index:200;
+  z-index: 10;
 
   transform: translateY(0);
   transition: 0.1s all ease-out;
