@@ -87,7 +87,7 @@ export default {
             // 儲存cookie
             document.cookie = `hexToken=${token}; expired=${new Date(expired)}`
             // 轉址到dashboard
-            this.$router.push('/dashboard/products')
+            this.$router.push('dashboard/products')
           }
         })
         .catch((err) =>

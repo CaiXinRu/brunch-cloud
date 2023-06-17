@@ -20,7 +20,9 @@
             </li>
           </ul>
         </div>
-        <dialog id="itemModal" ref="itemModal">
+        <dialog id="itemModal"
+        ref="itemModal"
+        :class="{ 'show-modal': isModalVisible }">
           <a class="im-close" id="close" @click="closeModal()">
             <font-awesome-icon icon="fa-solid fa-circle-xmark" />
           </a>
@@ -134,6 +136,7 @@ export default {
         priceUnit: 'NT$',
         like: false
       }],
+      isModalVisible: false,
       customType: ['不加生菜', '不加番茄', '不加美乃滋'],
       iceType: ['正常冰', '少冰', '微冰', '去冰', '熱'],
       sugarType: ['全糖', '七分', '半糖', '三分', '無糖'],
@@ -143,9 +146,11 @@ export default {
   components: {},
   methods: {
     showModal () {
+      this.isModalVisible = true
       this.$refs.itemModal.showModal()
     },
     closeModal () {
+      this.isModalVisible = false
       this.$refs.itemModal.close()
     },
     plusCount () {
@@ -160,7 +165,17 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
+#itemModal {
+  opacity: 0;
+  transform: translateY(-50px);
+  transition: all 0.5s ease;
+}
+#itemModal.show-modal {
+  opacity: 1;
+  transform: translateY(0);
+  position: fixed;
+}
 .item-list {
   display: flex;
   width: 90%;
@@ -244,9 +259,14 @@ dialog {
   width: 70vw;
   height: max-content;
   background-color: #fef7e9;
+  /* transition: all 1s ease; */
 }
 dialog::backdrop {
   background-color: rgb(39, 39, 39, 0.5);
+}
+.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 .im-container {
   display: flex;
@@ -345,7 +365,7 @@ dialog::backdrop {
 }
 /* On mouse-over, add a grey background color */
 .im-box-container:hover .im-input ~ .im-checkmark {
-  background-color: #FAC664;
+  background-color: #fac664;
 }
 /* When the checkbox is checked, add a blue background */
 .im-box-container .im-input:checked ~ .im-checkmark {

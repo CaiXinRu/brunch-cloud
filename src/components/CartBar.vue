@@ -3,7 +3,6 @@
       <div class="cb-head">
           <div class="cbh-close" @click="$emit('update:modelValue', false)"><font-awesome-icon icon="fa-solid fa-angle-right" /></div>
           <div class="cbh-text">購物清單</div>
-        <!-- <div @click="$emit('update:modelValue', false)">Close</div> -->
       </div>
       <thead class="u-mt-16 u-ml-4 u-mr-4">
         <tr class="cb-thead">
@@ -133,9 +132,11 @@ export default {
 
 <style lang="scss" scoped>
 .cb-container{
+  position: fixed;
   width: 35vw;
   height: 100vh;
   background-color: #ffffff;
+  border-left: 5px solid var(--color--primary);
   display: flex;
   flex-direction: column;
   z-index: 1;
@@ -167,6 +168,7 @@ export default {
   font-size: 32px;
   position: absolute;
   left: 20px;
+  cursor: pointer;
 }
 .cbh-text{
   color: #FEF7E9;

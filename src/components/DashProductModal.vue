@@ -7,7 +7,7 @@
     aria-hidden="true"
     ref="dashProductModal"
   >
-  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-dialog modal-xl" role="document">
       <div class="modal-content border-0">
         <div class="modal-header bg-dark text-white">
           <h5 class="modal-title" id="exampleModalLabel">
@@ -179,7 +179,7 @@
           <button
             type="button"
             class="btn btn-primary"
-            @click="$emit('update-product', tempProduct)"
+            @click="confirm(tempProduct)"
           >
             確認
           </button>
@@ -247,7 +247,6 @@ export default {
   emits: ['update-product'],
   mounted () {
     this.modal = new Modal(this.$refs.dashProductModal)
-    // this.modal.show()
   }
 }
 </script>
