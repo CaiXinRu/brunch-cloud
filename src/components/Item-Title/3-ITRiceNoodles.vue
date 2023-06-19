@@ -10,7 +10,7 @@
 .item-title {
   display: flex;
   align-items: center;
-  width: 90%;
+  width: 100%;
   margin: 30px auto;
 }
 hr {

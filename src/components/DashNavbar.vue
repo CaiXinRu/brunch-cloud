@@ -16,7 +16,7 @@
               </li>
               <li><p class="color--light-brown main-font-1"> ｜ </p></li>
               <li>
-                <router-link to="/" class="main-font" date-link-alt="COUPONS"><span>優惠券別</span></router-link>
+                <router-link to="/dashboard/coupons" class="main-font" date-link-alt="COUPONS"><span>優惠券別</span></router-link>
               </li>
               <li><p class="color--light-brown main-font-1"> ｜ </p></li>
               <li>

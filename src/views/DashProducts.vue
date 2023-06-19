@@ -1,4 +1,5 @@
 <template>
+  <LoadingPage v-if="isLoading"></LoadingPage>
   <div class="bg-color--white">
     <div class="container u-pt-48 u-pb-68">
       <div href="#" class="dp-button" @click="openModal(true)">
@@ -18,8 +19,8 @@
                 <th style="width: 20%">是否編輯</th>
                 <th style="width: 20%">是否刪除</th>
             </tr>
-            </thead>
-            <tbody>
+          </thead>
+          <tbody>
             <tr
                 style="height: 50px"
                 class="color--dark-brown dp-body"
@@ -31,7 +32,7 @@
                 <td style="width: 20%">NT${{item.origin_price}}</td>
                 <td style="width: 20%">NT${{item.price}}</td>
                 <td style="width: 20%">
-                  <span class="color--positive" v-if="item.is_enabled">啟用</span>
+                  <span class="color--positive" v-if="item.is_enabled === 1">啟用</span>
                   <span class="color--negative" v-else>未啟用</span>
                 </td>
                 <td style="width: 20%">
@@ -41,7 +42,7 @@
                     <button class="color--dark-brown" @click="openDelModal(item)"><font-awesome-icon icon="fa-solid fa-trash-can" /></button>
                 </td>
             </tr>
-            </tbody>
+          </tbody>
       </table>
     </div>
   </div>
@@ -52,28 +53,33 @@
 <script>
 import DashProductModal from '@/components/DashProductModal.vue'
 import DashDelModal from '@/components/DashDelModal.vue'
+import LoadingPage from '@/components/LodingPage.vue'
 export default {
   data () {
     return {
       products: [],
       pagination: {},
       tempProduct: {},
-      isNew: false
+      isNew: false,
+      isLoading: false
     }
   },
   components: {
     DashProductModal,
-    DashDelModal
+    DashDelModal,
+    LoadingPage
   },
   methods: {
     getProducts () {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/products`
+      this.isLoading = true
       this.$http.get(api)
         .then((res) => {
           if (res.data.success) {
             // console.log(res.data)
             this.products = res.data.products
             this.pagination = res.data.pagination
+            this.isLoading = false
           }
         })
     },
@@ -94,11 +100,13 @@ export default {
         api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/product/${item.id}`
         httpMethod = 'put'
       }
+      this.isLoading = true
       this.$http[httpMethod](api, { data: this.tempProduct })
         .then((res) => {
           // console.log(res)
           this.$refs.dashProductModal.hideModal()
           this.getProducts()
+          this.isLoading = false
         })
     },
     openDelModal (item) {
@@ -107,10 +115,12 @@ export default {
     },
     delProduct () {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/product/${this.tempProduct.id}`
+      this.isLoading = true
       this.$http.delete(api)
         .then((res) => {
           this.$refs.dashDelModal.hideModal()
           this.getProducts()
+          this.isLoading = false
         })
     }
   },

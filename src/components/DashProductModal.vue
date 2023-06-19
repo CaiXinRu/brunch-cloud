@@ -1,4 +1,5 @@
 <template>
+  <LoadingPage v-if="isLoading"></LoadingPage>
   <div
     class="modal fade"
     id="dashProductModal"
@@ -191,12 +192,16 @@
 
 <script>
 import Modal from 'bootstrap/js/dist/modal'
+import LoadingPage from '@/components/LodingPage.vue'
 export default {
   props: {
     product: {
       type: Object,
       default () { return {} }
     }
+  },
+  components: {
+    LoadingPage
   },
   // 監聽props是否做變動
   // 目的是一有做更動，就把傳進來的資料寫到tempProduct
@@ -212,7 +217,8 @@ export default {
   data () {
     return {
       modal: {},
-      tempProduct: {}
+      tempProduct: {},
+      isLoading: false
     }
   },
   methods: {

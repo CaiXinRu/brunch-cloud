@@ -1,8 +1,6 @@
 import { createApp } from 'vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-// // Import component
-// import Loading from 'vue3-loading-overlay'
 // // Import stylesheet
 // import 'vue3-loading-overlay/dist/vue3-loading-overlay.css'
 
@@ -19,6 +17,7 @@ import zhTW from '@vee-validate/i18n/dist/locale/zh_TW.json'
 
 import App from './App.vue'
 import router from './router'
+import { currency, date } from './methods/filters.js'
 
 // 載入順序很重要
 // import 'bootstrap/scss/bootstrap.scss'
@@ -78,6 +77,10 @@ import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 // eslint-disable-next-line import/no-duplicates
 import { faBullhorn } from '@fortawesome/free-solid-svg-icons'
+// eslint-disable-next-line import/no-duplicates
+import { faCircleUp } from '@fortawesome/free-solid-svg-icons'
+// eslint-disable-next-line import/no-duplicates
+import { faUtensils } from '@fortawesome/free-solid-svg-icons'
 
 // 定義驗證規則，加入先前的設定檔
 Object.keys(AllRules).forEach((rule) => {
@@ -114,17 +117,24 @@ library.add(
   faCircleXmark,
   faTrashCan,
   faPenToSquare,
-  faBullhorn
+  faBullhorn,
+  faCircleUp,
+  faUtensils
 )
 
-createApp(App)
-  .component('font-awesome-icon', FontAwesomeIcon)
-  // 註冊vee-validate 三個全域元件，要在createAPP(APP)之後、mount之前
-  .component('Form', Form)
-  .component('Field', Field)
-  .component('ErrorMessage', ErrorMessage)
+const app = createApp(App)
+app.component('font-awesome-icon', FontAwesomeIcon)
+// 註冊vee-validate 三個全域元件，要在createAPP(APP)之後、mount之前
+// eslint-disable-next-line vue/multi-word-component-names
+app.component('Form', Form)
+// eslint-disable-next-line vue/multi-word-component-names
+app.component('Field', Field)
+app.component('ErrorMessage', ErrorMessage)
 
-  // .component('Loading', Loading)
-  .use(router)
-  .use(VueAxios, axios)
-  .mount('#app')
+app.config.globalProperties.$filters = {
+  currency,
+  date
+}
+app.use(router)
+app.use(VueAxios, axios)
+app.mount('#app')

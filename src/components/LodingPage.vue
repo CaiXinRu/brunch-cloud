@@ -18,7 +18,7 @@
 }
 
 .loading-bg img{
-    filter: hue-rotate(-35deg) blur(0.8px);
+    filter: blur(1px);
     width: 210px;
     border: 0;
 }

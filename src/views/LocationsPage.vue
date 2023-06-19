@@ -1,8 +1,8 @@
 <template>
   <div class="bg-color--white">
     <div class="container u-pt-48 u-pb-68">
-      <LocationBar></LocationBar>
-      <div class="location-area" ref="btnGroup">
+      <LocationBar id="locationTop"></LocationBar>
+      <div class="location-area">
         <button
           data-area="north"
           class="location-btn"
@@ -60,6 +60,7 @@
           </tr>
         </tbody>
       </table>
+      <a class="location-arrow" href="#locationTop"><font-awesome-icon icon="fa-solid fa-circle-up" /></a>
     </div>
   </div>
 </template>
@@ -232,9 +233,6 @@ export default {
         )
       }
     }
-  },
-  mounted () {
-    console.log(this.$refs.btnGroup)
   }
 }
 </script>
@@ -250,7 +248,7 @@ export default {
   width: 70%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 .location-btn {
@@ -318,7 +316,7 @@ export default {
 }
 
 .location-table {
-  margin: 0 0 56px 0;
+  margin: 0 0 20px 0;
 }
 tr,
 th {
@@ -339,5 +337,11 @@ th {
 .location-body {
   font-size: 20px;
   border-bottom: 3px solid #fac664;
+}
+.location-arrow{
+  font-size: 50px;
+  color: var(--color--primary);
+  align-self: flex-end;
+  cursor: pointer;
 }
 </style>

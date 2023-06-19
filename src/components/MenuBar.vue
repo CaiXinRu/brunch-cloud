@@ -1,105 +1,48 @@
 <template>
-    <div class="col-sm-2 fixed">
-      <div class="menu-bar">
-        <div class="t-primary">MENU</div>
-        <a href="#burgers" class="t-list">太空漢堡</a>
-        <a href="#sandwiches" class="t-list">飄浮吐司</a>
-        <a href="#ricenoodles" class="t-list">柔情飯麵</a>
-        <a href="#snacks" class="t-list">輕盈小點</a>
-        <a href="#drinks" class="t-list">沁涼飲品</a>
-      </div>
+  <div class="menu-bar">
+    <div class="menu-element">
+      <font-awesome-icon
+          class="menu-text"
+          icon="fa-solid fa-utensils"
+          bounce
+        />
+      <div class="menu-text">MENU</div>
+      <font-awesome-icon
+          class="menu-text"
+          icon="fa-solid fa-utensils"
+          bounce
+        />
     </div>
+  </div>
 </template>
 
 <style scoped>
-.fixed{
-  position: fixed;
-  z-index: 10;
-}
 .menu-bar {
-  width: 100%;
+  width: 70%;
+  height: 96px;
+  margin: 0 0 36px 0;
   display: flex;
-  flex-direction: column;
+}
+.menu-element {
+  height: 48px;
+  width: 100%;
+  border-radius: 24px;
+  background-color: #fef7e9;
+  border: 1px solid #644536;
+  margin: auto;
+  box-shadow: 8px 8px 0px #fac664;
+
+  display: flex;
   justify-content: center;
   align-items: center;
 }
-.t-primary {
+.menu-text {
+  font-size: 28px;
+  color: #669AFA;
+  font-family: 'Aclonica', "Helvetica", sans-serif;
   display: flex;
-  background-color: #669afa;
-  border-radius: 30px;
-  width: 90%;
-  height: 96px;
-  line-height: 96px;
-  justify-content: center;
-
-  color: #fef7e9;
-  font-size: 31px;
-  font-family: 'Aclonica', 'Montserrat', 'cwTeXYen', 'Helvetica', sans-serif;
-  margin-bottom: 40px;
-}
-.t-list {
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    background: #FAC664;
-    color: #272727;
-    font-weight: bold;
-    padding: 1.18em 1.32em 1.03em;
-    line-height: 1;
-    border-radius: 38px;
-    position: relative;
-    min-width: 7.23em;
-    text-decoration: none;
-    font-family: var(--font);
-    font-size: 1.25rem;
-    z-index: 2;
-    margin-bottom: 45px;
-}
-.t-list:hover{
-  color: #FEF7E9;
-}
-.t-list:before {
-    width: 3.2em;
-    height: 3.2em;
-    position: absolute;
-    content: "";
-    display: flex;
-    background: #FAC664;
-    border-radius: 50%;
-    transition: 1s ease;
-    z-index: -1;
-
-    top: 0%;
-    left: 13%;
-    transform: scale(0.65);
-    transition: all 0.5s;
-}
-.t-list:after {
-    width: 3.8em;
-    height: 3.8em;
-    position: absolute;
-    content: "";
-    display: flex;
-    background: #FAC664;
-    border-radius: 50%;
-    transition: 1s ease;
-    z-index: -1;
-
-    top: 0%;
-    right: 10%;
-    transform: scale(0.65);
-    transition: all 1s ease;
-}
-
-.t-list:hover:before {
-    top: -40%;
-    left: 13%;
-    transform: scale(1);
-}
-
-.t-list:hover:after {
-    top: -60%;
-    right: 10%;
-    transform: scale(1);
+  flex-direction: row;
+  margin: 0 10px;
+  letter-spacing: 0.1em;
 }
 </style>

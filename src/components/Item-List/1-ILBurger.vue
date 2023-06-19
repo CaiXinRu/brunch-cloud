@@ -1,45 +1,48 @@
 <template>
-  <div class="item-list">
-    <div class="box">
-      <div>
-        <div
-          v-for="(item, index) in items"
-          :key="'food' + index"
-          class="item-per"
+    <div class="item-list">
+      <div
+        v-for="(item, index) in items"
+        :key="'food' + index"
+        class="item-per"
+      >
+        <font-awesome-icon
+          v-if="item.like"
+          @click="item.like = !item.like"
+          icon="fa-solid fa-heart"
+          class="heart"
+        />
+        <font-awesome-icon
+          v-else
+          @click="item.like = !item.like"
+          icon="fa-regular fa-heart"
+          class="heart"
+        />
+        <a id="show" @click="showModal()"
+          ><img src="https://picsum.photos/180" class="u-center-block"
+        /></a>
+        <span class="u-text-center item-text"
+          ><a @click="showModal()">{{ item.name }}</a></span
         >
-          <font-awesome-icon
-            v-if="item.like"
-            @click="item.like = !item.like"
-            icon="fa-solid fa-heart"
-            class="heart"
-          />
-          <font-awesome-icon
-            v-else
-            @click="item.like = !item.like"
-            icon="fa-regular fa-heart"
-            class="heart"
-          />
-          <a id="show" @click="showModal()"
-            ><img src="https://picsum.photos/180" class="u-center-block"
-          /></a>
-          <span class="u-text-center item-text"
-            ><a @click="showModal()">{{ item.name }}</a></span
-          >
-          <ul>
-            <li>
-              <span class="item-add">
-                <a class="item-add-icon" @click="showModal()"
-                  ><font-awesome-icon icon="fa-solid fa-cart-plus"
-                /></a>
-              </span>
-              <span class="item-price">{{ item.priceUnit + item.price }}</span>
-            </li>
-          </ul>
-        </div>
-        <ILBurgerModal :modelValue="isModalVisible" @update:modelValue="(val)=>{isModalVisible = val}"></ILBurgerModal>
+        <ul>
+          <li>
+            <span class="item-add">
+              <a class="item-add-icon" @click="showModal()"
+                ><font-awesome-icon icon="fa-solid fa-cart-plus"
+              /></a>
+            </span>
+            <span class="item-price">{{ item.priceUnit + item.price }}</span>
+          </li>
+        </ul>
+        <ILBurgerModal
+          :modelValue="isModalVisible"
+          @update:modelValue="
+            (val) => {
+              isModalVisible = val
+            }
+          "
+        ></ILBurgerModal>
       </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -48,6 +51,30 @@ export default {
   data () {
     return {
       items: [
+        {
+          name: '鱈魚龍蝦沙拉漢堡',
+          price: 80,
+          priceUnit: 'NT$',
+          like: false
+        },
+        {
+          name: '鱈魚龍蝦沙拉漢堡',
+          price: 80,
+          priceUnit: 'NT$',
+          like: false
+        },
+        {
+          name: '鱈魚龍蝦沙拉漢堡',
+          price: 80,
+          priceUnit: 'NT$',
+          like: false
+        },
+        {
+          name: '鱈魚龍蝦沙拉漢堡',
+          price: 80,
+          priceUnit: 'NT$',
+          like: false
+        },
         {
           name: '鱈魚龍蝦沙拉漢堡',
           price: 80,
@@ -74,12 +101,8 @@ export default {
 <style>
 .item-list {
   display: flex;
-  width: 90%;
-  margin: 0 auto;
-}
-.item-list .box {
-  display: flex;
-  /* margin: 0 auto; */
+  width: 100%;
+  flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
 }

@@ -25,6 +25,10 @@ const routes = [
       {
         path: 'products',
         component: () => import('../views/DashProducts.vue')
+      },
+      {
+        path: 'coupons',
+        component: () => import('../views/DashCoupons.vue')
       }
     ]
   },
