@@ -29,12 +29,12 @@ const routes = [
     ]
   },
   {
-    path: '/BrunchInCloud',
+    path: '/',
     name: 'userboard',
     component: () => import('../views/UserBoard.vue'),
     children: [
       {
-        path: 'home',
+        path: '',
         component: () => import('../views/Home.vue')
       },
       {

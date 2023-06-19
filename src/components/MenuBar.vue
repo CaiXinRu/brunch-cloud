@@ -1,5 +1,5 @@
 <template>
-    <div class="col-sm-2">
+    <div class="col-sm-2 fixed">
       <div class="menu-bar">
         <div class="t-primary">MENU</div>
         <a href="#burgers" class="t-list">太空漢堡</a>
@@ -12,6 +12,10 @@
 </template>
 
 <style scoped>
+.fixed{
+  position: fixed;
+  z-index: 10;
+}
 .menu-bar {
   width: 100%;
   display: flex;
@@ -31,7 +35,7 @@
   color: #fef7e9;
   font-size: 31px;
   font-family: 'Aclonica', 'Montserrat', 'cwTeXYen', 'Helvetica', sans-serif;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 }
 .t-list {
     display: flex;
@@ -49,7 +53,7 @@
     font-family: var(--font);
     font-size: 1.25rem;
     z-index: 2;
-    margin-bottom: 55px;
+    margin-bottom: 45px;
 }
 .t-list:hover{
   color: #FEF7E9;

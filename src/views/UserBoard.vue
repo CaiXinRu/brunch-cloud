@@ -51,17 +51,16 @@ export default {
   min-height: 100vh;
 }
 .sticky-top{
-  position:sticky;
+  position: sticky;
   left:0px;
-  top:0px;
+  top: 0px;
   width: 100vw;
   z-index: 10;
-
-  transform: translateY(0);
-  transition: 0.1s all ease-out;
+  height: fit-content;
+  transition: 0.5s all ease;
 }
 .navbar--hidden{
-  transform: translateY(-100%);
+  top: -100%;
 }
 .sticky-bottom{
   margin-top: auto;

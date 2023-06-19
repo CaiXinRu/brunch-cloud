@@ -1,5 +1,5 @@
 <template>
-    <router-link to="/BrunchInCloud/menu" class="e-button">
+    <router-link to="/menu" class="e-button">
       <div class="e-div">
         <a class="eat-more"></a>
       </div>

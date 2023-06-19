@@ -1,4 +1,5 @@
 <template>
+  <LoadingPage v-if="isLoading"></LoadingPage>
   <div class="bg-color--white">
     <div class="container">
       <div class="login-row">
@@ -64,19 +65,24 @@
 </template>
 
 <script>
+import LoadingPage from '@/components/LodingPage.vue'
 export default {
   data () {
     return {
+      isLoading: false,
       user: {
         username: '',
         password: ''
       }
     }
   },
-  components: {},
+  components: {
+    LoadingPage
+  },
   methods: {
     signIn () {
       const api = `${process.env.VUE_APP_API}admin/signin`
+      this.isLoading = true
       this.$http.post(api, this.user)
         .then((res) => {
           // 如果成功登入
@@ -88,6 +94,7 @@ export default {
             document.cookie = `hexToken=${token}; expired=${new Date(expired)}`
             // 轉址到dashboard
             this.$router.push('dashboard/products')
+            this.isLoading = false
           }
         })
         .catch((err) =>

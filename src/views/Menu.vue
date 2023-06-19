@@ -4,6 +4,7 @@
     <div class="container u-pt-48 u-pb-68">
       <div class="row">
         <MenuBar></MenuBar>
+        <div class="col-sm-2"></div>
         <div class="col-sm-10">
           <SearchBar></SearchBar>
           <div>
