@@ -30,8 +30,10 @@
             <span class="item-price">NT$ {{ item.price }}</span>
           </li>
         </ul>
-        <ILBurgerModal
-          :id="item.id"
+    </div>
+  </div>
+  <ILBurgerModal
+          :id="productId"
           :modelValue="isModalVisible"
           @update:modelValue="
             (val) => {
@@ -39,8 +41,6 @@
             }
           "
         ></ILBurgerModal>
-    </div>
-  </div>
 </template>
 
 <script>
@@ -52,7 +52,8 @@ export default {
       isLoading: false,
       isModalVisible: false,
       products: [],
-      filteredProducts: []
+      filteredProducts: [],
+      productId: ''
     }
   },
   components: {
@@ -69,12 +70,9 @@ export default {
       })
     },
     showModal (id) {
+      this.productId = id
+      console.log('showmodal', id)
       this.isModalVisible = true
-      const modal = document.getElementById('itemModal')
-      modal.showModal()
-      // const modal = document.getElementById(`itemModal${id}`)
-      this.product = this.products.find(item =>
-        item.id === id)
     }
   },
   watch: {

@@ -239,8 +239,8 @@ export default {
           if (res.data.success) {
             console.log(res)
             this.tempProduct.imageUrl = res.data.imageUrl
-            this.isLoading = false
           }
+          this.isLoading = false
         })
     },
     confirm (tempProduct) {

@@ -1,10 +1,9 @@
 <template>
-  <LodingPage v-if="isLoading"></LodingPage>
   <div>
     <dialog
       id= "itemModal"
       ref="itemModal"
-      :class="{ 'show-modal': modelValue }"
+      :class="{ 'show-modal': isLanding }"
     >
       <a class="im-close" @click="closeModal()">
         <font-awesome-icon icon="fa-solid fa-circle-xmark" />
@@ -103,6 +102,7 @@
           </div>
         </div>
       </div>
+      <LodingPage v-if="isLoading"></LodingPage>
     </dialog>
   </div>
 </template>
@@ -123,6 +123,7 @@ export default {
   data () {
     return {
       isLoading: false,
+      isLanding: false,
       product: {},
       customType: ['不加生菜', '不加番茄', '不加美乃滋'],
       iceType: ['正常冰', '少冰', '微冰', '去冰', '熱'],
@@ -138,9 +139,13 @@ export default {
       this.isLoading = true
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/product/${this.id}`
       this.$http.get(api).then((res) => {
-        console.log(res.data)
+        console.log('watchmodelvalue', res.data)
+        console.log('this.id', this.id)
         if (res.data.success) {
           this.product = res.data.product
+          const modal = document.getElementById('itemModal')
+          modal.showModal()
+          this.isLanding = true
         }
         this.isLoading = false
       })
@@ -148,6 +153,7 @@ export default {
     closeModal () {
       this.$emit('update:modelValue', false)
       this.$refs.itemModal.close()
+      this.isLanding = false
     },
     plusCount () {
       this.count += 1
@@ -158,8 +164,12 @@ export default {
       }
     }
   },
-  created () {
-    this.getProduct()
+  watch: {
+    modelValue () {
+      if (this.modelValue) {
+        this.getProduct()
+      }
+    }
   }
 }
 </script>
