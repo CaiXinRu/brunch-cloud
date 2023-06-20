@@ -47,23 +47,24 @@
           完整菜單
         </button>
       </div>
-        <!-- Burger -->
-        <ITBurger></ITBurger>
-        <ILBurger></ILBurger>
-        <!-- Sandwich -->
-        <ITSandwich></ITSandwich>
-        <!-- <ILSandwich></ILSandwich> -->
-        <!-- Rice & Noodles -->
-        <ITRiceNoodles></ITRiceNoodles>
-        <!-- <ILRiceNoodles></ILRiceNoodles> -->
-        <!-- Snack -->
-        <ITSnack></ITSnack>
-        <!-- <ILSnack></ILSnack> -->
-        <!-- Drinks -->
-        <ITDrinks></ITDrinks>
-        <!-- <ILDrinks></ILDrinks> -->
-      </div>
+      <!-- Burger -->
+      <ITBurger></ITBurger>
+      <ILBurger></ILBurger>
+      <!-- Sandwich -->
+      <ITSandwich></ITSandwich>
+      <!-- <ILSandwich></ILSandwich> -->
+      <!-- Rice & Noodles -->
+      <ITRiceNoodles></ITRiceNoodles>
+      <!-- <ILRiceNoodles></ILRiceNoodles> -->
+      <!-- Snack -->
+      <ITSnack></ITSnack>
+      <!-- <ILSnack></ILSnack> -->
+      <!-- Drinks -->
+      <ITDrinks></ITDrinks>
+      <!-- <ILDrinks></ILDrinks> -->
+      <a class="menu-arrow" href="#menuTop"><font-awesome-icon icon="fa-solid fa-circle-up" /></a>
     </div>
+  </div>
 </template>
 
 <script>
@@ -172,5 +173,11 @@ export default {
   top: -60%;
   right: 10%;
   transform: scale(1);
+}
+.menu-arrow{
+  font-size: 50px;
+  color: var(--color--primary);
+  align-self: flex-end;
+  cursor: pointer;
 }
 </style>

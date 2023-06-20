@@ -1,10 +1,7 @@
 <template>
-    <div class="item-list">
-      <div
-        v-for="(item, index) in items"
-        :key="'food' + index"
-        class="item-per"
-      >
+  <LodingPage v-if="isLoading"></LodingPage>
+  <div class="item-list">
+    <div v-for="item in filteredProducts" :key="item.id" class="item-per">
         <font-awesome-icon
           v-if="item.like"
           @click="item.like = !item.like"
@@ -17,23 +14,24 @@
           icon="fa-regular fa-heart"
           class="heart"
         />
-        <a id="show" @click="showModal()"
-          ><img src="https://picsum.photos/180" class="u-center-block"
-        /></a>
+        <a id="show" @click="showModal(item.id)"
+          ><div class="item-img" :style="{backgroundImage: `url(${item.imageUrl})`}"></div>
+        </a>
         <span class="u-text-center item-text"
-          ><a @click="showModal()">{{ item.name }}</a></span
+          ><a @click="showModal(item.id)">{{ item.title }}</a></span
         >
         <ul>
           <li>
             <span class="item-add">
-              <a class="item-add-icon" @click="showModal()"
+              <a class="item-add-icon" @click="showModal(item.id)"
                 ><font-awesome-icon icon="fa-solid fa-cart-plus"
               /></a>
             </span>
-            <span class="item-price">{{ item.priceUnit + item.price }}</span>
+            <span class="item-price">NT$ {{ item.price }}</span>
           </li>
         </ul>
         <ILBurgerModal
+          :id="item.id"
           :modelValue="isModalVisible"
           @update:modelValue="
             (val) => {
@@ -41,59 +39,55 @@
             }
           "
         ></ILBurgerModal>
-      </div>
     </div>
+  </div>
 </template>
 
 <script>
 import ILBurgerModal from './1-ILBurgerModal.vue'
+import LodingPage from '../LodingPage.vue'
 export default {
   data () {
     return {
-      items: [
-        {
-          name: '鱈魚龍蝦沙拉漢堡',
-          price: 80,
-          priceUnit: 'NT$',
-          like: false
-        },
-        {
-          name: '鱈魚龍蝦沙拉漢堡',
-          price: 80,
-          priceUnit: 'NT$',
-          like: false
-        },
-        {
-          name: '鱈魚龍蝦沙拉漢堡',
-          price: 80,
-          priceUnit: 'NT$',
-          like: false
-        },
-        {
-          name: '鱈魚龍蝦沙拉漢堡',
-          price: 80,
-          priceUnit: 'NT$',
-          like: false
-        },
-        {
-          name: '鱈魚龍蝦沙拉漢堡',
-          price: 80,
-          priceUnit: 'NT$',
-          like: false
-        }
-      ],
-      isModalVisible: false
+      isLoading: false,
+      isModalVisible: false,
+      products: [],
+      filteredProducts: []
     }
   },
   components: {
-    ILBurgerModal
+    ILBurgerModal,
+    LodingPage
   },
   methods: {
-    showModal () {
+    getProducts () {
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`
+      this.isLoading = true
+      this.$http.get(api).then((res) => {
+        this.products = res.data.products
+        this.isLoading = false
+      })
+    },
+    showModal (id) {
       this.isModalVisible = true
       const modal = document.getElementById('itemModal')
       modal.showModal()
+      // const modal = document.getElementById(`itemModal${id}`)
+      this.product = this.products.find(item =>
+        item.id === id)
     }
+  },
+  watch: {
+    products: {
+      handler () {
+        this.filteredProducts = this.products.filter(
+          (item) => item.category === '太空漢堡')
+      }
+    },
+    immediate: true
+  },
+  created () {
+    this.getProducts()
   }
 }
 </script>
@@ -126,7 +120,14 @@ export default {
   right: 14%;
   cursor: pointer;
 }
-
+.item-img{
+  height: 180px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-size: cover;
+  background-position: center;
+}
 .item-text {
   display: block;
   font-family: 'Montserrat', 'cwTeXYen', 'Helvetica', 'Noto Sans TC', 'Roboto',

@@ -2,7 +2,7 @@
   <LoadingPage v-if="isLoading"></LoadingPage>
   <div class="bg-color--white">
     <div class="container u-pt-48 u-pb-68">
-      <div href="#" class="dp-button" @click="openModal(true)">
+      <div class="dp-button" @click="openModal(true)">
         <div class="s-div">
           <a class="dp-plus"> </a>
         </div>
@@ -10,44 +10,58 @@
       </div>
       <table style="width: 100%" class="dp-table">
         <thead>
-            <tr class="dp-head">
-                <th style="width: 20%">餐點類別</th>
-                <th style="width: 20%">餐點名稱</th>
-                <th style="width: 20%">原價</th>
-                <th style="width: 20%">特價</th>
-                <th style="width: 20%">是否啟用</th>
-                <th style="width: 20%">是否編輯</th>
-                <th style="width: 20%">是否刪除</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr
-                style="height: 50px"
-                class="color--dark-brown dp-body"
-                v-for="item in products"
-                :key="item.id"
-            >
-                <td style="width: 20%">{{item.category}}</td>
-                <td style="width: 20%">{{item.title}}</td>
-                <td style="width: 20%">NT${{item.origin_price}}</td>
-                <td style="width: 20%">NT${{item.price}}</td>
-                <td style="width: 20%">
-                  <span class="color--positive" v-if="item.is_enabled === 1">啟用</span>
-                  <span class="color--negative" v-else>未啟用</span>
-                </td>
-                <td style="width: 20%">
-                    <button class="color--dark-brown" @click="openModal(false, item)"><font-awesome-icon icon="fa-solid fa-pen-to-square" /></button>
-                </td>
-                <td style="width: 20%">
-                    <button class="color--dark-brown" @click="openDelModal(item)"><font-awesome-icon icon="fa-solid fa-trash-can" /></button>
-                </td>
-            </tr>
-          </tbody>
+          <tr class="dp-head">
+            <th style="width: 20%">餐點類別</th>
+            <th style="width: 20%">餐點名稱</th>
+            <th style="width: 20%">原價</th>
+            <th style="width: 20%">特價</th>
+            <th style="width: 20%">是否啟用</th>
+            <th style="width: 20%">是否編輯</th>
+            <th style="width: 20%">是否刪除</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            style="height: 50px"
+            class="color--dark-brown dp-body"
+            v-for="item in products"
+            :key="item.id"
+          >
+            <td style="width: 20%">{{ item.category }}</td>
+            <td style="width: 20%">{{ item.title }}</td>
+            <td style="width: 20%">NT${{ item.origin_price }}</td>
+            <td style="width: 20%">NT${{ item.price }}</td>
+            <td style="width: 20%">
+              <span class="color--positive" v-if="item.is_enabled === 1"
+                >啟用</span
+              >
+              <span class="color--negative" v-else>未啟用</span>
+            </td>
+            <td style="width: 20%">
+              <button class="color--dark-brown" @click="openModal(false, item)">
+                <font-awesome-icon icon="fa-solid fa-pen-to-square" />
+              </button>
+            </td>
+            <td style="width: 20%">
+              <button class="color--dark-brown" @click="openDelModal(item)">
+                <font-awesome-icon icon="fa-solid fa-trash-can" />
+              </button>
+            </td>
+          </tr>
+        </tbody>
       </table>
     </div>
   </div>
-  <DashProductModal ref="dashProductModal" :product="tempProduct" @update-product="updateProduct"></DashProductModal>
-  <DashDelModal ref="dashDelModal" :item="tempProduct" @del-item="delProduct"></DashDelModal>
+  <DashProductModal
+    ref="dashProductModal"
+    :product="tempProduct"
+    @update-product="updateProduct"
+  ></DashProductModal>
+  <DashDelModal
+    ref="dashDelModal"
+    :item="tempProduct"
+    @del-item="delProduct"
+  ></DashDelModal>
 </template>
 
 <script>
@@ -73,15 +87,14 @@ export default {
     getProducts () {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/products`
       this.isLoading = true
-      this.$http.get(api)
-        .then((res) => {
-          if (res.data.success) {
-            // console.log(res.data)
-            this.products = res.data.products
-            this.pagination = res.data.pagination
-            this.isLoading = false
-          }
-        })
+      this.$http.get(api).then((res) => {
+        if (res.data.success) {
+          // console.log(res.data)
+          this.products = res.data.products
+          this.pagination = res.data.pagination
+          this.isLoading = false
+        }
+      })
     },
     openModal (isNew, item) {
       if (isNew) {
@@ -101,13 +114,12 @@ export default {
         httpMethod = 'put'
       }
       this.isLoading = true
-      this.$http[httpMethod](api, { data: this.tempProduct })
-        .then((res) => {
-          // console.log(res)
-          this.$refs.dashProductModal.hideModal()
-          this.getProducts()
-          this.isLoading = false
-        })
+      this.$http[httpMethod](api, { data: this.tempProduct }).then((res) => {
+        // console.log(res)
+        this.$refs.dashProductModal.hideModal()
+        this.getProducts()
+        this.isLoading = false
+      })
     },
     openDelModal (item) {
       this.tempProduct = { ...item }
@@ -116,12 +128,11 @@ export default {
     delProduct () {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/product/${this.tempProduct.id}`
       this.isLoading = true
-      this.$http.delete(api)
-        .then((res) => {
-          this.$refs.dashDelModal.hideModal()
-          this.getProducts()
-          this.isLoading = false
-        })
+      this.$http.delete(api).then((res) => {
+        this.$refs.dashDelModal.hideModal()
+        this.getProducts()
+        this.isLoading = false
+      })
     }
   },
   created () {
@@ -131,11 +142,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.container{
+.container {
   display: flex;
-}
-.dp-table {
-  margin: 48px 0 48px 0;
+  flex-direction: column;
 }
 tr {
   display: flex;
@@ -156,15 +165,14 @@ tr {
 .dp-body:hover {
   background-color: #fef7e9;
 }
-
 .dp-button {
-  position: absolute;
   width: max-content;
   left: 0%;
   top: 10%;
   cursor: pointer;
+  height: 70px;
 }
-.s-div{
+.s-div {
   height: 52px;
 }
 .dp-plus {
@@ -177,7 +185,7 @@ tr {
   border-radius: 26px;
   line-height: 52px;
 
-  transition: all 0.45s cubic-bezier(0.65,0,.076,1);
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
 }
 
 .dp-text {
@@ -190,9 +198,9 @@ tr {
   font-weight: 700;
   line-height: 52px;
   color: var(--color--dark-brown);
-  font-family: 'Aclonica', 'Montserrat', 'cwTeXYen', "Helvetica", sans-serif;
+  font-family: 'Aclonica', 'Montserrat', 'cwTeXYen', 'Helvetica', sans-serif;
 
-  transition: all 0.45s cubic-bezier(0.65,0,.076,1);
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
 }
 
 .dp-plus:before {
@@ -209,7 +217,7 @@ tr {
   left: 19px;
   top: 3px;
 
-  transition: all 0.45s cubic-bezier(0.65,0,.076,1);
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
 }
 .dp-button:hover {
   .dp-plus:before {
@@ -247,7 +255,6 @@ tr {
   top: 0;
 
   opacity: 1;
-  transition: all 0.45s cubic-bezier(0.65,0,.076,1);
-
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
 }
 </style>

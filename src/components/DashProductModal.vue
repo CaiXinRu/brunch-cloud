@@ -229,6 +229,7 @@ export default {
       this.modal.hide()
     },
     uploadFile () {
+      this.isLoading = true
       const uploadedFile = this.$refs.fileInput.files[0]
       const formData = new FormData()
       formData.append('file-to-upload', uploadedFile)
@@ -238,6 +239,7 @@ export default {
           if (res.data.success) {
             console.log(res)
             this.tempProduct.imageUrl = res.data.imageUrl
+            this.isLoading = false
           }
         })
     },

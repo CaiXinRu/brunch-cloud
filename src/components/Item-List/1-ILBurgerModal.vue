@@ -1,7 +1,8 @@
 <template>
+  <LodingPage v-if="isLoading"></LodingPage>
   <div>
     <dialog
-      id="itemModal"
+      id= "itemModal"
       ref="itemModal"
       :class="{ 'show-modal': modelValue }"
     >
@@ -11,11 +12,11 @@
       <div class="im-container">
         <div class="im-pic"><img src="https://picsum.photos/450" /></div>
         <div class="im-content">
-          <h2 class="u-mb-16">鱈魚龍蝦沙拉漢堡</h2>
-          <p class="color--brown im-price">原價NT$80</p>
-          <h5 class="color--third">特價NT$64</h5>
+          <h2 class="u-mb-16">{{ product.title }}</h2>
+          <p class="color--brown im-price">原價 NT${{ product.origin_price }}</p>
+          <h5 class="color--third">特價 NT${{ product.price }}</h5>
           <div class="im-line"></div>
-          <span class="im-detail">▎食材介紹：鱈魚、龍蝦、麵包</span>
+          <span class="im-detail">▎食材介紹：{{ product.content }}</span>
           <span class="im-detail">▎熱量：436 kcal</span>
           <span class="im-detail">▎可自取時間：06:00~14:15</span>
           <span class="im-detail">▎餐點注意事項：</span>
@@ -107,24 +108,43 @@
 </template>
 
 <script>
+import LodingPage from '../LodingPage.vue'
 export default {
   emits: ['update:modelValue'],
   props: {
     modelValue: {
       type: Boolean,
       required: true
+    },
+    id: {
+      required: true
     }
   },
   data () {
     return {
+      isLoading: false,
+      product: {},
       customType: ['不加生菜', '不加番茄', '不加美乃滋'],
       iceType: ['正常冰', '少冰', '微冰', '去冰', '熱'],
       sugarType: ['全糖', '七分', '半糖', '三分', '無糖'],
       count: 1
     }
   },
-  components: {},
+  components: {
+    LodingPage
+  },
   methods: {
+    getProduct () {
+      this.isLoading = true
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/product/${this.id}`
+      this.$http.get(api).then((res) => {
+        console.log(res.data)
+        if (res.data.success) {
+          this.product = res.data.product
+        }
+        this.isLoading = false
+      })
+    },
     closeModal () {
       this.$emit('update:modelValue', false)
       this.$refs.itemModal.close()
@@ -137,6 +157,9 @@ export default {
         this.count -= 1
       }
     }
+  },
+  created () {
+    this.getProduct()
   }
 }
 </script>
@@ -146,7 +169,7 @@ dialog {
   border: none;
   box-shadow: 0 2px 6px #ccc;
   border-radius: 10px;
-  width: 70vw;
+  width: 80vw;
   height: max-content;
   background-color: #fef7e9;
 }

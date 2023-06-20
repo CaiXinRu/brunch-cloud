@@ -3,7 +3,7 @@
     <div class="bg-color--secondary">
         <div class="container u-pt-16 u-pb-16">
           <div class="dnb-img">
-            <router-link to="/home"><img style="height: 100%" src="https://picsum.photos/80" /></router-link>
+            <router-link to="/"><img style="height: 100%" src="https://picsum.photos/80" /></router-link>
           </div>
           <div class="list-bar">
             <ul class="list">
