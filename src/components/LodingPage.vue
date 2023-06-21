@@ -3,6 +3,7 @@
         <img src="@/assets/cloud.gif"/>
     </div>
 </template>
+
 <style scoped>
 .loading-bg{
     height: 100vh;

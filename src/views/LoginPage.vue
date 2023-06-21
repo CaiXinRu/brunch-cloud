@@ -94,8 +94,9 @@ export default {
             document.cookie = `hexToken=${token}; expired=${new Date(expired)}`
             // 轉址到dashboard
             this.$router.push('dashboard/products')
-            this.isLoading = false
+            // this.isLoading = false
           }
+          this.isLoading = false
         })
         .catch((err) =>
           console.log(err)

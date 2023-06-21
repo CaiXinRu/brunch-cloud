@@ -1,19 +1,24 @@
 <template>
   <div>
-    <dialog
-      id= "itemModal"
-      ref="itemModal"
-      :class="{ 'show-modal': isLanding }"
-    >
+    <dialog id="itemModal" ref="itemModal" :class="{ 'show-modal': isLanding }">
       <a class="im-close" @click="closeModal()">
         <font-awesome-icon icon="fa-solid fa-circle-xmark" />
       </a>
       <div class="im-container">
-        <div class="im-pic"><img src="https://picsum.photos/450" /></div>
+        <div class="im-pic">
+          <div
+            class="im-pic-inner"
+            :style="{ backgroundImage: `url(${product.imageUrl})` }"
+          ></div>
+        </div>
         <div class="im-content">
           <h2 class="u-mb-16">{{ product.title }}</h2>
-          <p class="color--brown im-price">原價 NT${{ product.origin_price }}</p>
-          <h5 class="color--third">特價 NT${{ product.price }}</h5>
+          <p class="color--brown im-price" v-if="product.price">
+            原價 NT${{ product.origin_price }}
+          </p>
+          <h5 class="color--third" v-if="product.price">
+            特價 NT${{ product.price }}
+          </h5>
           <div class="im-line"></div>
           <span class="im-detail">▎食材介紹：{{ product.content }}</span>
           <span class="im-detail">▎熱量：436 kcal</span>
@@ -92,13 +97,25 @@
               icon="fa-regular fa-square-plus"
               @click="plusCount()"
             />
-            <div class="im-count">{{ count }}</div>
+            <div class="im-count-num">{{ count }}</div>
             <font-awesome-icon
               class="im-count"
               icon="fa-regular fa-square-minus"
-              @click="plusCount()"
+              @click="minusCount()"
             />
-            <button class="im-confirmed">新增{{ count }}份至購物清單</button>
+            <button
+              type="button"
+              class="im-confirmed"
+              @click="addToCart(product.id, count)"
+              :disabled="this.status.loadingItem === product.id"
+            >
+              <div
+                v-if="this.status.loadingItem === product.id"
+                class="spinner-grow text-light spinner-grow-sm"
+                role="status"
+              ></div>
+                新增{{ count }}份至購物清單
+            </button>
           </div>
         </div>
       </div>
@@ -125,6 +142,9 @@ export default {
       isLoading: false,
       isLanding: false,
       product: {},
+      status: {
+        loadingItem: ''
+      },
       customType: ['不加生菜', '不加番茄', '不加美乃滋'],
       iceType: ['正常冰', '少冰', '微冰', '去冰', '熱'],
       sugarType: ['全糖', '七分', '半糖', '三分', '無糖'],
@@ -139,8 +159,8 @@ export default {
       this.isLoading = true
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/product/${this.id}`
       this.$http.get(api).then((res) => {
-        console.log('watchmodelvalue', res.data)
-        console.log('this.id', this.id)
+        // console.log('watchmodelvalue', res.data)
+        // console.log('this.id', this.id)
         if (res.data.success) {
           this.product = res.data.product
           const modal = document.getElementById('itemModal')
@@ -162,6 +182,22 @@ export default {
       if (this.count > 1) {
         this.count -= 1
       }
+    },
+    addToCart (id, qty) {
+      // console.log(id, qty)
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
+      this.status.loadingItem = id
+      const cart = {
+        product_id: id,
+        qty
+      }
+      this.$http.post(api, { data: cart }).then((res) => {
+        console.log(res)
+        // this.$httpMessageState(response, '加入購物車')
+        this.status.loadingItem = ''
+        this.count = 1
+        this.closeModal()
+      })
     }
   },
   watch: {
@@ -217,10 +253,18 @@ dialog::backdrop {
   color: #fac664;
 }
 .im-pic {
+  // height: 450px;
   display: flex;
   flex: 1;
   justify-content: center;
   align-items: center;
+}
+.im-pic-inner {
+  width: 100%; /* Adjust the width as needed */
+  height: 100%; /* Adjust the height as needed */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .im-content {
   display: flex;
@@ -310,6 +354,17 @@ dialog::backdrop {
   color: #644536;
   display: flex;
   user-select: none;
+  cursor: pointer;
+}
+.im-count:hover {
+  color: var(--color--primary);
+}
+.im-count-num {
+  font-size: 60px;
+  margin-right: 30px;
+  color: #644536;
+  display: flex;
+  user-select: none;
 }
 .im-confirmed {
   width: auto;
@@ -320,5 +375,10 @@ dialog::backdrop {
   padding: 0 16px;
   border-radius: 30px;
   letter-spacing: 0.1em;
+  cursor: pointer;
+}
+.im-confirmed:hover {
+  background-color: var(--color--primary);
+  color: var(--color--dark-brown);
 }
 </style>

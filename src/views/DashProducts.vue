@@ -92,8 +92,8 @@ export default {
           // console.log(res.data)
           this.products = res.data.products
           this.pagination = res.data.pagination
-          this.isLoading = false
         }
+        this.isLoading = false
       })
     },
     openModal (isNew, item) {
@@ -114,12 +114,13 @@ export default {
         httpMethod = 'put'
       }
       this.isLoading = true
-      this.$http[httpMethod](api, { data: this.tempProduct }).then((res) => {
-        // console.log(res)
-        this.$refs.dashProductModal.hideModal()
-        this.getProducts()
-        this.isLoading = false
-      })
+      this.$http[httpMethod](api, { data: this.tempProduct })
+        .then((res) => {
+          // console.log(res)
+          this.$refs.dashProductModal.hideModal()
+          this.getProducts()
+          this.isLoading = false
+        })
     },
     openDelModal (item) {
       this.tempProduct = { ...item }
