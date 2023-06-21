@@ -5,64 +5,91 @@
       <MenuBar id="menuTop"></MenuBar>
       <div class="menu-category">
         <button
-          data-category="north"
+          data-category="burger"
           class="menu-btn"
-          @click="filterLocations('north')"
+          @click="filterMeals('burger')"
         >
           太空漢堡
         </button>
         <button
-          data-category="middle"
+          data-category="toast"
           class="menu-btn"
-          @click="filterLocations('middle')"
+          @click="filterMeals('toast')"
         >
           飄浮吐司
         </button>
         <button
-          data-category="south"
+          data-category="rice&noodles"
           class="menu-btn"
-          @click="filterLocations('south')"
+          @click="filterMeals('rice&noodles')"
         >
           柔情飯麵
         </button>
         <button
-          data-category="east"
+          data-category="snack"
           class="menu-btn"
-          @click="filterLocations('east')"
+          @click="filterMeals('snack')"
         >
           輕盈小點
         </button>
         <button
-          data-category="east"
+          data-category="drink"
           class="menu-btn"
-          @click="filterLocations('east')"
+          @click="filterMeals('drink')"
         >
           沁涼飲品
         </button>
         <button
           data-category="east"
           class="menu-btn"
-          @click="filterLocations('all')"
+          @click="filterMeals('all')"
         >
           完整菜單
         </button>
       </div>
       <!-- Burger -->
-      <ITBurger></ITBurger>
-      <ILBurger></ILBurger>
+      <ITBurger
+        v-if="filteredMeals.includes('ITBurger')"
+        ref="ITBurger"
+      ></ITBurger>
+      <ILBurger
+        v-if="filteredMeals.includes('ILBurger')"
+        ref="ILBurger"
+      ></ILBurger>
       <!-- Sandwich -->
-      <ITSandwich></ITSandwich>
-      <ILSandwich></ILSandwich>
+      <ITSandwich
+        v-if="filteredMeals.includes('ITSandwich')"
+        ref="ITSandwich"
+      ></ITSandwich>
+      <ILSandwich
+        v-if="filteredMeals.includes('ILSandwich')"
+        ref="ILSandwich"
+      ></ILSandwich>
       <!-- Rice & Noodles -->
-      <ITRiceNoodles></ITRiceNoodles>
-      <!-- <ILRiceNoodles></ILRiceNoodles> -->
+      <ITRiceNoodles
+        v-if="filteredMeals.includes('ITRiceNoodles')"
+        ref="ITRiceNoodles"
+      ></ITRiceNoodles>
+      <ILRiceNoodles
+        v-if="filteredMeals.includes('ILRiceNoodles')"
+        ref="ILRiceNoodles"
+      ></ILRiceNoodles>
       <!-- Snack -->
-      <ITSnack></ITSnack>
-      <!-- <ILSnack></ILSnack> -->
+      <ITSnack v-if="filteredMeals.includes('ITSnack')" ref="ITSnack"></ITSnack>
+      <ILSnack v-if="filteredMeals.includes('ILSnack')" ref="ILSnack"></ILSnack>
       <!-- Drinks -->
-      <ITDrinks></ITDrinks>
-      <!-- <ILDrinks></ILDrinks> -->
-      <a class="menu-arrow" href="#menuTop"><font-awesome-icon icon="fa-solid fa-circle-up" /></a>
+      <ITDrinks
+        v-if="filteredMeals.includes('ITDrinks')"
+        ref="ITDrinks"
+      ></ITDrinks>
+      <ILDrinks
+        v-if="filteredMeals.includes('ILDrinks')"
+        ref="ILDrinks"
+      ></ILDrinks>
+
+      <a class="menu-arrow" href="#menuTop"
+        ><font-awesome-icon icon="fa-solid fa-circle-up"
+      /></a>
     </div>
   </div>
 </template>
@@ -75,12 +102,17 @@ import ITRiceNoodles from '@/components/Item-Title/3-ITRiceNoodles.vue'
 import ITSnack from '@/components/Item-Title/4-ITSnack.vue'
 import ITDrinks from '@/components/Item-Title/5-ITDrinks.vue'
 import ILBurger from '@/components/Item-List/1-ILBurger.vue'
-import ILSandwich from '@/components/Item-List/2-ILSandwich.vue'
+// import ILSandwich from '@/components/Item-List/2-ILSandwich.vue'
 // import ILRiceNoodles from '@/components/Item-List/3-ILRiceNoodles.vue'
 // import ILSnack from '@/components/Item-List/4-ILSnack.vue'
 // import ILDrinks from '@/components/Item-List/5-ILDrinks.vue'
 
 export default {
+  data () {
+    return {
+      selectedCategory: 'all'
+    }
+  },
   components: {
     MenuBar,
     ITBurger,
@@ -88,11 +120,50 @@ export default {
     ITRiceNoodles,
     ITSnack,
     ITDrinks,
-    ILBurger,
-    ILSandwich
+    ILBurger
+    // ILSandwich
     // ILRiceNoodles,
     // ILSnack,
     // ILDrinks
+  },
+  methods: {
+    filterMeals (category) {
+      this.selectedCategory = category
+    }
+  },
+  computed: {
+    // eslint-disable-next-line vue/return-in-computed-property
+    filteredMeals () {
+      if (this.selectedCategory === 'all') {
+        return [
+          'ITBurger',
+          'ILBurger',
+          'ITSandwich',
+          'ILSandwich',
+          'ITRiceNoodles',
+          'ILRiceNoodles',
+          'ITSnack',
+          'ILSnack',
+          'ITDrinks',
+          'ILDrinks'
+        ]
+      } else {
+        switch (this.selectedCategory) {
+          case 'burger':
+            return ['ITBurger', 'ILBurger']
+          case 'toast':
+            return ['ITSandwich', 'ILSandwich']
+          case 'rice&noodles':
+            return ['ITRiceNoodles', 'ILRiceNoodles']
+          case 'snack':
+            return ['ITSnack', 'ILSnack']
+          case 'drink':
+            return ['ITDrinks', 'ILDrinks']
+          default:
+            return []
+        }
+      }
+    }
   }
 }
 </script>
@@ -174,7 +245,7 @@ export default {
   right: 10%;
   transform: scale(1);
 }
-.menu-arrow{
+.menu-arrow {
   font-size: 50px;
   color: var(--color--primary);
   align-self: flex-end;

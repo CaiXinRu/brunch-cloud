@@ -107,7 +107,7 @@
               type="button"
               class="im-confirmed"
               @click="addToCart(product.id, count)"
-              :disabled="this.status.loadingItem === product.id"
+              :class="{ 'disabled': status.loadingItem === product.id }"
             >
               <div
                 v-if="this.status.loadingItem === product.id"
@@ -380,5 +380,11 @@ dialog::backdrop {
 .im-confirmed:hover {
   background-color: var(--color--primary);
   color: var(--color--dark-brown);
+}
+.im-confirmed.disabled {
+  opacity: 0.5;
+  background-color: #644536;
+  color: #fef7e9;
+  pointer-events: none;
 }
 </style>

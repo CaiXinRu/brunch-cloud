@@ -26,21 +26,21 @@
             <tbody>
               <tr
                 class="color--dark-brown"
-                v-for="(item, index) in items"
-                :key="'item' + index"
+                v-for="item in cart.carts"
+                :key="item.id"
               >
                 <td style="width: 20%" class="cb-img">
                   <img style="width: 100%" src="https://picsum.photos/90" />
                 </td>
                 <td style="width: 30%">
-                  {{ item.name }}<br />(備註：{{ item.note }})
+                  {{ item.product.title }}<br />(備註：有備註)
                 </td>
                 <td style="width: 20%">
                   <p class="cb-sprice">
-                    特價{{ item.priceUnit }}{{ item.price * 0.8 }}
+                    特價 NT${{ item.product.price }}
                   </p>
                   <p class="color--brown cb-price">
-                    原價{{ item.priceUnit }}{{ item.price }}
+                    原價 NT${{ item.product.origin_price }}
                   </p>
                 </td>
                 <td style="width: 20%">
@@ -48,18 +48,20 @@
                     <font-awesome-icon
                       class="cb-count"
                       icon="fa-regular fa-square-plus"
+                      :class="{ 'disabled': status.loadingItem === item.id }"
                       @click="plusCount(item)"
                     />
-                    <div class="cb-count">{{ item.count }}</div>
+                    <div class="cb-count-num">{{ item.qty }}</div>
                     <font-awesome-icon
                       class="cb-count"
                       icon="fa-regular fa-square-minus"
+                      :class="{ 'disabled': status.loadingItem === item.id }"
                       @click="minusCount(item)"
                     />
                   </div>
                 </td>
                 <td style="width: 10%">
-                  <font-awesome-icon icon="fa-solid fa-trash-can" />
+                  <button class="cb-delete" @click="removeCartItem(item.id)"><font-awesome-icon icon="fa-solid fa-trash-can" /></button>
                 </td>
               </tr>
             </tbody>
@@ -68,7 +70,7 @@
         <tfoot>
           <tr>
             <td style="width: 20%" class="color--secondary">總價</td>
-            <td style="width: 30%" class="color--dark-brown">NT$128</td>
+            <td style="width: 30%" class="color--dark-brown">NT${{ $filters.currency(cart.final_total) }}</td>
           </tr>
           <router-link to="/checkout" class="cb-checkout" @click="closeModal()">
             <div class="cbb-text">訂單結帳</div>
@@ -90,79 +92,60 @@ export default {
   },
   data: () => {
     return {
-      items: [
-        {
-          name: '鱈魚龍蝦沙拉漢堡',
-          price: 80,
-          priceUnit: 'NT$',
-          count: 1,
-          note: '不加生菜'
-        },
-        {
-          name: '鮭魚麻辣沙拉漢堡',
-          price: 80,
-          priceUnit: 'NT$',
-          count: 1,
-          note: '不加生菜'
-        },
-        {
-          name: '鮭魚麻辣沙拉漢堡',
-          price: 80,
-          priceUnit: 'NT$',
-          count: 1,
-          note: '不加生菜'
-        },
-        {
-          name: '鮭魚麻辣沙拉漢堡',
-          price: 80,
-          priceUnit: 'NT$',
-          count: 1,
-          note: '不加生菜'
-        },
-        {
-          name: '鮭魚麻辣沙拉漢堡',
-          price: 80,
-          priceUnit: 'NT$',
-          count: 1,
-          note: '不加生菜'
-        },
-        {
-          name: '鮭魚麻辣沙拉漢堡',
-          price: 80,
-          priceUnit: 'NT$',
-          count: 1,
-          note: '不加生菜'
-        },
-        {
-          name: '鮭魚麻辣沙拉漢堡',
-          price: 80,
-          priceUnit: 'NT$',
-          count: 1,
-          note: '不加生菜'
-        },
-        {
-          name: '鮭魚麻辣沙拉漢堡',
-          price: 80,
-          priceUnit: 'NT$',
-          count: 1,
-          note: '不加生菜'
-        }
-      ]
+      cart: {},
+      status: {
+        loadingItem: ''
+      }
     }
   },
   methods: {
+    getCart () {
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
+      this.$http.get(api)
+        .then((response) => {
+          console.log(response)
+          this.cart = response.data.data
+        })
+    },
     closeModal () {
       this.$emit('update:modelValue', false)
       this.$refs.cartModal.close()
     },
-    plusCount (items) {
-      items.count += 1
-    },
-    minusCount (items) {
-      if (items.count > 1) {
-        items.count -= 1
+    updateCart (item) {
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${item.id}`
+      this.status.loadingItem = item.id
+      const cart = {
+        product_id: item.product_id,
+        qty: item.qty
       }
+      this.$http.put(api, { data: cart })
+        .then((res) => {
+          // console.log(res)
+          this.status.loadingItem = ''
+          this.getCart()
+        })
+    },
+    plusCount (item) {
+      item.qty += 1
+      this.updateCart(item)
+    },
+    minusCount (item) {
+      if (item.qty > 1) {
+        item.qty -= 1
+        this.updateCart(item)
+      }
+    },
+    removeCartItem (id) {
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${id}`
+      this.$http.delete(api)
+        .then((response) => {
+          // this.$httpMessageState(response, '移除購物車品項')
+          this.getCart()
+        })
     }
+  },
+  created () {
+    this.getCart()
   }
 }
 </script>
@@ -225,6 +208,9 @@ dialog::backdrop {
   left: 20px;
   cursor: pointer;
 }
+.cbh-close:hover{
+  color: var(--color--primary)
+}
 .cbh-text {
   color: #fef7e9;
   font-size: 24px;
@@ -264,6 +250,19 @@ tbody tr:hover {
 .cb-count {
   font-size: 22px;
   user-select: none;
+  cursor: pointer;
+}
+.cb-count.disabled {
+  // opacity: 0.5;
+  color: var(--color--brown);
+  pointer-events: none;
+}
+.cb-count:hover{
+  color: var(--color--primary)
+}
+.cb-count-num {
+  font-size: 22px;
+  user-select: none;
 }
 tfoot tr {
   display: flex;
@@ -273,6 +272,12 @@ tfoot tr {
   padding: 16px 0;
   font-size: 20px;
   border-top: 5px solid var(--color--secondary);
+}
+.cb-delete{
+  color: var(--color--dark-brown)
+}
+.cb-delete:hover{
+  color: var(--color--primary)
 }
 .cb-checkout {
   width: 80%;

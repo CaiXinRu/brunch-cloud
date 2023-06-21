@@ -27,7 +27,7 @@
                 ><font-awesome-icon icon="fa-solid fa-cart-plus"
               /></a>
             </span>
-            <span class="item-price">NT$ {{ item.price }}</span>
+            <span class="item-price">NT$ {{ item.origin_price }}</span>
           </li>
         </ul>
     </div>
@@ -96,7 +96,7 @@ export default {
   width: 100%;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 .item-per {
   background-color: #fef7e9;
@@ -124,7 +124,7 @@ export default {
   margin-left: auto;
   margin-right: auto;
   background-size: cover;
-  /* background-position: center; */
+  background-position: center;
 }
 .item-text {
   display: block;
