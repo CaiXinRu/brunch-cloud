@@ -2,11 +2,11 @@
   <table style="width: 100%" class="cf-table">
     <thead>
       <tr class="cf-head">
-        <th style="width: 20%">品名</th>
-        <th style="width: 20%">備註</th>
-        <th style="width: 20%">單價</th>
-        <th style="width: 20%">數量</th>
-        <th style="width: 20%">小計</th>
+        <th style="width: 25%">品名</th>
+        <!-- <th style="width: 25%">備註</th> -->
+        <th style="width: 25%">單價</th>
+        <th style="width: 25%">數量</th>
+        <th style="width: 25%">小計</th>
       </tr>
     </thead>
     <tbody>
@@ -16,13 +16,13 @@
         v-for="(item, index) in items"
         :key="'item' + index"
       >
-        <td style="width: 20%">{{ item.name }}</td>
-        <td style="width: 20%">{{ item.note }}</td>
-        <td style="width: 20%">
+        <td style="width: 25%">{{ item.name }}</td>
+        <!-- <td style="width: 25%">{{ item.note }}</td> -->
+        <td style="width: 25%">
           特價{{ item.priceUnit }}{{ item.price * 0.8 }}
         </td>
-        <td style="width: 20%">{{ item.count }}</td>
-        <td style="width: 20%">
+        <td style="width: 25%">{{ item.count }} 份</td>
+        <td style="width: 25%">
           {{ item.priceUnit }}{{ item.price * 0.8 * item.count }}
         </td>
       </tr>

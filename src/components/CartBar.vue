@@ -5,6 +5,7 @@
       ref="cartModal"
       :class="{ 'show-modal': modelValue }"
     >
+     <LodingPageModal v-if="isLoading"></LodingPageModal>
       <div class="cb-container">
         <div class="cb-head">
           <div class="cbh-close" @click="closeModal()">
@@ -30,10 +31,13 @@
                 :key="item.id"
               >
                 <td style="width: 20%" class="cb-img">
-                  <img style="width: 100%" src="https://picsum.photos/90" />
+                  <div
+                    class="cb-img-inner"
+                    :style="{ backgroundImage: `url(${item.product.imageUrl})` }"
+                  ></div>
                 </td>
                 <td style="width: 30%">
-                  {{ item.product.title }}<br />(備註：有備註)
+                  {{ item.product.title }}
                 </td>
                 <td style="width: 20%">
                   <p class="cb-sprice">
@@ -72,7 +76,7 @@
             <td style="width: 20%" class="color--secondary">總價</td>
             <td style="width: 30%" class="color--dark-brown">NT${{ $filters.currency(cart.final_total) }}</td>
           </tr>
-          <router-link to="/checkout" class="cb-checkout" @click="closeModal()">
+          <router-link :to="`/checkout?hash=${Number(new Date).toString(36)}`" class="cb-checkout" @click="closeModal()">
             <div class="cbb-text">訂單結帳</div>
           </router-link>
         </tfoot>
@@ -82,6 +86,8 @@
 </template>
 
 <script scoped>
+import LodingPageModal from '@/components/LodingPageModal.vue'
+
 export default {
   emits: ['update:modelValue'],
   props: {
@@ -95,6 +101,17 @@ export default {
       cart: {},
       status: {
         loadingItem: ''
+      },
+      isLoading: false
+    }
+  },
+  components: {
+    LodingPageModal
+  },
+  watch: {
+    modelValue () {
+      if (this.modelValue) {
+        this.getCart()
       }
     }
   },
@@ -137,10 +154,12 @@ export default {
     },
     removeCartItem (id) {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${id}`
+      this.isLoading = true
       this.$http.delete(api)
-        .then((response) => {
-          // this.$httpMessageState(response, '移除購物車品項')
+        .then((res) => {
+          // this.$httpMessageState(res, '移除購物車品項')
           this.getCart()
+          this.isLoading = false
         })
     }
   },
@@ -231,8 +250,15 @@ tbody tr:hover {
 }
 .cb-img {
   display: flex;
+  flex: 1;
   justify-content: center;
   align-items: center;
+}
+.cb-img-inner{
+  width: 100%;
+  height: 90px;
+  background-size: cover;
+  background-position: center;
 }
 .cb-thead {
   font-size: 20px;
@@ -253,7 +279,6 @@ tbody tr:hover {
   cursor: pointer;
 }
 .cb-count.disabled {
-  // opacity: 0.5;
   color: var(--color--brown);
   pointer-events: none;
 }

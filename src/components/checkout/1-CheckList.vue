@@ -1,12 +1,13 @@
 <template>
+  <Lodingpage v-if="isLoading"></Lodingpage>
   <table style="width: 100%" class="cl-table">
     <thead>
       <tr class="cl-head">
-        <th style="width: 20%">品名</th>
-        <th style="width: 20%">備註</th>
-        <th style="width: 20%">單價</th>
-        <th style="width: 20%">數量</th>
-        <th style="width: 20%">小計</th>
+        <th style="width: 25%">品名</th>
+        <!-- <th style="width: 20%">備註</th> -->
+        <th style="width: 25%">單價</th>
+        <th style="width: 25%">數量</th>
+        <th style="width: 15%">小計</th>
         <th style="width: 10%"></th>
       </tr>
     </thead>
@@ -14,36 +15,40 @@
       <tr
         style="height: 100px"
         class="color--dark-brown cl-body"
-        v-for="(item, index) in items"
-        :key="'item' + index"
+        v-for="item in cart.carts"
+        :key="item.id"
       >
-        <td style="width: 20%">{{ item.name }}</td>
-        <td style="width: 20%">{{ item.note }}</td>
-        <td style="width: 20%">
-          特價{{ item.priceUnit }}{{ item.price * 0.8 }}
+        <td style="width: 25%">{{ item.product.title }}</td>
+        <!-- <td style="width: 20%">{{ item.note }}</td> -->
+        <td style="width: 25%">
+          特價 NT${{ item.product.price }}
         </td>
-        <td style="width: 20%" class="cl-number">
+        <td style="width: 25%" class="cl-number">
           <div>
             <font-awesome-icon
               icon="fa-regular fa-square-plus"
+              :class="{ 'disabled': status.loadingItem === item.id }"
               @click="plusCount(item)"
               class="cl-count"
             />
           </div>
-          <div class="u-ml-48 u-mr-48">{{ item.count }}</div>
+          <div class="u-ml-48 u-mr-48 cl-count-num">{{ item.qty }}</div>
           <div>
             <font-awesome-icon
               icon="fa-regular fa-square-minus"
+              :class="{ 'disabled': status.loadingItem === item.id }"
               @click="minusCount(item)"
               class="cl-count"
             />
           </div>
         </td>
-        <td style="width: 20%">
-          <div>{{ item.priceUnit }}{{ item.price * 0.8 * item.count }}</div>
+        <td style="width: 15%">
+          <div>NT${{ item.qty * item.product.price }}</div>
         </td>
         <td style="width: 10%">
-          <font-awesome-icon icon="fa-solid fa-trash-can" />
+          <button class="cl-delete" @click="removeCartItem(item.id)">
+            <font-awesome-icon icon="fa-solid fa-trash-can" />
+          </button>
         </td>
       </tr>
     </tbody>
@@ -63,7 +68,7 @@
       </tr>
       <tr class="cl-total">
         <td style="width: 100%">總價</td>
-        <td style="width: 80%">{{ priceUnit }}{{ total }}</td>
+        <td style="width: 80%">NT${{ $filters.currency(cart.final_total) }}</td>
       </tr>
       <tr>
         <td style="width: 100%">
@@ -74,45 +79,79 @@
   </div>
 </template>
 <script>
+import Lodingpage from '@/components/LodingPage.vue'
+// import useCartStore from '@/store/cart.js'
+// const cartStore = useCartStore()
 export default {
   data: () => {
     return {
-      total: 128,
-      priceUnit: 'NT$',
-      items: [
-        {
-          name: '鱈魚龍蝦沙拉漢堡',
-          price: 80,
-          priceUnit: 'NT$',
-          count: 1,
-          note: '不加生菜'
-        },
-        {
-          name: '鮭魚麻辣沙拉漢堡',
-          price: 80,
-          priceUnit: 'NT$',
-          count: 1,
-          note: '不加生菜'
-        },
-        {
-          name: '鮭魚麻辣沙拉漢堡',
-          price: 80,
-          priceUnit: 'NT$',
-          count: 1,
-          note: '不加生菜'
-        }
-      ]
+      cart: {},
+      status: {
+        loadingItem: ''
+      },
+      isLoading: false
+    }
+  },
+  components: {
+    Lodingpage
+  },
+  watch: {
+    '$route.params.hash': {
+      handler: function () {
+        this.getCart()
+      },
+      deep: true,
+      immediate: true
     }
   },
   methods: {
-    plusCount (items) {
-      items.count += 1
+    getCart () {
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
+      this.isLoading = true
+      this.$http.get(api)
+        .then((response) => {
+          console.log(response)
+          this.cart = response.data.data
+          this.isLoading = false
+        })
     },
-    minusCount (items) {
-      if (items.count > 1) {
-        items.count -= 1
+    updateCart (item) {
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${item.id}`
+      this.status.loadingItem = item.id
+      const cart = {
+        product_id: item.product_id,
+        qty: item.qty
       }
+      this.$http.put(api, { data: cart })
+        .then((res) => {
+          // console.log(res)
+          this.status.loadingItem = ''
+          this.getCart()
+        })
+    },
+    plusCount (item) {
+      item.qty += 1
+      this.updateCart(item)
+    },
+    minusCount (item) {
+      if (item.qty > 1) {
+        item.qty -= 1
+        this.updateCart(item)
+      }
+    },
+    removeCartItem (id) {
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${id}`
+      this.isLoading = true
+      this.$http.delete(api)
+        .then((res) => {
+          // this.$httpMessageState(res, '移除購物車品項')
+          this.getCart()
+          this.isLoading = false
+        })
     }
+  },
+  created () {
+    this.getCart()
   }
 }
 </script>
@@ -143,23 +182,32 @@ tr {
   background-color: #fef7e9;
 }
 
-.co-price {
-  height: 1px;
-  width: max-content;
-  padding: 0 5px;
-  margin: 8px 0;
-  background-color: #c0b5a0;
-  text-align: center;
-  line-height: 1px;
-}
 .cl-count {
   font-size: 30px;
   user-select: none;
+  cursor: pointer;
+}
+.cl-count.disabled{
+  color: var(--color--brown);
+  pointer-events: none;
+}
+.cl-count:hover{
+  color: var(--color--primary)
+}
+.cl-count-num{
+  user-select: none;
+  font-size: 30px;
 }
 .cl-number {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.cl-delete{
+  color: var(--color--dark-brown)
+}
+.cl-delete:hover{
+  color: var(--color--primary)
 }
 .cl-bottom {
   width: 100%;

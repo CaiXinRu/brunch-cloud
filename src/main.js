@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import { createPinia } from 'pinia'
 // // Import stylesheet
 // import 'vue3-loading-overlay/dist/vue3-loading-overlay.css'
 
@@ -137,4 +138,5 @@ app.config.globalProperties.$filters = {
 }
 app.use(router)
 app.use(VueAxios, axios)
+app.use(createPinia())
 app.mount('#app')
