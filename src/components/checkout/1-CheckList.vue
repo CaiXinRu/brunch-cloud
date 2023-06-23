@@ -80,8 +80,8 @@
 </template>
 <script>
 import Lodingpage from '@/components/LodingPage.vue'
-// import useCartStore from '@/store/cart.js'
-// const cartStore = useCartStore()
+import { mapState, mapActions } from 'pinia'
+import useCartStore from '@/stores/cart.js'
 export default {
   data: () => {
     return {
@@ -104,7 +104,12 @@ export default {
       immediate: true
     }
   },
+  computed: {
+    // 這裡帶入兩個參數 : 一個是Store，另一個是要帶入的state,getters
+    ...mapState(useCartStore, ['isLoadingStore', 'cartStore'])
+  },
   methods: {
+    ...mapActions(useCartStore, ['getCartStore']),
     getCart () {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
       this.isLoading = true
@@ -151,7 +156,8 @@ export default {
     }
   },
   created () {
-    this.getCart()
+    this.getCartStore()
+    // this.getCart()
   }
 }
 </script>
