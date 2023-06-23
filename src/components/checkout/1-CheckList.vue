@@ -85,11 +85,11 @@ import useCartStore from '@/stores/cart.js'
 export default {
   data: () => {
     return {
-      cart: {},
+      // cart: {},
       status: {
         loadingItem: ''
-      },
-      isLoading: false
+      }
+      // isLoading: false
     }
   },
   components: {
@@ -106,58 +106,58 @@ export default {
   },
   computed: {
     // 這裡帶入兩個參數 : 一個是Store，另一個是要帶入的state,getters
-    ...mapState(useCartStore, ['isLoadingStore', 'cartStore'])
+    ...mapState(useCartStore, ['isLoading', 'cart'])
   },
   methods: {
-    ...mapActions(useCartStore, ['getCartStore']),
-    getCart () {
-      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
-      this.isLoading = true
-      this.$http.get(api)
-        .then((response) => {
-          console.log(response)
-          this.cart = response.data.data
-          this.isLoading = false
-        })
-    },
-    updateCart (item) {
-      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${item.id}`
-      this.status.loadingItem = item.id
-      const cart = {
-        product_id: item.product_id,
-        qty: item.qty
-      }
-      this.$http.put(api, { data: cart })
-        .then((res) => {
-          // console.log(res)
-          this.status.loadingItem = ''
-          this.getCart()
-        })
-    },
-    plusCount (item) {
-      item.qty += 1
-      this.updateCart(item)
-    },
-    minusCount (item) {
-      if (item.qty > 1) {
-        item.qty -= 1
-        this.updateCart(item)
-      }
-    },
-    removeCartItem (id) {
-      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${id}`
-      this.isLoading = true
-      this.$http.delete(api)
-        .then((res) => {
-          // this.$httpMessageState(res, '移除購物車品項')
-          this.getCart()
-          this.isLoading = false
-        })
-    }
+    ...mapActions(useCartStore, ['getCart', 'updateCart', 'removeCartItem', 'plusCount', 'minusCount'])
+    // getCart () {
+    //   const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
+    //   this.isLoading = true
+    //   this.$http.get(api)
+    //     .then((response) => {
+    //       console.log(response)
+    //       this.cart = response.data.data
+    //       this.isLoading = false
+    //     })
+    // },
+    // updateCart (item) {
+    //   const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${item.id}`
+    //   this.status.loadingItem = item.id
+    //   const cart = {
+    //     product_id: item.product_id,
+    //     qty: item.qty
+    //   }
+    //   this.$http.put(api, { data: cart })
+    //     .then((res) => {
+    //       // console.log(res)
+    //       this.status.loadingItem = ''
+    //       this.getCart()
+    //     })
+    // },
+    // plusCount (item) {
+    //   item.qty += 1
+    //   this.updateCart(item)
+    // },
+    // minusCount (item) {
+    //   if (item.qty > 1) {
+    //     item.qty -= 1
+    //     this.updateCart(item)
+    //   }
+    // },
+    // removeCartItem (id) {
+    //   const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${id}`
+    //   this.isLoading = true
+    //   this.$http.delete(api)
+    //     .then((res) => {
+    //       // this.$httpMessageState(res, '移除購物車品項')
+    //       this.getCart()
+    //       this.isLoading = false
+    //     })
+    // }
   },
   created () {
-    this.getCartStore()
-    // this.getCart()
+    // this.getCartStore()
+    this.getCart()
   }
 }
 </script>
