@@ -5,7 +5,10 @@ export default defineStore('cart', {
   // 定義狀態初始值
   state: () => ({
     isLoading: false,
-    cart: {}
+    cart: {},
+    status: {
+      loadingItem: ''
+    }
   }),
   // 對狀態加工的 getters，如同 computed
   getters: {},
