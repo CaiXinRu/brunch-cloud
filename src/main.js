@@ -1,7 +1,9 @@
 import { createApp } from 'vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-import { createPinia } from 'pinia'
+// 匯入 createPinia 方法
+import { createPinia } from 'pinia' // here
+
 // // Import stylesheet
 // import 'vue3-loading-overlay/dist/vue3-loading-overlay.css'
 
@@ -136,7 +138,10 @@ app.config.globalProperties.$filters = {
   currency,
   date
 }
+
+// 進行初始化
+const pinia = createPinia() // here
 app.use(router)
+app.use(pinia)
 app.use(VueAxios, axios)
-app.use(createPinia())
 app.mount('#app')

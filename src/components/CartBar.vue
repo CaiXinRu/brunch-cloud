@@ -76,7 +76,7 @@
             <td style="width: 20%" class="color--secondary">總價</td>
             <td style="width: 30%" class="color--dark-brown">NT${{ $filters.currency(cart.final_total) }}</td>
           </tr>
-          <router-link :to="`/checkout?hash=${Number(new Date).toString(36)}`" class="cb-checkout" @click="closeModal()">
+          <router-link to="/checkout" class="cb-checkout" @click="closeModal()">
             <div class="cbb-text">訂單結帳</div>
           </router-link>
         </tfoot>
@@ -87,7 +87,8 @@
 
 <script scoped>
 import LodingPageModal from '@/components/LodingPageModal.vue'
-
+import { mapState, mapActions } from 'pinia'
+import useCartStore from '@/stores/cart.js'
 export default {
   emits: ['update:modelValue'],
   props: {
@@ -98,11 +99,6 @@ export default {
   },
   data: () => {
     return {
-      cart: {},
-      status: {
-        loadingItem: ''
-      },
-      isLoading: false
     }
   },
   components: {
@@ -115,52 +111,14 @@ export default {
       }
     }
   },
+  computed: {
+    ...mapState(useCartStore, ['isLoading', 'cart', 'status'])
+  },
   methods: {
-    getCart () {
-      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
-      this.$http.get(api)
-        .then((response) => {
-          console.log(response)
-          this.cart = response.data.data
-        })
-    },
+    ...mapActions(useCartStore, ['getCart', 'updateCart', 'removeCartItem', 'plusCount', 'minusCount']),
     closeModal () {
       this.$emit('update:modelValue', false)
       this.$refs.cartModal.close()
-    },
-    updateCart (item) {
-      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${item.id}`
-      this.status.loadingItem = item.id
-      const cart = {
-        product_id: item.product_id,
-        qty: item.qty
-      }
-      this.$http.put(api, { data: cart })
-        .then((res) => {
-          // console.log(res)
-          this.status.loadingItem = ''
-          this.getCart()
-        })
-    },
-    plusCount (item) {
-      item.qty += 1
-      this.updateCart(item)
-    },
-    minusCount (item) {
-      if (item.qty > 1) {
-        item.qty -= 1
-        this.updateCart(item)
-      }
-    },
-    removeCartItem (id) {
-      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${id}`
-      this.isLoading = true
-      this.$http.delete(api)
-        .then((res) => {
-          // this.$httpMessageState(res, '移除購物車品項')
-          this.getCart()
-          this.isLoading = false
-        })
     }
   },
   created () {

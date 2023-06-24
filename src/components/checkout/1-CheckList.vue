@@ -80,75 +80,23 @@
 </template>
 <script>
 import Lodingpage from '@/components/LodingPage.vue'
-// import useCartStore from '@/store/cart.js'
-// const cartStore = useCartStore()
+import { mapState, mapActions } from 'pinia'
+import useCartStore from '@/stores/cart.js'
 export default {
   data: () => {
     return {
-      cart: {},
-      status: {
-        loadingItem: ''
-      },
-      isLoading: false
     }
   },
   components: {
     Lodingpage
   },
   watch: {
-    '$route.params.hash': {
-      handler: function () {
-        this.getCart()
-      },
-      deep: true,
-      immediate: true
-    }
+  },
+  computed: {
+    ...mapState(useCartStore, ['isLoading', 'cart', 'status'])
   },
   methods: {
-    getCart () {
-      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
-      this.isLoading = true
-      this.$http.get(api)
-        .then((response) => {
-          console.log(response)
-          this.cart = response.data.data
-          this.isLoading = false
-        })
-    },
-    updateCart (item) {
-      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${item.id}`
-      this.status.loadingItem = item.id
-      const cart = {
-        product_id: item.product_id,
-        qty: item.qty
-      }
-      this.$http.put(api, { data: cart })
-        .then((res) => {
-          // console.log(res)
-          this.status.loadingItem = ''
-          this.getCart()
-        })
-    },
-    plusCount (item) {
-      item.qty += 1
-      this.updateCart(item)
-    },
-    minusCount (item) {
-      if (item.qty > 1) {
-        item.qty -= 1
-        this.updateCart(item)
-      }
-    },
-    removeCartItem (id) {
-      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${id}`
-      this.isLoading = true
-      this.$http.delete(api)
-        .then((res) => {
-          // this.$httpMessageState(res, '移除購物車品項')
-          this.getCart()
-          this.isLoading = false
-        })
-    }
+    ...mapActions(useCartStore, ['getCart', 'updateCart', 'removeCartItem', 'plusCount', 'minusCount'])
   },
   created () {
     this.getCart()
