@@ -119,7 +119,7 @@
                   ></error-message
                   ><br />
                 </div>
-                <div class="u-mb-24">
+                <!-- <div class="u-mb-24">
                   <label class="cc-label" for="日期與時間">預計收件日期與時間＊</label
                   ><br />
                   <Field
@@ -138,7 +138,7 @@
                     class="invalid-feedback"
                   ></error-message
                   ><br />
-                </div>
+                </div> -->
                 <div class="u-mb-24">
                   <label class="cc-label" for="note">留言備註</label><br />
                   <textarea
@@ -251,7 +251,7 @@ export default {
   border: 3px solid #fac664;
 }
 .cc-note {
-  height: 65px;
+  height: 175px;
   background-color: #ffffff;
   border: 2px solid #644536;
   display: flex;
@@ -263,14 +263,18 @@ export default {
   border: 3px solid #fac664;
 }
 .cc-submit {
-  height: 40px;
+  height: 50px;
   background-color: #fac664;
   color: #644536;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
+.cc-submit:hover{
+  background-color: var(--color--secondary);
+  color: var(--color--light-brown);
+  box-shadow: 5px 5px 0px var(--color--primary);
+}
 .invalid-feedback {
   color: #fa7864;
   margin: 0;

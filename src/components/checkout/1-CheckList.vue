@@ -192,17 +192,27 @@ tr {
   color: #644536;
   font-size: 18px;
 }
+.clc-btn:hover {
+  background-color: var(--color--secondary);
+  color: var(--color--light-brown);
+  box-shadow: 5px 5px 0px var(--color--primary);
+}
 .cl-total {
   font-size: 32px;
   color: #644536;
   margin: 16px 0;
 }
 .cl-checkBtn {
-  height: 40px;
+  height: 50px;
   width: 450px;
   background-color: #fac664;
   color: #644536;
   font-size: 20px;
   font-weight: 600;
+}
+.cl-checkBtn:hover{
+  background-color: var(--color--secondary);
+  color: var(--color--light-brown);
+  box-shadow: 5px 5px 0px var(--color--primary);
 }
 </style>

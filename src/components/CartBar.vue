@@ -77,7 +77,8 @@
             <td style="width: 30%" class="color--dark-brown">NT${{ $filters.currency(cart.final_total) }}</td>
           </tr>
           <router-link to="/checkout" class="cb-checkout" @click="closeModal()">
-            <div class="cbb-text">訂單結帳</div>
+            <!-- <div class="cbb-text">訂單結帳</div> -->
+            訂單結帳
           </router-link>
         </tfoot>
       </div>
@@ -269,11 +270,14 @@ tfoot tr {
   display: flex;
   margin: 0 auto 16px auto;
   border: none;
-}
-.cbb-text {
+  justify-content: center;
+  align-items: center;
   color: #fef7e9;
   font-size: 24px;
-  margin: 0 auto;
-  line-height: 45px;
+}
+.cb-checkout:hover {
+  background-color: var(--color--primary);
+  color: var(--color--dark-brown);
+  box-shadow: 5px 5px 0px var(--color--secondary);
 }
 </style>
