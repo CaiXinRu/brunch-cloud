@@ -5,9 +5,9 @@
       <tr class="cl-head">
         <th style="width: 25%">品名</th>
         <!-- <th style="width: 20%">備註</th> -->
-        <th style="width: 25%">單價</th>
+        <th style="width: 20%">單價</th>
         <th style="width: 25%">數量</th>
-        <th style="width: 15%">小計</th>
+        <th style="width: 20%">小計</th>
         <th style="width: 10%"></th>
       </tr>
     </thead>
@@ -18,10 +18,14 @@
         v-for="item in cart.carts"
         :key="item.id"
       >
-        <td style="width: 25%">{{ item.product.title }}</td>
-        <!-- <td style="width: 20%">{{ item.note }}</td> -->
         <td style="width: 25%">
-          特價 NT${{ item.product.price }}
+          {{ item.product.title }}
+          <div class="color--positive" v-if="item.coupon">（已套用優惠券）</div>
+        </td>
+        <!-- <td style="width: 20%">{{ item.note }}</td> -->
+        <td style="width: 20%">
+          <div v-if="item.coupon"><span class="color--positive">下殺折扣價：</span>NT${{ item.coupon.percent * item.product.price / 100 }} </div>
+          <div v-else>特價 NT${{ item.product.price }}</div>
         </td>
         <td style="width: 25%" class="cl-number">
           <div>
@@ -42,8 +46,9 @@
             />
           </div>
         </td>
-        <td style="width: 15%">
-          <div>NT${{ item.qty * item.product.price }}</div>
+        <td style="width: 20%">
+          <div v-if="item.final_total !== item.total"><span class="color--positive">下殺折扣價：</span>NT${{ $filters.currency(item.final_total) }}</div>
+          <div v-else>NT${{ $filters.currency(item.total) }}</div>
         </td>
         <td style="width: 10%">
           <button class="cl-delete" @click="removeCartItem(item.id)">
@@ -62,13 +67,18 @@
             type="text"
             name="coupon"
             placeholder="請輸入優惠碼..."
+            v-model="coupon_code"
           />
         </td>
-        <td><button class="clc-btn">套用優惠碼</button></td>
+        <td><button class="clc-btn" type="button" @click="addCouponCode">套用優惠碼</button></td>
       </tr>
       <tr class="cl-total">
-        <td style="width: 100%">總價</td>
-        <td style="width: 80%">NT${{ $filters.currency(cart.final_total) }}</td>
+        <td class="cl-toal-text">總價</td>
+        <td class="cl-total-num">NT${{ $filters.currency(cart.final_total) }}</td>
+      </tr>
+      <tr class="cl-total" v-if="cart.final_total !== cart.total">
+        <td class="cl-toal-text color--positive">下殺折扣價</td>
+        <td class="cl-total-num color--positive">NT${{ $filters.currency(cart.final_total) }}</td>
       </tr>
       <tr>
         <td style="width: 100%">
@@ -85,6 +95,7 @@ import useCartStore from '@/stores/cart.js'
 export default {
   data: () => {
     return {
+      coupon_code: ''
     }
   },
   components: {
@@ -96,7 +107,22 @@ export default {
     ...mapState(useCartStore, ['isLoading', 'cart', 'status'])
   },
   methods: {
-    ...mapActions(useCartStore, ['getCart', 'updateCart', 'removeCartItem', 'plusCount', 'minusCount'])
+    ...mapActions(useCartStore, ['getCart', 'updateCart', 'removeCartItem', 'plusCount', 'minusCount']),
+    addCouponCode () {
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/coupon`
+      const coupon = {
+        code: this.coupon_code
+      }
+      this.isLoading = true
+      this.$http.post(api, { data: coupon })
+        .then((res) => {
+          // console.log(res)
+          // this.$httpMessageState(res, '加入優惠券')
+          this.coupon_code = ''
+          this.getCart()
+          this.isLoading = false
+        })
+    }
   },
   created () {
     this.getCart()
@@ -201,6 +227,15 @@ tr {
   font-size: 32px;
   color: #644536;
   margin: 16px 0;
+}
+.cl-toal-text{
+  width: 250px;
+  display: flex;
+  justify-content: right;
+}
+.cl-total-num{
+  width: 200px;
+  justify-content: center;
 }
 .cl-checkBtn {
   height: 50px;

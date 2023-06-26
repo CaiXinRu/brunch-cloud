@@ -17,7 +17,7 @@
               </p>
               <p class="footer-text color--brown">
                 本網站僅供個人作品使用，無作任何商業用途｜<router-link
-                  to="/login"
+                  to="/login" class="footer-login"
                   >登入後台</router-link
                 >
               </p>
@@ -79,13 +79,13 @@
   font-size: 18px;
   letter-spacing: 0.1em;
 }
-.footer-text a {
+.footer-login {
   color: #c0b5a0;
 }
-.footer-text:hover a {
+.footer-login:hover{
   color: #fac664;
 }
-.footer-text:active a {
+.footer-login:active{
   color: #e3bac6;
 }
 .footer-icons {
