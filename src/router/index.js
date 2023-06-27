@@ -43,6 +43,7 @@ const routes = [
     children: [
       {
         path: '',
+        name: 'home',
         component: () => import('../views/Home.vue')
       },
       {
@@ -51,9 +52,19 @@ const routes = [
         component: () => import('../views/Menu.vue')
       },
       {
-        path: 'checkout',
-        name: 'checkout',
-        component: () => import('../views/CheckOut.vue')
+        path: 'checklist',
+        name: 'checklist',
+        component: () => import('../views/checkout/1-CheckList.vue')
+      },
+      {
+        path: 'checkinfo',
+        name: 'checkinfo',
+        component: () => import('../views/checkout/2-CheckCustomer.vue')
+      },
+      {
+        path: 'checkout/:orderId',
+        name: 'checkout-order',
+        component: () => import('../views/checkout/3-CheckFinal.vue')
       },
       {
         path: 'locations',

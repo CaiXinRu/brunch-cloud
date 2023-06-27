@@ -23,17 +23,17 @@
           <div class="cs-bar"></div>
         </div>
       </div>
-      <CheckList></CheckList>
+      <!-- <CheckList></CheckList>
       <CheckCustomer></CheckCustomer>
-      <CheckFinal></CheckFinal>
+      <CheckFinal></CheckFinal> -->
     </div>
   </div>
 </template>
 
 <script scoped>
-import CheckList from '@/components/checkout/1-CheckList.vue'
-import CheckCustomer from '@/components/checkout/2-CheckCustomer.vue'
-import CheckFinal from '@/components/checkout/3-CheckFinal.vue'
+// import CheckList from '@/components/checkout/1-CheckList.vue'
+// import CheckCustomer from '@/components/checkout/2-CheckCustomer.vue'
+// import CheckFinal from '@/components/checkout/3-CheckFinal.vue'
 
 export default {
   data: () => {
@@ -41,9 +41,9 @@ export default {
     }
   },
   components: {
-    CheckList,
-    CheckCustomer,
-    CheckFinal
+    // CheckList,
+    // CheckCustomer,
+    // CheckFinal
   }
 }
 </script>

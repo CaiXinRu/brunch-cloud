@@ -76,7 +76,7 @@
             <td style="width: 20%" class="color--secondary">總價</td>
             <td style="width: 30%" class="color--dark-brown">NT${{ $filters.currency(cart.final_total) }}</td>
           </tr>
-          <router-link to="/checkout" class="cb-checkout" @click="closeModal()">
+          <router-link to="/checklist" class="cb-checkout" @click="closeModal()">
             <!-- <div class="cbb-text">訂單結帳</div> -->
             訂單結帳
           </router-link>
