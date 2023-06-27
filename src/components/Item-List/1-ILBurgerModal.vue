@@ -159,8 +159,6 @@ export default {
       this.isLoading = true
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/product/${this.id}`
       this.$http.get(api).then((res) => {
-        // console.log('watchmodelvalue', res.data)
-        // console.log('this.id', this.id)
         if (res.data.success) {
           this.product = res.data.product
           const modal = document.getElementById('itemModal')

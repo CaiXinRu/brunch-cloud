@@ -102,6 +102,11 @@
 export default {
   data: () => {
     return {
+      order: {
+        user: {}
+      },
+      orderId: '',
+      isLoading: false,
       total: 128,
       priceUnit: 'NT$',
       items: [
@@ -134,6 +139,25 @@ export default {
           note: '不加生菜'
         }
       ]
+    }
+  },
+  methods: {
+    getOrder () {
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/order/${this.orderId}`
+      this.isLoading = true
+      this.$http.get(api)
+        .then((res) => {
+          this.isLoading = false
+          console.log(res)
+          if (res.data.success) {
+            this.order = res.data.order
+          }
+        })
+    },
+    created () {
+      // this.orderId = this.$route.params.orderId
+      // console.log(this.orderId)
+      this.getOrder()
     }
   }
 }

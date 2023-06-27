@@ -74,11 +74,11 @@
       </tr>
       <tr class="cl-total">
         <td class="cl-toal-text">總價</td>
-        <td class="cl-total-num">NT${{ $filters.currency(cart.final_total) }}</td>
+        <td class="cl-total-num">NT${{ $filters.currency(cart.total) }}</td>
       </tr>
       <tr class="cl-total" v-if="cart.final_total !== cart.total">
         <td class="cl-toal-text color--positive">下殺折扣價</td>
-        <td class="cl-total-num color--positive">NT${{ $filters.currency(cart.final_total) }}</td>
+        <td class="cl-total-num color--positive">NT${{ $filters.currency(Math.round(cart.final_total)) }}</td>
       </tr>
       <tr>
         <td style="width: 100%">

@@ -19,7 +19,7 @@
             </li>
             <li><p class="color--light-brown main-font-1">｜</p></li>
             <li>
-              <router-link to="/" class="main-font" date-link-alt="ORDERLIST"
+              <router-link to="/dashboard/orders" class="main-font" date-link-alt="ORDERLIST"
                 ><span>訂單列表</span></router-link
               >
             </li>

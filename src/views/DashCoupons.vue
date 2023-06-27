@@ -13,7 +13,7 @@
           <thead>
             <tr class="dc-head">
               <th style="width: 20%">名稱</th>
-              <th style="width: 20%">折扣百分比</th>
+              <th style="width: 20%">折扣優惠</th>
               <th style="width: 20%">到期日</th>
               <th style="width: 20%">是否啟用</th>
               <th style="width: 20%">是否編輯</th>
@@ -28,7 +28,7 @@
               :key="key"
             >
               <td style="width: 20%">{{ item.title }}</td>
-              <td style="width: 20%">{{ item.percent }}%</td>
+              <td style="width: 20%">{{ item.percent/10 }}折</td>
               <td style="width: 20%">{{ $filters.date(item.due_date) }}</td>
               <td style="width: 20%">
                 <span class="color--positive" v-if="item.is_enabled === 1"

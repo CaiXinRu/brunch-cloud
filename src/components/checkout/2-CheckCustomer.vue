@@ -104,11 +104,12 @@
                     name="支付方式"
                     autocomplete="off"
                     as="select"
-                    rules="required"
+                    :rules="isPayment"
                     :class="{ 'is-invalid': errors['支付方式'] }"
-                    v-model="form.payment"
+                    v-model="payment"
                   >
                     <option value="請選擇支付方式" disabled selected>請選擇支付方式</option>
+                    <option value="貨到付款">貨到付款</option>
                     <option value="信用卡/金融卡">信用卡/金融卡</option>
                     <option value="LinePay">LinePay</option>
                     <option value="ApplePay">ApplePay</option>
@@ -177,15 +178,28 @@ export default {
           tel: '',
           address: ''
         },
-        payment: '請選擇支付方式',
-        time: '',
+        // time: '',
         message: ''
-      }
+      },
+      payment: '請選擇支付方式'
     }
   },
   methods: {
     createOrder () {
       console.log(this.form)
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/order`
+      const info = this.form
+      this.$http.post(api, { data: info })
+        .then((res) => {
+          console.log(res)
+        })
+    },
+    isPayment (value) {
+      if (value === '請選擇支付方式') {
+        return '請選擇支付方式'
+      } else {
+        return true
+      }
     },
     isPhone (value) {
       const phoneNumber = /^(09)[0-9]{8}$/
