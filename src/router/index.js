@@ -67,6 +67,11 @@ const routes = [
         component: () => import('../views/checkout/3-CheckFinal.vue')
       },
       {
+        path: 'checkpay',
+        name: 'checkpay',
+        component: () => import('../views/checkout/4-CheckPay.vue')
+      },
+      {
         path: 'locations',
         name: 'locations',
         component: () => import('../views/LocationsPage.vue')

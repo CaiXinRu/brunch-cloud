@@ -185,13 +185,13 @@
                       ><br />
                     </div>
                     <div class="u-mb-24">
-                      <button
-                        class="cc-submit"
-                        style="width: 85%"
-                        type="submit"
-                      >
-                        提交訂單
-                      </button>
+                        <button
+                          class="cc-submit"
+                          style="width: 85%"
+                          type="submit"
+                        >
+                          提交訂單
+                        </button>
                     </div>
                   </div>
                 </div>
@@ -218,16 +218,19 @@ export default {
         // time: '',
         message: ''
       },
-      payment: '請選擇支付方式'
+      payment: '請選擇支付方式',
+      orderId: ''
     }
   },
   methods: {
     createOrder () {
-      console.log(this.form)
+      // console.log(this.form)
+      this.isLoading = true
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/order`
       const info = this.form
       this.$http.post(api, { data: info }).then((res) => {
-        console.log(res)
+        this.isLoading = false
+        this.$router.push(`/checkout/${res.data.orderId}`)
       })
     },
     isPayment (value) {
@@ -245,7 +248,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .container {
   display: flex;
   flex-direction: column;
