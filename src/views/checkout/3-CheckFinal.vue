@@ -1,5 +1,6 @@
+<!-- eslint-disable vue/no-parsing-error -->
 <template>
-  <Loadingpage v-if="isLoading"></Loadingpage>
+  <LoadingPage v-if="isLoading"></LoadingPage>
   <div class="bg-color--white">
     <div class="container u-pt-48 u-pb-48">
       <div class="co-stepbar">
@@ -19,103 +20,132 @@
           <div class="cs-bar"></div>
         </div>
         <div class="co-step">
-          <div class="cs-num cs-lighter">4</div>
+          <div :class="['cs-num', { 'cs-lighter': !order?.is_paid }]">4</div>
           <div class="cs-text">完成付款</div>
-          <div class="cs-bar cs-lighter"></div>
+          <div :class="['cs-bar', { 'cs-lighter': !order?.is_paid }]"></div>
         </div>
       </div>
-      <form style="width: 100%">
-        <table style="width: 100%" class="cf-table">
-          <thead>
-            <tr class="cf-head">
-              <th style="width: 40%">品名</th>
-              <!-- <th style="width: 25%">備註</th> -->
-              <th style="width: 30%">單價</th>
-              <th style="width: 30%">數量</th>
-              <!-- <th style="width: 30%">小計</th> -->
-            </tr>
-          </thead>
-          <tbody>
-            <tr
-              style="height: 100px"
-              class="color--dark-brown cf-body"
-              v-for="item in order.products"
-              :key="item.id"
-            >
-              <td style="width: 40%; border-right: 3px solid #fac664">{{ item.product.title }}</td>
-              <!-- <td style="width: 30%">{{ item.note }}</td> -->
-              <td style="width: 30%; border-right: 3px solid #fac664">
-                NT${{ $filters.currency(item.final_total) }}
-              </td>
-              <td style="width: 30%">{{ item.qty }} 份</td>
-              <!-- <td style="width: 30%">
+      <table style="width: 100%" class="cf-table">
+        <thead>
+          <tr class="cf-id">
+            <th style="width: 100%">訂單編號：{{ order?.id }}</th>
+          </tr>
+        </thead>
+        <thead>
+          <tr class="cf-head">
+            <th style="width: 40%">品名</th>
+            <!-- <th style="width: 25%">備註</th> -->
+            <th style="width: 30%">單價</th>
+            <th style="width: 30%">數量</th>
+            <!-- <th style="width: 30%">小計</th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            style="height: 100px"
+            class="color--dark-brown cf-body"
+            v-for="item in order.products"
+            :key="item.id"
+          >
+            <td style="width: 40%; border-right: 3px solid #fac664">
+              {{ item.product.title }}
+            </td>
+            <!-- <td style="width: 30%">{{ item.note }}</td> -->
+            <td style="width: 30%; border-right: 3px solid #fac664">
+              NT${{ $filters.currency(item.final_total) }}
+            </td>
+            <td style="width: 30%">{{ item.qty }} 份</td>
+            <!-- <td style="width: 30%">
                 {{ item.priceUnit }}{{ item.price * 0.8 * item.count }}
               </td> -->
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr class="cf-total">
-              <td style="width: 40%; border-right: 3px solid #ffff">總計</td>
-              <td style="width: 60%">NT${{ $filters.currency(Math.floor(order.total)) }}</td>
-            </tr>
-          </tfoot>
-        </table>
-        <table style="width: 100%" class="cf-table2">
-          <thead>
-            <tr class="cf-head">
-              <th style="width: 100%">顧客資料</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style="height: 50px" class="cf-body">
-              <td
-                style="width: 40%; border-right: 3px solid #fac664"
-                class="color--dark-brown"
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr class="cf-total">
+            <td style="width: 40%">總計</td>
+            <td style="width: 60%; background-color: var(--color--light-brown)">
+              NT${{ $filters.currency(Math.floor(order.total)) }}
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+      <table style="width: 100%" class="cf-table2">
+        <thead>
+          <tr class="cf-head">
+            <th style="width: 100%">顧客資料</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="height: 50px" class="cf-body">
+            <td
+              style="width: 40%; border-right: 3px solid #fac664"
+              class="color--dark-brown"
+            >
+              收件人姓名
+            </td>
+            <td style="width: 60%" class="color--black">
+              {{ order.user.name }}
+            </td>
+          </tr>
+          <tr style="height: 50px" class="cf-body">
+            <td
+              style="width: 40%; border-right: 3px solid #fac664"
+              class="color--dark-brown"
+            >
+              聯絡電話
+            </td>
+            <td style="width: 60%" class="color--black">
+              {{ order.user.tel }}
+            </td>
+          </tr>
+          <tr style="height: 50px" class="cf-body">
+            <td
+              style="width: 40%; border-right: 3px solid #fac664"
+              class="color--dark-brown"
+            >
+              Email
+            </td>
+            <td style="width: 60%" class="color--black">
+              {{ order.user.email }}
+            </td>
+          </tr>
+          <tr style="height: 50px" class="cf-body">
+            <td
+              style="width: 40%; border-right: 3px solid #fac664"
+              class="color--dark-brown"
+            >
+              收件地址
+            </td>
+            <td style="width: 60%" class="color--black">
+              {{ order.user.address }}
+            </td>
+          </tr>
+          <tr style="height: 50px" class="cf-body">
+            <td
+              style="width: 40%; border-right: 3px solid #fac664"
+              class="color--dark-brown"
+            >
+              訂餐／送餐日期
+            </td>
+            <td style="width: 60%" class="color--black">
+              {{ $filters.date(order.create_at) }}
+            </td>
+          </tr>
+          <tr style="height: 50px" class="cf-body">
+            <td
+              style="width: 40%; border-right: 3px solid #fac664"
+              class="color--dark-brown"
+            >
+              付款狀態
+            </td>
+            <td style="width: 60%" class="color--black">
+              <span v-if="!order?.is_paid" class="color--negative"
+                >尚未付款</span
               >
-                收件人姓名
-              </td>
-              <td style="width: 60%" class="color--black">{{ order.user.name }}</td>
-            </tr>
-            <tr style="height: 50px" class="cf-body">
-              <td
-                style="width: 40%; border-right: 3px solid #fac664"
-                class="color--dark-brown"
-              >
-                聯絡電話
-              </td>
-              <td style="width: 60%" class="color--black">{{ order.user.tel }}</td>
-            </tr>
-            <tr style="height: 50px" class="cf-body">
-              <td
-                style="width: 40%; border-right: 3px solid #fac664"
-                class="color--dark-brown"
-              >
-                Email
-              </td>
-              <td style="width: 60%" class="color--black">{{ order.user.email }}</td>
-            </tr>
-            <tr style="height: 50px" class="cf-body">
-              <td
-                style="width: 40%; border-right: 3px solid #fac664"
-                class="color--dark-brown"
-              >
-                收件地址
-              </td>
-              <td style="width: 60%" class="color--black">{{ order.user.address }}</td>
-            </tr>
-            <tr style="height: 50px" class="cf-body">
-              <td
-                style="width: 40%; border-right: 3px solid #fac664"
-                class="color--dark-brown"
-              >
-                付款狀態
-              </td>
-              <td style="width: 60%" class="color--black">
-                <span v-if="!order.is_paid" class="color--negative">尚未付款</span>
-                <span v-else class="color--positive">付款完成</span>
-              </td>
-            </tr>
-            <!-- <tr style="height: 50px" class="cf-body">
+              <span v-else class="color--positive">付款完成</span>
+            </td>
+          </tr>
+          <!-- <tr style="height: 50px" class="cf-body">
           <td
             style="width: 40%; border-right: 3px solid #fac664"
             class="color--dark-brown"
@@ -124,7 +154,7 @@
           </td>
           <td style="width: 60%" class="color--black">？？</td>
         </tr> -->
-            <!-- <tr style="height: 50px" class="cf-body">
+          <!-- <tr style="height: 50px" class="cf-body">
           <td
             style="width: 40%; border-right: 3px solid #fac664"
             class="color--dark-brown"
@@ -133,18 +163,26 @@
           </td>
           <td style="width: 60%" class="color--black">？？</td>
         </tr> -->
-          </tbody>
-        </table>
-        <div class="cf-submit-container">
-            <button
-              class="cf-submit"
-              style="width: 30%"
-              type="submit"
-            >
-              提交訂單
-            </button>
-        </div>
-      </form>
+        </tbody>
+      </table>
+      <div class="cf-submit-container" v-if="!order?.is_paid">
+        <button
+          class="cf-submit"
+          type="submit"
+          @click="payOrder"
+        >
+          進行付款
+        </button>
+      </div>
+      <div class="cf-submit-container" v-if="order?.is_paid">
+        <router-link
+          to="/menu"
+          class="cf-submit"
+          type="submit"
+        >
+          繼續點餐
+        </router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -167,16 +205,27 @@ export default {
     LoadingPage
   },
   methods: {
-    getOrder () {
+    async getOrder () {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/order/${this.orderId}`
       this.isLoading = true
-      this.$http.get(api).then((res) => {
-        console.log(res)
-        if (res.data.success) {
-          this.order = res.data.order
-        }
-        this.isLoading = false
-      })
+      const res = await this.$http.get(api)
+      console.log(res)
+      if (res.data.success) {
+        this.order = res.data.order
+      }
+      this.isLoading = false
+      return res
+    },
+    async payOrder () {
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/pay/${this.orderId}`
+      this.isLoading = true
+      const res = await this.$http.post(api)
+      if (res.data.success) {
+        const resGetOrder = await this.getOrder()
+        this.$router.push(`/checkpay/${resGetOrder.data.order.id}`)
+      }
+      this.isLoading = false
+      return res
     }
   },
   created () {
@@ -234,9 +283,15 @@ export default {
 tr {
   display: flex;
   flex-direction: row;
-  /* padding: 4px 0; */
   text-align: center;
   align-items: center;
+}
+.cf-id {
+  color: var(--color--dark-brown);
+  background-color: var(--color--light-brown);
+  font-size: 18px;
+  line-height: 50px;
+  border: 3px solid #fac664;
 }
 .cf-head {
   color: #644536;
@@ -253,26 +308,25 @@ tr {
 .cf-total {
   color: #644536;
   background-color: #fac664;
+  border: 3px solid #fac664;
   font-size: 18px;
-  line-height: 50px;
-  padding: 8px 0;
+  line-height: 60px;
 }
 .cf-table2 {
   margin: 0 0 48px 0;
 }
-.cf-submit-container{
+.cf-submit-container {
   display: flex;
   justify-content: flex-end;
+  width: 100%;
   margin: 0 0 56px 0;
 }
 .cf-submit {
   display: flex;
   height: 50px;
-  /* background-color: #fac664;
-  color: #644536; */
+  width: 20%;
   background-color: var(--color--primary);
   color: var(--color--dark-brown);
-  display: flex;
   align-items: center;
   justify-content: center;
 }

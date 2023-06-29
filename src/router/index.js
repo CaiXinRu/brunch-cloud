@@ -63,11 +63,11 @@ const routes = [
       },
       {
         path: 'checkout/:orderId',
-        name: 'checkout-order',
+        name: 'checkout',
         component: () => import('../views/checkout/3-CheckFinal.vue')
       },
       {
-        path: 'checkpay',
+        path: 'checkpay/:orderId',
         name: 'checkpay',
         component: () => import('../views/checkout/4-CheckPay.vue')
       },

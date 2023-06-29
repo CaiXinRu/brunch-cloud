@@ -1,5 +1,5 @@
 <template>
-  <Lodingpage v-if="isLoading"></Lodingpage>
+  <LodingPage v-if="isLoading"></LodingPage>
   <div class="bg-color--white">
     <div class="container u-pt-48 u-pb-48">
       <div class="co-stepbar">
@@ -205,9 +205,11 @@
 </template>
 
 <script>
+import LodingPage from '@/components/LodingPage.vue'
 export default {
   data () {
     return {
+      isLoading: false,
       form: {
         user: {
           name: '',
@@ -222,16 +224,21 @@ export default {
       orderId: ''
     }
   },
+  components: {
+    LodingPage
+  },
   methods: {
     createOrder () {
       // console.log(this.form)
       this.isLoading = true
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/order`
       const info = this.form
-      this.$http.post(api, { data: info }).then((res) => {
-        this.isLoading = false
-        this.$router.push(`/checkout/${res.data.orderId}`)
-      })
+      this.$http.post(api, { data: info })
+        .then((res) => {
+          this.isLoading = false
+          this.$router.push(`/checkout/${res.data.orderId}`)
+        })
+      return false
     },
     isPayment (value) {
       if (value === '請選擇支付方式') {

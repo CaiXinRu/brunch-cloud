@@ -1,5 +1,5 @@
 <template>
-  <Loadingpage v-if="isLoading"></Loadingpage>
+  <LoadingPage v-if="isLoading"></LoadingPage>
   <div class="bg-color--white">
     <div class="container u-pt-48 u-pb-48">
       <div class="co-stepbar">
@@ -24,16 +24,35 @@
           <div class="cs-bar"></div>
         </div>
       </div>
-      <table style="width: 100%" class="cc-table">
+      <table style="width: 100%" class="cp-table">
         <thead>
-            <tr class="cc-head">
-            <th style="width: 100%">付款狀態</th>
+            <tr class="cp-head">
+                <th style="width: 100%">付款狀態</th>
             </tr>
         </thead>
         <tbody>
-            <tr class="cc-body">
-            <td style="width: 100%" class="cc-detail">
-            </td>
+            <tr class="cp-body">
+                <td class="cp-detail">
+                    <div class="cp-container">
+                        <font-awesome-icon class="cp-icon" icon="fa-regular fa-circle-check" bounce />
+                        <div>付款完成</div>
+                        <div class="color--secondary">（您的餐點將在一個小時內送達，敬請耐心等候。）</div>
+                        <div class="cf-btn-container">
+                            <router-link
+                            :to="`/checkout/${orderId}`"
+                            class="cf-btn"
+                            >
+                            ＜       查看訂單
+                            </router-link>
+                            <router-link
+                            to="/menu"
+                            class="cf-btn"
+                            >
+                            繼續點餐       ＞
+                            </router-link>
+                        </div>
+                    </div>
+                </td>
             </tr>
         </tbody>
     </table>
@@ -46,11 +65,16 @@ import LoadingPage from '@/components/LodingPage.vue'
 
 export default {
   data () {
-    return {}
+    return {
+      orderId: ''
+    }
   },
   components: {
     // eslint-disable-next-line vue/no-unused-components
     LoadingPage
+  },
+  created () {
+    this.orderId = this.$route.params.orderId
   }
 }
 </script>
@@ -96,10 +120,10 @@ export default {
 .cs-lighter {
   opacity: 50%;
 }
-.cc-table {
+.cp-table {
   margin: 48px 0 56px 0;
 }
-.cc-head {
+.cp-head {
   color: #644536;
   background-color: #fac664;
   font-size: 18px;
@@ -110,10 +134,10 @@ export default {
   text-align: center;
   align-items: center;
 }
-.cc-body {
+.cp-body {
   display: flex;
   flex-direction: row;
-  padding: 48px 0 16px 0;
+  /* padding: 48px 0 16px 0; */
   text-align: start;
   align-items: flex-start;
 
@@ -122,62 +146,46 @@ export default {
   border-right: 3px solid #fac664;
   border-left: 3px solid #fac664;
 }
-.cc-detail {
-  padding: 0 0 0 80px;
-}
-.cc-inside {
+.cp-detail {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  width: 100%;
+  padding: 100px 0;
 }
-.cc-column {
+.cp-container {
   display: flex;
   flex-direction: column;
-  flex: 1;
-}
-.cc-label {
-  color: #644536;
-  margin-bottom: 8px;
-  display: inline-block;
-}
-.cc-input {
-  height: 40px;
-  background-color: #ffffff;
-  border: 2px solid #644536;
-  display: flex;
+  justify-content: center;
   align-items: center;
-  color: #272727;
-  padding-left: 16px;
+  height: auto;
+  width: 100%;
 }
-.cc-input:focus-within {
-  border: 3px solid #fac664;
+.cp-icon{
+    font-size: 150px;
+    color: var(--color--primary);
+    margin-bottom: 32px;
 }
-.cc-note {
-  height: 175px;
-  background-color: #ffffff;
-  border: 2px solid #644536;
+.cf-btn-container{
   display: flex;
-  line-height: 34px;
-  color: #272727;
-  padding-left: 16px;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+  margin-top: 32px;
 }
-.cc-note:focus-within {
-  border: 3px solid #fac664;
-}
-.cc-submit {
+.cf-btn {
+  display: flex;
   height: 50px;
-  background-color: #fac664;
-  color: #644536;
-  display: flex;
+  width: 20%;
+  background-color: var(--color--primary);
+  color: var(--color--dark-brown);
   align-items: center;
   justify-content: center;
 }
-.cc-submit:hover {
+.cf-btn:hover {
   background-color: var(--color--secondary);
   color: var(--color--light-brown);
   box-shadow: 5px 5px 0px var(--color--primary);
-}
-.invalid-feedback {
-  color: #fa7864;
-  margin: 0;
-  padding: 0;
 }
 </style>
