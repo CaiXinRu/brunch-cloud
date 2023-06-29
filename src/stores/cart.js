@@ -18,7 +18,7 @@ export default defineStore('cart', {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
       this.isLoading = true
       axios.get(api).then((res) => {
-        // console.log(res)
+        console.log(res.data.data.carts.length)
         this.cart = res.data.data
         this.isLoading = false
       })

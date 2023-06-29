@@ -48,7 +48,7 @@
               <font-awesome-icon icon="fa-solid fa-heart" />
             </span>
             <span>
-              <a href="#">我的最愛</a>
+              <router-link to="/favorites">我的最愛</router-link>
             </span>
           </li>
           <li>

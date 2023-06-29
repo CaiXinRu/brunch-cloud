@@ -5,7 +5,7 @@
       ref="cartModal"
       :class="{ 'show-modal': modelValue }"
     >
-     <LodingPageModal v-if="isLoading"></LodingPageModal>
+      <LodingPageModal v-if="isLoading"></LodingPageModal>
       <div class="cb-container">
         <div class="cb-head">
           <div class="cbh-close" @click="closeModal()">
@@ -13,7 +13,7 @@
           </div>
           <div class="cbh-text">購物清單</div>
         </div>
-        <thead class="u-mt-16 u-ml-4 u-mr-4">
+        <thead class="u-mt-16 u-ml-4 u-mr-4" v-if="cart?.carts?.length">
           <tr class="cb-thead">
             <th style="width: 20%"></th>
             <th style="width: 30%">品名</th>
@@ -22,8 +22,8 @@
             <th style="width: 10%"></th>
           </tr>
         </thead>
-        <div class="cb-content">
-          <table style="width: 100%">
+        <div class="cb-content" v-if="cart?.carts?.length">
+          <table style="width: 100%" v-if="cart.carts.length">
             <tbody>
               <tr
                 class="color--dark-brown"
@@ -33,16 +33,16 @@
                 <td style="width: 20%" class="cb-img">
                   <div
                     class="cb-img-inner"
-                    :style="{ backgroundImage: `url(${item.product.imageUrl})` }"
+                    :style="{
+                      backgroundImage: `url(${item.product.imageUrl})`
+                    }"
                   ></div>
                 </td>
                 <td style="width: 30%">
                   {{ item.product.title }}
                 </td>
                 <td style="width: 20%">
-                  <p class="cb-sprice">
-                    特價 NT${{ item.product.price }}
-                  </p>
+                  <p class="cb-sprice">特價 NT${{ item.product.price }}</p>
                   <p class="color--brown cb-price">
                     原價 NT${{ item.product.origin_price }}
                   </p>
@@ -52,31 +52,43 @@
                     <font-awesome-icon
                       class="cb-count"
                       icon="fa-regular fa-square-plus"
-                      :class="{ 'disabled': status.loadingItem === item.id }"
+                      :class="{ disabled: status.loadingItem === item.id }"
                       @click="plusCount(item)"
                     />
                     <div class="cb-count-num">{{ item.qty }}</div>
                     <font-awesome-icon
                       class="cb-count"
                       icon="fa-regular fa-square-minus"
-                      :class="{ 'disabled': status.loadingItem === item.id }"
+                      :class="{ disabled: status.loadingItem === item.id }"
                       @click="minusCount(item)"
                     />
                   </div>
                 </td>
                 <td style="width: 10%">
-                  <button class="cb-delete" @click="removeCartItem(item.id)"><font-awesome-icon icon="fa-solid fa-trash-can" /></button>
+                  <button class="cb-delete" @click="removeCartItem(item.id)">
+                    <font-awesome-icon icon="fa-solid fa-trash-can" />
+                  </button>
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
+        <div class="cb-content2" v-if="!cart?.carts?.length">
+          <font-awesome-icon class="color--secondary" style="font-size: 70px; margin-bottom: 10px" icon="fa-solid fa-cloud" bounce />
+          <div>您尚未選取任何餐點喔！</div>
+        </div>
         <tfoot>
           <tr>
             <td style="width: 20%" class="color--secondary">總價</td>
-            <td style="width: 30%" class="color--dark-brown">NT${{ $filters.currency(cart.final_total) }}</td>
+            <td style="width: 30%" class="color--dark-brown">
+              NT${{ $filters.currency(cart.final_total) }}
+            </td>
           </tr>
-          <router-link to="/checklist" class="cb-checkout" @click="closeModal()">
+          <router-link
+            to="/checklist"
+            class="cb-checkout"
+            @click="closeModal()"
+          >
             <!-- <div class="cbb-text">訂單結帳</div> -->
             訂單結帳
           </router-link>
@@ -99,8 +111,7 @@ export default {
     }
   },
   data: () => {
-    return {
-    }
+    return {}
   },
   components: {
     LodingPageModal
@@ -116,7 +127,13 @@ export default {
     ...mapState(useCartStore, ['isLoading', 'cart', 'status'])
   },
   methods: {
-    ...mapActions(useCartStore, ['getCart', 'updateCart', 'removeCartItem', 'plusCount', 'minusCount']),
+    ...mapActions(useCartStore, [
+      'getCart',
+      'updateCart',
+      'removeCartItem',
+      'plusCount',
+      'minusCount'
+    ]),
     closeModal () {
       this.$emit('update:modelValue', false)
       this.$refs.cartModal.close()
@@ -139,8 +156,8 @@ dialog {
   padding: 0px;
   display: flex;
   position: fixed;
-  right:0;
-  top:0;
+  right: 0;
+  top: 0;
   margin: 19px auto;
 }
 
@@ -174,11 +191,6 @@ dialog::backdrop {
   justify-content: center;
   align-items: center;
 }
-.cb-content {
-  overflow: auto;
-  height: max-content;
-  flex: 1;
-}
 .cbh-close {
   color: #fef7e9;
   font-size: 32px;
@@ -186,13 +198,28 @@ dialog::backdrop {
   left: 20px;
   cursor: pointer;
 }
-.cbh-close:hover{
-  color: var(--color--primary)
+.cbh-close:hover {
+  color: var(--color--primary);
 }
 .cbh-text {
   color: #fef7e9;
   font-size: 24px;
   display: flex;
+}
+.cb-content {
+  overflow: auto;
+  height: max-content;
+  flex: 1;
+}
+.cb-content2{
+  overflow: auto;
+  flex: 1;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  color: var(--color--dark-brown)
 }
 tr {
   display: flex;
@@ -213,7 +240,7 @@ tbody tr:hover {
   justify-content: center;
   align-items: center;
 }
-.cb-img-inner{
+.cb-img-inner {
   width: 100%;
   height: 90px;
   background-size: cover;
@@ -241,8 +268,8 @@ tbody tr:hover {
   color: var(--color--brown);
   pointer-events: none;
 }
-.cb-count:hover{
-  color: var(--color--primary)
+.cb-count:hover {
+  color: var(--color--primary);
 }
 .cb-count-num {
   font-size: 22px;
@@ -257,11 +284,11 @@ tfoot tr {
   font-size: 20px;
   border-top: 5px solid var(--color--secondary);
 }
-.cb-delete{
-  color: var(--color--dark-brown)
+.cb-delete {
+  color: var(--color--dark-brown);
 }
-.cb-delete:hover{
-  color: var(--color--primary)
+.cb-delete:hover {
+  color: var(--color--primary);
 }
 .cb-checkout {
   width: 80%;

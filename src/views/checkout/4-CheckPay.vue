@@ -26,36 +26,36 @@
       </div>
       <table style="width: 100%" class="cp-table">
         <thead>
-            <tr class="cp-head">
-                <th style="width: 100%">付款狀態</th>
-            </tr>
+          <tr class="cp-head">
+            <th style="width: 100%">付款狀態</th>
+          </tr>
         </thead>
         <tbody>
-            <tr class="cp-body">
-                <td class="cp-detail">
-                    <div class="cp-container">
-                        <font-awesome-icon class="cp-icon" icon="fa-regular fa-circle-check" bounce />
-                        <div>付款完成</div>
-                        <div class="color--secondary">（您的餐點將在一個小時內送達，敬請耐心等候。）</div>
-                        <div class="cf-btn-container">
-                            <router-link
-                            :to="`/checkout/${orderId}`"
-                            class="cf-btn"
-                            >
-                            ＜       查看訂單
-                            </router-link>
-                            <router-link
-                            to="/menu"
-                            class="cf-btn"
-                            >
-                            繼續點餐       ＞
-                            </router-link>
-                        </div>
-                    </div>
-                </td>
-            </tr>
+          <tr class="cp-body">
+            <td class="cp-detail">
+              <div class="cp-container">
+                <font-awesome-icon
+                  class="cp-icon"
+                  icon="fa-regular fa-circle-check"
+                  bounce
+                />
+                <div>付款完成</div>
+                <div class="color--secondary">
+                  （您的餐點將在一個小時內送達，敬請耐心等候。）
+                </div>
+                <div class="cf-btn-container">
+                  <router-link :to="`/checkout/${orderId}`" class="cf-btn">
+                    ＜ 查看訂單
+                  </router-link>
+                  <router-link to="/menu" class="cf-btn">
+                    繼續點餐 ＞
+                  </router-link>
+                </div>
+              </div>
+            </td>
+          </tr>
         </tbody>
-    </table>
+      </table>
     </div>
   </div>
 </template>
@@ -162,12 +162,12 @@ export default {
   height: auto;
   width: 100%;
 }
-.cp-icon{
-    font-size: 150px;
-    color: var(--color--primary);
-    margin-bottom: 32px;
+.cp-icon {
+  font-size: 150px;
+  color: var(--color--primary);
+  margin-bottom: 32px;
 }
-.cf-btn-container{
+.cf-btn-container {
   display: flex;
   flex-direction: row;
   width: 100%;

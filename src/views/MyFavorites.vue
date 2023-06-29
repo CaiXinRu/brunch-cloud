@@ -2,7 +2,7 @@
 <template>
   <div class="bg-color--white">
     <div class="container u-pt-48 u-pb-68">
-      <MenuBar id="menuTop"></MenuBar>
+      <FavorBar id="fevorTop"></FavorBar>
       <div class="menu-category">
         <button
           data-category="burger"
@@ -40,7 +40,7 @@
           沁涼飲品
         </button>
         <button
-          data-category="all"
+          data-category="east"
           class="menu-btn"
           @click="filterMeals('all')"
         >
@@ -52,10 +52,10 @@
         v-if="filteredMeals.includes('ITBurger')"
         ref="ITBurger"
       ></ITBurger>
-      <ILBurger
+      <ILBurgerLike
         v-if="filteredMeals.includes('ILBurger')"
         ref="ILBurger"
-      ></ILBurger>
+      ></ILBurgerLike>
       <!-- Sandwich -->
       <ITSandwich
         v-if="filteredMeals.includes('ITSandwich')"
@@ -87,7 +87,7 @@
         ref="ILDrinks"
       ></ILDrinks>
 
-      <a class="menu-arrow" href="#menuTop"
+      <a class="menu-arrow" href="#fevorTop"
         ><font-awesome-icon icon="fa-solid fa-circle-up"
       /></a>
     </div>
@@ -95,13 +95,13 @@
 </template>
 
 <script>
-import MenuBar from '@/components/MenuBar.vue'
+import FavorBar from '@/components/FavorBar.vue'
 import ITBurger from '@/components/Item-Title/1-ITBurger.vue'
 import ITSandwich from '@/components/Item-Title/2-ITSandwich.vue'
 import ITRiceNoodles from '@/components/Item-Title/3-ITRiceNoodles.vue'
 import ITSnack from '@/components/Item-Title/4-ITSnack.vue'
 import ITDrinks from '@/components/Item-Title/5-ITDrinks.vue'
-import ILBurger from '@/components/Item-List/1-ILBurger.vue'
+import ILBurgerLike from '@/components/Item-List/1-ILBurgerLike.vue'
 // import ILSandwich from '@/components/Item-List/2-ILSandwich.vue'
 // import ILRiceNoodles from '@/components/Item-List/3-ILRiceNoodles.vue'
 // import ILSnack from '@/components/Item-List/4-ILSnack.vue'
@@ -114,13 +114,13 @@ export default {
     }
   },
   components: {
-    MenuBar,
+    FavorBar,
     ITBurger,
     ITSandwich,
     ITRiceNoodles,
     ITSnack,
     ITDrinks,
-    ILBurger
+    ILBurgerLike
     // ILSandwich
     // ILRiceNoodles,
     // ILSnack,

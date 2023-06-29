@@ -80,6 +80,11 @@ const routes = [
         path: 'promotions',
         name: 'promotions',
         component: () => import('../views/PromotionNews.vue')
+      },
+      {
+        path: 'favorites',
+        name: 'favorites',
+        component: () => import('../views/MyFavorites.vue')
       }
     ]
   }

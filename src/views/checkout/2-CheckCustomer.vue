@@ -185,13 +185,13 @@
                       ><br />
                     </div>
                     <div class="u-mb-24">
-                        <button
-                          class="cc-submit"
-                          style="width: 85%"
-                          type="submit"
-                        >
-                          提交訂單
-                        </button>
+                      <button
+                        class="cc-submit"
+                        style="width: 85%"
+                        type="submit"
+                      >
+                        提交訂單
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -233,11 +233,10 @@ export default {
       this.isLoading = true
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/order`
       const info = this.form
-      this.$http.post(api, { data: info })
-        .then((res) => {
-          this.isLoading = false
-          this.$router.push(`/checkout/${res.data.orderId}`)
-        })
+      this.$http.post(api, { data: info }).then((res) => {
+        this.isLoading = false
+        this.$router.push(`/checkout/${res.data.orderId}`)
+      })
       return false
     },
     isPayment (value) {
