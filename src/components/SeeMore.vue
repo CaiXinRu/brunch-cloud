@@ -12,8 +12,8 @@
 .s-button {
   position: absolute;
   width: max-content;
-  left: 90%;
-  top: 15%;
+  left: 85%;
+  top: 17%;
 }
 .s-div{
   height: 52px;

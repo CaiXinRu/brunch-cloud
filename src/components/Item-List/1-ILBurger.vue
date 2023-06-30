@@ -2,45 +2,48 @@
   <LodingPage v-if="isLoading"></LodingPage>
   <div class="item-list">
     <div v-for="item in filteredProducts" :key="item.id" class="item-per">
-        <font-awesome-icon
-          v-if="item.like"
-          @click="toggleLike(item)"
-          icon="fa-solid fa-heart"
-          class="heart"
-        />
-        <font-awesome-icon
-          v-else
-          @click="toggleLike(item)"
-          icon="fa-regular fa-heart"
-          class="heart"
-        />
-        <a id="show" @click="showModal(item.id)"
-          ><div class="item-img" :style="{backgroundImage: `url(${item.imageUrl})`}"></div>
-        </a>
-        <span class="u-text-center item-text"
-          ><a @click="showModal(item.id)">{{ item.title }}</a></span
-        >
-        <ul>
-          <li>
-            <span class="item-add">
-              <a class="item-add-icon" @click="showModal(item.id)"
-                ><font-awesome-icon icon="fa-solid fa-cart-plus"
-              /></a>
-            </span>
-            <span class="item-price">NT$ {{ item.origin_price }}</span>
-          </li>
-        </ul>
+      <font-awesome-icon
+        v-if="item.like"
+        @click="toggleLike(item)"
+        icon="fa-solid fa-heart"
+        class="heart"
+      />
+      <font-awesome-icon
+        v-else
+        @click="toggleLike(item)"
+        icon="fa-regular fa-heart"
+        class="heart"
+      />
+      <a id="show" @click="showModal(item.id)"
+        ><div
+          class="item-img"
+          :style="{ backgroundImage: `url(${item.imageUrl})` }"
+        ></div>
+      </a>
+      <span class="u-text-center item-text"
+        ><a @click="showModal(item.id)">{{ item.title }}</a></span
+      >
+      <ul>
+        <li>
+          <span class="item-add">
+            <a class="item-add-icon" @click="showModal(item.id)"
+              ><font-awesome-icon icon="fa-solid fa-cart-plus"
+            /></a>
+          </span>
+          <span class="item-price">NT$ {{ item.origin_price }}</span>
+        </li>
+      </ul>
     </div>
   </div>
   <ILBurgerModal
-          :id="productId"
-          :modelValue="isModalVisible"
-          @update:modelValue="
-            (val) => {
-              isModalVisible = val
-            }
-          "
-        ></ILBurgerModal>
+    :id="productId"
+    :modelValue="isModalVisible"
+    @update:modelValue="
+      (val) => {
+        isModalVisible = val
+      }
+    "
+  ></ILBurgerModal>
 </template>
 
 <script>
@@ -82,7 +85,8 @@ export default {
     products: {
       handler () {
         this.filteredProducts = this.products.filter(
-          (item) => item.category === '太空漢堡')
+          (item) => item.category === '太空漢堡'
+        )
       },
       deep: true
     },
@@ -101,6 +105,24 @@ export default {
 
 <style>
 .item-list {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(auto, max-content);
+  grid-gap: 10px;
+  justify-items: start;
+}
+
+.item-per {
+  background-color: #fef7e9;
+  padding: 80px 25px 28px 25px;
+  border-radius: 50px;
+  width: 100%;
+  height: auto;
+  user-select: none;
+  position: relative;
+}
+/* .item-list {
   display: flex;
   width: 100%;
   flex-direction: row;
@@ -115,7 +137,7 @@ export default {
   width: 295px;
   height: auto;
   user-select: none;
-}
+} */
 .item-per a {
   cursor: pointer;
 }
@@ -127,7 +149,7 @@ export default {
   right: 14%;
   cursor: pointer;
 }
-.item-img{
+.item-img {
   height: 180px;
   display: block;
   margin-left: auto;

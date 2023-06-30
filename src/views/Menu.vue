@@ -12,9 +12,9 @@
           太空漢堡
         </button>
         <button
-          data-category="toast"
+          data-category="sandwich"
           class="menu-btn"
-          @click="filterMeals('toast')"
+          @click="filterMeals('sandwich')"
         >
           飄浮吐司
         </button>
@@ -50,6 +50,7 @@
       <!-- Burger -->
       <ITBurger
         v-if="filteredMeals.includes('ITBurger')"
+        id="ITBurger"
         ref="ITBurger"
       ></ITBurger>
       <ILBurger
@@ -59,6 +60,7 @@
       <!-- Sandwich -->
       <ITSandwich
         v-if="filteredMeals.includes('ITSandwich')"
+        id="ITSandwich"
         ref="ITSandwich"
       ></ITSandwich>
       <ILSandwich
@@ -151,7 +153,7 @@ export default {
         switch (this.selectedCategory) {
           case 'burger':
             return ['ITBurger', 'ILBurger']
-          case 'toast':
+          case 'sandwich':
             return ['ITSandwich', 'ILSandwich']
           case 'rice&noodles':
             return ['ITRiceNoodles', 'ILRiceNoodles']

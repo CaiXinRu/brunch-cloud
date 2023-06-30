@@ -77,7 +77,7 @@
           <font-awesome-icon class="color--secondary" style="font-size: 70px; margin-bottom: 10px" icon="fa-solid fa-cloud" bounce />
           <div>您尚未選取任何餐點喔！</div>
         </div>
-        <tfoot>
+        <tfoot v-if="cart?.carts?.length">
           <tr>
             <td style="width: 20%" class="color--secondary">總價</td>
             <td style="width: 30%" class="color--dark-brown">
@@ -159,6 +159,7 @@ dialog {
   right: 0;
   top: 0;
   margin: 19px auto;
+  user-select: none;
 }
 
 #cartModal {
@@ -301,6 +302,7 @@ tfoot tr {
   align-items: center;
   color: #fef7e9;
   font-size: 24px;
+  user-select: none;
 }
 .cb-checkout:hover {
   background-color: var(--color--primary);

@@ -104,6 +104,24 @@ export default {
 
 <style>
 .item-list {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(auto, max-content);
+  grid-gap: 10px;
+  justify-items: start;
+}
+
+.item-per {
+  background-color: #fef7e9;
+  padding: 80px 25px 28px 25px;
+  border-radius: 50px;
+  width: 100%;
+  height: auto;
+  user-select: none;
+  position: relative;
+}
+/* .item-list {
   display: flex;
   width: 100%;
   flex-direction: row;
@@ -118,7 +136,7 @@ export default {
   width: 295px;
   height: auto;
   user-select: none;
-}
+} */
 .item-per a {
   cursor: pointer;
 }

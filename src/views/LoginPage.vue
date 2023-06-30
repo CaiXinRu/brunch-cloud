@@ -17,42 +17,38 @@
               <tr class="login-body">
                 <td style="width: 100%">
                   <form class="login-form" @submit.prevent="signIn">
-                      <div style="width: 90%" class="u-mb-24">
-                        <label for="email" class="login-label">帳號信箱</label
-                        >
-                        <input
-                          class="login-input"
-                          style="width: 100%"
-                          type="text"
-                          id="email"
-                          name="email"
-                          autocomplete="off"
-                          placeholder="請輸入電子信箱..."
-                          required
-                          autofocus
-                          v-model="user.username"
-                        />
-                      </div>
-                      <div style="width: 90%" class="u-mb-48">
-                        <label for="password" class="login-label">密碼</label
-                        >
-                        <input
-                          class="login-input"
-                          style="width: 100%"
-                          type="password"
-                          id="password"
-                          name="password"
-                          autocomplete="off"
-                          placeholder="請輸入密碼..."
-                          required
-                          v-model="user.password"
-                        />
-                      </div>
-                      <div class="login-submit">
-                        <button class="login-btn" type="submit">
-                          登入
-                        </button>
-                      </div>
+                    <div style="width: 90%" class="u-mb-24">
+                      <label for="email" class="login-label">帳號信箱</label>
+                      <input
+                        class="login-input"
+                        style="width: 100%"
+                        type="text"
+                        id="email"
+                        name="email"
+                        autocomplete="off"
+                        placeholder="請輸入電子信箱..."
+                        required
+                        autofocus
+                        v-model="user.username"
+                      />
+                    </div>
+                    <div style="width: 90%" class="u-mb-48">
+                      <label for="password" class="login-label">密碼</label>
+                      <input
+                        class="login-input"
+                        style="width: 100%"
+                        type="password"
+                        id="password"
+                        name="password"
+                        autocomplete="off"
+                        placeholder="請輸入密碼..."
+                        required
+                        v-model="user.password"
+                      />
+                    </div>
+                    <div class="login-submit">
+                      <button class="login-btn" type="submit">登入</button>
+                    </div>
                   </form>
                 </td>
               </tr>
@@ -83,7 +79,8 @@ export default {
     signIn () {
       const api = `${process.env.VUE_APP_API}admin/signin`
       this.isLoading = true
-      this.$http.post(api, this.user)
+      this.$http
+        .post(api, this.user)
         .then((res) => {
           // 如果成功登入
           if (res.data.success) {
@@ -98,9 +95,7 @@ export default {
           }
           this.isLoading = false
         })
-        .catch((err) =>
-          console.log(err)
-        )
+        .catch((err) => console.log(err))
     }
   }
 }
@@ -144,7 +139,7 @@ export default {
 
   font-size: 20px;
 }
-.login-form{
+.login-form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -166,7 +161,7 @@ export default {
 .login-input:focus-within {
   border: 3px solid #fac664;
 }
-.login-submit{
+.login-submit {
   display: flex;
   width: 90%;
   justify-content: flex-end;
@@ -185,7 +180,7 @@ export default {
   white-space: nowrap;
   z-index: 1;
 }
-button{
+button {
   cursor: pointer;
 }
 </style>
