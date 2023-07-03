@@ -161,7 +161,9 @@ dialog {
   margin: 19px auto;
   user-select: none;
 }
-
+dialog:focus-visible{
+  outline: none;
+}
 #cartModal {
   transform: translateX(200%);
   transition: all 0.5s ease;

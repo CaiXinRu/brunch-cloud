@@ -195,7 +195,6 @@ export default {
   position: relative;
   min-width: 7.23em;
   text-decoration: none;
-  font-family: var(--font);
   font-size: 1.25rem;
   z-index: 2;
   margin-bottom: 36px;

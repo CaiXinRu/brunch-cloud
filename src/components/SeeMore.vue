@@ -1,10 +1,10 @@
 <template>
-    <a href="#" class="s-button">
+    <router-link to="/promotions" class="s-button">
       <div class="s-div">
         <a class="see-more"> </a>
       </div>
       <div class="s-text">See more</div>
-    </a>
+    </router-link>
 
 </template>
 

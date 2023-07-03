@@ -89,9 +89,9 @@
         ref="ILDrinks"
       ></ILDrinks>
 
-      <a class="menu-arrow" href="#menuTop"
+      <div class="menu-arrow" @click="goToTop"
         ><font-awesome-icon icon="fa-solid fa-circle-up"
-      /></a>
+      /></div>
     </div>
   </div>
 </template>
@@ -115,6 +115,19 @@ export default {
       selectedCategory: 'all'
     }
   },
+  mounted () {
+    // const h = location.hash
+    // location.hash = ''
+    // setTimeout(() => {
+    //   location.hash = h
+    // })
+    if (window.location.hash && window.location.hash !== '') {
+      const el = document.querySelector(window.location.hash)
+      if (el !== null) {
+        el.scrollIntoView({ behavior: 'smooth' })
+      }
+    }
+  },
   components: {
     MenuBar,
     ITBurger,
@@ -131,10 +144,20 @@ export default {
   methods: {
     filterMeals (category) {
       this.selectedCategory = category
+    },
+    goToTop () {
+      // const el = document.querySelector('#menuTop')
+      // if (el !== null) {
+      //   el.scrollIntoView({ behavior: 'smooth' })
+      // }
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      })
     }
   },
   computed: {
-    // eslint-disable-next-line vue/return-in-computed-property
     filteredMeals () {
       if (this.selectedCategory === 'all') {
         return [

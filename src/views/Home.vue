@@ -37,12 +37,12 @@
             <div class="try-list u-mt-16">
               <img src="https://picsum.photos/180" class="u-center-block" />
               <h3 class="u-text-center color--black">鱈魚龍蝦沙拉漢堡</h3>
-              <router-link to="/menu#menuTop" data-category="ITBurger"><h6 class="try-btn">太空漢堡系列</h6></router-link>
+              <a href="/menu#ITBurger" data-category="ITBurger"><h6 class="try-btn">太空漢堡系列</h6></a>
             </div>
             <div class="try-list u-mt-16">
               <img src="https://picsum.photos/180" class="u-center-block" />
               <h3 class="u-text-center color--black">火腿巧克力吐司</h3>
-              <router-link to="/menu#ITSandwich" data-category="ITsandwich"><h6 class="try-btn">飄浮吐司系列</h6></router-link>
+              <a href="/menu#ITSandwich" data-category="ITsandwich"><h6 class="try-btn">飄浮吐司系列</h6></a>
             </div>
             <div class="try-list u-mt-16">
               <img src="https://picsum.photos/180" class="u-center-block" />
