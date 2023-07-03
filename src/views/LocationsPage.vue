@@ -60,7 +60,7 @@
           </tr>
         </tbody>
       </table>
-      <a class="location-arrow" href="#locationTop"><font-awesome-icon icon="fa-solid fa-circle-up" /></a>
+      <div class="location-arrow" @click="goToTop"><font-awesome-icon icon="fa-solid fa-circle-up" /></div>
     </div>
   </div>
 </template>
@@ -211,7 +211,7 @@ export default {
           area: 'east'
         }
       ],
-      selectedArea: '' // 儲存選取的地區
+      selectedArea: 'all' // 儲存選取的地區
     }
   },
   components: {
@@ -220,6 +220,13 @@ export default {
   methods: {
     filterLocations (area) {
       this.selectedArea = area
+    },
+    goToTop () {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      })
     }
   },
   computed: {
@@ -231,6 +238,14 @@ export default {
         return this.locations.filter(
           (location) => location.area === this.selectedArea
         )
+      }
+    }
+  },
+  mounted () {
+    if (window.location.hash && window.location.hash !== '') {
+      const el = document.querySelector(window.location.hash)
+      if (el !== null) {
+        el.scrollIntoView({ behavior: 'smooth' })
       }
     }
   }

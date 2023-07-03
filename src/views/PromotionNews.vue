@@ -43,7 +43,7 @@
           >
         </div>
       </div>
-      <a class="news-arrow" href="#newsTop"><font-awesome-icon icon="fa-solid fa-circle-up" /></a>
+      <div class="news-arrow" @click="goToTop"><font-awesome-icon icon="fa-solid fa-circle-up" /></div>
     </div>
   </div>
 </template>
@@ -109,7 +109,7 @@ export default {
           event: 'X股癌：第一本書？'
         }
       ],
-      selectedType: ''
+      selectedType: 'all'
     }
   },
   components: {
@@ -118,6 +118,17 @@ export default {
   methods: {
     filterPromos (type) {
       this.selectedType = type
+    },
+    goToTop () {
+      // const el = document.querySelector('#menuTop')
+      // if (el !== null) {
+      //   el.scrollIntoView({ behavior: 'smooth' })
+      // }
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      })
     }
   },
   computed: {
@@ -129,6 +140,14 @@ export default {
         return this.promos.filter(
           (promo) => promo.type === this.selectedType
         )
+      }
+    }
+  },
+  mounted () {
+    if (window.location.hash && window.location.hash !== '') {
+      const el = document.querySelector(window.location.hash)
+      if (el !== null) {
+        el.scrollIntoView({ behavior: 'smooth' })
       }
     }
   }
