@@ -1,12 +1,11 @@
 <template>
-  <div>
+  <header>
     <div class="navbar-sm bg-color--secondary">
       <div class="container">
-        <div class="logo">
-          <router-link to="/"
-            ><img src="https://picsum.photos/60"
-          /></router-link>
-        </div>
+        <router-link to="/" class="logo">
+            <img src="https://picsum.photos/60"
+          />
+        </router-link>
         <div class="list-bar">
           <ul class="list">
             <li>
@@ -58,8 +57,8 @@
         </div>
       </div>
     </div>
-  <CartBar :modelValue="isCartBarOpen" @update:modelValue="(val)=>{isCartBarOpen = val}"></CartBar>
-  </div>
+    <CartBar id="cartModalNavBarSm" :modelValue="isCartBarOpen" @update:modelValue="(val)=>{isCartBarOpen = val}"></CartBar>
+  </header>
 </template>
 
 <script>
@@ -67,7 +66,7 @@
 import CartBar from '@/components/CartBar.vue'
 
 export default {
-  name: 'NavBar',
+  name: 'NavBarSm',
   data: () => {
     return {
       isCartBarOpen: false
@@ -79,7 +78,7 @@ export default {
   methods: {
     showModal () {
       this.isCartBarOpen = true
-      const modal = document.getElementById('cartModal')
+      const modal = document.getElementById('cartModalNavBarSm')
       modal.showModal()
     }
   }
@@ -101,6 +100,8 @@ export default {
   left: 5%;
   top: 50%;
   transform: translateY(-47%);
+  cursor: pointer;
+  z-index: 1;
 }
 .list-bar {
   width: 100%;

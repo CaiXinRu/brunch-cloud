@@ -1,9 +1,9 @@
 <template>
   <div>
     <dialog
-      id="cartModal"
+      :id="id"
       ref="cartModal"
-      :class="{ 'show-modal': modelValue }"
+      :class="{ 'show-modal': modelValue, 'cartModal': true }"
     >
       <LodingPageModal v-if="isLoading"></LodingPageModal>
       <div class="cb-container">
@@ -105,6 +105,10 @@ import useCartStore from '@/stores/cart.js'
 export default {
   emits: ['update:modelValue'],
   props: {
+    id: {
+      type: String,
+      required: true
+    },
     modelValue: {
       type: Boolean,
       required: true
@@ -164,12 +168,12 @@ dialog {
 dialog:focus-visible{
   outline: none;
 }
-#cartModal {
+.cartModal {
   transform: translateX(200%);
   transition: all 0.5s ease;
   height: calc(100vh - 38px);
 }
-#cartModal.show-modal {
+.cartModal.show-modal {
   transform: translateX(92%);
   z-index: 99;
   height: calc(100vh - 38px);

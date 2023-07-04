@@ -16,11 +16,31 @@
               </div>
             </div>
             <div class="col-sm-8">
-              <div class="u-ml-48">
-                <img
-                  src="https://picsum.photos/750/500"
-                  class="u-center-block"
-                />
+              <div class="about-lists">
+                <div class="about-item">
+                  <img style="height: 100%; width: 100%" src="https://picsum.photos/300/600" />
+                  <div class="about-square">
+                    <div class="about-title">無限美味</div>
+                    <div class="about-line"></div>
+                    <div class="about-slogan">數不盡的雲端獨特</div>
+                  </div>
+                </div>
+                <div class="about-item">
+                  <img style="height: 100%; width: 100%"  src="https://picsum.photos/300/600" />
+                  <div class="about-square">
+                    <div class="about-title">新鮮健康</div>
+                    <div class="about-line"></div>
+                    <div class="about-slogan">營養豐富的雲端饗宴</div>
+                  </div>
+                </div>
+                <div class="about-item">
+                  <img style="height: 100%; width: 100%" src="https://picsum.photos/300/600" />
+                  <div class="about-square">
+                    <div class="about-title">扎實品質</div>
+                    <div class="about-line"></div>
+                    <div class="about-slogan">嚴選製程的卓越雲端</div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -37,22 +57,30 @@
             <div class="try-list u-mt-16">
               <img src="https://picsum.photos/180" class="u-center-block" />
               <h3 class="u-text-center color--black">鱈魚龍蝦沙拉漢堡</h3>
-              <a href="/menu#ITBurger" data-category="ITBurger"><h6 class="try-btn">太空漢堡系列</h6></a>
+              <a href="/menu#ITBurger" data-category="ITBurger"
+                ><h6 class="try-btn">太空漢堡系列</h6></a
+              >
             </div>
             <div class="try-list u-mt-16">
               <img src="https://picsum.photos/180" class="u-center-block" />
               <h3 class="u-text-center color--black">火腿巧克力吐司</h3>
-              <a href="/menu#ITSandwich" data-category="ITsandwich"><h6 class="try-btn">飄浮吐司系列</h6></a>
+              <a href="/menu#ITSandwich" data-category="ITsandwich"
+                ><h6 class="try-btn">飄浮吐司系列</h6></a
+              >
             </div>
             <div class="try-list u-mt-16">
               <img src="https://picsum.photos/180" class="u-center-block" />
               <h3 class="u-text-center color--black">煙燻鮭魚義大利麵</h3>
-              <a href="#" data-category="ITrice&noodles"><h6 class="try-btn">柔嫩飯麵系列</h6></a>
+              <a href="#" data-category="ITrice&noodles"
+                ><h6 class="try-btn">柔嫩飯麵系列</h6></a
+              >
             </div>
             <div class="try-list u-mt-16">
               <img src="https://picsum.photos/180" class="u-center-block" />
               <h3 class="u-text-center color--black">低脂舒肥雞胸沙拉</h3>
-              <a href="#" data-category="ITsnack"><h6 class="try-btn">輕盈小點系列</h6></a>
+              <a href="#" data-category="ITsnack"
+                ><h6 class="try-btn">輕盈小點系列</h6></a
+              >
             </div>
           </div>
         </div>
@@ -65,13 +93,17 @@
           </div>
           <SeeMore></SeeMore>
           <div class="news-lists">
-            <div class="news-list" v-for="(promo, index) in promos" :key="index">
-              <div class="news-type">{{promo.typeC}}</div>
+            <div
+              class="news-list"
+              v-for="(promo, index) in promos"
+              :key="index"
+            >
+              <div class="news-type">{{ promo.typeC }}</div>
               <img src="https://picsum.photos/380/300" class="u-center-block" />
-              <p class="sub u-mt-16 u-mb-4">{{promo.time}}</p>
+              <p class="sub u-mt-16 u-mb-4">{{ promo.time }}</p>
               <hr class="news-hr" />
               <a href="#"
-                ><h3 class="u-mt-16 u-mb-16">{{promo.event}}</h3></a
+                ><h3 class="u-mt-16 u-mb-16">{{ promo.event }}</h3></a
               >
             </div>
           </div>
@@ -121,7 +153,62 @@ export default {
 </script>
 
 <style scoped>
-.try-lists{
+.about-lists {
+  width: 100%;
+  height: 600px;
+  background-color: #fac664;
+  border-radius: 10px;
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  /* overflow: hidden; */
+}
+.about-item{
+  flex: 1;
+  width: 100%;
+}
+.about-item img {
+  transition: transform 0.5s ease;
+}
+.about-item:hover img {
+  transform: scale(1.1);
+  transform-origin: center;
+  z-index: 1;
+  overflow: visible;
+}
+.about-square{
+  width: 100%;
+  height: 40%;
+  background-color: var(--color--black);
+  position: absolute;
+  bottom: 0;
+  transform: translateY(100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: all 1s ease;
+}
+.about-item:hover .about-square{
+  transform: translateY(0);
+  z-index: 1;
+}
+.about-title{
+  color: var(--color--light-brown);
+  font-size: 48px;
+  line-height: 50px;
+}
+.about-line{
+  background-color: var(--color--light-brown);
+  width: 70%;
+  height: 1px;
+  margin: 20px 0;
+}
+.about-slogan{
+  color: var(--color--light-brown);
+  font-size: 18px;
+}
+.try-lists {
   display: grid;
   width: 100%;
   grid-template-columns: repeat(4, 1fr);
@@ -152,19 +239,19 @@ export default {
   justify-content: center;
   align-items: center;
 }
-.try-btn:hover{
+.try-btn:hover {
   background-color: var(--color--secondary);
   color: var(--color--light-brown);
   box-shadow: 5px 5px 0px var(--color--primary);
 }
-.news-lists{
+.news-lists {
   display: grid;
   width: 100%;
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: minmax(auto, max-content);
   justify-items: center;
 }
-.news-type{
+.news-type {
   background-color: var(--color--secondary);
   color: var(--color--light-brown);
   box-shadow: 5px 5px 0px var(--color--primary);
@@ -172,7 +259,7 @@ export default {
   width: fit-content;
   padding: 10px;
   position: relative;
-  transform: translate(-15px, 50%) ;
+  transform: translate(-15px, 50%);
   z-index: 1;
 }
 .news-hr {

@@ -1,73 +1,66 @@
 <template>
-  <div class="navbar bg-color--secondary">
-    <div class="container u-pt-16">
-      <div class="logo">
-        <a href="/"><img src="https://picsum.photos/80" /></a>
-      </div>
-      <div class="list-bar">
-        <ul class="list">
-          <li>
-            <router-link to="/menu" class="main-font" date-link-alt="MENU"
-              ><span>雲端美味</span></router-link
-            >
-          </li>
-          <li><p class="color--light-brown main-font-1">｜</p></li>
-          <li>
-            <router-link
-              to="/promotions"
-              class="main-font"
-              date-link-alt="PROMOTIONS"
-              ><span>促銷優惠</span></router-link
-            >
-          </li>
-          <li><p class="color--light-brown main-font-1">｜</p></li>
-          <li>
-            <router-link
-              to="/locations"
-              class="main-font"
-              date-link-alt="LOCATIONS"
-              ><span>門市據點</span></router-link
-            >
-          </li>
-        </ul>
-      </div>
-      <div class="top-right-btn">
-        <nav>
-          <ul>
-            <!-- <li>
-              <span>
-                <font-awesome-icon icon="fa-solid fa-user" />
-              </span>
-              <span>
-                <a href="#">會員登入</a>
-              </span>
-            </li> -->
+  <header>
+    <div class="navbar bg-color--secondary">
+      <div class="container u-pt-16">
+        <div class="logo">
+          <a href="/"><img src="https://picsum.photos/80" /></a>
+        </div>
+        <div class="list-bar">
+          <ul class="list">
             <li>
-              <span>
-                <font-awesome-icon icon="fa-solid fa-heart" />
-              </span>
-              <span>
-                <router-link to="/favorites">我的最愛</router-link>
-              </span>
+              <router-link to="/menu" class="main-font" date-link-alt="MENU"
+                ><span>雲端美味</span></router-link
+              >
             </li>
+            <li><p class="color--light-brown main-font-1">｜</p></li>
             <li>
-              <span>
-                <font-awesome-icon icon="fa-solid fa-cart-shopping" />
-              </span>
-              <span>
-                <a @click="showModal()">購物清單</a>
-              </span>
+              <router-link
+                to="/promotions"
+                class="main-font"
+                date-link-alt="PROMOTIONS"
+                ><span>促銷優惠</span></router-link
+              >
+            </li>
+            <li><p class="color--light-brown main-font-1">｜</p></li>
+            <li>
+              <router-link
+                to="/locations"
+                class="main-font"
+                date-link-alt="LOCATIONS"
+                ><span>門市據點</span></router-link
+              >
             </li>
           </ul>
-        </nav>
+        </div>
+        <div class="top-right-btn">
+          <nav>
+            <ul>
+              <li>
+                <span>
+                  <font-awesome-icon icon="fa-solid fa-heart" />
+                </span>
+                <span>
+                  <router-link to="/favorites">我的最愛</router-link>
+                </span>
+              </li>
+              <li>
+                <span>
+                  <font-awesome-icon icon="fa-solid fa-cart-shopping" />
+                </span>
+                <span>
+                  <a @click="showModal()">購物清單</a>
+                </span>
+              </li>
+            </ul>
+          </nav>
+        </div>
       </div>
     </div>
-    <CartBar :modelValue="isCartBarOpen" @update:modelValue="(val)=>{isCartBarOpen = val}"></CartBar>
-  </div>
+    <CartBar id="cartModalNavBar" :modelValue="isCartBarOpen" @update:modelValue="(val)=>{isCartBarOpen = val}"></CartBar>
+  </header>
 </template>
 
 <script>
-// eslint-disable-next-line no-unused-vars
 import CartBar from '@/components/CartBar.vue'
 
 export default {
@@ -83,7 +76,7 @@ export default {
   methods: {
     showModal () {
       this.isCartBarOpen = true
-      const modal = document.getElementById('cartModal')
+      const modal = document.getElementById('cartModalNavBar')
       modal.showModal()
     }
   }
