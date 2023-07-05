@@ -32,7 +32,7 @@
           東部地區
         </button>
         <button
-          data-area="east"
+          data-area="all"
           class="location-btn"
           @click="filterLocations('all')"
         >
@@ -42,9 +42,9 @@
       <table style="width: 100%" class="location-table">
         <thead>
           <tr class="location-head">
-            <th style="width: 20%">門市名稱</th>
-            <th style="width: 20%">訂餐專線</th>
-            <th style="width: 60%">門市位置</th>
+            <th class="th-20 th-25">門市名稱</th>
+            <th class="th-20 th-25">訂餐專線</th>
+            <th class="th-60 th-50">門市位置</th>
           </tr>
         </thead>
         <tbody>
@@ -54,9 +54,9 @@
             v-for="(location, index) in filteredLocations"
             :key="index"
           >
-            <td style="width: 20%">{{ location.store }}</td>
-            <td style="width: 20%">{{ location.tel }}</td>
-            <td style="width: 60%">{{ location.address }}</td>
+            <td class="th-20 th-25">{{ location.store }}</td>
+            <td class="th-20 th-25">{{ location.tel }}</td>
+            <td class="th-60 th-50">{{ location.address }}</td>
           </tr>
         </tbody>
       </table>
@@ -358,5 +358,78 @@ th {
   color: var(--color--primary);
   align-self: flex-end;
   cursor: pointer;
+}
+
+@media (max-width: 2560px){
+  .th-20{
+    width: 20%
+  }
+  .th-60{
+    width: 60%
+  }
+}
+@media (max-width: 1200px){
+  .location-btn{
+    min-width: 5em;
+    font-size: 1.2rem;
+  }
+  .location-btn:before{
+    width: 3.1em;
+    height: 3.1em;
+  }
+  .location-btn:hover:before{
+    left: 10%;
+  }
+  .location-btn:after{
+    width: 3.5em;
+    height: 3.5em;
+  }
+  .location-btn:hover:after{
+    right: 8%;
+  }
+}
+@media (max-width: 1024px){
+  .location-btn{
+    min-width: 5em;
+    font-size: 1.1rem;
+  }
+  .location-btn:before{
+    width: 3em;
+    height: 3em;
+  }
+  .location-btn:hover:before {
+    left: 10%;
+  }
+  .location-btn:after{
+    width: 3.4em;
+    height: 3.4em;
+  }
+  .location-btn:hover:after{
+    right: 8%;
+  }
+
+}
+@media (max-width: 991px){
+  .location-head{
+    font-size: 16px;
+  }
+  .location-body{
+    font-size: 18px;
+  }
+  .th-25{
+    width: 25%
+  }
+  .th-50{
+    width: 50%
+  }
+  .location-area{
+    display: none;
+  }
+}
+@media (max-width: 768px){
+
+}
+@media (max-width: 425px){
+
 }
 </style>

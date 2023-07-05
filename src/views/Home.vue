@@ -9,16 +9,17 @@
                 <h2>關於 雲端早午安</h2>
                 <h4 class="sub-border">BRUNCH IN THE CLUOD</h4>
                 <p>
-                  結氣西口更。手雪玩相方「未首時各送毛語」水哪原弓和放枝、喜習鴨校可坐黑裝三幸七反雨乞。原巾豆毛個兆耳民第采。
-                  牛空屋乙占別院鼻喜視種子波笑借看害課貓。它母帽間尺拉士士世帽半上固花寫欠助。音間故平卜未？了車坐消詞。蛋步勿姐主次再邊去綠品，隻汁公泉穴燈冰蝶黑。
-                  犬室雨清綠步教婆頁現。土好常節午高畫肖鳥，門寫要免鳥弓丟喝裏人雄外春忍完，奶停常尺您是二跑澡波丁良追山目巾家服，下壯右高眼蝴申生訴寺玉三海苗那許火走中，村魚怕神尤。
+                  結合傳統的早午餐元素與現代飲食趨勢，打造獨特而有趣的菜單。我們相信每個人都有屬於自己的「雲端」，代表著無限的可能性和自由。
+                  您可以在這「雲端」品嚐到各種類型的漢堡、三明治、義大利飯麵和炸物點心。我們嚴選新鮮食材，注重品質和營養，確保每道菜都能帶給顧客美味和健康。
+                  在這空間裡，它是舒適和溫馨的。在放鬆身心、享受美食的同時，也能享受到「雲端」般的無拘束感。它是一個社區的聚集地，無論是與家人朋友共享一頓美味的早午餐，或是獨自享受寧靜時光，「雲端早午安」都將成為您身、心、胃的理想之地。
                 </p>
               </div>
             </div>
             <div class="col-sm-8">
-              <div class="about-lists">
+              <div class="u-ml-32 about-lists">
                 <div class="about-item">
-                  <img style="height: 100%; width: 100%" src="https://picsum.photos/300/600" />
+                  <img style="height: 100%; width: 100%" src="@/assets/pics/home/1-delicious.jpg" />
+                  <div class="about-text">無限美味</div>
                   <div class="about-square">
                     <div class="about-title">無限美味</div>
                     <div class="about-line"></div>
@@ -26,7 +27,8 @@
                   </div>
                 </div>
                 <div class="about-item">
-                  <img style="height: 100%; width: 100%"  src="https://picsum.photos/300/600" />
+                  <img style="height: 100%; width: 100%" src="@/assets/pics/home/2-vegetable.jpg" />
+                  <div class="about-text">新鮮健康</div>
                   <div class="about-square">
                     <div class="about-title">新鮮健康</div>
                     <div class="about-line"></div>
@@ -34,7 +36,8 @@
                   </div>
                 </div>
                 <div class="about-item">
-                  <img style="height: 100%; width: 100%" src="https://picsum.photos/300/600" />
+                  <img style="height: 100%; width: 100%" src="@/assets/pics/home/3-quality.jpg" />
+                  <div class="about-text">扎實品質</div>
                   <div class="about-square">
                     <div class="about-title">扎實品質</div>
                     <div class="about-line"></div>
@@ -156,29 +159,65 @@ export default {
 .about-lists {
   width: 100%;
   height: 600px;
-  background-color: #fac664;
+  background-color: var(--color--black);
   border-radius: 10px;
   user-select: none;
   display: flex;
   justify-content: center;
-  /* overflow: hidden; */
 }
 .about-item{
   flex: 1;
   width: 100%;
+  overflow: hidden;
+  transition: all 0.3s ease;
 }
-.about-item img {
-  transition: transform 0.5s ease;
+.about-item:hover{
+  transform: scale(1.1);
+  border-radius: 10px;
+  z-index: 1;
+}
+.about-item img{
+  filter:brightness(75%);
+  object-fit: cover;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  transition: all 0.3s ease;
 }
 .about-item:hover img {
-  transform: scale(1.1);
+  filter:brightness(100%);
+  transform: translateY(-20%);
   transform-origin: center;
-  z-index: 1;
-  overflow: visible;
+}
+.about-text {
+  width: 100%;
+  height: 100%;
+  color: var(--color--white);
+  font-size: 32px;
+  -webkit-writing-mode: vertical-lr;
+  -ms-writing-mode: tb-lr;
+  writing-mode: vertical-lr;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  font-weight: bold;
+  letter-spacing: 11px;
+  opacity: 1;
+  transition: all 0.2s ease-in;
+}
+.about-text:before{
+  content: '';
+  background-color: #27272749;
+  width: 100%;
+  height: 100%;
+}
+.about-item:hover .about-text{
+  opacity: 0;
 }
 .about-square{
   width: 100%;
-  height: 40%;
+  height: 30%;
   background-color: var(--color--black);
   position: absolute;
   bottom: 0;
@@ -187,7 +226,7 @@ export default {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  transition: all 1s ease;
+  transition: all 0.3s ease;
 }
 .about-item:hover .about-square{
   transform: translateY(0);
