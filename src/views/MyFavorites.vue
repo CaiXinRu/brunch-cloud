@@ -47,6 +47,53 @@
           完整菜單
         </button>
       </div>
+      <div class="dropdown">
+        <button class="dropbtn" @click="toggleDropdown">請選擇雲端種類<span>▼</span></button>
+        <div :class="{ 'dropdown-content': true, 'show': isDropdownOpen }">
+          <div
+            data-category="burger"
+            class="dropdown-btn"
+            @click="filterMeals('burger')"
+          >
+            太空漢堡
+          </div>
+          <div
+            data-category="sandwich"
+            class="dropdown-btn"
+            @click="filterMeals('sandwich')"
+          >
+            飄浮吐司
+          </div>
+          <div
+            data-category="rice&noodles"
+            class="dropdown-btn"
+            @click="filterMeals('rice&noodles')"
+          >
+            柔情飯麵
+          </div>
+          <div
+            data-category="snack"
+            class="dropdown-btn"
+            @click="filterMeals('snack')"
+          >
+            輕盈小點
+          </div>
+          <div
+            data-category="drink"
+            class="dropdown-btn"
+            @click="filterMeals('drink')"
+          >
+            沁涼飲品
+          </div>
+          <div
+            data-category="all"
+            class="dropdown-btn"
+            @click="filterMeals('all')"
+          >
+            完整菜單
+          </div>
+        </div>
+      </div>
       <!-- Burger -->
       <ITBurger
         v-if="filteredMeals.includes('ITBurger')"
@@ -87,9 +134,9 @@
         ref="ILDrinks"
       ></ILDrinks>
 
-      <a class="menu-arrow" href="#fevorTop"
+      <div class="menu-arrow" @click="goToTop"
         ><font-awesome-icon icon="fa-solid fa-circle-up"
-      /></a>
+      /></div>
     </div>
   </div>
 </template>
@@ -110,7 +157,8 @@ import ILBurgerLike from '@/components/Item-List/1-ILBurgerLike.vue'
 export default {
   data () {
     return {
-      selectedCategory: 'all'
+      selectedCategory: 'all',
+      isDropdownOpen: false
     }
   },
   components: {
@@ -127,8 +175,27 @@ export default {
     // ILDrinks
   },
   methods: {
+    toggleDropdown () {
+      this.isDropdownOpen = !this.isDropdownOpen
+    },
+    closeDropdown (event) {
+      if (!event.target.matches('.dropbtn')) {
+        this.isDropdownOpen = false
+      }
+    },
     filterMeals (category) {
       this.selectedCategory = category
+    },
+    goToTop () {
+      // const el = document.querySelector('#menuTop')
+      // if (el !== null) {
+      //   el.scrollIntoView({ behavior: 'smooth' })
+      // }
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      })
     }
   },
   computed: {
@@ -164,6 +231,24 @@ export default {
         }
       }
     }
+  },
+  mounted () {
+    window.addEventListener('click', this.closeDropdown)
+    // const h = location.hash
+    // location.hash = ''
+    // setTimeout(() => {
+    //   location.hash = h
+    // })
+    if (window.location.hash && window.location.hash !== '') {
+      const el = document.querySelector(window.location.hash)
+      if (el !== null) {
+        el.scrollIntoView({ behavior: 'smooth' })
+      }
+    }
+  },
+  // eslint-disable-next-line vue/no-deprecated-destroyed-lifecycle
+  beforeDestroy () {
+    window.removeEventListener('click', this.closeDropdown)
   }
 }
 </script>
@@ -244,10 +329,147 @@ export default {
   right: 10%;
   transform: scale(1);
 }
+.dropdown {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 55px;
+}
+.dropbtn {
+  background-color: var(--color--brown);
+  color: var(--color--white);
+  width: 100%;
+  font-size: 1.25rem;
+  display: flex;
+  justify-content: flex-start;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+}
+.dropdown:hover .dropbtn {
+  background-color: var(--color--primary);
+}
+.dropbtn span {
+  font-size: 18px;
+  position: absolute;
+  right: 3%;
+  line-height: 18px;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: var(--color--light-brown);
+  width: 100%;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.dropdown-btn {
+  justify-content: center;
+  color: var(--color--dark-brown);
+  padding: 16px 0;
+  text-decoration: none;
+  display: flex;
+  cursor: pointer;
+}
+.dropdown-btn:hover {
+  background-color: var(--color--white);
+}
+.show{
+  display: block;
+}
 .menu-arrow {
   font-size: 50px;
   color: var(--color--primary);
   align-self: flex-end;
   cursor: pointer;
+}
+@media (max-width: 991px){
+  .menu-category{
+    display: none;
+  }
+  .dropdown{
+    display: inline-block;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px){
+
+  .menu-btn{
+    min-width: 6em;
+    font-size: 1rem;
+  }
+  .menu-btn:before{
+    width: 3.2em;
+    height: 3.2em;
+  }
+  .menu-btn:hover:before{
+    left: 13%;
+  }
+  .menu-btn:after{
+    width: 3.5em;
+    height: 3.5em;
+  }
+  .menu-btn:hover:after{
+    right: 8%;
+  }
+  .menu-category{
+    display: flex;
+  }
+  .dropdown{
+    display: none;
+  }
+}
+@media (min-width: 1200px) and (max-width: 1399px){
+
+  .menu-btn{
+    min-width: 6.23em;
+    font-size: 1.1rem;
+  }
+  .menu-btn:before{
+    width: 3.2em;
+    height: 3.2em;
+  }
+  .menu-btn:hover:before{
+    left: 13%;
+  }
+  .menu-btn:after{
+    width: 3.5em;
+    height: 3.5em;
+  }
+  .menu-btn:hover:after{
+    right: 8%;
+  }
+  .menu-category{
+    display: flex;
+  }
+  .dropdown{
+    display: none;
+  }
+}
+@media (min-width: 1400px){
+  .menu-btn{
+    min-width: 7.23em;
+    font-size: 1.25rem;
+  }
+  .menu-btn:before{
+    width: 3.2em;
+    height: 3.2em;
+  }
+  .menu-btn:hover:before{
+    left: 13%;
+  }
+  .menu-btn:after{
+    width: 3.8em;
+    height: 3.8em;
+  }
+  .menu-btn:hover:after{
+    right: 10%;
+  }
+  .menu-category{
+    display: flex;
+  }
+  .dropdown{
+    display: none;
+  }
 }
 </style>

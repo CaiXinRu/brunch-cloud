@@ -16,7 +16,8 @@
                 電子郵件 brunchincloud@gmail.com
               </p>
               <p class="footer-text color--brown">
-                本網站僅供個人作品使用，無作任何商業用途｜<router-link
+                本網站僅供個人作品使用，無作任何商業用途｜
+                <router-link
                   to="/login" class="footer-login"
                   >登入後台</router-link
                 >
@@ -70,9 +71,6 @@
   align-items: center;
   justify-content: center;
 }
-.footer-content {
-  margin: 0 120px 0 16px;
-}
 .footer-text {
   display: flex;
   margin: 8px 0;
@@ -104,5 +102,31 @@
   color: #fac664;
   margin-left: 8px;
   font-size: 34px;
+}
+@media (max-width: 575px){
+
+}
+@media (min-width: 576px) and (max-width: 767px){
+
+}
+@media (min-width: 768px) and (max-width: 991px){
+  .footer-content {
+    margin: 0 -180px 0 16px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px){
+  .footer-content {
+    margin: 0 55px 0 16px;
+  }
+}
+@media (min-width: 1200px) and (max-width: 1399px){
+  .footer-content {
+    margin: 0 120px 0 16px;
+  }
+}
+@media (min-width: 1400px){
+  .footer-content {
+    margin: 0 120px 0 16px;
+  }
 }
 </style>

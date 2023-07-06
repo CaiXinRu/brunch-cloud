@@ -177,7 +177,7 @@ export default {
   z-index: 1;
 }
 .about-item img{
-  filter:brightness(75%);
+  filter:brightness(65%);
   object-fit: cover;
   background-repeat: no-repeat;
   background-size: cover;

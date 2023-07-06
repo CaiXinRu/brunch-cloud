@@ -32,14 +32,47 @@
           最完整促銷
         </button>
       </div>
+      <div class="dropdown">
+        <button class="dropbtn" @click="toggleDropdown">請選擇類別<span>▼</span></button>
+        <div :class="{ 'dropdown-content': true, 'show': isDropdownOpen }">
+          <div
+            data-type="north"
+            class="dropdown-btn"
+            @click="filterPromos('discount')"
+          >
+            超瞎趴活動
+          </div>
+          <div
+            data-type="middle"
+            class="dropdown-btn"
+            @click="filterPromos('gift')"
+          >
+            滿x佰就送
+          </div>
+          <div
+            data-type="south"
+            class="dropdown-btn"
+            @click="filterPromos('code')"
+          >
+            爽領八折碼
+          </div>
+          <div
+            data-type="east"
+            class="dropdown-btn"
+            @click="filterPromos('all')"
+          >
+            最完整促銷
+          </div>
+        </div>
+      </div>
       <div class="news-lists">
         <div class="news-list" v-for="(promo, index) in filteredPromos" :key="index">
           <div class="news-type">{{promo.typeC}}</div>
-          <img src="https://picsum.photos/380/300" class="u-center-block" />
+          <div class="news-img"></div>
           <p class="sub u-mt-16 u-mb-4">{{promo.time}}</p>
           <hr class="news-hr" />
           <a href="#"
-            ><h3 class="u-mt-16 u-mb-16">{{promo.event}}</h3></a
+            ><div class="news-text">{{promo.event}}</div></a
           >
         </div>
       </div>
@@ -109,21 +142,26 @@ export default {
           event: 'X股癌：第一本書？'
         }
       ],
-      selectedType: 'all'
+      selectedType: 'all',
+      isDropdownOpen: false
     }
   },
   components: {
     NewsBar
   },
   methods: {
+    toggleDropdown () {
+      this.isDropdownOpen = !this.isDropdownOpen
+    },
+    closeDropdown (event) {
+      if (!event.target.matches('.dropbtn')) {
+        this.isDropdownOpen = false
+      }
+    },
     filterPromos (type) {
       this.selectedType = type
     },
     goToTop () {
-      // const el = document.querySelector('#menuTop')
-      // if (el !== null) {
-      //   el.scrollIntoView({ behavior: 'smooth' })
-      // }
       window.scrollTo({
         top: 0,
         left: 0,
@@ -144,12 +182,17 @@ export default {
     }
   },
   mounted () {
+    window.addEventListener('click', this.closeDropdown)
     if (window.location.hash && window.location.hash !== '') {
       const el = document.querySelector(window.location.hash)
       if (el !== null) {
         el.scrollIntoView({ behavior: 'smooth' })
       }
     }
+  },
+  // eslint-disable-next-line vue/no-deprecated-destroyed-lifecycle
+  beforeDestroy () {
+    window.removeEventListener('click', this.closeDropdown)
   }
 }
 </script>
@@ -230,10 +273,60 @@ export default {
   right: 10%;
   transform: scale(1);
 }
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 55px;
+}
+.dropbtn {
+  background-color: var(--color--brown);
+  color: var(--color--white);
+  width: 100%;
+  font-size: 1.25rem;
+  display: flex;
+  justify-content: flex-start;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+}
+.dropdown:hover .dropbtn {
+  background-color: var(--color--primary);
+}
+.dropbtn span {
+  font-size: 18px;
+  position: absolute;
+  right: 3%;
+  line-height: 18px;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: var(--color--light-brown);
+  width: 100%;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 2;
+}
+.dropdown-btn {
+  justify-content: center;
+  color: var(--color--dark-brown);
+  padding: 16px 0;
+  text-decoration: none;
+  display: flex;
+  cursor: pointer;
+}
+.dropdown-btn:hover {
+  background-color: var(--color--white);
+}
+.show{
+  display: block;
+}
+
 .news-lists{
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: minmax(auto, max-content);
   justify-items: center;
 }
@@ -241,12 +334,18 @@ export default {
   background-color: var(--color--secondary);
   color: var(--color--light-brown);
   box-shadow: 5px 5px 0px var(--color--primary);
-  font-size: 20px;
   width: fit-content;
-  padding: 10px;
   position: relative;
   transform: translate(-15px, 50%) ;
   z-index: 1;
+}
+.news-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: url("https://picsum.photos/380/300");
+  background-size: cover;
+  background-position: center;
 }
 .news-hr {
   display: block;
@@ -256,10 +355,162 @@ export default {
   padding: 0;
   margin-bottom: 0px;
 }
+.news-text{
+  margin: 16px 0;
+  font-weight: 400;
+  line-height: 40px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+}
 .news-arrow{
   font-size: 50px;
   color: var(--color--primary);
   align-self: flex-end;
   cursor: pointer;
+}
+@media (max-width: 991px){
+  .promo-type{
+    display: none;
+  }
+  .dropdown{
+    display: inline-block;
+  }
+  .news-lists{
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .news-type{
+    font-size: 20px;
+    padding: 10px;
+  }
+  .news-img{
+    width: 417px;
+    height: 330px;
+  }
+  .news-text{
+    font-size: 34px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px){
+
+  .promo-btn{
+    min-width: 7.23em;
+    font-size: 1.25rem;
+  }
+  .promo-btn:before{
+    width: 3.2em;
+    height: 3.2em;
+  }
+  .promo-btn:hover:before{
+    left: 13%;
+  }
+  .promo-btn:after{
+    width: 3.8em;
+    height: 3.8em;
+  }
+  .promo-btn:hover:after{
+    right: 10%;
+  }
+  .promo-type{
+    display: flex;
+  }
+  .dropdown{
+    display: none;
+  }
+  .news-lists{
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .news-type{
+    font-size: 20px;
+    padding: 10px;
+  }
+  .news-img{
+    width: 380px;
+    height: 300px;
+  }
+  .news-text{
+    font-size: 34px;
+  }
+}
+@media (min-width: 1200px) and (max-width: 1399px){
+
+  .promo-btn{
+    min-width: 7.23em;
+    font-size: 1.25rem;
+  }
+  .promo-btn:before{
+    width: 3.2em;
+    height: 3.2em;
+  }
+  .promo-btn:hover:before{
+    left: 13%;
+  }
+  .promo-btn:after{
+    width: 3.8em;
+    height: 3.8em;
+  }
+  .promo-btn:hover:after{
+    right: 10%;
+  }
+  .promo-type{
+    display: flex;
+  }
+  .dropdown{
+    display: none;
+  }
+  .news-lists{
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .news-type{
+    font-size: 18px;
+    padding: 8px;
+  }
+  .news-img{
+    width: 342px;
+    height: 270px;
+  }
+  .news-text{
+    font-size: 32px;
+  }
+}
+@media (min-width: 1400px){
+  .promo-btn{
+    min-width: 7.23em;
+    font-size: 1.25rem;
+  }
+  .promo-btn:before{
+    width: 3.2em;
+    height: 3.2em;
+  }
+  .promo-btn:hover:before{
+    left: 13%;
+  }
+  .promo-btn:after{
+    width: 3.8em;
+    height: 3.8em;
+  }
+  .promo-btn:hover:after{
+    right: 10%;
+  }
+  .promo-type{
+    display: flex;
+  }
+  .dropdown{
+    display: none;
+  }
+  .news-lists{
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .news-type{
+    font-size: 20px;
+    padding: 10px;
+  }
+  .news-img{
+    width: 380px;
+    height: 300px;
+  }
+  .news-text{
+    font-size: 34px;
+  }
 }
 </style>

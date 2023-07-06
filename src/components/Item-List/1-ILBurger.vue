@@ -106,7 +106,6 @@ export default {
 <style>
 .item-list {
   display: grid;
-  width: 100%;
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: minmax(auto, max-content);
   grid-gap: 10px;
@@ -150,7 +149,6 @@ export default {
   cursor: pointer;
 }
 .item-img {
-  height: 180px;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -200,5 +198,60 @@ export default {
 }
 .item-add-icon:active {
   color: #e3bac6;
+}
+
+@media (max-width: 575px){
+  .item-list {
+    grid-template-columns: repeat(1, 1fr);
+    width: 80%;
+  }
+  .item-img {
+    height: 250px;
+  }
+}
+@media (min-width: 576px) and (max-width: 767px){
+  .item-list {
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+  }
+  .item-img {
+    height: 180px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px){
+  .item-list {
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+  }
+  .item-img {
+    height: 180px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px){
+  .item-list {
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+  }
+  .item-img {
+    height: 180px;
+  }
+}
+@media (min-width: 1200px) and (max-width: 1399px){
+  .item-list {
+    grid-template-columns: repeat(4, 1fr);
+    width: 100%;
+  }
+  .item-img {
+    height: 180px;
+  }
+}
+@media (min-width: 1400px){
+  .item-list {
+    grid-template-columns: repeat(4, 1fr);
+    width: 100%;
+  }
+  .item-img {
+    height: 180px;
+  }
 }
 </style>

@@ -39,6 +39,46 @@
           全台門市
         </button>
       </div>
+      <div class="dropdown">
+        <button class="dropbtn" @click="toggleDropdown">請選擇區域<span>▼</span></button>
+        <div :class="{ 'dropdown-content': true, 'show': isDropdownOpen }">
+          <div
+            data-area="north"
+            class="dropdown-btn"
+            @click="filterLocations('north')"
+          >
+            北部地區
+          </div>
+          <div
+            data-area="middle"
+            class="dropdown-btn"
+            @click="filterLocations('middle')"
+          >
+            中部地區
+          </div>
+          <div
+            data-area="south"
+            class="dropdown-btn"
+            @click="filterLocations('south')"
+          >
+            南部地區
+          </div>
+          <div
+            data-area="east"
+            class="dropdown-btn"
+            @click="filterLocations('east')"
+          >
+            東部地區
+          </div>
+          <div
+            data-area="all"
+            class="dropdown-btn"
+            @click="filterLocations('all')"
+          >
+            全台門市
+          </div>
+        </div>
+      </div>
       <table style="width: 100%" class="location-table">
         <thead>
           <tr class="location-head">
@@ -49,14 +89,35 @@
         </thead>
         <tbody>
           <tr
-            style="height: 60px"
             class="location-body"
+            style="height: 60px"
             v-for="(location, index) in filteredLocations"
             :key="index"
           >
             <td class="th-20 th-25">{{ location.store }}</td>
             <td class="th-20 th-25">{{ location.tel }}</td>
             <td class="th-60 th-50">{{ location.address }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <table style="width: 100%" class="location-table2">
+        <thead>
+          <tr class="location-head">
+            <th>門市名稱</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            style="height: auto"
+            class="location-body"
+            v-for="(location, index) in filteredLocations"
+            :key="index"
+          >
+            <td style="width: 100%; display: flex; flex-direction: column">
+              <div style="color:var(--color--dark-brown); margin: 2px 0">{{ location.store }}</div>
+              <div style="margin: 2px 0">{{ location.tel }}</div>
+              <div style="margin: 2px 0">{{ location.address }}</div>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -211,13 +272,22 @@ export default {
           area: 'east'
         }
       ],
-      selectedArea: 'all' // 儲存選取的地區
+      selectedArea: 'all', // 儲存選取的地區
+      isDropdownOpen: false
     }
   },
   components: {
     LocationBar
   },
   methods: {
+    toggleDropdown () {
+      this.isDropdownOpen = !this.isDropdownOpen
+    },
+    closeDropdown (event) {
+      if (!event.target.matches('.dropbtn')) {
+        this.isDropdownOpen = false
+      }
+    },
     filterLocations (area) {
       this.selectedArea = area
     },
@@ -242,12 +312,17 @@ export default {
     }
   },
   mounted () {
+    window.addEventListener('click', this.closeDropdown)
     if (window.location.hash && window.location.hash !== '') {
       const el = document.querySelector(window.location.hash)
       if (el !== null) {
         el.scrollIntoView({ behavior: 'smooth' })
       }
     }
+  },
+  // eslint-disable-next-line vue/no-deprecated-destroyed-lifecycle
+  beforeDestroy () {
+    window.removeEventListener('click', this.closeDropdown)
   }
 }
 </script>
@@ -329,8 +404,60 @@ export default {
   right: 10%;
   transform: scale(1);
 }
+.dropdown {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 55px;
+}
+.dropbtn {
+  background-color: var(--color--brown);
+  color: var(--color--white);
+  width: 100%;
+  font-size: 1.25rem;
+  display: flex;
+  justify-content: flex-start;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+}
+.dropdown:hover .dropbtn {
+  background-color: var(--color--primary);
+}
+.dropbtn span {
+  font-size: 18px;
+  position: absolute;
+  right: 3%;
+  line-height: 18px;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: var(--color--light-brown);
+  width: 100%;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.dropdown-btn {
+  justify-content: center;
+  color: var(--color--dark-brown);
+  padding: 16px 0;
+  text-decoration: none;
+  display: flex;
+  cursor: pointer;
+}
+.dropdown-btn:hover {
+  background-color: var(--color--white);
+}
+.show{
+  display: block;
+}
 
 .location-table {
+  margin: 0 0 20px 0;
+}
+.location-table2 {
   margin: 0 0 20px 0;
 }
 tr,
@@ -350,6 +477,7 @@ th {
   padding: 0;
 }
 .location-body {
+  height: 60px;
   font-size: 20px;
   border-bottom: 3px solid #fac664;
 }
@@ -360,15 +488,33 @@ th {
   cursor: pointer;
 }
 
-@media (max-width: 2560px){
-  .th-20{
-    width: 20%
+@media (max-width: 991px){
+  .location-table2{
+    display: table
   }
-  .th-60{
-    width: 60%
+  .location-table{
+    display: none
+  }
+  .location-area{
+    display: none;
+  }
+  .dropdown{
+    display: inline-block;
   }
 }
-@media (max-width: 1200px){
+@media (min-width: 992px) and (max-width: 1199px){
+  .location-table2{
+    display: none
+  }
+  .location-table{
+    display: talbe
+  }
+  .th-25{
+    width: 25%
+  }
+  .th-50{
+    width: 50%
+  }
   .location-btn{
     min-width: 5em;
     font-size: 1.2rem;
@@ -378,58 +524,98 @@ th {
     height: 3.1em;
   }
   .location-btn:hover:before{
-    left: 10%;
+    left: 12%;
   }
   .location-btn:after{
-    width: 3.5em;
-    height: 3.5em;
+    width: 3.1em;
+    height: 3.1em;
   }
   .location-btn:hover:after{
-    right: 8%;
-  }
-}
-@media (max-width: 1024px){
-  .location-btn{
-    min-width: 5em;
-    font-size: 1.1rem;
-  }
-  .location-btn:before{
-    width: 3em;
-    height: 3em;
-  }
-  .location-btn:hover:before {
-    left: 10%;
-  }
-  .location-btn:after{
-    width: 3.4em;
-    height: 3.4em;
-  }
-  .location-btn:hover:after{
-    right: 8%;
-  }
-
-}
-@media (max-width: 991px){
-  .location-head{
-    font-size: 16px;
-  }
-  .location-body{
-    font-size: 18px;
-  }
-  .th-25{
-    width: 25%
-  }
-  .th-50{
-    width: 50%
+    right: 9%;
+    top: -50%;
   }
   .location-area{
+    display: flex;
+  }
+  .dropdown{
     display: none;
   }
 }
-@media (max-width: 768px){
-
+@media (min-width: 1200px) and (max-width: 1399px){
+  .location-table2{
+    display: none
+  }
+  .location-table{
+    display: talbe
+  }
+  .th-20{
+    width: 20%
+  }
+  .th-60{
+    width: 60%
+  }
+  .location-btn{
+    min-width: 6.23em;
+    font-size: 1.25rem;
+  }
+  .location-btn:before{
+    width: 3.2em;
+    height: 3.2em;
+  }
+  .location-btn:hover:before{
+    left: 13%;
+  }
+  .location-btn:after{
+    width: 3em;
+    height: 3em;
+  }
+  .location-btn:hover:after{
+    right: 9%;
+    top: -50%;
+  }
+  .location-area{
+    display: flex;
+  }
+  .dropdown{
+    display: none;
+  }
 }
-@media (max-width: 425px){
-
+@media (min-width: 1400px){
+  .location-table2{
+    display: none
+  }
+  .location-table{
+    display: talbe
+  }
+  .th-20{
+    width: 20%
+  }
+  .th-60{
+    width: 60%
+  }
+  .location-btn{
+    min-width: 7.23em;
+    font-size: 1.25rem;
+  }
+  .location-btn:before{
+    width: 3.2em;
+    height: 3.2em;
+  }
+  .location-btn:hover:before{
+    left: 13%;
+  }
+  .location-btn:after{
+    width: 3.8em;
+    height: 3.8em;
+  }
+  .location-btn:hover:after{
+    right: 10%;
+  }
+  .location-area{
+    display: flex;
+  }
+  .dropdown{
+    display: none;
+  }
 }
 </style>
