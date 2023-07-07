@@ -33,7 +33,41 @@
             </li>
           </ul>
         </div>
-        <div class="top-right-btn">
+        <div id="popup-list" class="list-bar-sm">
+          <!-- <div class="list-img-sm">
+            <img src="https://picsum.photos/380/150"/>
+          </div> -->
+          <a href="#!" class="list-close-sm">
+            <font-awesome-icon icon="fa-solid fa-circle-xmark" />
+          </a>
+          <ul class="list-sm">
+            <li>
+              <img class="list-img-sm" src="https://picsum.photos/300/150"/>
+            </li>
+            <li>
+              <router-link to="/menu" class="main-font-sm" date-link-alt="MENU"
+                ><span>雲端美味</span></router-link
+              >
+            </li>
+            <li>
+              <router-link
+                to="/promotions"
+                class="main-font-sm"
+                date-link-alt="PROMOTIONS"
+                ><span>促銷優惠</span></router-link
+              >
+            </li>
+            <li>
+              <router-link
+                to="/locations"
+                class="main-font-sm"
+                date-link-alt="LOCATIONS"
+                ><span>門市據點</span></router-link
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="top-right-btn responsive-popup2">
           <nav>
             <ul>
               <li>
@@ -55,6 +89,9 @@
             </ul>
           </nav>
         </div>
+        <a href="#popup-list" class="list-toggle">
+          <font-awesome-icon icon="fa-solid fa-bars" />
+        </a>
       </div>
     </div>
     <CartBar id="cartModalNavBarSm" :modelValue="isCartBarOpen" @update:modelValue="(val)=>{isCartBarOpen = val}"></CartBar>
@@ -154,6 +191,74 @@ export default {
   top: 0;
   opacity: 1;
 }
+.list-bar-sm{
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: -100%;
+  left: 0;
+  background-color: var(--color--secondary);
+  display: block;
+  z-index: 5;
+  transition: all 1s ease;
+}
+.list-img-sm{
+  margin: -50px 0 50px 0;
+}
+.list-close-sm{
+  font-size: 48px;
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  z-index: 5;
+  color: var(--color--primary);
+  cursor: pointer;
+}
+.list-close-sm:hover {
+  color: var(--color--light-brown);
+}
+.list-close-sm:active {
+  color: var(--color--light-brown);
+}
+.list-sm{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.main-font-sm {
+  font-size: 32px;
+  line-height: 132px;
+  padding: 0 30px;
+  font-weight: 500;
+  display: block;
+  overflow: hidden;
+  color: var(--color--primary);
+}
+.main-font-sm span {
+  color: var(--color--light-brown);
+  display: block;
+  transition: 1s;
+}
+.main-font-sm:hover span {
+  transform: translateY(-100%);
+}
+.main-font-sm:before {
+  position: absolute;
+  content: attr(date-link-alt);
+  left: 50%;
+  transform: translateX(-50%);
+  top: 100%;
+  font-size: 24px;
+  opacity: 0;
+  transition: 0.5s ease;
+}
+.main-font-sm:hover:before {
+  top: 0;
+  opacity: 1;
+}
 .top-right-btn {
   padding: 0;
   margin: 0;
@@ -162,7 +267,7 @@ export default {
   right: 0%;
 }
 .top-right-btn nav {
-  width: 18vw;
+  width: 14vw;
 }
 .top-right-btn ul {
   padding: 0;
@@ -204,7 +309,68 @@ li:hover span {
 .top-right-btn a:hover {
   color: var(--color--secondary);
 }
+.list-toggle{
+  color: var(--color--light-brown);
+  font-size: 32px;
+  position: absolute;
+  right: 5%;
+  cursor: pointer;
+  z-index: 1;
+  display: none;
+}
 CartBar::backdrop {
   background-color: rgb(39, 39, 39, 0.5);
+}
+
+@media (max-width: 575px) {
+  .list-toggle{
+    display: inline-block;
+  }
+  .list-bar{
+    display: none;
+  }
+  #popup-list:target{
+    top: 0;
+  }
+  .top-right-btn{
+    display: none;
+  }
+}
+@media (min-width: 576px) and (max-width: 767px) {
+  .list-toggle{
+    display: inline-block;
+  }
+  .list-bar{
+    display: none;
+  }
+  #popup-list:target{
+    top: 0;
+  }
+  .top-right-btn{
+    display: none;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .list-toggle{
+    display: inline-block;
+  }
+  .list-bar{
+    display: none;
+  }
+  #popup-list:target{
+    top: 0;
+  }
+  .top-right-btn{
+    display: none;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .top-right-btn{
+    display: none;
+  }
+}
+@media (min-width: 1200px) and (max-width: 1399px) {
+}
+@media (min-width: 1400px) {
 }
 </style>

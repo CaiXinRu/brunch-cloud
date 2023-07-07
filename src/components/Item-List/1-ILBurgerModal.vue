@@ -243,6 +243,7 @@ dialog::backdrop {
   position: absolute;
   right: 1%;
   color: #644536;
+  cursor: pointer;
 }
 .im-close:hover {
   color: #fac664;
