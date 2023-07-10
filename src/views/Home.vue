@@ -55,7 +55,7 @@
             <h2>必點首選！</h2>
             <h4 class="sub-border">MUST-TRY IN THE CLOUD</h4>
           </div>
-          <EatMore></EatMore>
+          <MoreFood></MoreFood>
           <div class="try-lists">
             <div class="try-list u-mt-16">
               <img src="https://picsum.photos/180" class="u-center-block" />
@@ -94,7 +94,7 @@
             <h2>最新消息！</h2>
             <h4 class="sub-border">NEWS IN THE CLOUD</h4>
           </div>
-          <SeeMore></SeeMore>
+          <MoreNews></MoreNews>
           <div class="news-lists">
             <div
               class="news-list"
@@ -118,8 +118,8 @@
 
 <script>
 // eslint-disable-next-line no-unused-vars
-import EatMore from '@/components/EatMore.vue'
-import SeeMore from '@/components/SeeMore.vue'
+import MoreFood from '@/components/MoreFood.vue'
+import MoreNews from '@/components/MoreNews.vue'
 
 export default {
   name: 'HomeView',
@@ -149,8 +149,8 @@ export default {
   },
   components: {
     // eslint-disable-next-line vue/no-unused-components
-    EatMore,
-    SeeMore
+    MoreFood,
+    MoreNews
   }
 }
 </script>

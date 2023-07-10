@@ -1,9 +1,9 @@
 <template>
     <router-link to="/promotions" class="s-button">
       <div class="s-div">
-        <a class="see-more"> </a>
+        <a class="more-news"> </a>
       </div>
-      <div class="s-text">See more</div>
+      <div class="s-text">More News</div>
     </router-link>
 
 </template>
@@ -18,7 +18,7 @@
 .s-div{
   height: 52px;
 }
-.see-more {
+.more-news {
   font-size: 24px;
   border: 1px solid #FAC664;
   width: 52px;
@@ -46,7 +46,7 @@
   transition: all 0.45s cubic-bezier(0.65,0,.076,1);
 }
 
-.see-more:before {
+.more-news:before {
   content: '→';
   opacity: 0;
   font-weight: 300;
@@ -63,20 +63,20 @@
   transition: all 0.45s cubic-bezier(0.65,0,.076,1);
 }
 .s-button:hover {
-  .see-more:before {
+  .more-news:before {
     opacity: 1;
     color: #fef7e9;
 
     transform: translateX(10px);
   }
 
-  .see-more {
+  .more-news {
     width: 100%;
     padding: 0px 16px;
     color: #fef7e9;
   }
 
-  .see-more:after {
+  .more-news:after {
     opacity: 0;
     //   content: '→';
   }
@@ -86,7 +86,7 @@
   }
 }
 
-.see-more:after {
+.more-news:after {
   content: '>';
   font-size: 28px;
   font-weight: 300;

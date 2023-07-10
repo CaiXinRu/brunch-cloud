@@ -33,11 +33,11 @@
             </li>
           </ul>
         </div>
-        <div id="popup-list" class="list-bar-sm">
+        <div id="popup-list" :class="{'list-bar-sm': true, 'popup-open':isPopupListOpen} ">
           <!-- <div class="list-img-sm">
             <img src="https://picsum.photos/380/150"/>
           </div> -->
-          <a href="#!" class="list-close-sm">
+          <a class="list-close-sm" @click="isPopupListOpen=false">
             <font-awesome-icon icon="fa-solid fa-circle-xmark" />
           </a>
           <ul class="list-sm">
@@ -45,7 +45,7 @@
               <img class="list-img-sm" src="https://picsum.photos/300/150"/>
             </li>
             <li>
-              <router-link to="/menu" class="main-font-sm" date-link-alt="MENU"
+              <router-link to="/menu" class="main-font-sm" date-link-alt="MENU" @click="isPopupListOpen=false"
                 ><span>雲端美味</span></router-link
               >
             </li>
@@ -54,6 +54,7 @@
                 to="/promotions"
                 class="main-font-sm"
                 date-link-alt="PROMOTIONS"
+                @click="isPopupListOpen=false"
                 ><span>促銷優惠</span></router-link
               >
             </li>
@@ -62,12 +63,13 @@
                 to="/locations"
                 class="main-font-sm"
                 date-link-alt="LOCATIONS"
+                @click="isPopupListOpen=false"
                 ><span>門市據點</span></router-link
               >
             </li>
           </ul>
         </div>
-        <div class="top-right-btn responsive-popup2">
+        <div class="top-right-btn">
           <nav>
             <ul>
               <li>
@@ -89,7 +91,7 @@
             </ul>
           </nav>
         </div>
-        <a href="#popup-list" class="list-toggle">
+        <a class="list-toggle" @click="isPopupListOpen=true">
           <font-awesome-icon icon="fa-solid fa-bars" />
         </a>
       </div>
@@ -106,7 +108,8 @@ export default {
   name: 'NavBarSm',
   data: () => {
     return {
-      isCartBarOpen: false
+      isCartBarOpen: false,
+      isPopupListOpen: false
     }
   },
   components: {
@@ -202,6 +205,9 @@ export default {
   z-index: 5;
   transition: all 1s ease;
 }
+.list-bar-sm.popup-open{
+  top: 0;
+}
 .list-img-sm{
   margin: -50px 0 50px 0;
 }
@@ -262,7 +268,6 @@ export default {
 .top-right-btn {
   padding: 0;
   margin: 0;
-  display: flex;
   position: absolute;
   right: 0%;
 }
@@ -318,6 +323,12 @@ li:hover span {
   z-index: 1;
   display: none;
 }
+.list-toggle:hover{
+  color: var(--color--primary);
+}
+.list-toggle:focus{
+  color: var(--color--primary);
+}
 CartBar::backdrop {
   background-color: rgb(39, 39, 39, 0.5);
 }
@@ -370,7 +381,13 @@ CartBar::backdrop {
   }
 }
 @media (min-width: 1200px) and (max-width: 1399px) {
+  .top-right-btn{
+    display: flex;
+  }
 }
 @media (min-width: 1400px) {
+  .top-right-btn{
+    display: flex;
+  }
 }
 </style>

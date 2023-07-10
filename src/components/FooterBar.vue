@@ -17,7 +17,8 @@
               </p>
               <p class="footer-text color--brown">
                 本網站僅供個人作品使用，無作任何商業用途｜
-                <router-link to="/login" class="footer-login"
+                <router-link
+                  to="/login" class="footer-login"
                   >登入後台</router-link
                 >
               </p>
@@ -33,8 +34,9 @@
               <p class="footer-text color--brown">
                 本網站僅供個人作品使用，無作任何商業用途
               </p>
-              <router-link to="/login" class="footer-text footer-login"
-                >｜登入後台｜
+              <router-link
+                  to="/login" class="footer-text footer-login"
+                  >｜登入後台｜
               </router-link>
               <div class="footer-icons-sm">
                 <div>
@@ -127,14 +129,14 @@
 .footer-login {
   color: #c0b5a0;
 }
-.footer-login:hover {
+.footer-login:hover{
   color: #fac664;
 }
-.footer-login:active {
+.footer-login:active{
   color: #e3bac6;
 }
 .footer-icons {
-  width: 30%;
+  width: max-content;
   height: 110px;
 }
 .footer-icon-1 {
@@ -146,79 +148,81 @@
   margin-left: 8px;
   font-size: 34px;
 }
-@media (max-width: 575px) {
+@media (max-width: 575px){
   .footer {
     justify-content: flex-start;
   }
   .footer-content {
-    display: none;
+    display:none;
   }
-  .footer-content-sm {
+  .footer-content-sm{
     display: block;
-    margin: 0 -108px 0 16px;
+    margin: 0 0 0 10px;
+    flex: 1;
   }
-  .footer-text {
+  .footer-text{
     font-size: 16px;
   }
-  .footer-login {
+  .footer-login{
     font-size: 20px;
   }
-  .footer-icons-sm {
+  .footer-icons-sm{
     display: flex;
   }
-  .footer-icon-1 {
+  .footer-icon-1{
     margin: 0px;
   }
-  .footer-icons {
+  .footer-icons{
     display: none;
   }
 }
-@media (min-width: 576px) and (max-width: 767px) {
+@media (min-width: 576px) and (max-width: 767px){
   .footer {
     justify-content: flex-start;
   }
   .footer-content {
-    display: none;
+    display:none;
   }
-  .footer-content-sm {
+  .footer-content-sm{
     display: block;
-    margin: 0 -108px 0 16px;
+    margin: 0 0 0 8px;
+    flex: 1;
   }
-  .footer-icons-sm {
+  .footer-icons-sm{
     display: flex;
   }
-  .footer-icon-1 {
+  .footer-icon-1{
     margin: 0px;
   }
-  .footer-icons {
+  .footer-icons{
     display: none;
   }
 }
-@media (min-width: 768px) and (max-width: 991px) {
+@media (min-width: 768px) and (max-width: 991px){
   .footer {
     justify-content: center;
   }
   .footer-content {
     display: block;
-    margin: 0 -108px 0 16px;
+    margin: 0 0px 0 16px;
   }
-  .footer-content-sm {
+  .footer-content-sm{
     display: none;
   }
-  .footer-icons-sm {
+  .footer-icons-sm{
     display: none;
   }
-  .footer-icon-1 {
+  .footer-icon-1{
     margin-left: 8px;
   }
-  .footer-icons {
+  .footer-icons{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-end;
   }
 }
-@media (min-width: 992px) and (max-width: 1199px) {
+@media (min-width: 992px) and (max-width: 1199px){
   .footer {
     justify-content: center;
   }
@@ -226,23 +230,23 @@
     display: block;
     margin: 0 55px 0 16px;
   }
-  .footer-content-sm {
+  .footer-content-sm{
     display: none;
   }
-  .footer-icons-sm {
+  .footer-icons-sm{
     display: none;
   }
-  .footer-icon-1 {
+  .footer-icon-1{
     margin-left: 8px;
   }
-  .footer-icons {
+  .footer-icons{
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     align-items: flex-end;
   }
 }
-@media (min-width: 1200px) and (max-width: 1399px) {
+@media (min-width: 1200px) and (max-width: 1399px){
   .footer {
     justify-content: center;
   }
@@ -250,23 +254,23 @@
     display: block;
     margin: 0 120px 0 16px;
   }
-  .footer-content-sm {
+  .footer-content-sm{
     display: none;
   }
-  .footer-icons-sm {
+  .footer-icons-sm{
     display: none;
   }
-  .footer-icon-1 {
+  .footer-icon-1{
     margin-left: 8px;
   }
-  .footer-icons {
+  .footer-icons{
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     align-items: flex-end;
   }
 }
-@media (min-width: 1400px) {
+@media (min-width: 1400px){
   .footer {
     justify-content: center;
   }
@@ -274,16 +278,16 @@
     display: block;
     margin: 0 120px 0 16px;
   }
-  .footer-content-sm {
+  .footer-content-sm{
     display: none;
   }
-  .footer-icons-sm {
+  .footer-icons-sm{
     display: none;
   }
-  .footer-icon-1 {
+  .footer-icon-1{
     margin-left: 8px;
   }
-  .footer-icons {
+  .footer-icons{
     display: flex;
     flex-direction: row;
     justify-content: flex-end;

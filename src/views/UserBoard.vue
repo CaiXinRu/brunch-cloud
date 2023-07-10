@@ -3,7 +3,8 @@
     <NavBarSm class="sticky-top" :style="{top: navbarTop}"></NavBarSm>
     <NavBar></NavBar>
     <router-view />
-    <FooterBar class="sticky-bottom"></FooterBar>
+    <FooterBar class="sticky-footer-bar"></FooterBar>
+    <NavBarFooter></NavBarFooter>
   </div>
 </template>
 
@@ -11,6 +12,8 @@
 import NavBar from '@/components/NavBar.vue'
 import NavBarSm from '@/components/NavBarSm.vue'
 import FooterBar from '@/components/FooterBar.vue'
+import NavBarFooter from '@/components/NavBarFooter.vue'
+
 export default {
   data () {
     return {
@@ -20,7 +23,8 @@ export default {
   components: {
     NavBar,
     NavBarSm,
-    FooterBar
+    FooterBar,
+    NavBarFooter
   },
   mounted () {
     window.addEventListener('scroll', this.scrollFunction)
@@ -56,8 +60,5 @@ export default {
   z-index: 10;
   height: fit-content;
   transition: 0.5s all ease;
-}
-.sticky-bottom {
-  margin-top: auto;
 }
 </style>

@@ -90,6 +90,8 @@ import { faCircleCheck } from '@fortawesome/free-regular-svg-icons'
 import { faHeartCircleCheck } from '@fortawesome/free-solid-svg-icons'
 // eslint-disable-next-line import/no-duplicates
 import { faBars } from '@fortawesome/free-solid-svg-icons'
+// eslint-disable-next-line import/no-duplicates
+import { faAnglesUp } from '@fortawesome/free-solid-svg-icons'
 
 // 定義驗證規則，加入先前的設定檔
 Object.keys(AllRules).forEach((rule) => {
@@ -131,7 +133,8 @@ library.add(
   faUtensils,
   faCircleCheck,
   faHeartCircleCheck,
-  faBars
+  faBars,
+  faAnglesUp
 )
 
 const app = createApp(App)

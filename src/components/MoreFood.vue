@@ -1,9 +1,9 @@
 <template>
     <router-link to="/menu" class="e-button">
       <div class="e-div">
-        <a class="eat-more"></a>
+        <a class="more-food"></a>
       </div>
-      <div class="e-text">Eat more</div>
+      <div class="e-text">More Food</div>
     </router-link>
 
 </template>
@@ -19,7 +19,7 @@
 .e-div{
   height: 52px;
 }
-.eat-more {
+.more-food {
   font-size: 24px;
   border: 1px solid #FAC664;
   width: 52px;
@@ -47,7 +47,7 @@
   transition: all 0.45s cubic-bezier(0.65,0,.076,1);
 }
 
-.eat-more:before {
+.more-food:before {
   content: '→';
   opacity: 0;
   font-weight: 300;
@@ -64,20 +64,20 @@
   transition: all 0.45s cubic-bezier(0.65,0,.076,1);
 }
 .e-button:hover {
-  .eat-more:before {
+  .more-food:before {
     opacity: 1;
     color: #fef7e9;
 
     transform: translateX(10px);
   }
 
-  .eat-more {
+  .more-food {
     width: 100%;
     padding: 0px 16px;
     color: #fef7e9;
   }
 
-  .eat-more:after {
+  .more-food:after {
     opacity: 0;
     //   content: '→';
   }
@@ -87,7 +87,7 @@
   }
 }
 
-.eat-more:after {
+.more-food:after {
   content: '>';
   font-size: 28px;
   font-weight: 300;
