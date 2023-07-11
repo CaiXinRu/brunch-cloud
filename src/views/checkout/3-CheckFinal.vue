@@ -24,6 +24,11 @@
           <div class="cs-text">完成付款</div>
           <div :class="['cs-bar', { 'cs-lighter': !order?.is_paid }]"></div>
         </div>
+        <div class="co-step-sm">
+          <div class="cs-num">3</div>
+          <div class="cs-text">確認訂單</div>
+          <div class="cs-bar"></div>
+        </div>
       </div>
       <table style="width: 100%" class="cf-table">
         <thead>
@@ -125,10 +130,21 @@
               style="width: 40%; border-right: 3px solid #fac664"
               class="color--dark-brown"
             >
-              訂餐／送餐日期
+              訂／送餐日期
             </td>
             <td style="width: 60%" class="color--black">
               {{ $filters.date(order.create_at) }}
+            </td>
+          </tr>
+          <tr style="height: 50px" class="cf-body">
+            <td
+              style="width: 40%; border-right: 3px solid #fac664"
+              class="color--dark-brown"
+            >
+              留言備註
+            </td>
+            <td style="width: 60%" class="color--black">
+              {{ order.message }}
             </td>
           </tr>
           <tr style="height: 50px" class="cf-body">
@@ -166,13 +182,13 @@
         </tbody>
       </table>
       <div class="cf-submit-container" v-if="!order?.is_paid">
-        <button
+        <div
           class="cf-submit"
           type="submit"
           @click="payOrder"
         >
           進行付款
-        </button>
+        </div>
       </div>
       <div class="cf-submit-container" v-if="order?.is_paid">
         <router-link
@@ -243,9 +259,12 @@ export default {
   align-items: center;
 }
 .co-stepbar {
-  width: 50%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+}
+.co-step-sm{
+  flex-direction: column;
+  align-items: center;
 }
 .co-step {
   display: flex;
@@ -268,7 +287,6 @@ export default {
   margin: 8px 0;
 }
 .cs-bar {
-  width: 150px;
   height: 6px;
   background-color: #fac664;
   margin: 8px 0;
@@ -325,14 +343,114 @@ tr {
   display: flex;
   height: 50px;
   width: 20%;
+  font-size: 20px;
   background-color: var(--color--primary);
   color: var(--color--dark-brown);
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 .cf-submit:hover {
   background-color: var(--color--secondary);
   color: var(--color--light-brown);
   box-shadow: 5px 5px 0px var(--color--primary);
+}
+@media (max-width: 413px) {
+  .co-stepbar{
+    justify-content: center;
+  }
+  .co-step{
+    display: none;
+  }
+  .co-step-sm{
+    display: flex;
+  }
+  .cs-bar{
+    width: 120px;
+  }
+  .cf-body{
+    font-size: 18px;
+  }
+  .cf-submit{
+    width: 100%;
+  }
+}
+@media (min-width: 414px) and (max-width: 575px) {
+  .co-stepbar{
+    justify-content: center;
+  }
+  .co-step{
+    display: none;
+  }
+  .co-step-sm{
+    display: flex;
+  }
+  .cs-bar{
+    width: 120px;
+  }
+  .cf-submit{
+    width: 100%;
+  }
+}
+@media (min-width: 576px) and (max-width: 767px) {
+  .co-stepbar{
+    width: 100%;
+  }
+  .cs-bar{
+    width: 120px;
+  }
+  .co-step-sm{
+    display: none;
+  }
+  .cf-submit{
+    width: 100%;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .co-stepbar{
+    width: 80%;
+  }
+  .cs-bar{
+    width: 130px;
+  }
+  .co-step-sm{
+    display: none;
+  }
+  .cf-submit{
+    width: 100%;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .co-stepbar{
+    width: 60%;
+  }
+  .cs-bar{
+    width: 130px;
+  }
+  .co-step-sm{
+    display: none;
+  }
+}
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .co-stepbar{
+    width: 50%;
+  }
+  .cs-bar{
+    width: 130px;
+  }
+  .co-step-sm{
+    display: none;
+  }
+}
+@media (min-width: 1400px) {
+  .co-stepbar{
+    width: 50%;
+  }
+  .cs-bar{
+    width: 150px;
+  }
+  .co-step-sm{
+    display: none;
+  }
 }
 </style>

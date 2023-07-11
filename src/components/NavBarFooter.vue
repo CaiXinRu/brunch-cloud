@@ -58,7 +58,7 @@ export default {
 <style scoped>
 .navbar-footer {
   width: 100vw;
-  height: 80px;
+  height: 50px;
   position: sticky;
   bottom: 0;
   background-color: var(--color--secondary);
@@ -78,7 +78,7 @@ export default {
 }
 li {
   list-style-type: none;
-  height: 80px;
+  height: 50px;
   width: 100%;
   overflow: hidden;
 }
@@ -100,7 +100,7 @@ li > span:nth-child(2) {
   color: var(--color--dark-brown);
   font-family: 'Aclonica', 'Montserrat', 'cwTeXYen', 'Helvetica', sans-serif;
   font-size: 18px;
-  text-align: center;
+  padding: 0;
 }
 li:hover span {
   transform: translateY(-100%);

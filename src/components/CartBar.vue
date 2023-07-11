@@ -152,7 +152,6 @@ export default {
 <style lang="scss" scoped>
 dialog {
   border: none;
-  width: 35vw;
   height: calc(100vh - 38px);
   background-color: #ffffff;
   border-radius: 20px;
@@ -174,7 +173,6 @@ dialog:focus-visible{
   height: calc(100vh - 38px);
 }
 .cartModal.show-modal {
-  transform: translateX(92%);
   z-index: 99;
   height: calc(100vh - 38px);
 }
@@ -314,5 +312,37 @@ tfoot tr {
   background-color: var(--color--primary);
   color: var(--color--dark-brown);
   box-shadow: 5px 5px 0px var(--color--secondary);
+}
+@media (max-width: 991px) {
+  dialog{
+    width: 99vw;
+  }
+  .cartModal.show-modal {
+    transform: translateX(0%);
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  dialog{
+    width: 50vw;
+  }
+  .cartModal.show-modal {
+    transform: translateX(49%);
+  }
+}
+@media (min-width: 1200px) and (max-width: 1399px) {
+  dialog{
+    width: 38vw;
+  }
+  .cartModal.show-modal {
+    transform: translateX(81%);
+  }
+}
+@media (min-width: 1400px) {
+  dialog{
+    width: 35vw;
+  }
+  .cartModal.show-modal {
+    transform: translateX(92%);
+  }
 }
 </style>

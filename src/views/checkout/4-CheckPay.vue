@@ -23,6 +23,11 @@
           <div class="cs-text">完成付款</div>
           <div class="cs-bar"></div>
         </div>
+        <div class="co-step-sm">
+          <div class="cs-num">4</div>
+          <div class="cs-text">完成付款</div>
+          <div class="cs-bar"></div>
+        </div>
       </div>
       <table style="width: 100%" class="cp-table">
         <thead>
@@ -40,8 +45,12 @@
                   bounce
                 />
                 <div>付款完成</div>
-                <div class="color--secondary">
-                  （您的餐點將在一個小時內送達，敬請耐心等候。）
+                <div class="color--secondary cp-text">
+                  您的餐點將在一個小時內送達，敬請耐心等候。
+                </div>
+                <div class="color--secondary cp-text-sm">
+                  <div>您的餐點將在一個小時內送達</div>
+                  <div>敬請耐心等候</div>
                 </div>
                 <div class="cf-btn-container">
                   <router-link :to="`/checkout/${orderId}`" class="cf-btn">
@@ -86,9 +95,12 @@ export default {
   align-items: center;
 }
 .co-stepbar {
-  width: 50%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+}
+.co-step-sm{
+  flex-direction: column;
+  align-items: center;
 }
 .co-step {
   display: flex;
@@ -111,7 +123,6 @@ export default {
   margin: 8px 0;
 }
 .cs-bar {
-  width: 150px;
   height: 6px;
   background-color: #fac664;
   margin: 8px 0;
@@ -162,6 +173,11 @@ export default {
   height: auto;
   width: 100%;
 }
+.cp-text-sm{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
 .cp-icon {
   font-size: 150px;
   color: var(--color--primary);
@@ -177,7 +193,7 @@ export default {
 .cf-btn {
   display: flex;
   height: 50px;
-  width: 20%;
+  width: 40%;
   background-color: var(--color--primary);
   color: var(--color--dark-brown);
   align-items: center;
@@ -187,5 +203,110 @@ export default {
   background-color: var(--color--secondary);
   color: var(--color--light-brown);
   box-shadow: 5px 5px 0px var(--color--primary);
+}
+@media (max-width: 575px) {
+  .co-stepbar{
+    justify-content: center;
+  }
+  .co-step{
+    display: none;
+  }
+  .co-step-sm{
+    display: flex;
+  }
+  .cs-bar{
+    width: 120px;
+  }
+  .cp-text{
+    display: none;
+  }
+  .cp-text-sm{
+    display: flex;
+  }
+}
+@media (min-width: 576px) and (max-width: 767px) {
+  .co-stepbar{
+    width: 100%;
+  }
+  .cs-bar{
+    width: 120px;
+  }
+  .co-step-sm{
+    display: none;
+  }
+  .cp-text{
+    display: block;
+  }
+  .cp-text-sm{
+    display: none;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .co-stepbar{
+    width: 80%;
+  }
+  .cs-bar{
+    width: 130px;
+  }
+  .co-step-sm{
+    display: none;
+  }
+  .cp-text{
+    display: block;
+  }
+  .cp-text-sm{
+    display: none;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .co-stepbar{
+    width: 60%;
+  }
+  .cs-bar{
+    width: 130px;
+  }
+  .co-step-sm{
+    display: none;
+  }
+  .cp-text{
+    display: block;
+  }
+  .cp-text-sm{
+    display: none;
+  }
+}
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .co-stepbar{
+    width: 50%;
+  }
+  .cs-bar{
+    width: 130px;
+  }
+  .co-step-sm{
+    display: none;
+  }
+  .cp-text{
+    display: block;
+  }
+  .cp-text-sm{
+    display: none;
+  }
+}
+@media (min-width: 1400px) {
+  .co-stepbar{
+    width: 50%;
+  }
+  .cs-bar{
+    width: 150px;
+  }
+  .co-step-sm{
+    display: none;
+  }
+  .cp-text{
+    display: block;
+  }
+  .cp-text-sm{
+    display: none;
+  }
 }
 </style>
