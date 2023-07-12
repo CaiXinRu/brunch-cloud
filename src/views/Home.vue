@@ -3,23 +3,27 @@
     <div class="wrapper">
       <div class="bg-color--white">
         <div class="container u-pt-68 u-pb-68">
-          <div class="row u-pl-48">
-            <div class="col-sm-4 d-flex align-items-center">
-              <div>
-                <h2>關於 雲端早午安</h2>
-                <h4 class="sub-border">BRUNCH IN THE CLUOD</h4>
-                <p>
-                  結合傳統的早午餐元素與現代飲食趨勢，打造獨特而有趣的菜單。我們相信每個人都有屬於自己的「雲端」，代表著無限的可能性和自由。
-                  您可以在這「雲端」品嚐到各種類型的漢堡、三明治、義大利飯麵和炸物點心。我們嚴選新鮮食材，注重品質和營養，確保每道菜都能帶給顧客美味和健康。
-                  在這空間裡，它是舒適和溫馨的。在放鬆身心、享受美食的同時，也能享受到「雲端」般的無拘束感。它是一個社區的聚集地，無論是與家人朋友共享一頓美味的早午餐，或是獨自享受寧靜時光，「雲端早午安」都將成為您身、心、胃的理想之地。
-                </p>
+          <div class="about">
+            <div class="about-main">
+              <h2>關於 雲端早午安</h2>
+              <h4 class="sub-border">BRUNCH IN THE CLUOD</h4>
+              <div class="about-main-textsm">
+                結合傳統的早午餐元素與現代飲食趨勢，打造獨特而有趣的菜單。每個人都有屬於自己的「雲端」，它代表著無限的可能性和自由。
+                在「雲端」中，可以品嚐到各式類型的漢堡、三明治、義大利飯麵、炸物點心。「雲端」嚴選新鮮食材，注重品質和營養，確保每道菜都能帶給顧客美味和健康。
+                「雲端」是舒適和溫馨的，在放鬆身心、享受美食的同時，也能享受到「雲端」般的無拘束感。無論是與家人朋友共享一頓美味的早午餐，或是獨自享受寧靜時光，「雲端早午安」都將成為您身、心、胃的理想之地。
               </div>
             </div>
-            <div class="col-sm-8">
-              <div class="u-ml-32 about-lists">
+            <div class="about-lists-container">
+              <div class="about-lists">
                 <div class="about-item">
-                  <img style="height: 100%; width: 100%" src="@/assets/pics/home/1-delicious.jpg" />
+                  <img class="about-img" src="@/assets/pics/home/1-delicious.jpg" />
+                  <img class="about-img-sm" src="@/assets/pics/home/1-delicious-2.jpg" />
                   <div class="about-text">無限美味</div>
+                  <div class="about-square-sm">
+                    <div class="about-title">無限美味</div>
+                    <div class="about-line"></div>
+                    <div class="about-slogan">數不盡的雲端獨特</div>
+                  </div>
                   <div class="about-square">
                     <div class="about-title">無限美味</div>
                     <div class="about-line"></div>
@@ -27,8 +31,14 @@
                   </div>
                 </div>
                 <div class="about-item">
-                  <img style="height: 100%; width: 100%" src="@/assets/pics/home/2-vegetable.jpg" />
+                  <img class="about-img" src="@/assets/pics/home/2-vegetable.jpg" />
+                  <img class="about-img-sm" src="@/assets/pics/home/2-vegetable-2.jpg" />
                   <div class="about-text">新鮮健康</div>
+                  <div class="about-square-sm">
+                    <div class="about-title">新鮮健康</div>
+                    <div class="about-line"></div>
+                    <div class="about-slogan">營養豐富的雲端饗宴</div>
+                  </div>
                   <div class="about-square">
                     <div class="about-title">新鮮健康</div>
                     <div class="about-line"></div>
@@ -36,8 +46,14 @@
                   </div>
                 </div>
                 <div class="about-item">
-                  <img style="height: 100%; width: 100%" src="@/assets/pics/home/3-quality.jpg" />
+                  <img class="about-img" src="@/assets/pics/home/3-quality.jpg" />
+                  <img class="about-img-sm" src="@/assets/pics/home/3-quality-2.jpg" />
                   <div class="about-text">扎實品質</div>
+                  <div class="about-square-sm">
+                    <div class="about-title">扎實品質</div>
+                    <div class="about-line"></div>
+                    <div class="about-slogan">嚴選製程的卓越雲端</div>
+                  </div>
                   <div class="about-square">
                     <div class="about-title">扎實品質</div>
                     <div class="about-line"></div>
@@ -148,7 +164,6 @@ export default {
     }
   },
   components: {
-    // eslint-disable-next-line vue/no-unused-components
     MoreFood,
     MoreNews
   }
@@ -156,6 +171,23 @@ export default {
 </script>
 
 <style scoped>
+.about{
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.about-main{
+  width: 33%;
+  display: flex;
+  flex-direction: column;
+}
+.about-lists-container{
+  width: 65%;
+  display: flex;
+  margin-left: auto;
+}
 .about-lists {
   width: 100%;
   height: 600px;
@@ -176,7 +208,9 @@ export default {
   border-radius: 10px;
   z-index: 1;
 }
-.about-item img{
+.about-img, .about-img-sm{
+  height: 100%;
+  width: 100%;
   filter:brightness(65%);
   object-fit: cover;
   background-repeat: no-repeat;
@@ -184,7 +218,7 @@ export default {
   background-position: center;
   transition: all 0.3s ease;
 }
-.about-item:hover img {
+.about-item:hover .about-img{
   filter:brightness(100%);
   transform: translateY(-20%);
   transform-origin: center;
@@ -227,6 +261,16 @@ export default {
   align-items: center;
   flex-direction: column;
   transition: all 0.3s ease;
+}
+.about-square-sm{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 .about-item:hover .about-square{
   transform: translateY(0);
@@ -308,5 +352,189 @@ export default {
   border-top: 2px solid #fac664;
   padding: 0;
   margin-bottom: 0px;
+}
+
+@media (max-width: 413px) {
+  .about{
+    flex-direction: column;
+  }
+  .about-main, .about-lists-container{
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    margin-top: 30px;
+  }
+  .about-main h2{
+    font-size: 40px;
+  }
+  .sub-border{
+    -webkit-text-stroke: 1px #644536;
+    font-size: 20px;
+  }
+  .about-main-textsm{
+    margin-bottom: 16px;
+  }
+  .about-lists{
+    height: 430px;
+    flex-direction: column;
+  }
+  .about-item:hover {
+    transform: scale(1);
+  }
+  .about-img{
+    display: none;
+  }
+  .about-text{
+    display: none;
+  }
+  .about-square{
+    display: none;
+  }
+  .about-title{
+    font-size: 30px;
+    line-height: 25px;
+  }
+  .about-slogan{
+    font-size: 15px;
+  }
+}
+@media (min-width: 414px) and (max-width: 575px) {
+  .about{
+    flex-direction: column;
+  }
+  .about-main, .about-lists-container{
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    margin-top: 30px;
+  }
+  .about-main-textsm{
+    margin-bottom: 16px;
+  }
+  .about-lists{
+    height: 430px;
+    flex-direction: column;
+  }
+  .about-item:hover {
+    transform: scale(1);
+  }
+  .about-img{
+    display: none;
+  }
+  .about-text{
+    display: none;
+  }
+  .about-square{
+    display: none;
+  }
+  .about-title{
+    font-size: 30px;
+    line-height: 25px;
+  }
+  .about-slogan{
+    font-size: 15px;
+  }
+}
+@media (min-width: 576px) and (max-width: 767px) {
+  .about{
+    flex-direction: column;
+  }
+  .about-main, .about-lists-container{
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    margin-top: 30px;
+  }
+  .about-main-textsm{
+    margin-bottom: 16px;
+  }
+  .about-lists{
+    height: 450px;
+  }
+  .about-img-sm{
+    display: none;
+  }
+  .about-square-sm{
+    display: none;
+  }
+  .about-title{
+    font-size: 30px;
+    line-height: 25px;
+  }
+  .about-slogan{
+    font-size: 15px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .about{
+    flex-direction: column;
+  }
+  .about-main, .about-lists-container{
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    margin-top: 30px;
+  }
+  .about-main-textsm{
+    margin-bottom: 16px;
+  }
+  .about-lists{
+    height: 450px;
+  }
+  .about-img-sm{
+    display: none;
+  }
+  .about-square-sm{
+    display: none;
+  }
+  .about-title{
+    font-size: 40px;
+    line-height: 30px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .about{
+    flex-direction: column;
+  }
+  .about-main, .about-lists-container{
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    margin-top: 30px;
+  }
+  .about-main-textsm{
+    margin-bottom: 16px;
+  }
+  .about-lists{
+    height: 460px;
+  }
+  .about-img-sm{
+    display: none;
+  }
+  .about-square-sm{
+    display: none;
+  }
+}
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .about-lists{
+    height: 510px;
+  }
+  .sub-border{
+    font-size: 26px;
+  }
+  .about-img-sm{
+    display: none;
+  }
+  .about-square-sm{
+    display: none;
+  }
+}
+@media (min-width: 1400px) {
+  .about-square-sm{
+    display: none;
+  }
+  .about-img-sm{
+    display: none;
+  }
 }
 </style>

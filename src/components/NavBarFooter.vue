@@ -62,6 +62,7 @@ export default {
   position: sticky;
   bottom: 0;
   background-color: var(--color--secondary);
+  z-index: 2;
 }
 .navbar-footer nav {
   width: 100%;
