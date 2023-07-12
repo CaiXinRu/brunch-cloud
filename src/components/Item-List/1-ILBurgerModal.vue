@@ -12,6 +12,10 @@
           ></div>
         </div>
         <div class="im-content">
+          <div
+            class="im-pic-sm"
+            :style="{ backgroundImage: `url(${product.imageUrl})` }"
+          ></div>
           <h2 class="u-mb-16">{{ product.title }}</h2>
           <p class="color--brown im-price" v-if="product.price">
             原價 NT${{ product.origin_price }}
@@ -20,8 +24,10 @@
             特價 NT${{ product.price }}
           </h5>
           <div class="im-line"></div>
-          <span class="im-detail">▎食材介紹：{{ product.content }}</span>
-          <span class="im-detail">▎熱量：436 kcal</span>
+          <span class="im-detail">▎品項簡介：</span>
+          <span class="im-detail">{{ product.description }}</span>
+          <span class="im-detail">▎內容食材：</span>
+          <span class="im-detail">{{ product.content }}</span>
           <span class="im-detail">▎可自取時間：06:00~14:15</span>
           <span class="im-detail">▎餐點注意事項：</span>
           <span class="im-detail"
@@ -35,7 +41,7 @@
           <div class="im-box">
             <div
               class="im-box-container"
-              v-for="(custom, key) in customType"
+              v-for="(itemC, key) in customType"
               :key="'custom' + key"
             >
               <label class="im-boxtext" :for="'custom' + key">
@@ -44,18 +50,19 @@
                   name="customType"
                   type="checkbox"
                   :id="'custom' + key"
-                  :value="custom"
+                  :value="itemC"
+                  v-model="custom"
                 />
                 <span class="im-checkmark"></span>
-                <span class="u-ml-4 u-mr-16">{{ custom }}</span>
+                <span class="u-ml-4 u-mr-16">{{ itemC }}</span>
               </label>
             </div>
           </div>
-          <label class="im-choice-title">冰塊</label>
+          <!-- <label class="im-choice-title">冰塊</label>
           <div class="im-box">
             <div
               class="im-box-container"
-              v-for="(ice, key) in iceType"
+              v-for="(itemI, key) in iceType"
               :key="'ice' + key"
             >
               <label class="im-boxtext" :for="'ice' + key">
@@ -64,10 +71,11 @@
                   name="iceType"
                   type="radio"
                   :id="'ice' + key"
-                  :value="ice"
+                  :value="itemI"
+                  v-model="ice"
                 />
                 <span class="im-checkmark"></span>
-                <span class="u-ml-4 u-mr-16">{{ ice }}</span>
+                <span class="u-ml-4 u-mr-16">{{ itemI }}</span>
               </label>
             </div>
           </div>
@@ -75,7 +83,7 @@
           <div class="im-box">
             <div
               class="im-box-container"
-              v-for="(sugar, key) in sugarType"
+              v-for="(itemS, key) in sugarType"
               :key="'sugar' + key"
             >
               <label class="im-boxtext" :for="'sugar' + key">
@@ -84,25 +92,28 @@
                   name="sugarType"
                   type="radio"
                   :id="'sugar' + key"
-                  :value="sugar"
+                  :value="itemS"
+                  v-model="sugar"
                 />
                 <span class="im-checkmark"></span>
-                <span class="u-ml-4 u-mr-16">{{ sugar }}</span>
+                <span class="u-ml-4 u-mr-16">{{ itemS }}</span>
               </label>
             </div>
-          </div>
-          <div class="u-pt-16 im-number">
-            <font-awesome-icon
-              class="im-count"
-              icon="fa-regular fa-square-plus"
-              @click="plusCount()"
-            />
-            <div class="im-count-num">{{ count }}</div>
-            <font-awesome-icon
-              class="im-count"
-              icon="fa-regular fa-square-minus"
-              @click="minusCount()"
-            />
+          </div> -->
+          <div class="u-pt-16 im-number im-number-column">
+            <div class="im-count-container">
+              <font-awesome-icon
+                class="im-count"
+                icon="fa-regular fa-square-plus"
+                @click="plusCount()"
+              />
+              <div class="im-count-num">{{ count }}</div>
+              <font-awesome-icon
+                class="im-count"
+                icon="fa-regular fa-square-minus"
+                @click="minusCount()"
+              />
+            </div>
             <button
               type="button"
               class="im-confirmed"
@@ -145,9 +156,12 @@ export default {
       status: {
         loadingItem: ''
       },
-      customType: ['不加生菜', '不加番茄', '不加美乃滋'],
+      customType: ['我不挑食', '不加生菜', '不加番茄', '不加美乃滋'],
       iceType: ['正常冰', '少冰', '微冰', '去冰', '熱'],
       sugarType: ['全糖', '七分', '半糖', '三分', '無糖'],
+      custom: [],
+      ice: '',
+      sugar: '',
       count: 1
     }
   },
@@ -162,6 +176,7 @@ export default {
         if (res.data.success) {
           this.product = res.data.product
           const modal = document.getElementById('itemModal')
+          console.log(res)
           modal.showModal()
           this.isLanding = true
         }
@@ -202,6 +217,9 @@ export default {
     modelValue () {
       if (this.modelValue) {
         this.getProduct()
+        this.custom = ['我不挑食']
+        this.ice = '正常冰'
+        this.sugar = '全糖'
       }
     }
   }
@@ -230,13 +248,6 @@ dialog {
 dialog::backdrop {
   background-color: rgb(39, 39, 39, 0.5);
 }
-.im-container {
-  display: flex;
-  padding: 15px;
-  flex-direction: row;
-  height: 100%;
-  width: 100%;
-}
 .im-close {
   font-size: 40px;
   z-index: 1;
@@ -251,6 +262,13 @@ dialog::backdrop {
 .im-close:active {
   color: #fac664;
 }
+.im-container {
+  display: flex;
+  padding: 15px;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+}
 .im-pic {
   // height: 450px;
   display: flex;
@@ -261,6 +279,13 @@ dialog::backdrop {
 .im-pic-inner {
   width: 100%; /* Adjust the width as needed */
   height: 100%; /* Adjust the height as needed */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.im-pic-sm {
+  width: 100%;
+  height: 240px;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -294,18 +319,19 @@ dialog::backdrop {
   margin-bottom: 8px;
 }
 .im-choice-title {
-  color: #644536;
+  color: var(--color--light-brown);
+  background-color: var(--color--dark-brown);
+  padding: 5px;
   font-size: 20px;
-  font-weight: 400;
+  font-weight: 900;
   letter-spacing: 0.04em;
   margin-top: 0px;
   margin-bottom: 8px;
 }
 .im-box {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   height: max-content;
-  align-content: center;
 }
 .im-boxtext {
   display: flex;
@@ -347,6 +373,11 @@ dialog::backdrop {
   flex-direction: row;
   align-items: center;
 }
+.im-count-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .im-count {
   font-size: 60px;
   margin-right: 30px;
@@ -366,7 +397,7 @@ dialog::backdrop {
   user-select: none;
 }
 .im-confirmed {
-  width: auto;
+  width: max-content;
   height: 100%;
   background-color: #644536;
   color: #fef7e9;
@@ -385,5 +416,92 @@ dialog::backdrop {
   background-color: #644536;
   color: #fef7e9;
   pointer-events: none;
+}
+@media (max-width: 575px){
+  dialog{
+    width: 100vw;
+  }
+  .im-pic{
+    display: none;
+  }
+  .im-number-column{
+    flex-direction: column;
+  }
+  .im-count{
+    margin: 0;
+  }
+  .im-count-num{
+    margin: 0 30px;
+  }
+  .im-confirmed{
+    padding: 18px 16px;
+    margin: 16px 0 0 0;
+  }
+}
+@media (min-width: 576px) and (max-width: 767px){
+  dialog{
+    width: 100vw;
+  }
+  .im-pic{
+    display: none;
+  }
+  .im-number{
+    justify-content: center;
+  }
+  .im-confirmed{
+    padding: 18px 16px;
+  }
+
+}
+@media (min-width: 768px) and (max-width: 991px){
+  dialog{
+    width: 80vw;
+  }
+  .im-pic{
+    display: none;
+  }
+  .im-number{
+    justify-content: center;
+  }
+  .im-confirmed{
+    padding: 18px 16px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px){
+  dialog{
+    width: 80vw;
+  }
+  .im-pic-sm{
+    display: none;
+  }
+  .im-number-column{
+    flex-direction: column;
+  }
+  .im-count{
+    margin: 0;
+  }
+  .im-count-num{
+    margin: 0 30px;
+  }
+  .im-confirmed{
+    padding: 18px 16px;
+    margin: 16px 0 0 0;
+  }
+}
+@media (min-width: 1200px) and (max-width: 1399px){
+  dialog{
+    width: 90vw;
+  }
+  .im-pic-sm{
+    display: none;
+  }
+}
+@media (min-width: 1400px){
+  dialog{
+    width: 80vw;
+  }
+  .im-pic-sm{
+    display: none;
+  }
 }
 </style>
