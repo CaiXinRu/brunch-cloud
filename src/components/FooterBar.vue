@@ -8,32 +8,32 @@
               <img src="https://picsum.photos/120" />
             </div>
             <div class="footer-content">
-              <p class="footer-text color--secondary">
+              <div class="footer-text color--secondary">
                 營業時間 05:30~14:30 (最後點餐時間14:15)
-              </p>
-              <p class="footer-text color--secondary">加盟專線 0975-173513</p>
-              <p class="footer-text color--secondary">
+              </div>
+              <div class="footer-text color--secondary">加盟專線 0975-173513</div>
+              <div class="footer-text color--secondary">
                 電子郵件 brunchincloud@gmail.com
-              </p>
-              <p class="footer-text color--brown">
+              </div>
+              <div class="footer-text color--brown">
                 本網站僅供個人作品使用，無作任何商業用途｜
                 <router-link
                   to="/login" class="footer-login"
                   >登入後台</router-link
                 >
-              </p>
+              </div>
             </div>
             <div class="footer-content-sm">
-              <p class="footer-text color--secondary">
-                營業時間 05:30~14:30 (最後點餐時間14:15)
-              </p>
-              <p class="footer-text color--secondary">加盟專線 0975-173513</p>
-              <p class="footer-text color--secondary">
-                電子郵件 brunchincloud@gmail.com
-              </p>
-              <p class="footer-text color--brown">
-                本網站僅供個人作品使用，無作任何商業用途
-              </p>
+              <div class="footer-text color--secondary">
+                營業時間&nbsp;<span>05:30~14:30 (最後點餐時間14:15)</span>
+              </div>
+              <div class="footer-text color--secondary">加盟專線&nbsp;<span>0975-173513</span></div>
+              <div class="footer-text color--secondary">
+                電子郵件&nbsp;<span>brunchincloud@gmail.com</span>
+              </div>
+              <div class="footer-text color--brown">
+                本網站僅供個人作品使用，<span>無作任何商業用途</span>
+              </div>
               <router-link
                   to="/login" class="footer-text footer-login"
                   >｜登入後台｜
@@ -148,20 +148,30 @@
   margin-left: 8px;
   font-size: 34px;
 }
+
 @media (max-width: 575px){
   .footer {
+    flex-direction: column;
     justify-content: flex-start;
   }
   .footer-content {
     display:none;
   }
   .footer-content-sm{
-    display: block;
-    margin: 0 0 0 10px;
-    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   .footer-text{
     font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .footer-text span{
+    display: block;
   }
   .footer-login{
     font-size: 20px;
@@ -220,6 +230,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-end;
+    width: 10%;
   }
 }
 @media (min-width: 992px) and (max-width: 1199px){
