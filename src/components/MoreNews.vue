@@ -13,7 +13,6 @@
   position: absolute;
   width: max-content;
   left: 85%;
-  top: 17%;
 }
 .s-div{
   height: 52px;
@@ -100,6 +99,45 @@
 
   opacity: 1;
   transition: all 0.45s cubic-bezier(0.65,0,.076,1);
+
+}
+
+@media (max-width: 575px) {
+  .s-button{
+    left: 50%;
+    bottom: -1.5%;
+    transform: translateX(-50%);
+  }
+
+}
+@media (min-width: 576px) and (max-width: 767px) {
+  .s-button{
+    left: 60%;
+    bottom: -1.5%;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .s-button{
+    top: 5%;
+    left: 73%;
+  }
+
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .s-button{
+    top: 15%;
+    left: 78%;
+  }
+}
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .s-button{
+    top: 17%;
+  }
+}
+@media (min-width: 1400px) {
+  .s-button{
+    top: 17%;
+  }
 
 }
 </style>

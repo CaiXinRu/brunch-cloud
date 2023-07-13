@@ -8,9 +8,12 @@
               <h2>關於 雲端早午安</h2>
               <h4 class="sub-border">BRUNCH IN THE CLUOD</h4>
               <div class="about-main-textsm">
-                結合傳統的早午餐元素與現代飲食趨勢，打造獨特而有趣的菜單。每個人都有屬於自己的「雲端」，它代表著無限的可能性和自由。
-                在「雲端」中，可以品嚐到各式類型的漢堡、三明治、義大利飯麵、炸物點心。「雲端」嚴選新鮮食材，注重品質和營養，確保每道菜都能帶給顧客美味和健康。
-                「雲端」是舒適和溫馨的，在放鬆身心、享受美食的同時，也能享受到「雲端」般的無拘束感。無論是與家人朋友共享一頓美味的早午餐，或是獨自享受寧靜時光，「雲端早午安」都將成為您身、心、胃的理想之地。
+                <span>結合傳統的早午餐元素與現代飲食趨勢，打造獨特而有趣的菜單。</span>
+                <span>每個人都有屬於自己的「雲端」，它代表著無限的可能性和自由。</span>
+                <span>在「雲端」中，可以品嚐到各式類型的漢堡、三明治、義大利飯麵、炸物點心。</span>
+                <span>「雲端」嚴選新鮮食材，注重品質和營養，確保每道菜都能帶給顧客美味和健康。</span>
+                <span>「雲端」是舒適和溫馨的，在放鬆身心、享受美食的同時，也能享受到「雲端」般的無拘束感。</span>
+                <span>無論是與家人朋友共享一頓美味的早午餐，或是獨自享受寧靜時光，「雲端早午安」都將成為您身、心、胃的理想之地。</span>
               </div>
             </div>
             <div class="about-lists-container">
@@ -68,37 +71,15 @@
       <div class="bg-color--light-brown">
         <div class="container u-pt-48 u-pb-68">
           <div class="u-text-center u-mb-48">
-            <h2>必點首選！</h2>
+            <h2>必點首選</h2>
             <h4 class="sub-border">MUST-TRY IN THE CLOUD</h4>
           </div>
           <MoreFood></MoreFood>
           <div class="try-lists">
-            <div class="try-list u-mt-16">
-              <img src="https://picsum.photos/180" class="u-center-block" />
-              <h3 class="u-text-center color--black">鱈魚龍蝦沙拉漢堡</h3>
-              <a href="/menu#ITBurger" data-category="ITBurger"
-                ><h6 class="try-btn">太空漢堡系列</h6></a
-              >
-            </div>
-            <div class="try-list u-mt-16">
-              <img src="https://picsum.photos/180" class="u-center-block" />
-              <h3 class="u-text-center color--black">火腿巧克力吐司</h3>
-              <a href="/menu#ITSandwich" data-category="ITsandwich"
-                ><h6 class="try-btn">飄浮吐司系列</h6></a
-              >
-            </div>
-            <div class="try-list u-mt-16">
-              <img src="https://picsum.photos/180" class="u-center-block" />
-              <h3 class="u-text-center color--black">煙燻鮭魚義大利麵</h3>
-              <a href="#" data-category="ITrice&noodles"
-                ><h6 class="try-btn">柔嫩飯麵系列</h6></a
-              >
-            </div>
-            <div class="try-list u-mt-16">
-              <img src="https://picsum.photos/180" class="u-center-block" />
-              <h3 class="u-text-center color--black">低脂舒肥雞胸沙拉</h3>
-              <a href="#" data-category="ITsnack"
-                ><h6 class="try-btn">輕盈小點系列</h6></a
+            <div class="try-list" v-for="(item, index) in foods" :key="index">
+              <div class="try-img"></div>
+              <h3 class="u-text-center color--black">{{item.food}}</h3>
+              <a href="/menu#{{ item.hashtag }}"><h6 class="try-btn">{{item.categoryC}}</h6></a
               >
             </div>
           </div>
@@ -106,8 +87,8 @@
       </div>
       <div class="bg-color--white">
         <div class="container u-pt-48 u-pb-56">
-          <div>
-            <h2>最新消息！</h2>
+          <div class="news-title-sm">
+            <h2>最新消息</h2>
             <h4 class="sub-border">NEWS IN THE CLOUD</h4>
           </div>
           <MoreNews></MoreNews>
@@ -118,7 +99,7 @@
               :key="index"
             >
               <div class="news-type">{{ promo.typeC }}</div>
-              <img src="https://picsum.photos/380/300" class="u-center-block" />
+              <div class="news-img"></div>
               <p class="sub u-mt-16 u-mb-4">{{ promo.time }}</p>
               <hr class="news-hr" />
               <a href="#"
@@ -159,6 +140,28 @@ export default {
           typeC: '爽領八折碼',
           time: '2023 JUL.',
           event: 'X新資料夾：主持人筆畫？'
+        }
+      ],
+      foods: [
+        {
+          categoryC: '太空漢堡系列',
+          food: '宇宙鮮蝦米堡',
+          hashtag: 'ITBurger'
+        },
+        {
+          categoryC: '飄浮吐司系列',
+          food: '飛翔龍蝦帕尼尼',
+          hashtag: 'ITSandwich'
+        },
+        {
+          categoryC: '柔情飯麵系列',
+          food: '青醬天婦羅燉飯',
+          hashtag: 'ITRiceNoodles'
+        },
+        {
+          categoryC: '輕盈小點系列',
+          food: '紫薯QQ球',
+          hashtag: 'ITSnack'
         }
       ]
     }
@@ -298,6 +301,7 @@ export default {
   grid-auto-rows: minmax(auto, max-content);
   justify-items: center;
   grid-gap: 10px;
+  margin-top: 16px;
 }
 .try-list {
   width: 100%;
@@ -305,8 +309,20 @@ export default {
   border: 2px solid #fac664;
   padding: 40px 25px;
   margin: 0px 1px;
-  background-color: #fef7e9;
+  background-color: hsl(40, 91%, 95%);
   border-radius: 50px;
+  user-select: none;
+  position: relative;
+}
+.try-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: url("https://picsum.photos/180");
+  background-size: cover;
+  background-position: center;
+  width: 180px;
+  height: 180px;
 }
 .try-btn {
   left: 50%;
@@ -345,6 +361,16 @@ export default {
   transform: translate(-15px, 50%);
   z-index: 1;
 }
+.news-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: url("https://picsum.photos/380/300");
+  background-size: cover;
+  background-position: center;
+  width: 380px;
+  height: 300px;
+}
 .news-hr {
   display: block;
   height: 0.5px;
@@ -364,7 +390,7 @@ export default {
     text-align: center;
     margin-top: 30px;
   }
-  .about-main h2{
+  h2{
     font-size: 40px;
   }
   .sub-border{
@@ -396,6 +422,41 @@ export default {
   }
   .about-slogan{
     font-size: 15px;
+  }
+
+  /* More Food */
+  .try-lists{
+    grid-template-columns: repeat(1, 1fr);
+    margin-top: 0;
+    margin-bottom:24px;
+  }
+  .try-list{
+    width: 80%;
+  }
+  h3{
+    font-size: 25px;
+  }
+  .try-btn{
+    font-size: 18px;
+  }
+
+  /* More News */
+  .news-title-sm{
+    text-align: center;
+  }
+  .news-lists{
+    grid-template-columns: repeat(1, 1fr);
+    margin-top: 0;
+    margin-bottom:24px;
+  }
+  .news-img{
+    width: 285px;
+    height: 225px;
+  }
+  .news-type{
+    font-size: 18px;
+    padding: 8px;
+    transform: translate(-10px, 50%);
   }
 }
 @media (min-width: 414px) and (max-width: 575px) {
@@ -434,6 +495,26 @@ export default {
   .about-slogan{
     font-size: 15px;
   }
+
+  /* More Food */
+  .try-lists{
+    grid-template-columns: repeat(1, 1fr);
+    margin-top: 0;
+    margin-bottom:24px;
+  }
+  .try-list{
+    width: 80%;
+  }
+
+  /* More News */
+  .news-title-sm{
+    text-align: center;
+  }
+  .news-lists{
+    grid-template-columns: repeat(1, 1fr);
+    margin-top: 0;
+    margin-bottom:24px;
+  }
 }
 @media (min-width: 576px) and (max-width: 767px) {
   .about{
@@ -464,6 +545,27 @@ export default {
   .about-slogan{
     font-size: 15px;
   }
+
+  /* More Food */
+  .try-lists{
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 0;
+    margin-bottom:24px;
+  }
+  .try-list h3{
+    font-size: 27px;
+  }
+
+  /* More News */
+  .news-lists{
+    grid-template-columns: repeat(1, 1fr);
+    margin-top: 0;
+    margin-bottom:24px;
+  }
+  .news-img{
+    width: 475px;
+    height: 375px;
+  }
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .about{
@@ -478,6 +580,9 @@ export default {
   .about-main-textsm{
     margin-bottom: 16px;
   }
+  .about-main-textsm span{
+    display: block;
+  }
   .about-lists{
     height: 450px;
   }
@@ -490,6 +595,22 @@ export default {
   .about-title{
     font-size: 40px;
     line-height: 30px;
+  }
+
+  /* More Food */
+  .try-lists{
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 0;
+    margin-bottom:24px;
+
+  }
+  /* More News */
+  .news-lists{
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .news-img{
+    width: 475px;
+    height: 375px;
   }
 }
 @media (min-width: 992px) and (max-width: 1199px) {
@@ -505,6 +626,9 @@ export default {
   .about-main-textsm{
     margin-bottom: 16px;
   }
+  .about-main-textsm span{
+    display: block;
+  }
   .about-lists{
     height: 460px;
   }
@@ -513,6 +637,22 @@ export default {
   }
   .about-square-sm{
     display: none;
+  }
+
+  /* More Food */
+  .try-lists{
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 0;
+    margin-bottom:24px;
+  }
+
+  /* More News */
+  .news-img{
+    width: 287px;
+    height: 240px;
+  }
+  .news-list h3{
+    font-size: 26px;
   }
 }
 @media (min-width: 1200px) and (max-width: 1399px) {
@@ -527,6 +667,17 @@ export default {
   }
   .about-square-sm{
     display: none;
+  }
+
+  /* More Food */
+  h3{
+    font-size: 30px;
+  }
+
+  /* More News */
+  .news-img{
+    width: 342px;
+    height: 270px;
   }
 }
 @media (min-width: 1400px) {

@@ -13,7 +13,6 @@
   position: absolute;
   width: max-content;
   left: 85%;
-  top: 18%;
   cursor: pointer;
 }
 .e-div{
@@ -101,6 +100,48 @@
 
   opacity: 1;
   transition: all 0.45s cubic-bezier(0.65,0,.076,1);
+
+}
+
+@media (max-width: 575px) {
+  .e-button{
+    left: 50%;
+    bottom: -1.5%;
+    transform: translateX(-50%);
+  }
+
+}
+@media (min-width: 576px) and (max-width: 767px) {
+  .e-button{
+    left: 50%;
+    bottom: -3%;
+    transform: translateX(-50%);
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .e-button{
+    left: 50%;
+    bottom: -3%;
+    transform: translateX(-50%);
+  }
+
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .e-button{
+    left: 50%;
+    bottom: -3%;
+    transform: translateX(-50%);
+  }
+}
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .e-button{
+    top: 18%;
+  }
+}
+@media (min-width: 1400px) {
+  .e-button{
+    top: 18%;
+  }
 
 }
 </style>

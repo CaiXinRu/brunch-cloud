@@ -117,6 +117,7 @@
       <!-- Rice & Noodles -->
       <ITRiceNoodles
         v-if="filteredMeals.includes('ITRiceNoodles')"
+        id="ITRiceNoodles"
         ref="ITRiceNoodles"
       ></ITRiceNoodles>
       <ILRiceNoodles
@@ -124,7 +125,7 @@
         ref="ILRiceNoodles"
       ></ILRiceNoodles>
       <!-- Snack -->
-      <ITSnack v-if="filteredMeals.includes('ITSnack')" ref="ITSnack"></ITSnack>
+      <ITSnack v-if="filteredMeals.includes('ITSnack')" id="ILSnack" ref="ITSnack"></ITSnack>
       <ILSnack v-if="filteredMeals.includes('ILSnack')" ref="ILSnack"></ILSnack>
       <!-- Drinks -->
       <ITDrinks
