@@ -1,5 +1,6 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
+  <LoadingPage v-if="isLoading"></LoadingPage>
   <div class="bg-color--white">
     <div class="container u-pt-48 u-pb-68">
       <MenuBar id="menuTop"></MenuBar>
@@ -104,6 +105,7 @@
         v-if="filteredMeals.includes('ILBurger')"
         ref="ILBurger"
       ></ILBurger>
+
       <!-- Sandwich -->
       <ITSandwich
         v-if="filteredMeals.includes('ITSandwich')"
@@ -114,6 +116,7 @@
         v-if="filteredMeals.includes('ILSandwich')"
         ref="ILSandwich"
       ></ILSandwich>
+
       <!-- Rice & Noodles -->
       <ITRiceNoodles
         v-if="filteredMeals.includes('ITRiceNoodles')"
@@ -124,12 +127,14 @@
         v-if="filteredMeals.includes('ILRiceNoodles')"
         ref="ILRiceNoodles"
       ></ILRiceNoodles>
+
       <!-- Snack -->
-      <ITSnack v-if="filteredMeals.includes('ITSnack')" id="ILSnack" ref="ITSnack"></ITSnack>
-      <ILSnack v-if="filteredMeals.includes('ILSnack')" ref="ILSnack"></ILSnack>
+      <ITSnack v-if="filteredMeals.includes('ITSnack')" id="ITSnack" ref="ITSnack"></ITSnack>
+      <ILSnack v-if="filteredMeals.includes('ILSnack')" ref="ILSnack"></ILSnack
+      >
       <!-- Drinks -->
       <ITDrinks
-        v-if="filteredMeals.includes('ITDrinks')"
+        v-if="filteredMeals.includes('ITDrinks')" id="ITDrinks"
         ref="ITDrinks"
       ></ITDrinks>
       <ILDrinks
@@ -145,6 +150,7 @@
 </template>
 
 <script>
+import LoadingPage from '@/components/LodingPage.vue'
 import MenuBar from '@/components/MenuBar.vue'
 import ITBurger from '@/components/Item-Title/1-ITBurger.vue'
 import ITSandwich from '@/components/Item-Title/2-ITSandwich.vue'
@@ -160,11 +166,28 @@ import ILBurger from '@/components/Item-List/1-ILBurger.vue'
 export default {
   data () {
     return {
+      isLoading: false,
       selectedCategory: 'all',
       isDropdownOpen: false
     }
   },
+  mounted () {
+    setTimeout(() => {
+      if (window.location.hash && window.location.hash !== '') {
+        const el = document.querySelector(window.location.hash)
+        if (el !== null) {
+          el.scrollIntoView({ behavior: 'smooth' })
+        }
+      }
+    })
+    window.addEventListener('click', this.closeDropdown)
+    this.isLoading = true
+    setTimeout(() => {
+      this.isLoading = false
+    }, 2000)
+  },
   components: {
+    LoadingPage,
     MenuBar,
     ITBurger,
     ITSandwich,
@@ -231,20 +254,6 @@ export default {
           default:
             return []
         }
-      }
-    }
-  },
-  mounted () {
-    window.addEventListener('click', this.closeDropdown)
-    // const h = location.hash
-    // location.hash = ''
-    // setTimeout(() => {
-    //   location.hash = h
-    // })
-    if (window.location.hash && window.location.hash !== '') {
-      const el = document.querySelector(window.location.hash)
-      if (el !== null) {
-        el.scrollIntoView({ behavior: 'smooth' })
       }
     }
   },

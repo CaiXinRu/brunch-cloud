@@ -3,7 +3,7 @@
     <div class="navbar bg-color--secondary">
       <div class="container u-pt-16">
         <div class="logo">
-          <a href="/"><img src="https://picsum.photos/80" /></a>
+          <router-link to="/"><img src="https://picsum.photos/80" /></router-link>
         </div>
         <div class="list-toggle-sm">
           <div class="list-toggle" @click="isPopupListOpen=true">

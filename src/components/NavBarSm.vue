@@ -37,9 +37,9 @@
           <!-- <div class="list-img-sm">
             <img src="https://picsum.photos/380/150"/>
           </div> -->
-          <a class="list-close-sm" @click="isPopupListOpen=false">
+          <div class="list-close-sm" @click="isPopupListOpen=false">
             <font-awesome-icon icon="fa-solid fa-circle-xmark" />
-          </a>
+          </div>
           <ul class="list-sm">
             <li>
               <img class="list-img-sm" src="https://picsum.photos/300/150"/>

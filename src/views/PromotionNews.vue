@@ -68,7 +68,7 @@
       <div class="news-lists">
         <div class="news-list" v-for="(promo, index) in filteredPromos" :key="index">
           <div class="news-type">{{promo.typeC}}</div>
-          <div class="news-img"></div>
+          <img class="news-img" :src="require(`@/assets/pics/promotions/${promo.img}`)"/>
           <p class="sub u-mt-16 u-mb-4">{{promo.time}}</p>
           <hr class="news-hr" />
           <a href="#"
@@ -91,55 +91,64 @@ export default {
           type: 'discount',
           typeC: '超瞎趴活動',
           time: '2023 JUL. / AUG.',
-          event: '暑期雲端全面打九折！'
+          event: '暑期雲端全面打九折！',
+          img: '1.jpeg'
         },
         {
           type: 'gift',
           typeC: '滿X佰就送',
           time: '2023 JUL.',
-          event: '限量！滿五佰送雲端環保袋'
+          event: '限量！滿五佰送雲端手提袋',
+          img: '4.jpeg'
         },
         {
           type: 'code',
           typeC: '爽領八折碼',
           time: '2023 JUL.',
-          event: 'X新資料夾：主持人筆畫？'
+          event: 'X呱吉：本名筆畫字數？',
+          img: '7.jpeg'
         },
         {
           type: 'discount',
           typeC: '超瞎趴活動',
           time: '2023 JUN.',
-          event: 'Google五星好評折50'
+          event: 'Google五星好評折50',
+          img: '2.jpeg'
         },
         {
           type: 'gift',
           typeC: '滿X佰就送',
           time: '2023 JUN.',
-          event: '限量！滿兩佰送雲端Ｑ徽章'
+          event: '限量！滿兩佰送雲端Ｑ徽章',
+          img: '5.jpeg'
         },
         {
           type: 'code',
           typeC: '爽領八折碼',
           time: '2023 JUN.',
-          event: 'X百靈果：創立時間？'
+          event: 'X百靈果：成立時間？',
+          img: '8.jpeg'
         },
         {
           type: 'discount',
           typeC: '超瞎趴活動',
           time: '2023 MAY.',
-          event: '四人有「雲」一人免錢'
+          event: '四人有「雲」一人免錢',
+          img: '3.jpeg'
         },
         {
           type: 'gift',
           typeC: '滿X佰就送',
           time: '2023 MAY.',
-          event: '限量！滿仟送雲端餐具'
+          event: '限量！滿仟送雲端餐具',
+          img: '6.jpeg'
         },
         {
           type: 'code',
           typeC: '爽領八折碼',
           time: '2023 MAY.',
-          event: 'X股癌：第一本書？'
+          event: 'X股癌：第一本書？',
+          img: '9.jpeg'
         }
       ],
       selectedType: 'all',
@@ -343,7 +352,6 @@ export default {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  background-image: url("https://picsum.photos/380/300");
   background-size: cover;
   background-position: center;
 }
