@@ -1,9 +1,9 @@
 <template>
   <header>
     <div class="navbar bg-color--secondary">
-      <div class="container u-pt-16">
+      <div class="container">
         <div class="logo">
-          <router-link to="/"><img src="https://picsum.photos/80" /></router-link>
+          <router-link to="/"><img src="@/assets/logo/logo_light-brown.png" /></router-link>
         </div>
         <div class="list-toggle-sm">
           <div class="list-toggle" @click="isPopupListOpen=true">
@@ -39,15 +39,12 @@
           </ul>
         </div>
         <div id="popup-list" :class="{'list-bar-sm': true, 'popup-open':isPopupListOpen} ">
-          <!-- <div class="list-img-sm">
-            <img src="https://picsum.photos/380/150"/>
-          </div> -->
           <a class="list-close-sm" @click="isPopupListOpen=false">
             <font-awesome-icon icon="fa-solid fa-circle-xmark" />
           </a>
           <ul class="list-sm">
             <li>
-              <img class="list-img-sm" src="https://picsum.photos/300/150"/>
+              <img class="list-img-sm" src="@/assets/logo/logo+word_hor.png"/>
             </li>
             <li>
               <router-link to="/menu" class="main-font-sm" date-link-alt="MENU" @click="isPopupListOpen=false"
@@ -132,9 +129,15 @@ export default {
 }
 .logo {
   margin: auto;
+  overflow: hidden;
+  height: 115px;
+  display: flex;
+  align-items: center;
+}
+.logo img {
+  width: 180px;
 }
 .list-bar {
-  margin: 20px 0 0 0;
   width: 100%;
   height: 40px;
   align-items: center;
@@ -223,7 +226,7 @@ export default {
   left: 0;
   background-color: var(--color--secondary);
   display: block;
-  z-index: 5;
+  z-index: 15;
   transition: all 1s ease;
 }
 .list-bar-sm.popup-open{
@@ -233,7 +236,9 @@ export default {
   top: 0;
 }
 .list-img-sm{
-  margin: -50px 0 50px 0;
+  width: 400px;
+  overflow: hidden;
+  top: 30px;
 }
 .list-close-sm{
   font-size: 48px;
@@ -350,6 +355,9 @@ CartBar::backdrop {
   }
   .list-toggle-sm{
     display: flex;
+  }
+  .list-img-sm{
+    width: 250px;
   }
   .top-right-btn{
     display: none;

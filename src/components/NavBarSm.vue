@@ -3,8 +3,7 @@
     <div class="navbar-sm bg-color--secondary">
       <div class="container">
         <router-link to="/" class="logo">
-            <img src="https://picsum.photos/60"
-          />
+            <img src="@/assets/logo/logo+word_hor.png"/>
         </router-link>
         <div class="list-bar">
           <ul class="list">
@@ -34,15 +33,12 @@
           </ul>
         </div>
         <div id="popup-list" :class="{'list-bar-sm': true, 'popup-open':isPopupListOpen} ">
-          <!-- <div class="list-img-sm">
-            <img src="https://picsum.photos/380/150"/>
-          </div> -->
           <div class="list-close-sm" @click="isPopupListOpen=false">
             <font-awesome-icon icon="fa-solid fa-circle-xmark" />
           </div>
           <ul class="list-sm">
             <li>
-              <img class="list-img-sm" src="https://picsum.photos/300/150"/>
+              <img class="list-img-sm" src="@/assets/logo/logo+word_hor.png"/>
             </li>
             <li>
               <router-link to="/menu" class="main-font-sm" date-link-alt="MENU" @click="isPopupListOpen=false"
@@ -137,11 +133,15 @@ export default {
 }
 .logo {
   position: absolute;
-  left: 5%;
-  top: 50%;
-  transform: translateY(-47%);
+  left: 0%;
+  overflow: hidden;
+  width: 225px;
   cursor: pointer;
+  display: flex;
   z-index: 1;
+}
+.logo img {
+  width: 200px;
 }
 .list-bar {
   width: 100%;
@@ -209,7 +209,9 @@ export default {
   top: 0;
 }
 .list-img-sm{
-  margin: -50px 0 50px 0;
+  width: 400px;
+  overflow: hidden;
+  top: 30px;
 }
 .list-close-sm{
   font-size: 48px;
@@ -343,6 +345,9 @@ CartBar::backdrop {
   #popup-list:target{
     top: 0;
   }
+  .list-img-sm{
+    width: 250px;
+  }
   .top-right-btn{
     display: none;
   }
@@ -376,6 +381,18 @@ CartBar::backdrop {
   }
 }
 @media (min-width: 992px) and (max-width: 1199px) {
+  .logo {
+    position: absolute;
+    left: 0%;
+    overflow: hidden;
+    width: 200px;
+    cursor: pointer;
+    display: flex;
+    z-index: 1;
+  }
+  .logo img {
+    width: 180px;
+  }
   .top-right-btn{
     display: none;
   }

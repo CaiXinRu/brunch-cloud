@@ -2,10 +2,10 @@
   <body>
     <footer>
       <div class="bg-color--light-brown">
-        <div class="container u-pt-16 u-pb-16">
+        <div class="container">
           <div class="footer">
-            <div>
-              <img src="https://picsum.photos/120" />
+            <div class="logo">
+              <img src="@/assets/logo/logo+word_ver.png" />
             </div>
             <div class="footer-content">
               <div class="footer-text color--secondary">
@@ -115,10 +115,25 @@
 </template>
 
 <style scoped>
+.container{
+  padding: 16px 0;
+}
 .footer {
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+.logo{
+  overflow: hidden;
+  display: flex;
+  position: absolute;
+  left: 11%;
+  z-index: 1;
+  align-items: center;
+  justify-content: center;
+}
+.logo img {
+  width: 151px;
 }
 .footer-text {
   display: flex;
@@ -150,10 +165,20 @@
 }
 
 @media (max-width: 575px){
+  .container{
+    padding-top: 0;
+  }
   .footer {
     flex-direction: column;
     justify-content: flex-start;
   }
+  .logo[data-v-f906bf10] {
+    overflow: hidden;
+    display: flex;
+    position: relative;
+    left: -5px;
+    bottom: -15px;
+}
   .footer-content {
     display:none;
   }
@@ -190,12 +215,18 @@
   .footer {
     justify-content: flex-start;
   }
+  .logo{
+    left: -5%;
+  }
+  .logo img {
+    width: 160px;
+  }
   .footer-content {
     display:none;
   }
   .footer-content-sm{
     display: block;
-    margin: 0 0 0 8px;
+    margin: 0 0 0 130px;
     flex: 1;
   }
   .footer-icons-sm{
@@ -211,6 +242,12 @@
 @media (min-width: 768px) and (max-width: 991px){
   .footer {
     justify-content: center;
+  }
+  .logo{
+    left: -4%;
+  }
+  .logo img {
+    width: 140px;
   }
   .footer-content {
     display: block;
@@ -237,6 +274,9 @@
   .footer {
     justify-content: center;
   }
+  .logo{
+    left: 0%;
+  }
   .footer-content {
     display: block;
     margin: 0 55px 0 16px;
@@ -261,6 +301,9 @@
   .footer {
     justify-content: center;
   }
+  .logo{
+    left: 5%;
+  }
   .footer-content {
     display: block;
     margin: 0 120px 0 16px;
@@ -284,6 +327,9 @@
 @media (min-width: 1400px){
   .footer {
     justify-content: center;
+  }
+  .logo{
+    left: 11%;
   }
   .footer-content {
     display: block;

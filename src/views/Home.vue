@@ -1,5 +1,5 @@
 <template>
-  <LoadingPage v-if="isLoading"></LoadingPage>
+  <LoadingPage v-show="isLoading"></LoadingPage>
   <div class="wrapper">
     <div class="bg-color--white">
       <div class="container u-pt-68 u-pb-68">
