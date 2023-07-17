@@ -51,4 +51,39 @@
   margin: 0 4px;
   letter-spacing: 0.1em;
 }
+
+/* RWD */
+@media (max-width: 413px){
+  .news-bar{
+    width: 100%;
+  }
+  .news-text{
+    font-size: 18px;
+  }
+  .news-text-font{
+    font-size: 28px;
+  }
+}
+@media (min-width: 414px) and (max-width: 575px) {
+  .news-bar{
+    width: 100%;
+  }
+  .news-text{
+    font-size: 24px;
+  }
+}
+@media (min-width: 576px) and (max-width: 767px) {
+  .news-bar{
+    width: 100%;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+
+}
+@media (min-width: 992px) and (max-width: 1199px){
+}
+@media (min-width: 1200px) and (max-width: 1399px){
+}
+@media (min-width: 1400px){
+}
 </style>

@@ -127,7 +127,7 @@
 </template>
 
 <script>
-import LocationBar from '@/components/locations/LocationBar.vue'
+import LocationBar from '@/components/LocationBar.vue'
 export default {
   data () {
     return {

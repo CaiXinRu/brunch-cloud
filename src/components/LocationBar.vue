@@ -40,4 +40,30 @@
   margin: 0 4px;
   letter-spacing: 0.1em;
 }
+
+/* RWD */
+@media (max-width: 413px){
+  .location-bar{
+    width: 100%;
+  }
+  .location-text{
+    font-size: 18px;
+  }
+  .location-text-font{
+    font-size: 28px;
+  }
+}
+@media (min-width: 414px) and (max-width: 575px) {
+  .location-bar{
+    width: 100%;
+  }
+  .location-text{
+    font-size: 24px;
+  }
+}
+@media (min-width: 576px) and (max-width: 767px) {
+  .location-bar{
+    width: 100%;
+  }
+}
 </style>

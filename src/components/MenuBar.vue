@@ -45,4 +45,27 @@
   margin: 0 10px;
   letter-spacing: 0.1em;
 }
+
+/* RWD */
+@media (max-width: 413px){
+  .menu-bar{
+    width: 100%;
+  }
+  .menu-text{
+    font-size: 18px;
+  }
+}
+@media (min-width: 414px) and (max-width: 575px) {
+  .menu-bar{
+    width: 100%;
+  }
+  .menu-text{
+    font-size: 24px;
+  }
+}
+@media (min-width: 576px) and (max-width: 767px) {
+  .menu-bar{
+    width: 100%;
+  }
+}
 </style>

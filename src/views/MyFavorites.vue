@@ -384,6 +384,8 @@ export default {
   align-self: flex-end;
   cursor: pointer;
 }
+
+/* RWD */
 @media (max-width: 991px){
   .menu-category{
     display: none;
