@@ -1,12 +1,10 @@
 <template>
   <body>
-    <div class="bg-color--secondary">
-      <div class="container u-pt-16 u-pb-16">
-        <div class="dnb-img">
-          <router-link to="/"
-            ><img style="height: 100%" src="https://picsum.photos/80"
-          /></router-link>
-        </div>
+    <div style="height: max-content" class="bg-color--secondary">
+      <div class="container">
+        <router-link to="/" class="dnb-img"
+          ><img style="height: 120px" src="@/assets/logo/logo+word--light-brown_ver.png"
+        /></router-link>
         <div class="list-bar">
           <ul class="list">
             <li>

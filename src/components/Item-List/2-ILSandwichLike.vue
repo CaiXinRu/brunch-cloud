@@ -55,6 +55,7 @@ export default {
       isLoading: false,
       isModalVisible: false,
       products: [],
+      filteredLikes: [],
       filteredProducts: [],
       productId: ''
     }
@@ -68,26 +69,13 @@ export default {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`
       this.isLoading = true
       this.$http.get(api).then((res) => {
-        console.log(res)
         this.products = res.data.products
-        const likedItems = localStorage.getItem('likeItems')
-        if (likedItems) {
-          const likedArr = JSON.parse(likedItems)
-          for (const prod of this.products) {
-            for (const likedItem of likedArr) {
-              if (prod.id === likedItem.id) {
-                prod.like = likedItem.like
-              }
-            }
-          }
-        }
         this.isLoading = false
       })
     },
     toggleLike (item) {
       item.like = !item.like
       localStorage.setItem('likeItems', JSON.stringify(this.products))
-      // ['id1', 'id2']
     },
     showModal (id) {
       this.productId = id
@@ -97,16 +85,19 @@ export default {
   watch: {
     products: {
       handler () {
-        this.filteredProducts = this.products.filter(
+        this.filteredProducts = this.filteredLikes.filter(
           (item) => item.category === '飄浮吐司'
         )
-      },
-      deep: true
+      }
     },
     immediate: true
   },
-  mounted () {
-    this.getProducts()
+  created () {
+    const likedItems = localStorage.getItem('likeItems')
+    if (likedItems) {
+      this.products = JSON.parse(likedItems)
+      this.filteredLikes = this.products.filter((item) => item.like)
+    }
   }
 }
 </script>
@@ -114,7 +105,6 @@ export default {
 <style>
 .item-list {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: minmax(auto, max-content);
   grid-gap: 10px;
   justify-items: start;
@@ -129,6 +119,22 @@ export default {
   user-select: none;
   position: relative;
 }
+/* .item-list {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  .item-per {
+    background-color: #fef7e9;
+    padding: 80px 25px 28px 25px;
+    margin: 10px 10px;
+    border-radius: 50px;
+    width: 295px;
+    height: auto;
+    user-select: none;
+  } */
 .item-per a {
   cursor: pointer;
 }
@@ -190,25 +196,6 @@ export default {
 }
 .item-add-icon:active {
   color: #e3bac6;
-}
-
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 9999;
-}
-
-.modal-container {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10000;
-  /* 其他樣式設定... */
 }
 
 @media (max-width: 575px) {

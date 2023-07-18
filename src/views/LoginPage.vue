@@ -2,11 +2,11 @@
   <LoadingPage v-if="isLoading"></LoadingPage>
   <div class="bg-color--white">
     <div class="container">
-      <div class="login-row">
-        <div class="login-element">
-          <img src="https://picsum.photos/500" />
-        </div>
-        <div class="login-element">
+      <div class="login-row login-column-sm">
+        <router-link to="/" class="login-element-left">
+          <img src="@/assets/logo/logo+word--light-brown_ver.png" />
+        </router-link>
+        <div class="login-element-right">
           <table style="width: 100%">
             <thead>
               <tr class="login-head">
@@ -113,11 +113,22 @@ export default {
   flex-direction: row;
   justify-content: space-between;
 }
-.login-element {
-  width: 50%;
+.login-element-left {
+  width: 40%;
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+}
+.login-element-left img {
+  width: 500px;
+}
+.login-element-right {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
 .login-head {
   color: #644536;
@@ -182,5 +193,31 @@ export default {
 }
 button {
   cursor: pointer;
+}
+.login-btn:hover {
+  background-color: var(--color--secondary);
+  color: var(--color--light-brown);
+  border: 3px solid var(--color--secondary);
+  box-shadow: 8px 8px 0px var(--color--primary);
+}
+
+/* RWD */
+
+@media (max-width: 991px){
+  .container{
+    padding: 0;
+  }
+  .login-column-sm{
+    flex-direction: column;
+  }
+  .login-element-left{
+    width: 100%;
+  }
+  .login-element-left img{
+    width: 240px;
+  }
+  .login-element-right{
+    width: 100%;
+  }
 }
 </style>

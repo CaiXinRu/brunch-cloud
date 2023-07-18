@@ -72,12 +72,12 @@
           <div class="news-type">{{ promo.typeC }}</div>
           <img
             class="news-img"
-            :src="require(`@/assets/pics/promotions/${promo.img}`)"
-            @click="showModal(promo.id)"
+            :src="`/promotions/${promo.img}`"
+            @click.prevent="showModal(promo.id)"
           />
           <p class="sub u-mt-16 u-mb-4">{{ promo.time }}</p>
           <hr class="news-hr" />
-          <div class="news-text" @click="showModal(promo.id)">{{ promo.event }}</div>
+          <div class="news-text" @click.prevent="showModal(promo.id)">{{ promo.event }}</div>
         </div>
       </div>
       <div class="news-arrow" @click="goToTop">

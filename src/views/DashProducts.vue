@@ -1,7 +1,7 @@
 <template>
   <LoadingPage v-if="isLoading"></LoadingPage>
   <div class="bg-color--white">
-    <div class="container u-pt-48 u-pb-68">
+    <div class="container u-pt-48 u-pb-32">
       <div class="dp-button" @click="openModal(true)">
         <div class="s-div">
           <a class="dp-plus"> </a>
@@ -52,6 +52,7 @@
       </table>
     </div>
   </div>
+  <PaginationPage :pages="pagination" @emit-pages="getProducts"></PaginationPage>
   <DashProductModal
     ref="dashProductModal"
     :product="tempProduct"
@@ -68,6 +69,7 @@
 import DashProductModal from '@/components/DashProductModal.vue'
 import DashDelModal from '@/components/DashDelModal.vue'
 import LoadingPage from '@/components/LodingPage.vue'
+import PaginationPage from '@/components/PaginationPage.vue'
 export default {
   data () {
     return {
@@ -81,15 +83,16 @@ export default {
   components: {
     DashProductModal,
     DashDelModal,
-    LoadingPage
+    LoadingPage,
+    PaginationPage
   },
   methods: {
-    getProducts () {
-      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/products`
+    getProducts (page = 1) {
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/products/?page=${page}`
       this.isLoading = true
       this.$http.get(api).then((res) => {
         if (res.data.success) {
-          // console.log(res.data)
+          console.log(res.data)
           this.products = res.data.products
           this.pagination = res.data.pagination
         }

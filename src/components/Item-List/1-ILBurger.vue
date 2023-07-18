@@ -68,13 +68,26 @@ export default {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`
       this.isLoading = true
       this.$http.get(api).then((res) => {
+        console.log(res)
         this.products = res.data.products
+        const likedItems = localStorage.getItem('likeItems')
+        if (likedItems) {
+          const likedArr = JSON.parse(likedItems)
+          for (const prod of this.products) {
+            for (const likedItem of likedArr) {
+              if (prod.id === likedItem.id) {
+                prod.like = likedItem.like
+              }
+            }
+          }
+        }
         this.isLoading = false
       })
     },
     toggleLike (item) {
       item.like = !item.like
       localStorage.setItem('likeItems', JSON.stringify(this.products))
+      // ['id1', 'id2']
     },
     showModal (id) {
       this.productId = id
@@ -92,13 +105,8 @@ export default {
     },
     immediate: true
   },
-  created () {
-    const likedItems = localStorage.getItem('likeItems')
-    if (likedItems) {
-      this.products = JSON.parse(likedItems)
-    } else {
-      this.getProducts()
-    }
+  mounted () {
+    this.getProducts()
   }
 }
 </script>

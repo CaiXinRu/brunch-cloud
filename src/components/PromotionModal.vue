@@ -5,7 +5,7 @@
             <font-awesome-icon icon="fa-solid fa-circle-xmark" />
         </a>
         <div class="promo-container">
-            <img class="im-pic" src="@/assets/pics/promotions/1.jpeg"/>
+            <img class="im-pic" :src="`/promotions/${promo.img}`" />
             <br>
             <div class="promo-title">▎活動時間:</div>
             <div class="promo-text">{{ promo.timeC }}</div>
@@ -35,13 +35,14 @@ export default {
   data () {
     return {
       isLanding: false,
-      promo: {}
+      promo: {},
+      image: null
     }
   },
   components: {
   },
   methods: {
-    getPromo () {
+    async getPromo () {
       this.promo = this.promos.find(promo =>
         promo.id === this.id
       )
@@ -75,7 +76,6 @@ dialog {
   height: max-content;
   background-color: #fef7e9;
   z-index: 20;
-  user-select: none;
 }
 dialog:focus-visible {
     outline: none;

@@ -1,6 +1,10 @@
 <template>
   <div>
-    <dialog id="itemModal" ref="itemModal" :class="{ 'show-modal': isLanding }">
+    <dialog
+      id="sandwichModal"
+      ref="sandwichModal"
+      :class="{ 'show-modal': isLanding }"
+    >
       <a class="im-close" @click="closeModal()">
         <font-awesome-icon icon="fa-solid fa-circle-xmark" />
       </a>
@@ -42,14 +46,14 @@
             <div
               class="im-box-container"
               v-for="(itemC, key) in customType"
-              :key="'custom' + key"
+              :key="'customS' + key"
             >
-              <label class="im-boxtext" :for="'custom' + key">
+              <label class="im-boxtext" :for="'customS' + key">
                 <input
                   class="im-input"
                   name="customType"
                   type="checkbox"
-                  :id="'custom' + key"
+                  :id="'customS' + key"
                   :value="itemC"
                   v-model="custom"
                 />
@@ -58,48 +62,6 @@
               </label>
             </div>
           </div>
-          <!-- <label class="im-choice-title">冰塊</label>
-          <div class="im-box">
-            <div
-              class="im-box-container"
-              v-for="(itemI, key) in iceType"
-              :key="'ice' + key"
-            >
-              <label class="im-boxtext" :for="'ice' + key">
-                <input
-                  class="im-input"
-                  name="iceType"
-                  type="radio"
-                  :id="'ice' + key"
-                  :value="itemI"
-                  v-model="ice"
-                />
-                <span class="im-checkmark"></span>
-                <span class="u-ml-4 u-mr-16">{{ itemI }}</span>
-              </label>
-            </div>
-          </div>
-          <label class="im-choice-title">甜度</label>
-          <div class="im-box">
-            <div
-              class="im-box-container"
-              v-for="(itemS, key) in sugarType"
-              :key="'sugar' + key"
-            >
-              <label class="im-boxtext" :for="'sugar' + key">
-                <input
-                  class="im-input"
-                  name="sugarType"
-                  type="radio"
-                  :id="'sugar' + key"
-                  :value="itemS"
-                  v-model="sugar"
-                />
-                <span class="im-checkmark"></span>
-                <span class="u-ml-4 u-mr-16">{{ itemS }}</span>
-              </label>
-            </div>
-          </div> -->
           <div class="u-pt-16 im-number im-number-column">
             <div class="im-count-container">
               <font-awesome-icon
@@ -118,14 +80,14 @@
               type="button"
               class="im-confirmed"
               @click="addToCart(product.id, count)"
-              :class="{ 'disabled': status.loadingItem === product.id }"
+              :class="{ disabled: status.loadingItem === product.id }"
             >
               <div
                 v-if="this.status.loadingItem === product.id"
                 class="spinner-grow text-light spinner-grow-sm"
                 role="status"
               ></div>
-                新增{{ count }}份至購物清單
+              新增{{ count }}份至購物清單
             </button>
           </div>
         </div>
@@ -175,7 +137,7 @@ export default {
       this.$http.get(api).then((res) => {
         if (res.data.success) {
           this.product = res.data.product
-          const modal = document.getElementById('itemModal')
+          const modal = document.getElementById('sandwichModal')
           console.log(res)
           modal.showModal()
           this.isLanding = true
@@ -185,7 +147,7 @@ export default {
     },
     closeModal () {
       this.$emit('update:modelValue', false)
-      this.$refs.itemModal.close()
+      this.$refs.sandwichModal.close()
       this.isLanding = false
     },
     plusCount () {
@@ -240,12 +202,12 @@ dialog {
   height: max-content;
   background-color: #fef7e9;
 }
-#itemModal {
+#sandwichModal {
   opacity: 0.5;
   transform: translateY(-50px);
   transition: all 0.5s ease;
 }
-#itemModal.show-modal {
+#sandwichModal.show-modal {
   opacity: 1;
   transform: translateY(0);
   position: fixed;
@@ -378,7 +340,7 @@ dialog::backdrop {
   flex-direction: row;
   align-items: center;
 }
-.im-count-container{
+.im-count-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -422,90 +384,89 @@ dialog::backdrop {
   color: #fef7e9;
   pointer-events: none;
 }
-@media (max-width: 575px){
-  dialog{
+@media (max-width: 575px) {
+  dialog {
     width: 100vw;
   }
-  .im-pic{
+  .im-pic {
     display: none;
   }
-  .im-number-column{
+  .im-number-column {
     flex-direction: column;
   }
-  .im-count{
+  .im-count {
     margin: 0;
   }
-  .im-count-num{
+  .im-count-num {
     margin: 0 30px;
   }
-  .im-confirmed{
+  .im-confirmed {
     padding: 18px 16px;
     margin: 16px 0 0 0;
   }
 }
-@media (min-width: 576px) and (max-width: 767px){
-  dialog{
+@media (min-width: 576px) and (max-width: 767px) {
+  dialog {
     width: 100vw;
   }
-  .im-pic{
+  .im-pic {
     display: none;
   }
-  .im-number{
+  .im-number {
     justify-content: center;
   }
-  .im-confirmed{
-    padding: 18px 16px;
-  }
-
-}
-@media (min-width: 768px) and (max-width: 991px){
-  dialog{
-    width: 80vw;
-  }
-  .im-pic{
-    display: none;
-  }
-  .im-number{
-    justify-content: center;
-  }
-  .im-confirmed{
+  .im-confirmed {
     padding: 18px 16px;
   }
 }
-@media (min-width: 992px) and (max-width: 1199px){
-  dialog{
+@media (min-width: 768px) and (max-width: 991px) {
+  dialog {
     width: 80vw;
   }
-  .im-pic-sm{
+  .im-pic {
     display: none;
   }
-  .im-number-column{
+  .im-number {
+    justify-content: center;
+  }
+  .im-confirmed {
+    padding: 18px 16px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  dialog {
+    width: 80vw;
+  }
+  .im-pic-sm {
+    display: none;
+  }
+  .im-number-column {
     flex-direction: column;
   }
-  .im-count{
+  .im-count {
     margin: 0;
   }
-  .im-count-num{
+  .im-count-num {
     margin: 0 30px;
   }
-  .im-confirmed{
+  .im-confirmed {
     padding: 18px 16px;
     margin: 16px 0 0 0;
   }
 }
-@media (min-width: 1200px) and (max-width: 1399px){
-  dialog{
+@media (min-width: 1200px) and (max-width: 1399px) {
+  dialog {
     width: 90vw;
   }
-  .im-pic-sm{
+  .im-pic-sm {
     display: none;
   }
 }
-@media (min-width: 1400px){
-  dialog{
+@media (min-width: 1400px) {
+  dialog {
     width: 80vw;
   }
-  .im-pic-sm{
+  .im-pic-sm {
     display: none;
   }
 }

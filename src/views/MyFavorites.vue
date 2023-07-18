@@ -108,10 +108,10 @@
         v-if="filteredMeals.includes('ITSandwich')"
         ref="ITSandwich"
       ></ITSandwich>
-      <ILSandwich
+      <ILSandwichLike
         v-if="filteredMeals.includes('ILSandwich')"
         ref="ILSandwich"
-      ></ILSandwich>
+      ></ILSandwichLike>
       <!-- Rice & Noodles -->
       <ITRiceNoodles
         v-if="filteredMeals.includes('ITRiceNoodles')"
@@ -149,7 +149,7 @@ import ITRiceNoodles from '@/components/Item-Title/3-ITRiceNoodles.vue'
 import ITSnack from '@/components/Item-Title/4-ITSnack.vue'
 import ITDrinks from '@/components/Item-Title/5-ITDrinks.vue'
 import ILBurgerLike from '@/components/Item-List/1-ILBurgerLike.vue'
-// import ILSandwich from '@/components/Item-List/2-ILSandwich.vue'
+import ILSandwichLike from '@/components/Item-List/2-ILSandwichLike.vue'
 // import ILRiceNoodles from '@/components/Item-List/3-ILRiceNoodles.vue'
 // import ILSnack from '@/components/Item-List/4-ILSnack.vue'
 // import ILDrinks from '@/components/Item-List/5-ILDrinks.vue'
@@ -168,8 +168,8 @@ export default {
     ITRiceNoodles,
     ITSnack,
     ITDrinks,
-    ILBurgerLike
-    // ILSandwich
+    ILBurgerLike,
+    ILSandwichLike
     // ILRiceNoodles,
     // ILSnack,
     // ILDrinks

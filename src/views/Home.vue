@@ -123,7 +123,7 @@
         <div class="news-lists">
           <div class="news-list" v-for="(promo, index) in promos" :key="index">
             <div class="news-type">{{ promo.typeC }}</div>
-            <img class="news-img" :src="require(`@/assets/pics/promotions/${promo.img}`)" />
+            <img class="news-img" :src="`/promotions/${promo.img}`" />
             <p class="sub u-mt-16 u-mb-4">{{ promo.time }}</p>
             <hr class="news-hr" />
             <div
