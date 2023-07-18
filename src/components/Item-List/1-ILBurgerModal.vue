@@ -58,48 +58,6 @@
               </label>
             </div>
           </div>
-          <!-- <label class="im-choice-title">冰塊</label>
-          <div class="im-box">
-            <div
-              class="im-box-container"
-              v-for="(itemI, key) in iceType"
-              :key="'ice' + key"
-            >
-              <label class="im-boxtext" :for="'ice' + key">
-                <input
-                  class="im-input"
-                  name="iceType"
-                  type="radio"
-                  :id="'ice' + key"
-                  :value="itemI"
-                  v-model="ice"
-                />
-                <span class="im-checkmark"></span>
-                <span class="u-ml-4 u-mr-16">{{ itemI }}</span>
-              </label>
-            </div>
-          </div>
-          <label class="im-choice-title">甜度</label>
-          <div class="im-box">
-            <div
-              class="im-box-container"
-              v-for="(itemS, key) in sugarType"
-              :key="'sugar' + key"
-            >
-              <label class="im-boxtext" :for="'sugar' + key">
-                <input
-                  class="im-input"
-                  name="sugarType"
-                  type="radio"
-                  :id="'sugar' + key"
-                  :value="itemS"
-                  v-model="sugar"
-                />
-                <span class="im-checkmark"></span>
-                <span class="u-ml-4 u-mr-16">{{ itemS }}</span>
-              </label>
-            </div>
-          </div> -->
           <div class="u-pt-16 im-number im-number-column">
             <div class="im-count-container">
               <font-awesome-icon
@@ -220,8 +178,6 @@ export default {
         document.body.style.overflow = 'hidden'
         this.getProduct()
         this.custom = ['我不挑食']
-        this.ice = '正常冰'
-        this.sugar = '全糖'
       } else {
         // 關閉ILSandwichModal時，啟用滾動事件
         document.body.style.overflow = 'auto'

@@ -117,22 +117,22 @@
         v-if="filteredMeals.includes('ITRiceNoodles')"
         ref="ITRiceNoodles"
       ></ITRiceNoodles>
-      <ILRiceNoodles
+      <ILRiceNoodlesLike
         v-if="filteredMeals.includes('ILRiceNoodles')"
         ref="ILRiceNoodles"
-      ></ILRiceNoodles>
+      ></ILRiceNoodlesLike>
       <!-- Snack -->
       <ITSnack v-if="filteredMeals.includes('ITSnack')" ref="ITSnack"></ITSnack>
-      <ILSnack v-if="filteredMeals.includes('ILSnack')" ref="ILSnack"></ILSnack>
+      <ILSnackLike v-if="filteredMeals.includes('ILSnack')" ref="ILSnack"></ILSnackLike>
       <!-- Drinks -->
       <ITDrinks
         v-if="filteredMeals.includes('ITDrinks')"
         ref="ITDrinks"
       ></ITDrinks>
-      <ILDrinks
+      <ILDrinksLike
         v-if="filteredMeals.includes('ILDrinks')"
         ref="ILDrinks"
-      ></ILDrinks>
+      ></ILDrinksLike>
 
       <div class="menu-arrow" @click="goToTop"
         ><font-awesome-icon icon="fa-solid fa-circle-up"
@@ -150,9 +150,9 @@ import ITSnack from '@/components/Item-Title/4-ITSnack.vue'
 import ITDrinks from '@/components/Item-Title/5-ITDrinks.vue'
 import ILBurgerLike from '@/components/Item-List/1-ILBurgerLike.vue'
 import ILSandwichLike from '@/components/Item-List/2-ILSandwichLike.vue'
-// import ILRiceNoodles from '@/components/Item-List/3-ILRiceNoodles.vue'
-// import ILSnack from '@/components/Item-List/4-ILSnack.vue'
-// import ILDrinks from '@/components/Item-List/5-ILDrinks.vue'
+import ILRiceNoodlesLike from '@/components/Item-List/3-ILRiceNoodlesLike.vue'
+import ILSnackLike from '@/components/Item-List/4-ILSnackLike.vue'
+import ILDrinksLike from '@/components/Item-List/5-ILDrinksLike.vue'
 
 export default {
   data () {
@@ -169,10 +169,10 @@ export default {
     ITSnack,
     ITDrinks,
     ILBurgerLike,
-    ILSandwichLike
-    // ILRiceNoodles,
-    // ILSnack,
-    // ILDrinks
+    ILSandwichLike,
+    ILRiceNoodlesLike,
+    ILSnackLike,
+    ILDrinksLike
   },
   methods: {
     toggleDropdown () {

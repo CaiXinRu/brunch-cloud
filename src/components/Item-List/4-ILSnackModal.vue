@@ -1,8 +1,8 @@
 <template>
   <div>
     <dialog
-      id="sandwichModal"
-      ref="sandwichModal"
+      id="snackModal"
+      ref="snackModal"
       :class="{ 'show-modal': isLanding }"
     >
       <a class="im-close" @click="closeModal()">
@@ -46,14 +46,14 @@
             <div
               class="im-box-container"
               v-for="(itemC, key) in customType"
-              :key="'customS' + key"
+              :key="'customSN' + key"
             >
-              <label class="im-boxtext" :for="'customS' + key">
+              <label class="im-boxtext" :for="'customSN' + key">
                 <input
                   class="im-input"
                   name="customType"
                   type="checkbox"
-                  :id="'customS' + key"
+                  :id="'customSN' + key"
                   :value="itemC"
                   v-model="custom"
                 />
@@ -118,7 +118,7 @@ export default {
       status: {
         loadingItem: ''
       },
-      customType: ['我不挑食', '不加小黃瓜', '不加小黃瓜', '不加番茄', '不加美乃滋'],
+      customType: ['正常就完美', '附一份蜂蜜', '附一份番茄醬', '附一份美奶滋'],
       custom: [],
       ice: '',
       sugar: '',
@@ -135,7 +135,7 @@ export default {
       this.$http.get(api).then((res) => {
         if (res.data.success) {
           this.product = res.data.product
-          const modal = document.getElementById('sandwichModal')
+          const modal = document.getElementById('snackModal')
           console.log(res)
           modal.showModal()
           this.isLanding = true
@@ -145,7 +145,7 @@ export default {
     },
     closeModal () {
       this.$emit('update:modelValue', false)
-      this.$refs.sandwichModal.close()
+      this.$refs.snackModal.close()
       this.isLanding = false
     },
     plusCount () {
@@ -176,12 +176,12 @@ export default {
   watch: {
     modelValue (newValue) {
       if (newValue) {
-        // 打開ILSandwichModal時，禁用滾動事件
+        // 打開ILsnackModal時，禁用滾動事件
         document.body.style.overflow = 'hidden'
         this.getProduct()
-        this.custom = ['我不挑食']
+        this.custom = ['正常就完美']
       } else {
-        // 關閉ILSandwichModal時，啟用滾動事件
+        // 關閉ILsnackModal時，啟用滾動事件
         document.body.style.overflow = 'auto'
       }
     }
@@ -198,12 +198,12 @@ dialog {
   height: max-content;
   background-color: #fef7e9;
 }
-#sandwichModal {
+#snackModal {
   opacity: 0.5;
   transform: translateY(-50px);
   transition: all 0.5s ease;
 }
-#sandwichModal.show-modal {
+#snackModal.show-modal {
   opacity: 1;
   transform: translateY(0);
   position: fixed;

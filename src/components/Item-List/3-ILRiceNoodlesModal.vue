@@ -1,8 +1,8 @@
 <template>
   <div>
     <dialog
-      id="sandwichModal"
-      ref="sandwichModal"
+      id="RiceNoodlesModal"
+      ref="RiceNoodlesModal"
       :class="{ 'show-modal': isLanding }"
     >
       <a class="im-close" @click="closeModal()">
@@ -41,24 +41,24 @@
             >下訂單後，系統自動分配到離您居住地最近的雲端門市，20分鐘內完成餐點，一小時內完成送達，敬請等候。</span
           >
           <div class="im-line u-mt-8"></div>
-          <label class="im-choice-title">客製（可複選）</label>
+          <label class="im-choice-title">辣度選擇</label>
           <div class="im-box">
             <div
               class="im-box-container"
-              v-for="(itemC, key) in customType"
-              :key="'customS' + key"
+              v-for="(itemS, key) in spicyType"
+              :key="'spicyRN' + key"
             >
-              <label class="im-boxtext" :for="'customS' + key">
+              <label class="im-boxtext" :for="'spicyRN' + key">
                 <input
                   class="im-input"
-                  name="customType"
-                  type="checkbox"
-                  :id="'customS' + key"
-                  :value="itemC"
-                  v-model="custom"
+                  name="spicyRN"
+                  type="radio"
+                  :id="'spicyRN' + key"
+                  :value="itemS"
+                  v-model="spicy"
                 />
                 <span class="im-checkmark"></span>
-                <span class="u-ml-4 u-mr-16">{{ itemC }}</span>
+                <span class="u-ml-4 u-mr-16">{{ itemS }}</span>
               </label>
             </div>
           </div>
@@ -118,8 +118,9 @@ export default {
       status: {
         loadingItem: ''
       },
-      customType: ['我不挑食', '不加小黃瓜', '不加小黃瓜', '不加番茄', '不加美乃滋'],
+      spicyType: ['不要辣', '微辣', '小辣', '中辣', '大辣', '超辣'],
       custom: [],
+      spicy: '',
       ice: '',
       sugar: '',
       count: 1
@@ -135,7 +136,7 @@ export default {
       this.$http.get(api).then((res) => {
         if (res.data.success) {
           this.product = res.data.product
-          const modal = document.getElementById('sandwichModal')
+          const modal = document.getElementById('RiceNoodlesModal')
           console.log(res)
           modal.showModal()
           this.isLanding = true
@@ -145,7 +146,7 @@ export default {
     },
     closeModal () {
       this.$emit('update:modelValue', false)
-      this.$refs.sandwichModal.close()
+      this.$refs.RiceNoodlesModal.close()
       this.isLanding = false
     },
     plusCount () {
@@ -176,12 +177,12 @@ export default {
   watch: {
     modelValue (newValue) {
       if (newValue) {
-        // 打開ILSandwichModal時，禁用滾動事件
+        // 打開ILRiceNoodlesModal時，禁用滾動事件
         document.body.style.overflow = 'hidden'
         this.getProduct()
-        this.custom = ['我不挑食']
+        this.spicy = '不要辣'
       } else {
-        // 關閉ILSandwichModal時，啟用滾動事件
+        // 關閉ILRiceNoodlesModal時，啟用滾動事件
         document.body.style.overflow = 'auto'
       }
     }
@@ -198,12 +199,12 @@ dialog {
   height: max-content;
   background-color: #fef7e9;
 }
-#sandwichModal {
+#RiceNoodlesModal {
   opacity: 0.5;
   transform: translateY(-50px);
   transition: all 0.5s ease;
 }
-#sandwichModal.show-modal {
+#RiceNoodlesModal.show-modal {
   opacity: 1;
   transform: translateY(0);
   position: fixed;

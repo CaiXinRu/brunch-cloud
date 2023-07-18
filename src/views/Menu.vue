@@ -159,9 +159,9 @@ import ITSnack from '@/components/Item-Title/4-ITSnack.vue'
 import ITDrinks from '@/components/Item-Title/5-ITDrinks.vue'
 import ILBurger from '@/components/Item-List/1-ILBurger.vue'
 import ILSandwich from '@/components/Item-List/2-ILSandwich.vue'
-// import ILRiceNoodles from '@/components/Item-List/3-ILRiceNoodles.vue'
-// import ILSnack from '@/components/Item-List/4-ILSnack.vue'
-// import ILDrinks from '@/components/Item-List/5-ILDrinks.vue'
+import ILRiceNoodles from '@/components/Item-List/3-ILRiceNoodles.vue'
+import ILSnack from '@/components/Item-List/4-ILSnack.vue'
+import ILDrinks from '@/components/Item-List/5-ILDrinks.vue'
 
 export default {
   data () {
@@ -195,10 +195,10 @@ export default {
     ITSnack,
     ITDrinks,
     ILBurger,
-    ILSandwich
-    // ILRiceNoodles,
-    // ILSnack,
-    // ILDrinks
+    ILSandwich,
+    ILRiceNoodles,
+    ILSnack,
+    ILDrinks
   },
   methods: {
     toggleDropdown () {

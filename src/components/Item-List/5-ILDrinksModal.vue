@@ -1,10 +1,6 @@
 <template>
   <div>
-    <dialog
-      id="sandwichModal"
-      ref="sandwichModal"
-      :class="{ 'show-modal': isLanding }"
-    >
+    <dialog id="drinksModal" ref="drinksModal" :class="{ 'show-modal': isLanding }">
       <a class="im-close" @click="closeModal()">
         <font-awesome-icon icon="fa-solid fa-circle-xmark" />
       </a>
@@ -41,27 +37,48 @@
             >下訂單後，系統自動分配到離您居住地最近的雲端門市，20分鐘內完成餐點，一小時內完成送達，敬請等候。</span
           >
           <div class="im-line u-mt-8"></div>
-          <label class="im-choice-title">客製（可複選）</label>
-          <div class="im-box">
-            <div
-              class="im-box-container"
-              v-for="(itemC, key) in customType"
-              :key="'customS' + key"
-            >
-              <label class="im-boxtext" :for="'customS' + key">
-                <input
-                  class="im-input"
-                  name="customType"
-                  type="checkbox"
-                  :id="'customS' + key"
-                  :value="itemC"
-                  v-model="custom"
-                />
-                <span class="im-checkmark"></span>
-                <span class="u-ml-4 u-mr-16">{{ itemC }}</span>
-              </label>
+          <label class="im-choice-title">冰塊</label>
+            <div class="im-box">
+              <div
+                class="im-box-container"
+                v-for="(itemI, key) in iceType"
+                :key="'ice' + key"
+              >
+                <label class="im-boxtext" :for="'ice' + key">
+                  <input
+                    class="im-input"
+                    name="iceType"
+                    type="radio"
+                    :id="'ice' + key"
+                    :value="itemI"
+                    v-model="ice"
+                  />
+                  <span class="im-checkmark"></span>
+                  <span class="u-ml-4 u-mr-16">{{ itemI }}</span>
+                </label>
+              </div>
             </div>
-          </div>
+            <label class="im-choice-title">甜度</label>
+            <div class="im-box">
+              <div
+                class="im-box-container"
+                v-for="(itemS, key) in sugarType"
+                :key="'sugar' + key"
+              >
+                <label class="im-boxtext" :for="'sugar' + key">
+                  <input
+                    class="im-input"
+                    name="sugarType"
+                    type="radio"
+                    :id="'sugar' + key"
+                    :value="itemS"
+                    v-model="sugar"
+                  />
+                  <span class="im-checkmark"></span>
+                  <span class="u-ml-4 u-mr-16">{{ itemS }}</span>
+                </label>
+              </div>
+            </div>
           <div class="u-pt-16 im-number im-number-column">
             <div class="im-count-container">
               <font-awesome-icon
@@ -118,7 +135,8 @@ export default {
       status: {
         loadingItem: ''
       },
-      customType: ['我不挑食', '不加小黃瓜', '不加小黃瓜', '不加番茄', '不加美乃滋'],
+      iceType: ['正常冰', '少冰', '微冰', '去冰', '熱'],
+      sugarType: ['全糖', '七分', '半糖', '三分', '無糖'],
       custom: [],
       ice: '',
       sugar: '',
@@ -135,7 +153,7 @@ export default {
       this.$http.get(api).then((res) => {
         if (res.data.success) {
           this.product = res.data.product
-          const modal = document.getElementById('sandwichModal')
+          const modal = document.getElementById('drinksModal')
           console.log(res)
           modal.showModal()
           this.isLanding = true
@@ -145,7 +163,7 @@ export default {
     },
     closeModal () {
       this.$emit('update:modelValue', false)
-      this.$refs.sandwichModal.close()
+      this.$refs.drinksModal.close()
       this.isLanding = false
     },
     plusCount () {
@@ -179,7 +197,8 @@ export default {
         // 打開ILSandwichModal時，禁用滾動事件
         document.body.style.overflow = 'hidden'
         this.getProduct()
-        this.custom = ['我不挑食']
+        this.ice = '正常冰'
+        this.sugar = '全糖'
       } else {
         // 關閉ILSandwichModal時，啟用滾動事件
         document.body.style.overflow = 'auto'
@@ -198,12 +217,12 @@ dialog {
   height: max-content;
   background-color: #fef7e9;
 }
-#sandwichModal {
+#drinksModal {
   opacity: 0.5;
   transform: translateY(-50px);
   transition: all 0.5s ease;
 }
-#sandwichModal.show-modal {
+#drinksModal.show-modal {
   opacity: 1;
   transform: translateY(0);
   position: fixed;
