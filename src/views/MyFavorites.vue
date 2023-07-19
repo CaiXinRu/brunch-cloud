@@ -94,6 +94,7 @@
           </div>
         </div>
       </div>
+
       <!-- Burger -->
       <ITBurger
         v-if="filteredMeals.includes('ITBurger')"
@@ -103,6 +104,11 @@
         v-if="filteredMeals.includes('ILBurger')"
         ref="ILBurger"
       ></ILBurgerLike>
+      <div class="menu-arrow" @click="goToTop"
+        v-if="filteredMeals.includes('ITBurger')"
+        ><font-awesome-icon icon="fa-solid fa-circle-up"
+      /></div>
+
       <!-- Sandwich -->
       <ITSandwich
         v-if="filteredMeals.includes('ITSandwich')"
@@ -112,6 +118,11 @@
         v-if="filteredMeals.includes('ILSandwich')"
         ref="ILSandwich"
       ></ILSandwichLike>
+      <div class="menu-arrow" @click="goToTop"
+        v-if="filteredMeals.includes('ITSandwich')"
+        ><font-awesome-icon icon="fa-solid fa-circle-up"
+      /></div>
+
       <!-- Rice & Noodles -->
       <ITRiceNoodles
         v-if="filteredMeals.includes('ITRiceNoodles')"
@@ -121,9 +132,19 @@
         v-if="filteredMeals.includes('ILRiceNoodles')"
         ref="ILRiceNoodles"
       ></ILRiceNoodlesLike>
+      <div class="menu-arrow" @click="goToTop"
+        v-if="filteredMeals.includes('ITRiceNoodles')"
+        ><font-awesome-icon icon="fa-solid fa-circle-up"
+      /></div>
+
       <!-- Snack -->
       <ITSnack v-if="filteredMeals.includes('ITSnack')" ref="ITSnack"></ITSnack>
       <ILSnackLike v-if="filteredMeals.includes('ILSnack')" ref="ILSnack"></ILSnackLike>
+      <div class="menu-arrow" @click="goToTop"
+        v-if="filteredMeals.includes('ITSnack')"
+        ><font-awesome-icon icon="fa-solid fa-circle-up"
+      /></div>
+
       <!-- Drinks -->
       <ITDrinks
         v-if="filteredMeals.includes('ITDrinks')"
@@ -133,8 +154,8 @@
         v-if="filteredMeals.includes('ILDrinks')"
         ref="ILDrinks"
       ></ILDrinksLike>
-
       <div class="menu-arrow" @click="goToTop"
+        v-if="filteredMeals.includes('ITDrinks')"
         ><font-awesome-icon icon="fa-solid fa-circle-up"
       /></div>
     </div>
@@ -383,6 +404,7 @@ export default {
   color: var(--color--primary);
   align-self: flex-end;
   cursor: pointer;
+  margin-top: 18px;
 }
 
 /* RWD */

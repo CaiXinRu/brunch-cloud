@@ -85,6 +85,7 @@
               <li>
                 <span>
                   <font-awesome-icon icon="fa-solid fa-cart-shopping" />
+                  <div v-if="cart?.carts?.length" class="number-cart">{{ this.cartNumber }}</div>
                 </span>
                 <span>
                   <a @click="showModal()">購物清單</a>
@@ -101,24 +102,41 @@
 
 <script>
 import CartBar from '@/components/CartBar.vue'
+import { mapState, mapActions } from 'pinia'
+import useCartStore from '@/stores/cart.js'
 
 export default {
   name: 'NavBar',
   data: () => {
     return {
       isCartBarOpen: false,
-      isPopupListOpen: false
+      isPopupListOpen: false,
+      cartNumber: ''
     }
   },
   components: {
     CartBar
   },
   methods: {
+    ...mapActions(useCartStore, [
+      'getCart'
+    ]),
     showModal () {
       this.isCartBarOpen = true
       const modal = document.getElementById('cartModalNavBar')
       modal.showModal()
     }
+  },
+  computed: {
+    ...mapState(useCartStore, ['cart'])
+  },
+  watch: {
+    cart () {
+      this.cartNumber = this.cart?.carts?.length
+    }
+  },
+  mounted () {
+    this.getCart()
   }
 }
 </script>
@@ -344,6 +362,20 @@ li:hover span {
 }
 .top-right-btn a:hover {
   color: var(--color--secondary);
+}
+.number-cart{
+  line-height: 20px;
+  background-color: var(--color--light-brown);
+  border: 3px solid var(--color--primary);
+  color: var(--color--secondary);
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  text-align: center;
+  position: absolute;
+  right: 16px;
+  top: 25px;
+  font-size: 12px;
 }
 CartBar::backdrop {
   background-color: rgb(39, 39, 39, 0.5);

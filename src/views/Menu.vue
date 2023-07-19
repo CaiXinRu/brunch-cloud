@@ -105,6 +105,10 @@
         v-if="filteredMeals.includes('ILBurger')"
         ref="ILBurger"
       ></ILBurger>
+      <div class="menu-arrow" @click="goToTop"
+        v-if="filteredMeals.includes('ITBurger')"
+        ><font-awesome-icon icon="fa-solid fa-circle-up"
+      /></div>
 
       <!-- Sandwich -->
       <ITSandwich
@@ -116,6 +120,10 @@
         v-if="filteredMeals.includes('ILSandwich')"
         ref="ILSandwich"
       ></ILSandwich>
+      <div class="menu-arrow" @click="goToTop"
+        v-if="filteredMeals.includes('ITSandwich')"
+        ><font-awesome-icon icon="fa-solid fa-circle-up"
+      /></div>
 
       <!-- Rice & Noodles -->
       <ITRiceNoodles
@@ -127,11 +135,20 @@
         v-if="filteredMeals.includes('ILRiceNoodles')"
         ref="ILRiceNoodles"
       ></ILRiceNoodles>
+      <div class="menu-arrow" @click="goToTop"
+        v-if="filteredMeals.includes('ITRiceNoodles')"
+        ><font-awesome-icon icon="fa-solid fa-circle-up"
+      /></div>
 
       <!-- Snack -->
       <ITSnack v-if="filteredMeals.includes('ITSnack')" id="ITSnack" ref="ITSnack"></ITSnack>
       <ILSnack v-if="filteredMeals.includes('ILSnack')" ref="ILSnack"></ILSnack
       >
+      <div class="menu-arrow" @click="goToTop"
+        v-if="filteredMeals.includes('ITSnack')"
+        ><font-awesome-icon icon="fa-solid fa-circle-up"
+      /></div>
+
       <!-- Drinks -->
       <ITDrinks
         v-if="filteredMeals.includes('ITDrinks')" id="ITDrinks"
@@ -141,8 +158,8 @@
         v-if="filteredMeals.includes('ILDrinks')"
         ref="ILDrinks"
       ></ILDrinks>
-
       <div class="menu-arrow" @click="goToTop"
+        v-if="filteredMeals.includes('ITDrinks')"
         ><font-awesome-icon icon="fa-solid fa-circle-up"
       /></div>
     </div>
@@ -395,6 +412,7 @@ export default {
   color: var(--color--primary);
   align-self: flex-end;
   cursor: pointer;
+  margin-top: 18px;
 }
 @media (max-width: 991px){
   .menu-category{

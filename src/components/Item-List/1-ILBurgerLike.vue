@@ -95,6 +95,7 @@ export default {
     immediate: true
   },
   mounted () {
+    this.getProducts()
     const likedItems = localStorage.getItem('likeItems')
     if (likedItems) {
       this.products = JSON.parse(likedItems)
