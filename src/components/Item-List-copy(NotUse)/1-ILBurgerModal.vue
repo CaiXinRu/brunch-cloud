@@ -1,110 +1,102 @@
 <template>
-  <LoadingPage v-if="isLoading"></LoadingPage>
-  <div
-    class="modal fade"
-    id="burgerModal"
-    tabindex="-1"
-    aria-labelledby="exampleModalLabel"
-    aria-hidden="true"
-    ref="burgerModal"
-  >
-    <div class="modal-dialog modal-xl" role="document">
-      <div class="modal-content border-0">
-        <a class="im-close" @click="hideModal()">
-          <font-awesome-icon icon="fa-solid fa-circle-xmark" />
-        </a>
-        <div class="im-container">
-          <div class="im-pic">
+  <div>
+    <dialog id="itemModal" ref="itemModal" :class="{'show-modal': isLanding }">
+      <a class="im-close" @click="closeModal()">
+        <font-awesome-icon icon="fa-solid fa-circle-xmark" />
+      </a>
+      <div class="im-container">
+        <div class="im-pic">
+          <div
+            class="im-pic-inner"
+            :style="{ backgroundImage: `url(${product.imageUrl})` }"
+          ></div>
+        </div>
+        <div class="im-content">
+          <div
+            class="im-pic-sm"
+            :style="{ backgroundImage: `url(${product.imageUrl})` }"
+          ></div>
+          <h2 class="u-mb-16">{{ product.title }}</h2>
+          <p class="color--brown im-price" v-if="product.price">
+            原價 NT${{ product.origin_price }}
+          </p>
+          <h5 class="color--third" v-if="product.price">
+            特價 NT${{ product.price }}
+          </h5>
+          <div class="im-line"></div>
+          <span class="im-detail">▎品項簡介：</span>
+          <span class="im-detail">{{ product.description }}</span>
+          <span class="im-detail">▎內容食材：</span>
+          <span class="im-detail">{{ product.content }}</span>
+          <span class="im-detail">▎可自取時間：06:00~14:15</span>
+          <span class="im-detail">▎餐點注意事項：</span>
+          <span class="im-detail"
+            >餐點皆為現點現做，為保食物品質，請儘早食用，隔餐勿食。</span
+          >
+          <span class="im-detail"
+            >下訂單後，系統自動分配到離您居住地最近的雲端門市，20分鐘內完成餐點，一小時內完成送達，敬請等候。</span
+          >
+          <div class="im-line u-mt-8"></div>
+          <label class="im-choice-title">客製（可複選）</label>
+          <div class="im-box">
             <div
-              class="im-pic-inner"
-              :style="{ backgroundImage: `url(${product.imageUrl})` }"
-            ></div>
+              class="im-box-container"
+              v-for="(itemC, key) in customType"
+              :key="'custom' + key"
+            >
+              <label class="im-boxtext" :for="'custom' + key">
+                <input
+                  class="im-input"
+                  name="customType"
+                  type="checkbox"
+                  :id="'custom' + key"
+                  :value="itemC"
+                  v-model="custom"
+                />
+                <span class="im-checkmark"></span>
+                <span class="u-ml-4 u-mr-16">{{ itemC }}</span>
+              </label>
+            </div>
           </div>
-          <div class="im-content">
-            <div
-              class="im-pic-sm"
-              :style="{ backgroundImage: `url(${product.imageUrl})` }"
-            ></div>
-            <h2 class="u-mb-16">{{ product.title }}</h2>
-            <p class="color--brown im-price" v-if="product.price">
-              原價 NT${{ product.origin_price }}
-            </p>
-            <h5 class="color--third" v-if="product.price">
-              特價 NT${{ product.price }}
-            </h5>
-            <div class="im-line"></div>
-            <span class="im-detail">▎品項簡介：</span>
-            <span class="im-detail">{{ product.description }}</span>
-            <span class="im-detail">▎內容食材：</span>
-            <span class="im-detail">{{ product.content }}</span>
-            <span class="im-detail">▎餐點注意事項：</span>
-            <span class="im-detail"
-              >餐點皆為現點現做，為保食物品質，請儘早食用，隔餐勿食。</span
+          <div class="u-pt-16 im-number im-number-column">
+            <div class="im-count-container">
+              <font-awesome-icon
+                class="im-count"
+                icon="fa-regular fa-square-plus"
+                @click="plusCount()"
+              />
+              <div class="im-count-num">{{ count }}</div>
+              <font-awesome-icon
+                class="im-count"
+                icon="fa-regular fa-square-minus"
+                @click="minusCount()"
+              />
+            </div>
+            <button
+              type="button"
+              class="im-confirmed"
+              @click="addToCart(product.id, count)"
+              :class="{ 'disabled': status.loadingItem === product.id }"
             >
-            <span class="im-detail"
-              >下訂單後，系統自動分配到離您居住地最近的雲端門市，20分鐘內完成餐點，一小時內完成送達，敬請等候。</span
-            >
-            <div class="im-line u-mt-8"></div>
-            <label class="im-choice-title">客製（可複選）</label>
-            <div class="im-box">
               <div
-                class="im-box-container"
-                v-for="(itemC, key) in customType"
-                :key="'custom' + key"
-              >
-                <label class="im-boxtext" :for="'custom' + key">
-                  <input
-                    class="im-input"
-                    name="customType"
-                    type="checkbox"
-                    :id="'custom' + key"
-                    :value="itemC"
-                    v-model="custom"
-                  />
-                  <span class="im-checkmark"></span>
-                  <span class="u-ml-4 u-mr-16">{{ itemC }}</span>
-                </label>
-              </div>
-            </div>
-            <div class="u-pt-16 im-number im-number-column">
-              <div class="im-count-container">
-                <font-awesome-icon
-                  class="im-count"
-                  icon="fa-regular fa-square-plus"
-                  @click="plusCount()"
-                />
-                <div class="im-count-num">{{ count }}</div>
-                <font-awesome-icon
-                  class="im-count"
-                  icon="fa-regular fa-square-minus"
-                  @click="minusCount()"
-                />
-              </div>
-              <button
-                type="button"
-                class="im-confirmed"
-                @click="addToCart(product.id, count)"
-                :class="{ disabled: status.loadingItem === product.id }"
-              >
-                <div
-                  v-if="this.status.loadingItem === product.id"
-                  class="spinner-grow text-light spinner-grow-sm"
-                  role="status"
-                ></div>
+                v-if="this.status.loadingItem === product.id"
+                class="spinner-grow text-light spinner-grow-sm"
+                role="status"
+              ></div>
                 新增{{ count }}份至購物清單
-              </button>
-            </div>
+            </button>
           </div>
         </div>
       </div>
-    </div>
+      <LodingPage v-if="isLoading"></LodingPage>
+    </dialog>
   </div>
 </template>
 
 <script>
-import Modal from 'bootstrap/js/dist/modal'
-import LoadingPage from '@/components/LodingPage.vue'
+import LodingPage from '../LodingPage.vue'
 export default {
+  emits: ['update:modelValue'],
   props: {
     modelValue: {
       type: Boolean,
@@ -112,21 +104,12 @@ export default {
     },
     id: {
       required: true
-    },
-    tempProduct: {
-      type: Object,
-      default () { return {} }
     }
-  },
-  emits: ['update:modelValue'],
-  components: {
-    LoadingPage
   },
   data () {
     return {
-      modal: {},
-      isLanding: false,
       isLoading: false,
+      isLanding: false,
       product: {},
       status: {
         loadingItem: ''
@@ -140,14 +123,28 @@ export default {
       count: 1
     }
   },
+  components: {
+    LodingPage
+  },
   methods: {
-    showModal () {
-      this.modal.show()
+    getProduct () {
+      this.isLoading = true
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/product/${this.id}`
+      this.$http.get(api).then((res) => {
+        if (res.data.success) {
+          this.product = res.data.product
+          const modal = document.getElementById('itemModal')
+          console.log(res)
+          modal.showModal()
+          this.isLanding = true
+        }
+        this.isLoading = false
+      })
     },
-    hideModal () {
-      this.custom = []
-      this.count = 1
-      this.modal.hide()
+    closeModal () {
+      this.$emit('update:modelValue', false)
+      this.$refs.itemModal.close()
+      this.isLanding = false
     },
     plusCount () {
       this.count += 1
@@ -158,6 +155,7 @@ export default {
       }
     },
     addToCart (id, qty) {
+      // console.log(id, qty)
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
       this.status.loadingItem = id
       const cart = {
@@ -169,32 +167,53 @@ export default {
         // this.$httpMessageState(response, '加入購物車')
         this.status.loadingItem = ''
         this.count = 1
-        this.hideModal()
+        this.closeModal()
       })
     }
   },
   watch: {
-    tempProduct () {
-      this.product = this.tempProduct
-      this.custom = ['我不挑食']
+    modelValue (newValue) {
+      if (newValue) {
+        // 打開ILSandwichModal時，禁用滾動事件
+        document.body.style.overflow = 'hidden'
+        this.getProduct()
+        this.custom = ['我不挑食']
+      } else {
+        // 關閉ILSandwichModal時，啟用滾動事件
+        document.body.style.overflow = 'auto'
+      }
     }
-  },
-  mounted () {
-    this.modal = new Modal(this.$refs.burgerModal)
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.modal-content{
-    background-color: var(--color--light-brown);
+dialog {
+  border: none;
+  box-shadow: 0 2px 6px #ccc;
+  border-radius: 10px;
+  width: 80vw;
+  height: max-content;
+  background-color: #fef7e9;
+}
+#itemModal {
+  opacity: 0.5;
+  transform: translateY(-50px);
+  transition: all 0.5s ease;
+}
+#itemModal.show-modal {
+  opacity: 1;
+  transform: translateY(0);
+  position: fixed;
+}
+dialog::backdrop {
+  background-color: rgb(39, 39, 39, 0.5);
 }
 .im-close {
   font-size: 40px;
   z-index: 1;
   position: absolute;
-  margin: 15px;
-  right: 0%;
+  right: 1%;
   color: #644536;
   cursor: pointer;
 }
@@ -234,7 +253,7 @@ export default {
 }
 .im-content {
   display: flex;
-  flex: 1.5;
+  flex: 1;
   padding: 15px;
   flex-direction: column;
 }
@@ -359,17 +378,12 @@ export default {
   color: #fef7e9;
   pointer-events: none;
 }
-
-// RWD
 @media (max-width: 575px){
-  .modal-xl {
-    --bs-modal-width: 100vw;
+  dialog{
+    width: 100vw;
   }
   .im-pic{
     display: none;
-  }
-  .im-content h2{
-    font-size: 36px;
   }
   .im-number-column{
     flex-direction: column;
@@ -386,8 +400,8 @@ export default {
   }
 }
 @media (min-width: 576px) and (max-width: 767px){
-  .modal-xl {
-    --bs-modal-width: 100vw;
+  dialog{
+    width: 100vw;
   }
   .im-pic{
     display: none;
@@ -401,8 +415,8 @@ export default {
 
 }
 @media (min-width: 768px) and (max-width: 991px){
-  .modal-xl {
-    --bs-modal-width: 80vw;
+  dialog{
+    width: 80vw;
   }
   .im-pic{
     display: none;
@@ -415,8 +429,8 @@ export default {
   }
 }
 @media (min-width: 992px) and (max-width: 1199px){
-  .modal-xl {
-    --bs-modal-width: 90vw;
+  dialog{
+    width: 80vw;
   }
   .im-pic-sm{
     display: none;
@@ -436,16 +450,16 @@ export default {
   }
 }
 @media (min-width: 1200px) and (max-width: 1399px){
-  .modal-xl {
-    --bs-modal-width: 90vw;
+  dialog{
+    width: 90vw;
   }
   .im-pic-sm{
     display: none;
   }
 }
 @media (min-width: 1400px){
-  .modal-xl {
-    --bs-modal-width: 80vw;
+  dialog{
+    width: 80vw;
   }
   .im-pic-sm{
     display: none;

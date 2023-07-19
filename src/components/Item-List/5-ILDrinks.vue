@@ -14,19 +14,19 @@
         icon="fa-regular fa-heart"
         class="heart"
       />
-      <a id="show" @click="showModal(item.id)"
+      <a id="show" @click="openModal(item)"
         ><div
           class="item-img"
           :style="{ backgroundImage: `url(${item.imageUrl})` }"
         ></div>
       </a>
       <span class="u-text-center item-text"
-        ><a @click="showModal(item.id)">{{ item.title }}</a></span
+        ><a @click="openModal(item)">{{ item.title }}</a></span
       >
       <ul>
         <li>
           <span class="item-add">
-            <a class="item-add-icon" @click="showModal(item.id)"
+            <a class="item-add-icon" @click="openModal(item)"
               ><font-awesome-icon icon="fa-solid fa-cart-plus"
             /></a>
           </span>
@@ -36,7 +36,8 @@
     </div>
   </div>
   <ILDrinksModal
-    :id="productId"
+    ref="drinksModal"
+    :tempProduct="tempProduct"
     :modelValue="isModalVisible"
     @update:modelValue="
       (val) => {
@@ -56,7 +57,7 @@ export default {
       isModalVisible: false,
       products: [],
       filteredProducts: [],
-      productId: ''
+      tempProduct: {}
     }
   },
   components: {
@@ -89,9 +90,10 @@ export default {
       localStorage.setItem('likeItems', JSON.stringify(this.products))
       // ['id1', 'id2']
     },
-    showModal (id) {
-      this.productId = id
+    openModal (item) {
+      this.tempProduct = { ...item }
       this.isModalVisible = true
+      this.$refs.drinksModal.showModal()
     }
   },
   watch: {
