@@ -125,6 +125,8 @@
 <script>
 import Modal from 'bootstrap/js/dist/modal'
 import LoadingPage from '@/components/LodingPage.vue'
+import { mapActions } from 'pinia'
+import useCartStore from '@/stores/cart.js'
 export default {
   props: {
     modelValue: {
@@ -162,6 +164,9 @@ export default {
     }
   },
   methods: {
+    ...mapActions(useCartStore, [
+      'getCart'
+    ]),
     showModal () {
       this.modal.show()
     },
@@ -192,6 +197,7 @@ export default {
         this.status.loadingItem = ''
         this.count = 1
         this.hideModal()
+        this.getCart()
       })
     }
   },

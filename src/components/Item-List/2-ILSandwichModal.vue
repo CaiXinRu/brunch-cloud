@@ -104,6 +104,8 @@
 <script>
 import Modal from 'bootstrap/js/dist/modal'
 import LoadingPage from '@/components/LodingPage.vue'
+import { mapActions } from 'pinia'
+import useCartStore from '@/stores/cart.js'
 export default {
   props: {
     modelValue: {
@@ -133,7 +135,7 @@ export default {
       status: {
         loadingItem: ''
       },
-      customType: ['我不挑食', '不加生菜', '不加番茄', '不加美乃滋', '不加小黃瓜'],
+      customType: ['我不挑食', '不加生菜', '不加番茄', '不加美乃滋', '不加美生菜', '不加小黃瓜'],
       custom: [],
       ice: '',
       sugar: '',
@@ -141,6 +143,9 @@ export default {
     }
   },
   methods: {
+    ...mapActions(useCartStore, [
+      'getCart'
+    ]),
     showModal () {
       this.modal.show()
     },
@@ -170,6 +175,7 @@ export default {
         this.status.loadingItem = ''
         this.count = 1
         this.hideModal()
+        this.getCart()
       })
     }
   },

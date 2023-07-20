@@ -85,7 +85,7 @@
               <li>
                 <span>
                   <font-awesome-icon icon="fa-solid fa-cart-shopping" />
-                  <div v-if="cart?.carts?.length" class="number-cart">{{ this.cartNumber }}</div>
+                  <div v-if="cart?.carts?.length" class="number-cart">{{ this.cart?.carts?.length }}</div>
                 </span>
                 <span>
                   <a @click="showModal()">購物清單</a>
@@ -110,8 +110,7 @@ export default {
   data: () => {
     return {
       isCartBarOpen: false,
-      isPopupListOpen: false,
-      cartNumber: ''
+      isPopupListOpen: false
     }
   },
   components: {
@@ -129,11 +128,6 @@ export default {
   },
   computed: {
     ...mapState(useCartStore, ['cart'])
-  },
-  watch: {
-    cart () {
-      this.cartNumber = this.cart?.carts?.length
-    }
   },
   mounted () {
     this.getCart()
@@ -381,6 +375,7 @@ CartBar::backdrop {
   background-color: rgb(39, 39, 39, 0.5);
 }
 
+/* RWD */
 @media (max-width: 575px) {
   .list-bar{
     display: none;

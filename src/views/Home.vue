@@ -104,7 +104,7 @@
         <MoreFood></MoreFood>
         <div class="try-lists">
           <div class="try-list" v-for="(item, index) in foods" :key="index">
-            <div class="try-img"></div>
+            <img class="try-img" :src="`/foods/${item.img}`"/>
             <h3 class="u-text-center color--black">{{ item.food }}</h3>
             <a :href="`/menu#${item.hashtag}`">
               <h6 class="try-btn">{{ item.categoryC }}</h6>
@@ -173,23 +173,27 @@ export default {
       foods: [
         {
           categoryC: '太空漢堡系列',
-          food: '宇宙鮮蝦米堡',
-          hashtag: 'ITBurger'
+          food: '爆炸鮮蝦和牛漢堡',
+          hashtag: 'menuTop',
+          img: '1-b.jpg'
         },
         {
           categoryC: '飄浮吐司系列',
-          food: '飛翔龍蝦帕尼尼',
-          hashtag: 'ITSandwich'
+          food: '彩虹辣雞吐司',
+          hashtag: 'beforeSandwich',
+          img: '2-s.png'
         },
         {
           categoryC: '柔情飯麵系列',
           food: '青醬天婦羅燉飯',
-          hashtag: 'ITRiceNoodles'
+          hashtag: 'beforeRiceNoodles',
+          img: '3-s.png'
         },
         {
-          categoryC: '輕盈小點系列',
-          food: '紫薯QQ球',
-          hashtag: 'ITSnack'
+          categoryC: '沁涼飲料系列',
+          food: '朵朵椪糖奶花歐蕾',
+          hashtag: 'beforeDrinks',
+          img: '4-d.png'
         }
       ]
     }
@@ -354,11 +358,14 @@ export default {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  background-image: url('https://picsum.photos/180');
+  /* background-size: cover;
+  background-position: center; */
+  object-fit: cover;
+  background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  width: 180px;
-  height: 180px;
+  width: 235px;
+  height: 190px;
 }
 .try-btn {
   left: 50%;

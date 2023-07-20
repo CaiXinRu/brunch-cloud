@@ -79,6 +79,7 @@
               <li>
                 <span>
                   <font-awesome-icon icon="fa-solid fa-cart-shopping" />
+                  <div v-if="cart?.carts?.length" class="number-cart">{{ this.cart?.carts?.length }}</div>
                 </span>
                 <span>
                   <a @click="showModal()">購物清單</a>
@@ -99,6 +100,8 @@
 <script>
 // eslint-disable-next-line no-unused-vars
 import CartBar from '@/components/CartBar.vue'
+import { mapState, mapActions } from 'pinia'
+import useCartStore from '@/stores/cart.js'
 
 export default {
   name: 'NavBarSm',
@@ -112,11 +115,20 @@ export default {
     CartBar
   },
   methods: {
+    ...mapActions(useCartStore, [
+      'getCart'
+    ]),
     showModal () {
       this.isCartBarOpen = true
       const modal = document.getElementById('cartModalNavBarSm')
       modal.showModal()
     }
+  },
+  computed: {
+    ...mapState(useCartStore, ['cart'])
+  },
+  mounted () {
+    this.getCart()
   }
 }
 </script>
@@ -315,6 +327,20 @@ li:hover span {
 }
 .top-right-btn a:hover {
   color: var(--color--secondary);
+}
+.number-cart{
+  line-height: 20px;
+  background-color: var(--color--light-brown);
+  border: 3px solid var(--color--primary);
+  color: var(--color--secondary);
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  text-align: center;
+  position: absolute;
+  right: 16px;
+  top: 25px;
+  font-size: 12px;
 }
 .list-toggle{
   color: var(--color--light-brown);

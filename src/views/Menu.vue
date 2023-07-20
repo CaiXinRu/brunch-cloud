@@ -107,14 +107,14 @@
       ></ILBurger>
       <div class="menu-arrow" @click="goToTop"
         v-if="filteredMeals.includes('ITBurger')"
+        id="beforeSandwich"
         ><font-awesome-icon icon="fa-solid fa-circle-up"
       /></div>
 
       <!-- Sandwich -->
       <ITSandwich
         v-if="filteredMeals.includes('ITSandwich')"
-        id="ITSandwich"
-        ref="ITSandwich"
+        ref="ITSandwich" id="ITSandwich"
       ></ITSandwich>
       <ILSandwich
         v-if="filteredMeals.includes('ILSandwich')"
@@ -122,14 +122,14 @@
       ></ILSandwich>
       <div class="menu-arrow" @click="goToTop"
         v-if="filteredMeals.includes('ITSandwich')"
+        id="beforeRiceNoodles"
         ><font-awesome-icon icon="fa-solid fa-circle-up"
       /></div>
 
       <!-- Rice & Noodles -->
       <ITRiceNoodles
         v-if="filteredMeals.includes('ITRiceNoodles')"
-        id="ITRiceNoodles"
-        ref="ITRiceNoodles"
+        ref="ITRiceNoodles" id="ITRiceNoodles"
       ></ITRiceNoodles>
       <ILRiceNoodles
         v-if="filteredMeals.includes('ILRiceNoodles')"
@@ -137,22 +137,24 @@
       ></ILRiceNoodles>
       <div class="menu-arrow" @click="goToTop"
         v-if="filteredMeals.includes('ITRiceNoodles')"
+        id="beforeSnack"
         ><font-awesome-icon icon="fa-solid fa-circle-up"
       /></div>
 
       <!-- Snack -->
-      <ITSnack v-if="filteredMeals.includes('ITSnack')" id="ITSnack" ref="ITSnack"></ITSnack>
+      <ITSnack v-if="filteredMeals.includes('ITSnack')" ref="ITSnack" id="ITSnack"></ITSnack>
       <ILSnack v-if="filteredMeals.includes('ILSnack')" ref="ILSnack"></ILSnack
       >
       <div class="menu-arrow" @click="goToTop"
         v-if="filteredMeals.includes('ITSnack')"
+        id="beforeDrinks"
         ><font-awesome-icon icon="fa-solid fa-circle-up"
       /></div>
 
       <!-- Drinks -->
       <ITDrinks
-        v-if="filteredMeals.includes('ITDrinks')" id="ITDrinks"
-        ref="ITDrinks"
+        v-if="filteredMeals.includes('ITDrinks')"
+        ref="ITDrinks" id="ITDrinks"
       ></ITDrinks>
       <ILDrinks
         v-if="filteredMeals.includes('ILDrinks')"
@@ -196,12 +198,12 @@ export default {
           el.scrollIntoView({ behavior: 'smooth' })
         }
       }
-    })
+    }, 2000)
     window.addEventListener('click', this.closeDropdown)
     this.isLoading = true
     setTimeout(() => {
       this.isLoading = false
-    }, 2000)
+    }, 3000)
   },
   components: {
     LoadingPage,

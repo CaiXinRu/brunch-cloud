@@ -71,12 +71,30 @@ export default {
       this.isLoading = true
       this.$http.get(api).then((res) => {
         this.products = res.data.products
+        const likeIdArrStr = localStorage.getItem('likeIdArr')
+        if (likeIdArrStr) {
+          const likeIdArr = JSON.parse(likeIdArrStr)
+          for (const id of likeIdArr) {
+            for (const prod of this.products) {
+              if (prod.id === id) {
+                prod.like = true
+              }
+            }
+          }
+        }
+        this.filteredLikes = this.products.filter(item => item.like)
         this.isLoading = false
       })
     },
     toggleLike (item) {
       item.like = !item.like
-      localStorage.setItem('likeItems', JSON.stringify(this.products))
+      const likeIdArr = []
+      for (const prod of this.products) {
+        if (prod.like) {
+          likeIdArr.push(prod.id)
+        }
+      }
+      localStorage.setItem('likeIdArr', JSON.stringify(likeIdArr))
     },
     openModal (item) {
       this.tempProduct = { ...item }
@@ -94,12 +112,8 @@ export default {
     },
     immediate: true
   },
-  created () {
-    const likedItems = localStorage.getItem('likeItems')
-    if (likedItems) {
-      this.products = JSON.parse(likedItems)
-      this.filteredLikes = this.products.filter((item) => item.like)
-    }
+  mounted () {
+    this.getProducts()
   }
 }
 </script>
