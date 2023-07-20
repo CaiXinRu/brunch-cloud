@@ -71,6 +71,7 @@
               <li>
                 <span>
                   <font-awesome-icon icon="fa-solid fa-heart" />
+                  <div v-if="filteredLikes.length > 0" class="number-cart">{{ filteredLikes.length }}</div>
                 </span>
                 <span>
                   <router-link to="/favorites">我的最愛</router-link>
@@ -102,6 +103,7 @@
 import CartBar from '@/components/CartBar.vue'
 import { mapState, mapActions } from 'pinia'
 import useCartStore from '@/stores/cart.js'
+import productStore from '@/stores/likes.js'
 
 export default {
   name: 'NavBarSm',
@@ -114,9 +116,17 @@ export default {
   components: {
     CartBar
   },
+  computed: {
+    ...mapState(productStore, ['isLoading', 'products', 'filteredLikes']),
+    ...mapState(useCartStore, ['cart'])
+  },
   methods: {
     ...mapActions(useCartStore, [
       'getCart'
+    ]),
+    ...mapActions(productStore, [
+      'getProducts',
+      'toggleLike'
     ]),
     showModal () {
       this.isCartBarOpen = true
@@ -124,11 +134,9 @@ export default {
       modal.showModal()
     }
   },
-  computed: {
-    ...mapState(useCartStore, ['cart'])
-  },
   mounted () {
     this.getCart()
+    this.getProducts()
   }
 }
 </script>

@@ -135,7 +135,7 @@ export default {
       status: {
         loadingItem: ''
       },
-      customType: ['我不挑食', '不加生菜', '不加番茄', '不加美乃滋', '不加美生菜', '不加小黃瓜'],
+      customType: ['我不挑食', '不加生菜', '不加番茄', '不加美奶滋', '不加美生菜', '不加小黃瓜'],
       custom: [],
       ice: '',
       sugar: '',

@@ -50,12 +50,12 @@
 <script>
 import ILSandwichModal from './2-ILSandwichModal.vue'
 import LodingPage from '../LodingPage.vue'
+import { mapState, mapActions } from 'pinia'
+import productStore from '@/stores/likes.js'
 export default {
   data () {
     return {
-      isLoading: false,
       isModalVisible: false,
-      products: [],
       filteredProducts: [],
       tempProduct: {}
     }
@@ -64,37 +64,14 @@ export default {
     ILSandwichModal,
     LodingPage
   },
+  computed: {
+    ...mapState(productStore, ['isLoading', 'products', 'filteredLikes'])
+  },
   methods: {
-    getProducts () {
-      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`
-      this.isLoading = true
-      this.$http.get(api).then((res) => {
-        console.log(res)
-        this.products = res.data.products
-        const likeIdArrStr = localStorage.getItem('likeIdArr')
-        if (likeIdArrStr) {
-          const likeIdArr = JSON.parse(likeIdArrStr)
-          for (const id of likeIdArr) {
-            for (const prod of this.products) {
-              if (prod.id === id) {
-                prod.like = true
-              }
-            }
-          }
-        }
-        this.isLoading = false
-      })
-    },
-    toggleLike (item) {
-      item.like = !item.like
-      const likeIdArr = []
-      for (const prod of this.products) {
-        if (prod.like) {
-          likeIdArr.push(prod.id)
-        }
-      }
-      localStorage.setItem('likeIdArr', JSON.stringify(likeIdArr))
-    },
+    ...mapActions(productStore, [
+      'getProducts',
+      'toggleLike'
+    ]),
     openModal (item) {
       this.tempProduct = { ...item }
       this.isModalVisible = true

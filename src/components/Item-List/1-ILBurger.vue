@@ -50,12 +50,12 @@
 <script>
 import ILBurgerModal from './1-ILBurgerModal.vue'
 import LodingPage from '../LodingPage.vue'
+import { mapState, mapActions } from 'pinia'
+import productStore from '@/stores/likes.js'
 export default {
   data () {
     return {
-      isLoading: false,
       isModalVisible: false,
-      products: [],
       filteredProducts: [],
       tempProduct: {}
     }
@@ -64,38 +64,14 @@ export default {
     ILBurgerModal,
     LodingPage
   },
+  computed: {
+    ...mapState(productStore, ['isLoading', 'products', 'filteredLikes'])
+  },
   methods: {
-    getProducts () {
-      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`
-      this.isLoading = true
-      this.$http.get(api).then((res) => {
-        console.log(res)
-        this.products = res.data.products
-        const likeIdArrStr = localStorage.getItem('likeIdArr')
-        if (likeIdArrStr) {
-          const likeIdArr = JSON.parse(likeIdArrStr)
-          for (const id of likeIdArr) {
-            for (const prod of this.products) {
-              if (prod.id === id) {
-                prod.like = true
-              }
-            }
-          }
-        }
-        this.isLoading = false
-      })
-    },
-    toggleLike (item) {
-      item.like = !item.like
-      const likeIdArr = []
-      for (const prod of this.products) {
-        if (prod.like) {
-          likeIdArr.push(prod.id)
-        }
-      }
-      localStorage.setItem('likeIdArr', JSON.stringify(likeIdArr))
-      // localStorage.setItem('likeItems', JSON.stringify(this.products))
-    },
+    ...mapActions(productStore, [
+      'getProducts',
+      'toggleLike'
+    ]),
     openModal (item) {
       this.tempProduct = { ...item }
       this.isModalVisible = true
@@ -200,7 +176,7 @@ export default {
   color: #e3bac6;
 }
 
-@media (max-width: 575px){
+@media (max-width: 575px) {
   .item-list {
     grid-template-columns: repeat(1, 1fr);
     width: 80%;
@@ -209,7 +185,7 @@ export default {
     height: 250px;
   }
 }
-@media (min-width: 576px) and (max-width: 767px){
+@media (min-width: 576px) and (max-width: 767px) {
   .item-list {
     grid-template-columns: repeat(2, 1fr);
     width: 100%;
@@ -218,7 +194,7 @@ export default {
     height: 180px;
   }
 }
-@media (min-width: 768px) and (max-width: 991px){
+@media (min-width: 768px) and (max-width: 991px) {
   .item-list {
     grid-template-columns: repeat(2, 1fr);
     width: 100%;
@@ -227,7 +203,7 @@ export default {
     height: 180px;
   }
 }
-@media (min-width: 992px) and (max-width: 1199px){
+@media (min-width: 992px) and (max-width: 1199px) {
   .item-list {
     grid-template-columns: repeat(3, 1fr);
     width: 100%;
@@ -236,7 +212,7 @@ export default {
     height: 180px;
   }
 }
-@media (min-width: 1200px) and (max-width: 1399px){
+@media (min-width: 1200px) and (max-width: 1399px) {
   .item-list {
     grid-template-columns: repeat(4, 1fr);
     width: 100%;
@@ -245,7 +221,7 @@ export default {
     height: 180px;
   }
 }
-@media (min-width: 1400px){
+@media (min-width: 1400px) {
   .item-list {
     grid-template-columns: repeat(4, 1fr);
     width: 100%;

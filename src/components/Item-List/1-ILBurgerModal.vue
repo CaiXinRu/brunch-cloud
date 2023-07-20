@@ -133,7 +133,7 @@ export default {
       status: {
         loadingItem: ''
       },
-      customType: ['我不挑食', '不加番茄', '不加美生菜', '不加美乃滋'],
+      customType: ['我不挑食', '不加番茄', '不加美生菜', '不加美奶滋'],
       iceType: ['正常冰', '少冰', '微冰', '去冰', '熱'],
       sugarType: ['全糖', '七分', '半糖', '三分', '無糖'],
       custom: [],

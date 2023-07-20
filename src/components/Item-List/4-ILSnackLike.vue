@@ -49,13 +49,12 @@
 <script>
 import ILSnackModal from './4-ILSnackModal.vue'
 import LodingPage from '../LodingPage.vue'
+import { mapState, mapActions } from 'pinia'
+import productStore from '@/stores/likes.js'
 export default {
   data () {
     return {
-      isLoading: false,
       isModalVisible: false,
-      products: [],
-      filteredLikes: [],
       filteredProducts: [],
       tempProduct: {}
     }
@@ -64,37 +63,14 @@ export default {
     ILSnackModal,
     LodingPage
   },
+  computed: {
+    ...mapState(productStore, ['isLoading', 'products', 'filteredLikes'])
+  },
   methods: {
-    getProducts () {
-      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`
-      this.isLoading = true
-      this.$http.get(api).then((res) => {
-        this.products = res.data.products
-        const likeIdArrStr = localStorage.getItem('likeIdArr')
-        if (likeIdArrStr) {
-          const likeIdArr = JSON.parse(likeIdArrStr)
-          for (const id of likeIdArr) {
-            for (const prod of this.products) {
-              if (prod.id === id) {
-                prod.like = true
-              }
-            }
-          }
-        }
-        this.filteredLikes = this.products.filter(item => item.like)
-        this.isLoading = false
-      })
-    },
-    toggleLike (item) {
-      item.like = !item.like
-      const likeIdArr = []
-      for (const prod of this.products) {
-        if (prod.like) {
-          likeIdArr.push(prod.id)
-        }
-      }
-      localStorage.setItem('likeIdArr', JSON.stringify(likeIdArr))
-    },
+    ...mapActions(productStore, [
+      'getProducts',
+      'toggleLike'
+    ]),
     openModal (item) {
       this.tempProduct = { ...item }
       this.isModalVisible = true
@@ -134,22 +110,6 @@ export default {
   user-select: none;
   position: relative;
 }
-/* .item-list {
-      display: flex;
-      width: 100%;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: flex-start;
-    }
-    .item-per {
-      background-color: #fef7e9;
-      padding: 80px 25px 28px 25px;
-      margin: 10px 10px;
-      border-radius: 50px;
-      width: 295px;
-      height: auto;
-      user-select: none;
-    } */
 .item-per a {
   cursor: pointer;
 }
