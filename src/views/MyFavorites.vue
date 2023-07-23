@@ -1,9 +1,9 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <div class="bg-color--white">
+  <div class="bg-color--white" style="min-height: calc(100vh - 323px);">
     <div class="container u-pt-48 u-pb-68">
       <FavorBar id="fevorTop"></FavorBar>
-      <div class="menu-category">
+      <div v-if="filteredLikes?.length > 0" class="menu-category">
         <button
           data-category="burger"
           class="menu-btn"
@@ -47,9 +47,11 @@
           完整菜單
         </button>
       </div>
-      <div class="dropdown">
-        <button class="dropbtn" @click="toggleDropdown">請選擇雲端種類<span>▼</span></button>
-        <div :class="{ 'dropdown-content': true, 'show': isDropdownOpen }">
+      <div v-if="filteredLikes?.length > 0" class="dropdown">
+        <button class="dropbtn" @click="toggleDropdown">
+          請選擇雲端種類<span>▼</span>
+        </button>
+        <div :class="{ 'dropdown-content': true, show: isDropdownOpen }">
           <div
             data-category="burger"
             class="dropdown-btn"
@@ -95,74 +97,107 @@
         </div>
       </div>
 
-      <!-- Burger -->
-      <ITBurger
-        v-if="filteredMeals.includes('ITBurger')"
-        ref="ITBurger"
-      ></ITBurger>
-      <ILBurgerLike
-        v-if="filteredMeals.includes('ILBurger')"
-        ref="ILBurger"
-      ></ILBurgerLike>
-      <div class="menu-arrow" @click="goToTop"
-        v-if="filteredMeals.includes('ITBurger')"
-        ><font-awesome-icon icon="fa-solid fa-circle-up"
-      /></div>
+      <div v-if="filteredLikes?.length > 0" style="width: 100%">
 
-      <!-- Sandwich -->
-      <ITSandwich
-        v-if="filteredMeals.includes('ITSandwich')"
-        ref="ITSandwich"
-      ></ITSandwich>
-      <ILSandwichLike
-        v-if="filteredMeals.includes('ILSandwich')"
-        ref="ILSandwich"
-      ></ILSandwichLike>
-      <div class="menu-arrow" @click="goToTop"
-        v-if="filteredMeals.includes('ITSandwich')"
-        ><font-awesome-icon icon="fa-solid fa-circle-up"
-      /></div>
+        <!-- Burger -->
+        <ITBurger
+          v-if="filteredMeals.includes('ITBurger')"
+          ref="ITBurger"
+        ></ITBurger>
+        <ILBurgerLike
+          v-if="filteredMeals.includes('ILBurger')"
+          ref="ILBurger"
+        ></ILBurgerLike>
+        <div v-if="filteredBurgerLikes?.length==0 && filteredMeals.includes('ILBurger')" class="menu-item-text">您尚未儲存任何太空漢堡品項！</div>
+        <div
+          class="menu-arrow"
+          @click="goToTop"
+          v-if="filteredMeals.includes('ITBurger')"
+        >
+          <font-awesome-icon icon="fa-solid fa-circle-up" />
+        </div>
 
-      <!-- Rice & Noodles -->
-      <ITRiceNoodles
-        v-if="filteredMeals.includes('ITRiceNoodles')"
-        ref="ITRiceNoodles"
-      ></ITRiceNoodles>
-      <ILRiceNoodlesLike
-        v-if="filteredMeals.includes('ILRiceNoodles')"
-        ref="ILRiceNoodles"
-      ></ILRiceNoodlesLike>
-      <div class="menu-arrow" @click="goToTop"
-        v-if="filteredMeals.includes('ITRiceNoodles')"
-        ><font-awesome-icon icon="fa-solid fa-circle-up"
-      /></div>
+        <!-- Sandwich -->
+        <ITSandwich
+          v-if="filteredMeals.includes('ITSandwich')"
+          ref="ITSandwich"
+        ></ITSandwich>
+        <ILSandwichLike
+          v-if="filteredMeals.includes('ILSandwich')"
+          ref="ILSandwich"
+        ></ILSandwichLike>
+        <div v-if="filteredSandwichLikes?.length==0 && filteredMeals.includes('ILSandwich')" class="menu-item-text">您尚未儲存任何飄浮吐司品項！</div>
+        <div
+          class="menu-arrow"
+          @click="goToTop"
+          v-if="filteredMeals.includes('ITSandwich')"
+        >
+          <font-awesome-icon icon="fa-solid fa-circle-up" />
+        </div>
 
-      <!-- Snack -->
-      <ITSnack v-if="filteredMeals.includes('ITSnack')" ref="ITSnack"></ITSnack>
-      <ILSnackLike v-if="filteredMeals.includes('ILSnack')" ref="ILSnack"></ILSnackLike>
-      <div class="menu-arrow" @click="goToTop"
-        v-if="filteredMeals.includes('ITSnack')"
-        ><font-awesome-icon icon="fa-solid fa-circle-up"
-      /></div>
+        <!-- Rice & Noodles -->
+        <ITRiceNoodles
+          v-if="filteredMeals.includes('ITRiceNoodles')"
+          ref="ITRiceNoodles"
+        ></ITRiceNoodles>
+        <ILRiceNoodlesLike
+          v-if="filteredMeals.includes('ILRiceNoodles')"
+          ref="ILRiceNoodles"
+        ></ILRiceNoodlesLike>
+        <div v-if="filteredRiceNoodlesLikes?.length==0 && filteredMeals.includes('ITRiceNoodles')" class="menu-item-text">您尚未儲存任何柔情飯麵品項！</div>
+        <div
+          class="menu-arrow"
+          @click="goToTop"
+          v-if="filteredMeals.includes('ITRiceNoodles')"
+        >
+          <font-awesome-icon icon="fa-solid fa-circle-up" />
+        </div>
 
-      <!-- Drinks -->
-      <ITDrinks
-        v-if="filteredMeals.includes('ITDrinks')"
-        ref="ITDrinks"
-      ></ITDrinks>
-      <ILDrinksLike
-        v-if="filteredMeals.includes('ILDrinks')"
-        ref="ILDrinks"
-      ></ILDrinksLike>
-      <div class="menu-arrow" @click="goToTop"
-        v-if="filteredMeals.includes('ITDrinks')"
-        ><font-awesome-icon icon="fa-solid fa-circle-up"
-      /></div>
+        <!-- Snack -->
+        <ITSnack
+          v-if="filteredMeals.includes('ITSnack')"
+          ref="ITSnack"
+        ></ITSnack>
+        <ILSnackLike
+          v-if="filteredMeals.includes('ILSnack')"
+          ref="ILSnack"
+        ></ILSnackLike>
+        <div v-if="filteredSnackLikes?.length==0 && filteredMeals.includes('ILSnack')" class="menu-item-text">您尚未儲存任何輕盈小點品項！</div>
+        <div
+          class="menu-arrow"
+          @click="goToTop"
+          v-if="filteredMeals.includes('ITSnack')"
+        >
+          <font-awesome-icon icon="fa-solid fa-circle-up" />
+        </div>
+
+        <!-- Drinks -->
+        <ITDrinks
+          v-if="filteredMeals.includes('ITDrinks')"
+          ref="ITDrinks"
+        ></ITDrinks>
+        <ILDrinksLike
+          v-if="filteredMeals.includes('ILDrinks')"
+          ref="ILDrinks"
+        ></ILDrinksLike>
+        <div v-if="filteredDrinksLikes?.length==0 && filteredMeals.includes('ILDrinks')" class="menu-item-text">您尚未儲存任何沁涼飲品品項！</div>
+        <div
+          class="menu-arrow"
+          @click="goToTop"
+          v-if="filteredMeals.includes('ITDrinks')"
+        >
+          <font-awesome-icon icon="fa-solid fa-circle-up" />
+        </div>
+      </div>
+
+      <div v-else class="menu-text">您尚未儲存任何雲端餐點喔！</div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState, mapActions } from 'pinia'
+import productStore from '@/stores/likes.js'
 import FavorBar from '@/components/FavorBar.vue'
 import ITBurger from '@/components/Item-Title/1-ITBurger.vue'
 import ITSandwich from '@/components/Item-Title/2-ITSandwich.vue'
@@ -196,6 +231,7 @@ export default {
     ILDrinksLike
   },
   methods: {
+    ...mapActions(productStore, ['getProducts', 'toggleLike']),
     toggleDropdown () {
       this.isDropdownOpen = !this.isDropdownOpen
     },
@@ -208,10 +244,6 @@ export default {
       this.selectedCategory = category
     },
     goToTop () {
-      // const el = document.querySelector('#menuTop')
-      // if (el !== null) {
-      //   el.scrollIntoView({ behavior: 'smooth' })
-      // }
       window.scrollTo({
         top: 0,
         left: 0,
@@ -220,6 +252,7 @@ export default {
     }
   },
   computed: {
+    ...mapState(productStore, ['isLoading', 'products', 'filteredLikes', 'filteredBurgerLikes', 'filteredSandwichLikes', 'filteredRiceNoodlesLikes', 'filteredSnackLikes', 'filteredDrinksLikes']),
     // eslint-disable-next-line vue/return-in-computed-property
     filteredMeals () {
       if (this.selectedCategory === 'all') {
@@ -254,12 +287,8 @@ export default {
     }
   },
   mounted () {
+    this.getProducts()
     window.addEventListener('click', this.closeDropdown)
-    // const h = location.hash
-    // location.hash = ''
-    // setTimeout(() => {
-    //   location.hash = h
-    // })
     if (window.location.hash && window.location.hash !== '') {
       const el = document.querySelector(window.location.hash)
       if (el !== null) {
@@ -382,7 +411,7 @@ export default {
   background-color: var(--color--light-brown);
   width: 100%;
   overflow: auto;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 .dropdown-btn {
@@ -396,103 +425,118 @@ export default {
 .dropdown-btn:hover {
   background-color: var(--color--white);
 }
-.show{
+.show {
   display: block;
 }
 .menu-arrow {
   font-size: 50px;
   color: var(--color--primary);
-  align-self: flex-end;
+  /* align-self: flex-end; */
   cursor: pointer;
   margin-top: 18px;
+  display: flex;
+  justify-content: end;
+}
+.menu-text{
+  font-size: 24px;
+  height: 40vh;
+  align-items: center;
+  display: flex;
+  color: var(--color--dark-brown);
+}
+.menu-item-text{
+  height: 15vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color--dark-brown);
+  font-size: 22px;
 }
 
 /* RWD */
-@media (max-width: 991px){
-  .menu-category{
+@media (max-width: 991px) {
+  .menu-category {
     display: none;
   }
-  .dropdown{
+  .dropdown {
     display: inline-block;
   }
 }
-@media (min-width: 992px) and (max-width: 1199px){
-
-  .menu-btn{
+@media (min-width: 992px) and (max-width: 1199px) {
+  .menu-btn {
     min-width: 6em;
     font-size: 1rem;
   }
-  .menu-btn:before{
+  .menu-btn:before {
     width: 3.2em;
     height: 3.2em;
   }
-  .menu-btn:hover:before{
+  .menu-btn:hover:before {
     left: 13%;
   }
-  .menu-btn:after{
+  .menu-btn:after {
     width: 3.5em;
     height: 3.5em;
   }
-  .menu-btn:hover:after{
+  .menu-btn:hover:after {
     right: 8%;
   }
-  .menu-category{
+  .menu-category {
     display: flex;
   }
-  .dropdown{
+  .dropdown {
     display: none;
   }
 }
-@media (min-width: 1200px) and (max-width: 1399px){
-
-  .menu-btn{
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .menu-btn {
     min-width: 6.23em;
     font-size: 1.1rem;
   }
-  .menu-btn:before{
+  .menu-btn:before {
     width: 3.2em;
     height: 3.2em;
   }
-  .menu-btn:hover:before{
+  .menu-btn:hover:before {
     left: 13%;
   }
-  .menu-btn:after{
+  .menu-btn:after {
     width: 3.5em;
     height: 3.5em;
   }
-  .menu-btn:hover:after{
+  .menu-btn:hover:after {
     right: 8%;
   }
-  .menu-category{
+  .menu-category {
     display: flex;
   }
-  .dropdown{
+  .dropdown {
     display: none;
   }
 }
-@media (min-width: 1400px){
-  .menu-btn{
+@media (min-width: 1400px) {
+  .menu-btn {
     min-width: 7.23em;
     font-size: 1.25rem;
   }
-  .menu-btn:before{
+  .menu-btn:before {
     width: 3.2em;
     height: 3.2em;
   }
-  .menu-btn:hover:before{
+  .menu-btn:hover:before {
     left: 13%;
   }
-  .menu-btn:after{
+  .menu-btn:after {
     width: 3.8em;
     height: 3.8em;
   }
-  .menu-btn:hover:after{
+  .menu-btn:hover:after {
     right: 10%;
   }
-  .menu-category{
+  .menu-category {
     display: flex;
   }
-  .dropdown{
+  .dropdown {
     display: none;
   }
 }

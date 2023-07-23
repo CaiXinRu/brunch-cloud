@@ -7,6 +7,7 @@ export default defineStore('product', {
     isLoading: false,
     products: [],
     filteredLikes: []
+    // filteredBurgerLikes: []
   }),
   // 定義使用到的函式，可以為同步和非同步，如同 method
   actions: {
@@ -40,6 +41,23 @@ export default defineStore('product', {
       }
       localStorage.setItem('likeIdArr', JSON.stringify(likeIdArr))
       this.filteredLikes = this.products.filter((item) => item.like)
+    }
+  },
+  getters: {
+    filteredBurgerLikes () {
+      return this.filteredLikes.filter((item) => item.category === '太空漢堡')
+    },
+    filteredSandwichLikes () {
+      return this.filteredLikes.filter((item) => item.category === '飄浮吐司')
+    },
+    filteredRiceNoodlesLikes () {
+      return this.filteredLikes.filter((item) => item.category === '柔情飯麵')
+    },
+    filteredSnackLikes () {
+      return this.filteredLikes.filter((item) => item.category === '輕盈小點')
+    },
+    filteredDrinksLikes () {
+      return this.filteredLikes.filter((item) => item.category === '沁涼飲品')
     }
   }
 })
