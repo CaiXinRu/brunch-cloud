@@ -313,12 +313,14 @@ export default {
   },
   mounted () {
     window.addEventListener('click', this.closeDropdown)
-    if (window.location.hash && window.location.hash !== '') {
-      const el = document.querySelector(window.location.hash)
-      if (el !== null) {
-        el.scrollIntoView({ behavior: 'smooth' })
+    setTimeout(() => {
+      if (window.location.hash && window.location.hash !== '' && window.location.hash.split('#').length > 2) {
+        const el = document.querySelector('#' + window.location.hash.split('#')[window.location.hash.split('#').length - 1])
+        if (el !== null) {
+          el.scrollIntoView({ behavior: 'smooth' })
+        }
       }
-    }
+    }, 2000)
   },
   // eslint-disable-next-line vue/no-deprecated-destroyed-lifecycle
   beforeDestroy () {

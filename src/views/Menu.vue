@@ -192,8 +192,8 @@ export default {
   },
   mounted () {
     setTimeout(() => {
-      if (window.location.hash && window.location.hash !== '') {
-        const el = document.querySelector(window.location.hash)
+      if (window.location.hash && window.location.hash !== '' && window.location.hash.split('#').length > 2) {
+        const el = document.querySelector('#' + window.location.hash.split('#')[window.location.hash.split('#').length - 1])
         if (el !== null) {
           el.scrollIntoView({ behavior: 'smooth' })
         }
