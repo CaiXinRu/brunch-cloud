@@ -24,8 +24,8 @@ import { currency, date } from './methods/filters.js'
 
 // 載入順序很重要
 // import 'bootstrap/scss/bootstrap.scss'
-import '@/assets/base.scss'
-import '@/assets/layout.scss'
+// import '@/assets/base.scss'
+// import '@/assets/layout.scss'
 
 /* import the fontawesome core */
 import { library } from '@fortawesome/fontawesome-svg-core'
