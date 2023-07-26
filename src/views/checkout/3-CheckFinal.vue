@@ -205,6 +205,8 @@
 
 <script>
 import LoadingPage from '@/components/LodingPage.vue'
+import { mapState, mapActions } from 'pinia'
+import useCartStore from '@/stores/cart.js'
 
 export default {
   data: () => {
@@ -212,15 +214,20 @@ export default {
       order: {
         user: {}
       },
-      orderId: '',
-      isLoading: false
+      orderId: ''
     }
   },
   components: {
     // eslint-disable-next-line vue/no-unused-components
     LoadingPage
   },
+  computed: {
+    ...mapState(useCartStore, ['isLoading', 'cart', 'status'])
+  },
   methods: {
+    ...mapActions(useCartStore, [
+      'getCart'
+    ]),
     async getOrder () {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/order/${this.orderId}`
       this.isLoading = true
@@ -239,6 +246,7 @@ export default {
       if (res.data.success) {
         const resGetOrder = await this.getOrder()
         this.$router.push(`/checkpay/${resGetOrder.data.order.id}`)
+        this.getCart()
       }
       this.isLoading = false
       return res
@@ -246,7 +254,6 @@ export default {
   },
   created () {
     this.orderId = this.$route.params.orderId
-    // console.log(this.orderId)
     this.getOrder()
   }
 }

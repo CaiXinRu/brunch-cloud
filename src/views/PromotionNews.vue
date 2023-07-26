@@ -72,7 +72,7 @@
           <div class="news-type">{{ promo.typeC }}</div>
           <img
             class="news-img"
-            :src="`/promotions/${promo.img}`"
+            :src="Promotions[promo.img]"
             @click.prevent="showModal(promo.id)"
           />
           <p class="sub u-mt-16 u-mb-4">{{ promo.time }}</p>
@@ -100,6 +100,7 @@
 <script>
 import NewsBar from '@/components/NewsBar'
 import PromotionModal from '@/components/PromotionModal.vue'
+import Promotions from '@/assets/js/promotions.js'
 export default {
   data () {
     return {
@@ -195,6 +196,7 @@ export default {
           id: 'code3'
         }
       ],
+      Promotions: Promotions,
       selectedType: 'all',
       isDropdownOpen: false,
       isModalVisible: false,

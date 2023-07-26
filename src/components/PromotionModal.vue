@@ -5,7 +5,7 @@
             <font-awesome-icon icon="fa-solid fa-circle-xmark" />
         </a>
         <div class="promo-container">
-            <img class="im-pic" :src="`/promotions/${promo.img}`" />
+            <img class="im-pic" :src="Promotions[promo.img]"/>
             <br>
             <div class="promo-title">▎活動時間:</div>
             <div class="promo-text">{{ promo.timeC }}</div>
@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import Promotions from '@/assets/js/promotions.js'
 export default {
   emits: ['update:modelValue'],
   props: {
@@ -36,7 +37,8 @@ export default {
     return {
       isLanding: false,
       promo: {},
-      image: null
+      image: null,
+      Promotions: Promotions
     }
   },
   components: {

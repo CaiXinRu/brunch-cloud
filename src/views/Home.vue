@@ -104,11 +104,11 @@
         <MoreFood></MoreFood>
         <div class="try-lists">
           <div class="try-list" v-for="(item, index) in foods" :key="index">
-            <img class="try-img" :src="`/foods/${item.img}`"/>
+            <img class="try-img" :src="Foods[item.img]"/>
             <h3 class="u-text-center color--black">{{ item.food }}</h3>
-            <a :href="`/menu#${item.hashtag}`">
+            <router-link :to="`/menu#${item.hashtag}`">
               <h6 class="try-btn">{{ item.categoryC }}</h6>
-            </a>
+            </router-link>
           </div>
         </div>
       </div>
@@ -123,7 +123,7 @@
         <div class="news-lists">
           <div class="news-list" v-for="(promo, index) in promos" :key="index">
             <div class="news-type">{{ promo.typeC }}</div>
-            <img class="news-img" :src="`/promotions/${promo.img}`" />
+            <img class="news-img" :src="Promotions[promo.img]"/>
             <p class="sub u-mt-16 u-mb-4">{{ promo.time }}</p>
             <hr class="news-hr" />
             <div
@@ -141,6 +141,8 @@
 import LoadingPage from '@/components/LodingPage.vue'
 import MoreFood from '@/components/MoreFood.vue'
 import MoreNews from '@/components/MoreNews.vue'
+import Foods from '@/assets/js/foods.js'
+import Promotions from '@/assets/js/promotions.js'
 
 export default {
   name: 'HomeView',
@@ -175,27 +177,29 @@ export default {
           categoryC: '太空漢堡系列',
           food: '爆炸鮮蝦和牛漢堡',
           hashtag: 'menuTop',
-          img: '1-b.jpg'
+          img: '1_burger.jpg'
         },
         {
           categoryC: '飄浮吐司系列',
           food: '彩虹辣雞吐司',
           hashtag: 'beforeSandwich',
-          img: '2-s.png'
+          img: '2_sandwich.png'
         },
         {
           categoryC: '柔情飯麵系列',
           food: '青醬天婦羅燉飯',
           hashtag: 'beforeRiceNoodles',
-          img: '3-s.png'
+          img: '3_ricenoodles.png'
         },
         {
           categoryC: '沁涼飲料系列',
           food: '朵朵椪糖奶花歐蕾',
           hashtag: 'beforeDrinks',
-          img: '4-d.png'
+          img: '4_drink.png'
         }
-      ]
+      ],
+      Foods: Foods,
+      Promotions: Promotions
     }
   },
   components: {

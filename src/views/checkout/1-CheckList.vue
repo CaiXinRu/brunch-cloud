@@ -266,7 +266,6 @@ export default {
   components: {
     Lodingpage
   },
-  watch: {},
   computed: {
     ...mapState(useCartStore, ['isLoading', 'cart', 'status'])
   },

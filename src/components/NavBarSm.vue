@@ -135,7 +135,6 @@ export default {
     }
   },
   mounted () {
-    this.getCart()
     this.getProducts()
   }
 }
