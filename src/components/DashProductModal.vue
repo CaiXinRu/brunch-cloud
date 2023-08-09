@@ -1,5 +1,5 @@
 <template>
-  <LoadingPage v-if="isLoading"></LoadingPage>
+  <LoadingPage v-if="isLoading"/>
   <div
     class="modal fade"
     id="dashProductModal"
@@ -203,8 +203,6 @@ export default {
   components: {
     LoadingPage
   },
-  // 監聽props是否做變動
-  // 目的是一有做更動，就把傳進來的資料寫到tempProduct
   watch: {
     product () {
       this.tempProduct = this.product

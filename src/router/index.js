@@ -2,11 +2,6 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 // import Home from '../views/Home.vue'
 
 const routes = [
-  // {
-  //   path: '/',
-  //   name: 'home',
-  //   component: Home
-  // },
   {
     path: '/guideline',
     name: 'guideline',
@@ -49,7 +44,7 @@ const routes = [
       {
         path: 'menu',
         name: 'menu',
-        component: () => import('../views/Menu.vue')
+        component: () => import('../views/MenuPage.vue')
       },
       {
         path: 'checklist',

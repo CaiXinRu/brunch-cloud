@@ -1,6 +1,6 @@
 <template>
   <div>
-    <LoadingPage v-if="isLoading"></LoadingPage>
+    <LoadingPage v-if="isLoading"/>
     <div class="bg-color--white">
       <div class="container u-pt-48 u-pb-68">
         <table style="width: 100%" class="do-table">
@@ -97,7 +97,7 @@ export default {
           console.log(res)
         })
     },
-    openOrderModal (isNew, item) {
+    openOrderModal (item) {
       this.tempOrder = { ...item }
       this.isNew = false
       const orderComponent = this.$refs.orderModal
@@ -118,7 +118,6 @@ export default {
         .then((res) => {
           this.isLoading = false
           this.getOrders(this.currentPage)
-          // this.$httpMessageState(res, '更新付款狀態')
         })
     },
     delOrder () {

@@ -1,6 +1,5 @@
-<!-- eslint-disable vue/no-parsing-error -->
 <template>
-  <LoadingPage v-if="isLoading"></LoadingPage>
+  <LoadingPage v-if="isLoading"/>
   <div class="bg-color--white">
     <div class="container u-pt-48 u-pb-48">
       <div class="co-stepbar">
@@ -39,10 +38,8 @@
         <thead>
           <tr class="cf-head">
             <th style="width: 40%">品名</th>
-            <!-- <th style="width: 25%">備註</th> -->
             <th style="width: 30%">單價</th>
             <th style="width: 30%">數量</th>
-            <!-- <th style="width: 30%">小計</th> -->
           </tr>
         </thead>
         <tbody>
@@ -55,14 +52,10 @@
             <td style="width: 40%; border-right: 3px solid #fac664">
               {{ item.product.title }}
             </td>
-            <!-- <td style="width: 30%">{{ item.note }}</td> -->
             <td style="width: 30%; border-right: 3px solid #fac664">
               NT${{ $filters.currency(item.final_total) }}
             </td>
             <td style="width: 30%">{{ item.qty }} 份</td>
-            <!-- <td style="width: 30%">
-                {{ item.priceUnit }}{{ item.price * 0.8 * item.count }}
-              </td> -->
           </tr>
         </tbody>
         <tfoot>
@@ -161,24 +154,6 @@
               <span v-else class="color--positive">付款完成</span>
             </td>
           </tr>
-          <!-- <tr style="height: 50px" class="cf-body">
-          <td
-            style="width: 40%; border-right: 3px solid #fac664"
-            class="color--dark-brown"
-          >
-            支付方式
-          </td>
-          <td style="width: 60%" class="color--black">？？</td>
-        </tr> -->
-          <!-- <tr style="height: 50px" class="cf-body">
-          <td
-            style="width: 40%; border-right: 3px solid #fac664"
-            class="color--dark-brown"
-          >
-            預計收件日期與時間
-          </td>
-          <td style="width: 60%" class="color--black">？？</td>
-        </tr> -->
         </tbody>
       </table>
       <div class="cf-submit-container" v-if="!order?.is_paid">
@@ -218,7 +193,6 @@ export default {
     }
   },
   components: {
-    // eslint-disable-next-line vue/no-unused-components
     LoadingPage
   },
   computed: {

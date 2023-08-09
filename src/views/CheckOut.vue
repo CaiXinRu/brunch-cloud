@@ -23,27 +23,16 @@
           <div class="cs-bar"></div>
         </div>
       </div>
-      <!-- <CheckList></CheckList>
-      <CheckCustomer></CheckCustomer>
-      <CheckFinal></CheckFinal> -->
     </div>
   </div>
 </template>
 
 <script scoped>
-// import CheckList from '@/components/checkout/1-CheckList.vue'
-// import CheckCustomer from '@/components/checkout/2-CheckCustomer.vue'
-// import CheckFinal from '@/components/checkout/3-CheckFinal.vue'
 
 export default {
   data: () => {
     return {
     }
-  },
-  components: {
-    // CheckList,
-    // CheckCustomer,
-    // CheckFinal
   }
 }
 </script>

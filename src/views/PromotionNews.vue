@@ -1,7 +1,7 @@
 <template>
   <div class="bg-color--white">
     <div class="container u-pt-48 u-pb-68">
-      <NewsBar id="newsTop"></NewsBar>
+      <NewsBar id="newsTop"/>
       <div class="promo-type">
         <button
           data-type="north"
@@ -93,8 +93,7 @@
       (val) => {
         isModalVisible = val
       }
-    "
-  ></PromotionModal>
+    "/>
 </template>
 
 <script>
@@ -233,7 +232,6 @@ export default {
   },
   computed: {
     filteredPromos () {
-      // 根據選取的地區過濾資料
       if (this.selectedType === '' || this.selectedType === 'all') {
         return this.promos
       } else {
@@ -252,8 +250,7 @@ export default {
       }
     }, 2000)
   },
-  // eslint-disable-next-line vue/no-deprecated-destroyed-lifecycle
-  beforeDestroy () {
+  beforeUnmount () {
     window.removeEventListener('click', this.closeDropdown)
   }
 }

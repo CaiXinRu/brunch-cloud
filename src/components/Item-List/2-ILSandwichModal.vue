@@ -1,5 +1,5 @@
 <template>
-  <LoadingPage v-if="isLoading"></LoadingPage>
+  <LoadingPage v-if="isLoading"/>
   <div
     class="modal fade"
     id="sandwichModal"

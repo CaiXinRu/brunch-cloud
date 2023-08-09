@@ -5,7 +5,7 @@
       ref="cartModal"
       :class="{ 'show-modal': modelValue, 'cartModal': true }"
     >
-      <LodingPageModal v-if="isLoading"></LodingPageModal>
+      <LodingPageModal v-if="isLoading"/>
       <div class="cb-container">
         <div class="cb-head">
           <div class="cbh-close" @click="closeModal()">
@@ -89,7 +89,6 @@
             class="cb-checkout"
             @click="closeModal()"
           >
-            <!-- <div class="cbb-text">訂單結帳</div> -->
             訂單結帳
           </router-link>
         </tfoot>

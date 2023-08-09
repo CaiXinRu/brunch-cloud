@@ -1,5 +1,5 @@
 <template>
-  <LoadingPage v-if="isLoading"></LoadingPage>
+  <LoadingPage v-if="isLoading"/>
   <div
     class="modal fade"
     id="snackModal"
@@ -169,7 +169,6 @@ export default {
       }
       this.$http.post(api, { data: cart }).then((res) => {
         console.log(res)
-        // this.$httpMessageState(response, '加入購物車')
         this.status.loadingItem = ''
         this.count = 1
         this.hideModal()
@@ -216,15 +215,14 @@ export default {
   width: 100%;
 }
 .im-pic {
-  // height: 450px;
   display: flex;
   flex: 1;
   justify-content: center;
   align-items: center;
 }
 .im-pic-inner {
-  width: 100%; /* Adjust the width as needed */
-  height: 100%; /* Adjust the height as needed */
+  width: 100%;
+  height: 100%;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -306,11 +304,9 @@ export default {
   border: 2px solid #644536;
   cursor: pointer;
 }
-/* On mouse-over, add a grey background color */
 .im-box-container:hover .im-input ~ .im-checkmark {
   background-color: #fac664;
 }
-/* When the checkbox is checked, add a blue background */
 .im-box-container .im-input:checked ~ .im-checkmark {
   background-color: #644536;
 }

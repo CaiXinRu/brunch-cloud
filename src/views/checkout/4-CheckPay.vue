@@ -1,5 +1,5 @@
 <template>
-  <LoadingPage v-if="isLoading"></LoadingPage>
+  <LoadingPage v-if="isLoading"/>
   <div class="bg-color--white">
     <div class="container u-pt-48 u-pb-48">
       <div class="co-stepbar">
@@ -79,7 +79,6 @@ export default {
     }
   },
   components: {
-    // eslint-disable-next-line vue/no-unused-components
     LoadingPage
   },
   created () {
@@ -148,7 +147,6 @@ export default {
 .cp-body {
   display: flex;
   flex-direction: row;
-  /* padding: 48px 0 16px 0; */
   text-align: start;
   align-items: flex-start;
 

@@ -1,8 +1,7 @@
-<!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <div class="bg-color--white" style="min-height: calc(100vh - 323px);">
     <div class="container u-pt-48 u-pb-68">
-      <FavorBar id="fevorTop"></FavorBar>
+      <FavorBar id="fevorTop"/>
       <div v-if="filteredLikes?.length > 0" class="menu-category">
         <button
           data-category="burger"
@@ -103,11 +102,11 @@
         <ITBurger
           v-if="filteredMeals.includes('ITBurger')"
           ref="ITBurger"
-        ></ITBurger>
+        />
         <ILBurgerLike
           v-if="filteredMeals.includes('ILBurger')"
           ref="ILBurger"
-        ></ILBurgerLike>
+        />
         <div v-if="filteredBurgerLikes?.length==0 && filteredMeals.includes('ILBurger')" class="menu-item-text">您尚未儲存任何太空漢堡品項！</div>
         <div
           class="menu-arrow"
@@ -121,11 +120,11 @@
         <ITSandwich
           v-if="filteredMeals.includes('ITSandwich')"
           ref="ITSandwich"
-        ></ITSandwich>
+        />
         <ILSandwichLike
           v-if="filteredMeals.includes('ILSandwich')"
           ref="ILSandwich"
-        ></ILSandwichLike>
+        />
         <div v-if="filteredSandwichLikes?.length==0 && filteredMeals.includes('ILSandwich')" class="menu-item-text">您尚未儲存任何飄浮吐司品項！</div>
         <div
           class="menu-arrow"
@@ -139,11 +138,11 @@
         <ITRiceNoodles
           v-if="filteredMeals.includes('ITRiceNoodles')"
           ref="ITRiceNoodles"
-        ></ITRiceNoodles>
+        />
         <ILRiceNoodlesLike
           v-if="filteredMeals.includes('ILRiceNoodles')"
           ref="ILRiceNoodles"
-        ></ILRiceNoodlesLike>
+        />
         <div v-if="filteredRiceNoodlesLikes?.length==0 && filteredMeals.includes('ITRiceNoodles')" class="menu-item-text">您尚未儲存任何柔情飯麵品項！</div>
         <div
           class="menu-arrow"
@@ -157,11 +156,11 @@
         <ITSnack
           v-if="filteredMeals.includes('ITSnack')"
           ref="ITSnack"
-        ></ITSnack>
+        />
         <ILSnackLike
           v-if="filteredMeals.includes('ILSnack')"
           ref="ILSnack"
-        ></ILSnackLike>
+        />
         <div v-if="filteredSnackLikes?.length==0 && filteredMeals.includes('ILSnack')" class="menu-item-text">您尚未儲存任何輕盈小點品項！</div>
         <div
           class="menu-arrow"
@@ -175,11 +174,11 @@
         <ITDrinks
           v-if="filteredMeals.includes('ITDrinks')"
           ref="ITDrinks"
-        ></ITDrinks>
+        />
         <ILDrinksLike
           v-if="filteredMeals.includes('ILDrinks')"
           ref="ILDrinks"
-        ></ILDrinksLike>
+        />
         <div v-if="filteredDrinksLikes?.length==0 && filteredMeals.includes('ILDrinks')" class="menu-item-text">您尚未儲存任何沁涼飲品品項！</div>
         <div
           class="menu-arrow"
@@ -253,7 +252,6 @@ export default {
   },
   computed: {
     ...mapState(productStore, ['isLoading', 'products', 'filteredLikes', 'filteredBurgerLikes', 'filteredSandwichLikes', 'filteredRiceNoodlesLikes', 'filteredSnackLikes', 'filteredDrinksLikes']),
-    // eslint-disable-next-line vue/return-in-computed-property
     filteredMeals () {
       if (this.selectedCategory === 'all') {
         return [
@@ -272,7 +270,7 @@ export default {
         switch (this.selectedCategory) {
           case 'burger':
             return ['ITBurger', 'ILBurger']
-          case 'toast':
+          case 'sandwich':
             return ['ITSandwich', 'ILSandwich']
           case 'rice&noodles':
             return ['ITRiceNoodles', 'ILRiceNoodles']
@@ -298,8 +296,7 @@ export default {
       }
     }, 2000)
   },
-  // eslint-disable-next-line vue/no-deprecated-destroyed-lifecycle
-  beforeDestroy () {
+  beforeUnmount () {
     window.removeEventListener('click', this.closeDropdown)
   }
 }
@@ -414,7 +411,7 @@ export default {
   width: 100%;
   overflow: auto;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
+  z-index: 2;
 }
 .dropdown-btn {
   justify-content: center;
@@ -433,7 +430,6 @@ export default {
 .menu-arrow {
   font-size: 50px;
   color: var(--color--primary);
-  /* align-self: flex-end; */
   cursor: pointer;
   margin-top: 18px;
   display: flex;

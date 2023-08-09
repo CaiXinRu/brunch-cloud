@@ -125,7 +125,6 @@
   </div>
 </template>
 <script>
-// import modalMixin from '@/mixins/modalMixin'
 import Modal from 'bootstrap/js/dist/modal'
 export default {
   name: 'orderModal',
@@ -146,7 +145,6 @@ export default {
     }
   },
   emits: ['update-product'],
-  // mixins: [modalMixin],
   inject: ['emitter'],
   methods: {
     showModal () {

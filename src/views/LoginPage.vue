@@ -1,5 +1,5 @@
 <template>
-  <LoadingPage v-if="isLoading"></LoadingPage>
+  <LoadingPage v-if="isLoading"/>
   <div class="bg-color--white">
     <div class="container">
       <div class="login-row login-column-sm">
@@ -82,16 +82,10 @@ export default {
       this.$http
         .post(api, this.user)
         .then((res) => {
-          // 如果成功登入
           if (res.data.success) {
-            // 取得token & expired
             const { token, expired } = res.data
-            // console.log(token, expired)
-            // 儲存cookie
             document.cookie = `hexToken=${token}; expired=${new Date(expired)}`
-            // 轉址到dashboard
             this.$router.push('dashboard/products')
-            // this.isLoading = false
           }
           this.isLoading = false
         })

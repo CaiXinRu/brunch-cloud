@@ -31,7 +31,7 @@
         isCartBarOpen = val
       }
     "
-  ></CartBar>
+  />
 </template>
 
 <script>

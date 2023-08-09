@@ -34,7 +34,6 @@
           >
             取消
           </button>
-          <!-- 按此「確認刪除」會觸發del-item的emit事件 -->
           <button
             type="button"
             class="btn btn-danger"

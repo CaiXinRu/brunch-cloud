@@ -1,9 +1,8 @@
-<!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <LoadingPage v-if="isLoading"></LoadingPage>
+  <LoadingPage v-if="isLoading"/>
   <div class="bg-color--white">
     <div class="container u-pt-48 u-pb-68">
-      <MenuBar id="menuTop"></MenuBar>
+      <MenuBar id="menuTop"/>
       <div class="menu-category">
         <button
           data-category="burger"
@@ -95,16 +94,17 @@
           </div>
         </div>
       </div>
+
       <!-- Burger -->
       <ITBurger
         v-if="filteredMeals.includes('ITBurger')"
         id="ITBurger"
         ref="ITBurger"
-      ></ITBurger>
+      />
       <ILBurger
         v-if="filteredMeals.includes('ILBurger')"
         ref="ILBurger"
-      ></ILBurger>
+      />
       <div class="menu-arrow" @click="goToTop"
         v-if="filteredMeals.includes('ITBurger')"
         id="beforeSandwich"
@@ -115,11 +115,11 @@
       <ITSandwich
         v-if="filteredMeals.includes('ITSandwich')"
         ref="ITSandwich" id="ITSandwich"
-      ></ITSandwich>
+      />
       <ILSandwich
         v-if="filteredMeals.includes('ILSandwich')"
         ref="ILSandwich"
-      ></ILSandwich>
+      />
       <div class="menu-arrow" @click="goToTop"
         v-if="filteredMeals.includes('ITSandwich')"
         id="beforeRiceNoodles"
@@ -130,11 +130,11 @@
       <ITRiceNoodles
         v-if="filteredMeals.includes('ITRiceNoodles')"
         ref="ITRiceNoodles" id="ITRiceNoodles"
-      ></ITRiceNoodles>
+      />
       <ILRiceNoodles
         v-if="filteredMeals.includes('ILRiceNoodles')"
         ref="ILRiceNoodles"
-      ></ILRiceNoodles>
+      />
       <div class="menu-arrow" @click="goToTop"
         v-if="filteredMeals.includes('ITRiceNoodles')"
         id="beforeSnack"
@@ -142,9 +142,8 @@
       /></div>
 
       <!-- Snack -->
-      <ITSnack v-if="filteredMeals.includes('ITSnack')" ref="ITSnack" id="ITSnack"></ITSnack>
-      <ILSnack v-if="filteredMeals.includes('ILSnack')" ref="ILSnack"></ILSnack
-      >
+      <ITSnack v-if="filteredMeals.includes('ITSnack')" ref="ITSnack" id="ITSnack"/>
+      <ILSnack v-if="filteredMeals.includes('ILSnack')" ref="ILSnack"/>
       <div class="menu-arrow" @click="goToTop"
         v-if="filteredMeals.includes('ITSnack')"
         id="beforeDrinks"
@@ -155,11 +154,11 @@
       <ITDrinks
         v-if="filteredMeals.includes('ITDrinks')"
         ref="ITDrinks" id="ITDrinks"
-      ></ITDrinks>
+      />
       <ILDrinks
         v-if="filteredMeals.includes('ILDrinks')"
         ref="ILDrinks"
-      ></ILDrinks>
+      />
       <div class="menu-arrow" @click="goToTop"
         v-if="filteredMeals.includes('ITDrinks')"
         ><font-awesome-icon icon="fa-solid fa-circle-up"
@@ -232,10 +231,6 @@ export default {
       this.selectedCategory = category
     },
     goToTop () {
-      // const el = document.querySelector('#menuTop')
-      // if (el !== null) {
-      //   el.scrollIntoView({ behavior: 'smooth' })
-      // }
       window.scrollTo({
         top: 0,
         left: 0,
@@ -276,8 +271,7 @@ export default {
       }
     }
   },
-  // eslint-disable-next-line vue/no-deprecated-destroyed-lifecycle
-  beforeDestroy () {
+  beforeUnmount () {
     window.removeEventListener('click', this.closeDropdown)
   }
 }
@@ -393,7 +387,7 @@ export default {
   width: 100%;
   overflow: auto;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
+  z-index: 2;
 }
 .dropdown-btn {
   justify-content: center;

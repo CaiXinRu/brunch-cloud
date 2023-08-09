@@ -1,7 +1,7 @@
 <template>
   <div class="bg-color--white">
     <div class="container u-pt-48 u-pb-68">
-      <LocationBar id="locationTop"></LocationBar>
+      <LocationBar id="locationTop"/>
       <div class="location-area">
         <button
           data-area="north"
@@ -272,7 +272,7 @@ export default {
           area: 'east'
         }
       ],
-      selectedArea: 'all', // 儲存選取的地區
+      selectedArea: 'all',
       isDropdownOpen: false
     }
   },
@@ -301,9 +301,8 @@ export default {
   },
   computed: {
     filteredLocations () {
-      // 根據選取的地區過濾資料
       if (this.selectedArea === '' || this.selectedArea === 'all') {
-        return this.locations // 若未選取地區，會回傳所有資料
+        return this.locations
       } else {
         return this.locations.filter(
           (location) => location.area === this.selectedArea
@@ -322,8 +321,7 @@ export default {
       }
     }, 2000)
   },
-  // eslint-disable-next-line vue/no-deprecated-destroyed-lifecycle
-  beforeDestroy () {
+  beforeUnmount () {
     window.removeEventListener('click', this.closeDropdown)
   }
 }

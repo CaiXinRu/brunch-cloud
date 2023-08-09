@@ -78,7 +78,6 @@
 
   .more-food:after {
     opacity: 0;
-    //   content: '→';
   }
 
   .e-text {

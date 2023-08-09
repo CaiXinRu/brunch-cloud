@@ -1,6 +1,6 @@
 <template>
   <div>
-    <LoadingPage v-if="isLoading"></LoadingPage>
+    <LoadingPage v-if="isLoading"/>
     <div class="bg-color--white">
       <div class="container u-pt-48 u-pb-68">
         <div href="#" class="dc-button" @click="openCouponModal(true)">
@@ -119,7 +119,6 @@ export default {
         const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/coupon`
         this.$http.post(url, { data: tempCoupon }).then((response) => {
           console.log(response, tempCoupon)
-          //  this.$httpMessageState(response, '新增優惠券')
           this.getCoupons()
           this.$refs.couponModal.hideModal()
         })
@@ -128,7 +127,6 @@ export default {
         this.$http.put(url, { data: this.tempCoupon })
           .then((response) => {
             console.log(response)
-            //   this.$httpMessageState(response, '新增優惠券')
             this.getCoupons()
             this.$refs.couponModal.hideModal()
           })
@@ -139,7 +137,6 @@ export default {
       this.isLoading = true
       this.$http.delete(url).then((response) => {
         console.log(response, this.tempCoupon)
-        // this.$httpMessageState(response, '刪除優惠券')
         const delComponent = this.$refs.delModal
         delComponent.hideModal()
         this.getCoupons()

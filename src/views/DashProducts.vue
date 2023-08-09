@@ -1,5 +1,5 @@
 <template>
-  <LoadingPage v-if="isLoading"></LoadingPage>
+  <LoadingPage v-if="isLoading"/>
   <div class="bg-color--white">
     <div class="container u-pt-48 u-pb-32">
       <div class="dp-button" @click="openModal(true)">
@@ -52,17 +52,17 @@
       </table>
     </div>
   </div>
-  <PaginationPage :pages="pagination" @emit-pages="getProducts"></PaginationPage>
+  <PaginationPage :pages="pagination" @emit-pages="getProducts"/>
   <DashProductModal
     ref="dashProductModal"
     :product="tempProduct"
     @update-product="updateProduct"
-  ></DashProductModal>
+  />
   <DashDelModal
     ref="dashDelModal"
     :item="tempProduct"
     @del-item="delProduct"
-  ></DashDelModal>
+  />
 </template>
 
 <script>
@@ -119,7 +119,6 @@ export default {
       this.isLoading = true
       this.$http[httpMethod](api, { data: this.tempProduct })
         .then((res) => {
-          // console.log(res)
           this.$refs.dashProductModal.hideModal()
           this.getProducts()
           this.isLoading = false

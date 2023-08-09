@@ -1,5 +1,5 @@
 <template>
-  <LodingPage v-if="isLoading"></LodingPage>
+  <LodingPage v-if="isLoading"/>
   <div class="item-list">
     <div v-for="item in filteredProducts" :key="item.id" class="item-per">
       <font-awesome-icon
@@ -44,7 +44,7 @@
         isModalVisible = val
       }
     "
-  ></ILSnackModal>
+  />
 </template>
 
 <script>
@@ -192,7 +192,6 @@ export default {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 10000;
-  /* 其他樣式設定... */
 }
 
 @media (max-width: 575px) {

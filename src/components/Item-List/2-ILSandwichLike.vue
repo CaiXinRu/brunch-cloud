@@ -1,5 +1,5 @@
 <template>
-  <LodingPage v-if="isLoading"></LodingPage>
+  <LodingPage v-if="isLoading"/>
   <div class="item-list">
     <div v-for="item in filteredProducts" :key="item.id" class="item-per">
       <font-awesome-icon
@@ -43,7 +43,7 @@
         isModalVisible = val
       }
     "
-  ></ILSandwichModal>
+  />
 </template>
 
 <script>
@@ -111,22 +111,6 @@ export default {
   user-select: none;
   position: relative;
 }
-/* .item-list {
-    display: flex;
-    width: 100%;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-  }
-  .item-per {
-    background-color: #fef7e9;
-    padding: 80px 25px 28px 25px;
-    margin: 10px 10px;
-    border-radius: 50px;
-    width: 295px;
-    height: auto;
-    user-select: none;
-  } */
 .item-per a {
   cursor: pointer;
 }

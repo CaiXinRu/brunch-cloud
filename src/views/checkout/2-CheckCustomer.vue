@@ -1,5 +1,5 @@
 <template>
-  <LodingPage v-if="isLoading"></LodingPage>
+  <LodingPage v-if="isLoading"/>
   <div class="bg-color--white">
     <div class="container u-pt-48 u-pb-48">
       <div class="co-stepbar">
@@ -156,26 +156,6 @@
                       ></error-message
                       ><br />
                     </div>
-                    <!-- <div class="u-mb-24">
-                  <label class="cc-label" for="日期與時間">預計收件日期與時間＊</label
-                  ><br />
-                  <Field
-                    class="cc-input"
-                    style="width: 85%"
-                    type="datetime-local"
-                    id="日期與時間"
-                    name="日期與時間"
-                    autocomplete="off"
-                    rules="required"
-                    :class="{ 'is-invalid': errors['日期與時間'] }"
-                    v-model="form.time"
-                  ></Field
-                  ><error-message
-                    name="日期與時間"
-                    class="invalid-feedback"
-                  ></error-message
-                  ><br />
-                </div> -->
                     <div class="u-mb-24">
                       <label class="cc-label" for="note">留言備註</label><br />
                       <textarea
@@ -374,7 +354,6 @@ export default {
           tel: '',
           address: ''
         },
-        // time: '',
         message: ''
       },
       payment: '請選擇支付方式',
@@ -386,7 +365,6 @@ export default {
   },
   methods: {
     createOrder () {
-      // console.log(this.form)
       this.isLoading = true
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/order`
       const info = this.form

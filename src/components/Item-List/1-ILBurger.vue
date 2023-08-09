@@ -1,5 +1,5 @@
 <template>
-  <LodingPage v-if="isLoading"></LodingPage>
+  <LodingPage v-if="isLoading"/>
   <div class="item-list">
     <div v-for="item in filteredProducts" :key="item.id" class="item-per">
       <font-awesome-icon
@@ -44,7 +44,7 @@
         isModalVisible = val
       }
     "
-  ></ILBurgerModal>
+  />
 </template>
 
 <script>

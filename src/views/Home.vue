@@ -1,5 +1,5 @@
 <template>
-  <LoadingPage v-show="isLoading"></LoadingPage>
+  <LoadingPage v-if="isLoading" />
   <div class="wrapper">
     <div class="bg-color--white">
       <div class="container u-pt-68 u-pb-68">
@@ -101,7 +101,7 @@
           <h2>必點首選</h2>
           <h4 class="sub-border">MUST-TRY IN THE CLOUD</h4>
         </div>
-        <MoreFood></MoreFood>
+        <MoreFood/>
         <div class="try-lists">
           <div class="try-list" v-for="(item, index) in foods" :key="index">
             <img class="try-img" :src="Foods[item.img]"/>
@@ -119,7 +119,7 @@
           <h2>最新消息</h2>
           <h4 class="sub-border">NEWS IN THE CLOUD</h4>
         </div>
-        <MoreNews></MoreNews>
+        <MoreNews/>
         <div class="news-lists">
           <div class="news-list" v-for="(promo, index) in promos" :key="index">
             <div class="news-type">{{ promo.typeC }}</div>
@@ -137,7 +137,6 @@
 </template>
 
 <script>
-// eslint-disable-next-line no-unused-vars
 import LoadingPage from '@/components/LodingPage.vue'
 import MoreFood from '@/components/MoreFood.vue'
 import MoreNews from '@/components/MoreNews.vue'
@@ -287,12 +286,6 @@ export default {
   opacity: 1;
   transition: all 0.2s ease-in;
 }
-.about-text:before {
-  content: '';
-  background-color: #27272749;
-  width: 100%;
-  height: 100%;
-}
 .about-item:hover .about-text {
   opacity: 0;
 }
@@ -362,8 +355,6 @@ export default {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  /* background-size: cover;
-  background-position: center; */
   object-fit: cover;
   background-repeat: no-repeat;
   background-size: cover;

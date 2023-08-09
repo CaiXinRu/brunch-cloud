@@ -94,7 +94,7 @@
         </a>
       </div>
     </div>
-    <CartBar id="cartModalNavBarSm" :modelValue="isCartBarOpen" @update:modelValue="(val)=>{isCartBarOpen = val}"></CartBar>
+    <CartBar id="cartModalNavBarSm" :modelValue="isCartBarOpen" @update:modelValue="(val)=>{isCartBarOpen = val}"/>
   </header>
 </template>
 

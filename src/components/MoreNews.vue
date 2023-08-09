@@ -77,7 +77,6 @@
 
   .more-news:after {
     opacity: 0;
-    //   content: '→';
   }
 
   .s-text {
