@@ -4,6 +4,7 @@
       <LocationBar id="locationTop"/>
       <div class="location-area">
         <button
+          type="button"
           data-area="north"
           class="location-btn"
           @click="filterLocations('north')"
@@ -11,6 +12,7 @@
           北部地區
         </button>
         <button
+          type="button"
           data-area="middle"
           class="location-btn"
           @click="filterLocations('middle')"
@@ -18,6 +20,7 @@
           中部地區
         </button>
         <button
+          type="button"
           data-area="south"
           class="location-btn"
           @click="filterLocations('south')"
@@ -25,6 +28,7 @@
           南部地區
         </button>
         <button
+          type="button"
           data-area="east"
           class="location-btn"
           @click="filterLocations('east')"
@@ -32,6 +36,7 @@
           東部地區
         </button>
         <button
+          type="button"
           data-area="all"
           class="location-btn"
           @click="filterLocations('all')"
@@ -40,7 +45,8 @@
         </button>
       </div>
       <div class="dropdown">
-        <button class="dropbtn" @click="toggleDropdown">請選擇區域<span>▼</span></button>
+        <button
+          type="button" class="dropbtn" @click="toggleDropdown">請選擇區域<span>▼</span></button>
         <div :class="{ 'dropdown-content': true, 'show': isDropdownOpen }">
           <div
             data-area="north"

@@ -4,6 +4,7 @@
       <NewsBar id="newsTop"/>
       <div class="promo-type">
         <button
+          type="button"
           data-type="north"
           class="promo-btn"
           @click="filterPromos('discount')"
@@ -11,6 +12,7 @@
           超瞎趴活動
         </button>
         <button
+          type="button"
           data-type="middle"
           class="promo-btn"
           @click="filterPromos('gift')"
@@ -18,18 +20,21 @@
           滿x佰就送
         </button>
         <button
+          type="button"
           data-type="south"
           class="promo-btn"
           @click="filterPromos('code')"
         >
           爽領八折碼
         </button>
-        <button data-type="east" class="promo-btn" @click="filterPromos('all')">
+        <button
+          type="button" data-type="east" class="promo-btn" @click="filterPromos('all')">
           最完整促銷
         </button>
       </div>
       <div class="dropdown">
-        <button class="dropbtn" @click="toggleDropdown">
+        <button
+          type="button" class="dropbtn" @click="toggleDropdown">
           請選擇類別<span>▼</span>
         </button>
         <div :class="{ 'dropdown-content': true, show: isDropdownOpen }">
@@ -73,7 +78,7 @@
           <img
             class="news-img"
             :src="Promotions[promo.img]"
-            @click.prevent="showModal(promo.id)"
+            @click="showModal(promo.id)"
           />
           <p class="sub u-mt-16 u-mb-4">{{ promo.time }}</p>
           <hr class="news-hr" />

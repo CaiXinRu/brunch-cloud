@@ -38,12 +38,12 @@
               <span class="color--negative" v-else>未啟用</span>
             </td>
             <td style="width: 20%">
-              <button class="color--dark-brown" @click="openModal(false, item)">
+              <button type="button" class="color--dark-brown" @click="openModal(false, item)">
                 <font-awesome-icon icon="fa-solid fa-pen-to-square" />
               </button>
             </td>
             <td style="width: 20%">
-              <button class="color--dark-brown" @click="openDelModal(item)">
+              <button type="button" class="color--dark-brown" @click="openDelModal(item)">
                 <font-awesome-icon icon="fa-solid fa-trash-can" />
               </button>
             </td>

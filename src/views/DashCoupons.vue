@@ -38,6 +38,7 @@
               </td>
               <td style="width: 20%">
                 <button
+                  type="button"
                   class="color--dark-brown"
                   @click="openCouponModal(false, item)"
                 >
@@ -46,6 +47,7 @@
               </td>
               <td style="width: 20%">
                 <button
+                  type="button"
                   class="color--dark-brown"
                   @click="openDelCouponModal(item)"
                 >

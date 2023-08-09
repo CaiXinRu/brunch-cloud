@@ -88,7 +88,7 @@
               <div v-else>NT${{ $filters.currency(item.total) }}</div>
             </td>
             <td style="width: 10%">
-              <button class="cl-delete" @click="removeCartItem(item.id)">
+              <button type="button" class="cl-delete" @click="removeCartItem(item.id)">
                 <font-awesome-icon icon="fa-solid fa-trash-can" />
               </button>
             </td>
@@ -154,7 +154,7 @@
               <div v-else>NT${{ $filters.currency(item.total) }}</div>
             </td>
             <td style="width: 5%">
-              <button class="cl-delete" @click="removeCartItem(item.id)">
+              <button type="button" class="cl-delete" @click="removeCartItem(item.id)">
                 <font-awesome-icon icon="fa-solid fa-trash-can" />
               </button>
             </td>

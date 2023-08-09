@@ -4,6 +4,7 @@
       <FavorBar id="fevorTop"/>
       <div v-if="filteredLikes?.length > 0" class="menu-category">
         <button
+          type="button"
           data-category="burger"
           class="menu-btn"
           @click="filterMeals('burger')"
@@ -11,6 +12,7 @@
           太空漢堡
         </button>
         <button
+          type="button"
           data-category="toast"
           class="menu-btn"
           @click="filterMeals('toast')"
@@ -18,6 +20,7 @@
           飄浮吐司
         </button>
         <button
+          type="button"
           data-category="rice&noodles"
           class="menu-btn"
           @click="filterMeals('rice&noodles')"
@@ -25,6 +28,7 @@
           柔情飯麵
         </button>
         <button
+          type="button"
           data-category="snack"
           class="menu-btn"
           @click="filterMeals('snack')"
@@ -32,6 +36,7 @@
           輕盈小點
         </button>
         <button
+          type="button"
           data-category="drink"
           class="menu-btn"
           @click="filterMeals('drink')"
@@ -39,6 +44,7 @@
           沁涼飲品
         </button>
         <button
+          type="button"
           data-category="east"
           class="menu-btn"
           @click="filterMeals('all')"
@@ -47,7 +53,8 @@
         </button>
       </div>
       <div v-if="filteredLikes?.length > 0" class="dropdown">
-        <button class="dropbtn" @click="toggleDropdown">
+        <button
+          type="button" class="dropbtn" @click="toggleDropdown">
           請選擇雲端種類<span>▼</span>
         </button>
         <div :class="{ 'dropdown-content': true, show: isDropdownOpen }">

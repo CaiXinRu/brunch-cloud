@@ -65,7 +65,7 @@
                   </div>
                 </td>
                 <td style="width: 10%">
-                  <button class="cb-delete" @click="removeCartItem(item.id)">
+                  <button type="button" class="cb-delete" @click="removeCartItem(item.id)">
                     <font-awesome-icon icon="fa-solid fa-trash-can" />
                   </button>
                 </td>

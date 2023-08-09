@@ -1,7 +1,7 @@
 <template>
   <div class="search-bar">
     <div class="search-element">
-      <button class="search-btn">
+      <button type="button" class="search-btn">
         <font-awesome-icon icon="fa-solid fa-magnifying-glass" bounce />
       </button>
       <input

@@ -33,6 +33,7 @@
               <td style="width: 20%">NT${{ $filters.currency(Math.round(item.total)) }}</td>
               <td style="width: 10%">
                 <button
+                  type="button"
                   class="color--dark-brown"
                   @click="openOrderModal(false, item)"
                 >
@@ -41,6 +42,7 @@
               </td>
               <td style="width: 10%">
                 <button
+                  type="button"
                   class="color--dark-brown"
                   @click="openDelOrderModal(item)"
                 >
