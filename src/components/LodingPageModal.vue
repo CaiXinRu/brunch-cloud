@@ -1,6 +1,6 @@
 <template>
     <div class="loading-bg">
-        <img src="@/assets/cloud.gif"/>
+        <img src="@/assets/cloud.gif" alt="Loading..."/>
     </div>
 </template>
 

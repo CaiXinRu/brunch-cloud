@@ -77,6 +77,7 @@
           <div class="news-type">{{ promo.typeC }}</div>
           <img
             class="news-img"
+            :alt="promo.detail"
             :src="Promotions[promo.img]"
             @click="showModal(promo.id)"
           />

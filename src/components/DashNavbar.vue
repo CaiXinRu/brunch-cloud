@@ -3,7 +3,7 @@
     <div style="height: max-content" class="bg-color--secondary">
       <div class="container">
         <router-link to="/" class="dnb-img"
-          ><img style="height: 120px" src="@/assets/logo/logo+word--light-brown_ver.png"
+          ><img style="height: 120px" src="@/assets/logo/logo+word--light-brown_ver.png" alt="雲端早午安"
         /></router-link>
         <div class="list-bar">
           <ul class="list">

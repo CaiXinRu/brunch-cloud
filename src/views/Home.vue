@@ -7,7 +7,7 @@
           <div class="about-main">
             <h2>關於 雲端早午安</h2>
             <h4 class="sub-border">BRUNCH IN THE CLUOD</h4>
-            <div class="about-main-textsm">
+            <p class="about-main-textsm">
               <span
                 >結合傳統的早午餐元素與現代飲食趨勢，打造獨特而有趣的菜單。</span
               >
@@ -26,7 +26,7 @@
               <span
                 >無論是與家人朋友共享一頓美味的早午餐，或是獨自享受寧靜時光，「雲端早午安」都將成為您身、心、胃的理想之地。</span
               >
-            </div>
+            </p>
           </div>
           <div class="about-lists-container">
             <div class="about-lists">
@@ -34,10 +34,12 @@
                 <img
                   class="about-img"
                   src="@/assets/pics/home/1-delicious.jpg"
+                  alt="數不盡的雲端獨特"
                 />
                 <img
                   class="about-img-sm"
                   src="@/assets/pics/home/1-delicious-2.jpg"
+                  alt="數不盡的雲端獨特"
                 />
                 <div class="about-text">無限美味</div>
                 <div class="about-square-sm">
@@ -55,10 +57,12 @@
                 <img
                   class="about-img"
                   src="@/assets/pics/home/2-vegetable.jpg"
+                  alt="營養豐富的雲端饗宴"
                 />
                 <img
                   class="about-img-sm"
                   src="@/assets/pics/home/2-vegetable-2.jpg"
+                  alt="營養豐富的雲端饗宴"
                 />
                 <div class="about-text">新鮮健康</div>
                 <div class="about-square-sm">
@@ -73,10 +77,11 @@
                 </div>
               </div>
               <div class="about-item">
-                <img class="about-img" src="@/assets/pics/home/3-quality.jpg" />
+                <img class="about-img" src="@/assets/pics/home/3-quality.jpg" alt="嚴選製程的卓越雲端"/>
                 <img
                   class="about-img-sm"
                   src="@/assets/pics/home/3-quality-2.jpg"
+                  alt="嚴選製程的卓越雲端"
                 />
                 <div class="about-text">扎實品質</div>
                 <div class="about-square-sm">
@@ -104,7 +109,7 @@
         <MoreFood/>
         <div class="try-lists">
           <div class="try-list" v-for="(item, index) in foods" :key="index">
-            <img class="try-img" :src="Foods[item.img]"/>
+            <img class="try-img" :src="Foods[item.img]" :alt="item.food"/>
             <h3 class="u-text-center color--black">{{ item.food }}</h3>
             <router-link :to="`/menu#${item.hashtag}`">
               <h6 class="try-btn">{{ item.categoryC }}</h6>
@@ -123,7 +128,7 @@
         <div class="news-lists">
           <div class="news-list" v-for="(promo, index) in promos" :key="index">
             <div class="news-type">{{ promo.typeC }}</div>
-            <img class="news-img" :src="Promotions[promo.img]"/>
+            <img class="news-img" :src="Promotions[promo.img]" :alt="promo.event"/>
             <p class="sub u-mt-16 u-mb-4">{{ promo.time }}</p>
             <hr class="news-hr" />
             <div
@@ -439,6 +444,12 @@ export default {
   }
   .about-main-textsm {
     margin-bottom: 16px;
+  }
+  p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0;
   }
   .about-lists {
     height: 430px;

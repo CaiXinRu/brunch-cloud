@@ -4,7 +4,7 @@
     <div class="container">
       <div class="login-row login-column-sm">
         <router-link to="/" class="login-element-left">
-          <img src="@/assets/logo/logo+word--light-brown_ver.png" />
+          <img src="@/assets/logo/logo+word--light-brown_ver.png" alt="雲端早午安"/>
         </router-link>
         <div class="login-element-right">
           <table style="width: 100%">

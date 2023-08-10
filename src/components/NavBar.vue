@@ -3,7 +3,7 @@
     <div class="navbar bg-color--secondary">
       <div class="container">
         <div class="logo">
-          <router-link to="/"><img src="@/assets/logo/logo_light-brown.png" /></router-link>
+          <router-link to="/"><img src="@/assets/logo/logo_light-brown.png" alt="雲端早午安"/></router-link>
         </div>
         <div class="list-toggle-sm">
           <div class="list-toggle" @click="isPopupListOpen=true">
@@ -44,7 +44,7 @@
           </a>
           <ul class="list-sm">
             <li>
-              <img class="list-img-sm" src="@/assets/logo/logo+word_hor.png"/>
+              <img class="list-img-sm" src="@/assets/logo/logo+word_hor.png" alt="雲端早午安"/>
             </li>
             <li>
               <router-link to="/menu" class="main-font-sm" date-link-alt="MENU" @click="isPopupListOpen=false"

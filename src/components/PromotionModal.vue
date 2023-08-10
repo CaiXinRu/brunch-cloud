@@ -5,12 +5,12 @@
             <font-awesome-icon icon="fa-solid fa-circle-xmark" />
         </a>
         <div class="promo-container">
-            <img class="im-pic" :src="Promotions[promo.img]"/>
+            <img class="im-pic" :src="Promotions[promo.img]" :alt="promo.detail"/>
             <br>
             <div class="promo-title">▎活動時間:</div>
             <div class="promo-text">{{ promo.timeC }}</div>
             <div class="promo-title">▎活動說明：</div>
-            <div class="promo-text">{{promo.detail}}</div>
+            <div class="promo-text">{{ promo.detail }}</div>
         </div>
     </dialog>
   </div>

@@ -3,7 +3,7 @@
     <div class="navbar-sm bg-color--secondary">
       <div class="container">
         <router-link to="/" class="logo">
-            <img src="@/assets/logo/logo+word_hor.png"/>
+            <img src="@/assets/logo/logo+word_hor.png" alt="雲端早午安"/>
         </router-link>
         <div class="list-bar">
           <ul class="list">
@@ -38,7 +38,7 @@
           </div>
           <ul class="list-sm">
             <li>
-              <img class="list-img-sm" src="@/assets/logo/logo+word_hor.png"/>
+              <img class="list-img-sm" src="@/assets/logo/logo+word_hor.png" alt="雲端早午安"/>
             </li>
             <li>
               <router-link to="/menu" class="main-font-sm" date-link-alt="MENU" @click="isPopupListOpen=false"
