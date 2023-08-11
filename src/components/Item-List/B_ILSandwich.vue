@@ -35,8 +35,8 @@
       </ul>
     </div>
   </div>
-  <ILSnackModal
-    ref="snackModal"
+  <ILSandwichModal
+    ref="sandwichModal"
     :tempProduct="tempProduct"
     :modelValue="isModalVisible"
     @update:modelValue="
@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import ILSnackModal from './4-ILSnackModal.vue'
+import ILSandwichModal from './B_ILSandwichModal.vue'
 import LodingPage from '../LodingPage.vue'
 import { mapState, mapActions } from 'pinia'
 import productStore from '@/stores/likes.js'
@@ -61,7 +61,7 @@ export default {
     }
   },
   components: {
-    ILSnackModal,
+    ILSandwichModal,
     LodingPage
   },
   computed: {
@@ -75,14 +75,14 @@ export default {
     openModal (item) {
       this.tempProduct = { ...item }
       this.isModalVisible = true
-      this.$refs.snackModal.showModal()
+      this.$refs.sandwichModal.showModal()
     }
   },
   watch: {
     products: {
       handler () {
         this.filteredProducts = this.products.filter(
-          (item) => item.category === '輕盈小點'
+          (item) => item.category === '飄浮吐司'
         )
       },
       deep: true

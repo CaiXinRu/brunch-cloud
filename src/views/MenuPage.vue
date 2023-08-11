@@ -1,8 +1,8 @@
 <template>
-  <LoadingPage v-if="isLoading"/>
+  <LoadingPage v-if="isLoading" />
   <div class="bg-color--white">
     <div class="container u-pt-48 u-pb-68">
-      <MenuBar id="menuTop"/>
+      <MenuBar id="menuTop" />
       <div class="menu-category">
         <button
           type="button"
@@ -54,9 +54,10 @@
         </button>
       </div>
       <div class="dropdown">
-        <button
-          type="button" class="dropbtn" @click="toggleDropdown">請選擇雲端種類<span>▼</span></button>
-        <div :class="{ 'dropdown-content': true, 'show': isDropdownOpen }">
+        <button type="button" class="dropbtn" @click="toggleDropdown">
+          請選擇雲端種類<span>▼</span>
+        </button>
+        <div :class="{ 'dropdown-content': true, show: isDropdownOpen }">
           <div
             data-category="burger"
             class="dropdown-btn"
@@ -108,68 +109,84 @@
         id="ITBurger"
         ref="ITBurger"
       />
-      <ILBurger
-        v-if="filteredMeals.includes('ILBurger')"
-        ref="ILBurger"
-      />
-      <div class="menu-arrow" @click="goToTop"
+      <ILBurger v-if="filteredMeals.includes('ILBurger')" ref="ILBurger" />
+      <div
+        class="menu-arrow"
+        @click="goToTop"
         v-if="filteredMeals.includes('ITBurger')"
         id="beforeSandwich"
-        ><font-awesome-icon icon="fa-solid fa-circle-up"
-      /></div>
+      >
+        <font-awesome-icon icon="fa-solid fa-circle-up" />
+      </div>
 
       <!-- Sandwich -->
       <ITSandwich
         v-if="filteredMeals.includes('ITSandwich')"
-        ref="ITSandwich" id="ITSandwich"
+        ref="ITSandwich"
+        id="ITSandwich"
       />
       <ILSandwich
         v-if="filteredMeals.includes('ILSandwich')"
         ref="ILSandwich"
       />
-      <div class="menu-arrow" @click="goToTop"
+      <div
+        class="menu-arrow"
+        @click="goToTop"
         v-if="filteredMeals.includes('ITSandwich')"
         id="beforeRiceNoodles"
-        ><font-awesome-icon icon="fa-solid fa-circle-up"
-      /></div>
+      >
+        <font-awesome-icon icon="fa-solid fa-circle-up" />
+      </div>
 
       <!-- Rice & Noodles -->
       <ITRiceNoodles
         v-if="filteredMeals.includes('ITRiceNoodles')"
-        ref="ITRiceNoodles" id="ITRiceNoodles"
+        ref="ITRiceNoodles"
+        id="ITRiceNoodles"
       />
       <ILRiceNoodles
         v-if="filteredMeals.includes('ILRiceNoodles')"
         ref="ILRiceNoodles"
       />
-      <div class="menu-arrow" @click="goToTop"
+      <div
+        class="menu-arrow"
+        @click="goToTop"
         v-if="filteredMeals.includes('ITRiceNoodles')"
         id="beforeSnack"
-        ><font-awesome-icon icon="fa-solid fa-circle-up"
-      /></div>
+      >
+        <font-awesome-icon icon="fa-solid fa-circle-up" />
+      </div>
 
       <!-- Snack -->
-      <ITSnack v-if="filteredMeals.includes('ITSnack')" ref="ITSnack" id="ITSnack"/>
-      <ILSnack v-if="filteredMeals.includes('ILSnack')" ref="ILSnack"/>
-      <div class="menu-arrow" @click="goToTop"
+      <ITSnack
+        v-if="filteredMeals.includes('ITSnack')"
+        ref="ITSnack"
+        id="ITSnack"
+      />
+      <ILSnack v-if="filteredMeals.includes('ILSnack')" ref="ILSnack" />
+      <div
+        class="menu-arrow"
+        @click="goToTop"
         v-if="filteredMeals.includes('ITSnack')"
         id="beforeDrinks"
-        ><font-awesome-icon icon="fa-solid fa-circle-up"
-      /></div>
+      >
+        <font-awesome-icon icon="fa-solid fa-circle-up" />
+      </div>
 
       <!-- Drinks -->
       <ITDrinks
         v-if="filteredMeals.includes('ITDrinks')"
-        ref="ITDrinks" id="ITDrinks"
+        ref="ITDrinks"
+        id="ITDrinks"
       />
-      <ILDrinks
-        v-if="filteredMeals.includes('ILDrinks')"
-        ref="ILDrinks"
-      />
-      <div class="menu-arrow" @click="goToTop"
+      <ILDrinks v-if="filteredMeals.includes('ILDrinks')" ref="ILDrinks" />
+      <div
+        class="menu-arrow"
+        @click="goToTop"
         v-if="filteredMeals.includes('ITDrinks')"
-        ><font-awesome-icon icon="fa-solid fa-circle-up"
-      /></div>
+      >
+        <font-awesome-icon icon="fa-solid fa-circle-up" />
+      </div>
     </div>
   </div>
 </template>
@@ -177,16 +194,16 @@
 <script>
 import LoadingPage from '@/components/LodingPage.vue'
 import MenuBar from '@/components/MenuBar.vue'
-import ITBurger from '@/components/Item-Title/1-ITBurger.vue'
-import ITSandwich from '@/components/Item-Title/2-ITSandwich.vue'
-import ITRiceNoodles from '@/components/Item-Title/3-ITRiceNoodles.vue'
-import ITSnack from '@/components/Item-Title/4-ITSnack.vue'
-import ITDrinks from '@/components/Item-Title/5-ITDrinks.vue'
-import ILBurger from '@/components/Item-List/1-ILBurger.vue'
-import ILSandwich from '@/components/Item-List/2-ILSandwich.vue'
-import ILRiceNoodles from '@/components/Item-List/3-ILRiceNoodles.vue'
-import ILSnack from '@/components/Item-List/4-ILSnack.vue'
-import ILDrinks from '@/components/Item-List/5-ILDrinks.vue'
+import ITBurger from '@/components/Item-Title/A_ITBurger.vue'
+import ITSandwich from '@/components/Item-Title/B_ITSandwich.vue'
+import ITRiceNoodles from '@/components/Item-Title/C_ITRiceNoodles.vue'
+import ITSnack from '@/components/Item-Title/D_ITSnack.vue'
+import ITDrinks from '@/components/Item-Title/E_ITDrinks.vue'
+import ILBurger from '@/components/Item-List/A_ILBurger.vue'
+import ILSandwich from '@/components/Item-List/B_ILSandwich.vue'
+import ILRiceNoodles from '@/components/Item-List/C_ILRiceNoodles.vue'
+import ILSnack from '@/components/Item-List/D_ILSnack.vue'
+import ILDrinks from '@/components/Item-List/E_ILDrinks.vue'
 
 export default {
   data () {
@@ -198,8 +215,17 @@ export default {
   },
   mounted () {
     setTimeout(() => {
-      if (window.location.hash && window.location.hash !== '' && window.location.hash.split('#').length > 2) {
-        const el = document.querySelector('#' + window.location.hash.split('#')[window.location.hash.split('#').length - 1])
+      if (
+        window.location.hash &&
+        window.location.hash !== '' &&
+        window.location.hash.split('#').length > 2
+      ) {
+        const el = document.querySelector(
+          '#' +
+            window.location.hash.split('#')[
+              window.location.hash.split('#').length - 1
+            ]
+        )
         if (el !== null) {
           el.scrollIntoView({ behavior: 'smooth' })
         }
@@ -393,7 +419,7 @@ export default {
   background-color: var(--color--light-brown);
   width: 100%;
   overflow: auto;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 2;
 }
 .dropdown-btn {
@@ -407,7 +433,7 @@ export default {
 .dropdown-btn:hover {
   background-color: var(--color--white);
 }
-.show{
+.show {
   display: block;
 }
 .menu-arrow {
@@ -417,91 +443,89 @@ export default {
   cursor: pointer;
   margin-top: 18px;
 }
-@media (max-width: 991px){
-  .menu-category{
+@media (max-width: 991px) {
+  .menu-category {
     display: none;
   }
-  .dropdown{
+  .dropdown {
     display: inline-block;
   }
 }
-@media (min-width: 992px) and (max-width: 1199px){
-
-  .menu-btn{
+@media (min-width: 992px) and (max-width: 1199px) {
+  .menu-btn {
     min-width: 6em;
     font-size: 1rem;
   }
-  .menu-btn:before{
+  .menu-btn:before {
     width: 3.2em;
     height: 3.2em;
   }
-  .menu-btn:hover:before{
+  .menu-btn:hover:before {
     left: 13%;
   }
-  .menu-btn:after{
+  .menu-btn:after {
     width: 3.5em;
     height: 3.5em;
   }
-  .menu-btn:hover:after{
+  .menu-btn:hover:after {
     right: 8%;
   }
-  .menu-category{
+  .menu-category {
     display: flex;
   }
-  .dropdown{
+  .dropdown {
     display: none;
   }
 }
-@media (min-width: 1200px) and (max-width: 1399px){
-
-  .menu-btn{
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .menu-btn {
     min-width: 6.23em;
     font-size: 1.1rem;
   }
-  .menu-btn:before{
+  .menu-btn:before {
     width: 3.2em;
     height: 3.2em;
   }
-  .menu-btn:hover:before{
+  .menu-btn:hover:before {
     left: 13%;
   }
-  .menu-btn:after{
+  .menu-btn:after {
     width: 3.5em;
     height: 3.5em;
   }
-  .menu-btn:hover:after{
+  .menu-btn:hover:after {
     right: 8%;
   }
-  .menu-category{
+  .menu-category {
     display: flex;
   }
-  .dropdown{
+  .dropdown {
     display: none;
   }
 }
-@media (min-width: 1400px){
-  .menu-btn{
+@media (min-width: 1400px) {
+  .menu-btn {
     min-width: 7.23em;
     font-size: 1.25rem;
   }
-  .menu-btn:before{
+  .menu-btn:before {
     width: 3.2em;
     height: 3.2em;
   }
-  .menu-btn:hover:before{
+  .menu-btn:hover:before {
     left: 13%;
   }
-  .menu-btn:after{
+  .menu-btn:after {
     width: 3.8em;
     height: 3.8em;
   }
-  .menu-btn:hover:after{
+  .menu-btn:hover:after {
     right: 10%;
   }
-  .menu-category{
+  .menu-category {
     display: flex;
   }
-  .dropdown{
+  .dropdown {
     display: none;
   }
 }

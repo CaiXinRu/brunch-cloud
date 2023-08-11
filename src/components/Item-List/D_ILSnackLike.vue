@@ -35,10 +35,9 @@
       </ul>
     </div>
   </div>
-  <ILDrinksModal
-    ref="drinksModal"
+  <ILSnackModal
+    ref="snackModal"
     :tempProduct="tempProduct"
-    :modelValue="isModalVisible"
     @update:modelValue="
       (val) => {
         isModalVisible = val
@@ -48,7 +47,7 @@
 </template>
 
 <script>
-import ILDrinksModal from './5-ILDrinksModal.vue'
+import ILSnackModal from './D_ILSnackModal.vue'
 import LodingPage from '../LodingPage.vue'
 import { mapState, mapActions } from 'pinia'
 import productStore from '@/stores/likes.js'
@@ -61,7 +60,7 @@ export default {
     }
   },
   components: {
-    ILDrinksModal,
+    ILSnackModal,
     LodingPage
   },
   computed: {
@@ -75,17 +74,16 @@ export default {
     openModal (item) {
       this.tempProduct = { ...item }
       this.isModalVisible = true
-      this.$refs.drinksModal.showModal()
+      this.$refs.snackModal.showModal()
     }
   },
   watch: {
     products: {
       handler () {
-        this.filteredProducts = this.products.filter(
-          (item) => item.category === '沁涼飲品'
+        this.filteredProducts = this.filteredLikes.filter(
+          (item) => item.category === '輕盈小點'
         )
-      },
-      deep: true
+      }
     },
     immediate: true
   },
@@ -98,7 +96,6 @@ export default {
 <style>
 .item-list {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: minmax(auto, max-content);
   grid-gap: 10px;
   justify-items: start;

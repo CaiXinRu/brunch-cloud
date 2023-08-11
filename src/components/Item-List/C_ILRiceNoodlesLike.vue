@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import ILRiceNoodlesModal from './3-ILRiceNoodlesModal.vue'
+import ILRiceNoodlesModal from './C_ILRiceNoodlesModal.vue'
 import LodingPage from '../LodingPage.vue'
 import { mapState, mapActions } from 'pinia'
 import productStore from '@/stores/likes.js'

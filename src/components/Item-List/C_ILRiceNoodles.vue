@@ -35,9 +35,10 @@
       </ul>
     </div>
   </div>
-  <ILSandwichModal
-    ref="sandwichModal"
+  <ILRiceNoodlesModal
+    ref="ricenoodlesModal"
     :tempProduct="tempProduct"
+    :modelValue="isModalVisible"
     @update:modelValue="
       (val) => {
         isModalVisible = val
@@ -47,7 +48,7 @@
 </template>
 
 <script>
-import ILSandwichModal from './2-ILSandwichModal.vue'
+import ILRiceNoodlesModal from './C_ILRiceNoodlesModal.vue'
 import LodingPage from '../LodingPage.vue'
 import { mapState, mapActions } from 'pinia'
 import productStore from '@/stores/likes.js'
@@ -57,11 +58,10 @@ export default {
       isModalVisible: false,
       filteredProducts: [],
       tempProduct: {}
-
     }
   },
   components: {
-    ILSandwichModal,
+    ILRiceNoodlesModal,
     LodingPage
   },
   computed: {
@@ -75,16 +75,17 @@ export default {
     openModal (item) {
       this.tempProduct = { ...item }
       this.isModalVisible = true
-      this.$refs.sandwichModal.showModal()
+      this.$refs.ricenoodlesModal.showModal()
     }
   },
   watch: {
     products: {
       handler () {
-        this.filteredProducts = this.filteredLikes.filter(
-          (item) => item.category === '飄浮吐司'
+        this.filteredProducts = this.products.filter(
+          (item) => item.category === '柔情飯麵'
         )
-      }
+      },
+      deep: true
     },
     immediate: true
   },
@@ -97,6 +98,7 @@ export default {
 <style>
 .item-list {
   display: grid;
+  grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: minmax(auto, max-content);
   grid-gap: 10px;
   justify-items: start;

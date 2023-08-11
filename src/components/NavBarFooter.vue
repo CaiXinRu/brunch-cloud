@@ -11,7 +11,7 @@
                 <span>我的最愛</span>
             </li>
         </router-link>
-        <div @click="showModal()" class="nf-link">
+        <div @click="showModal" class="nf-link">
             <li>
                 <span>
                     <font-awesome-icon icon="fa-solid fa-cart-shopping" />

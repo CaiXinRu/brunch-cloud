@@ -49,22 +49,22 @@ const routes = [
       {
         path: 'checklist',
         name: 'checklist',
-        component: () => import('../views/checkout/1-CheckList.vue')
+        component: () => import('../views/checkout/A_CheckList.vue')
       },
       {
         path: 'checkinfo',
         name: 'checkinfo',
-        component: () => import('../views/checkout/2-CheckCustomer.vue')
+        component: () => import('../views/checkout/B_CheckCustomer.vue')
       },
       {
         path: 'checkout/:orderId',
         name: 'checkout',
-        component: () => import('../views/checkout/3-CheckFinal.vue')
+        component: () => import('../views/checkout/C_CheckFinal.vue')
       },
       {
         path: 'checkpay/:orderId',
         name: 'checkpay',
-        component: () => import('../views/checkout/4-CheckPay.vue')
+        component: () => import('../views/checkout/D_CheckPay.vue')
       },
       {
         path: 'locations',
