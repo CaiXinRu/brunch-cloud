@@ -1,6 +1,6 @@
 <template>
   <div>
-    <LoadingPage v-if="isLoading"/>
+    <LoadingPage v-if="isLoading" />
     <div class="bg-color--white">
       <div class="container u-pt-48 u-pb-68">
         <div href="#" class="dc-button" @click="openCouponModal(true)">
@@ -28,7 +28,7 @@
               :key="key"
             >
               <td style="width: 20%">{{ item.title }}</td>
-              <td style="width: 20%">{{ item.percent/10 }}折</td>
+              <td style="width: 20%">{{ item.percent / 10 }}折</td>
               <td style="width: 20%">{{ $filters.date(item.due_date) }}</td>
               <td style="width: 20%">
                 <span class="color--positive" v-if="item.is_enabled === 1"
@@ -126,12 +126,11 @@ export default {
         })
       } else {
         const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/coupon/${this.tempCoupon.id}`
-        this.$http.put(url, { data: this.tempCoupon })
-          .then((response) => {
-            console.log(response)
-            this.getCoupons()
-            this.$refs.couponModal.hideModal()
-          })
+        this.$http.put(url, { data: this.tempCoupon }).then((response) => {
+          console.log(response)
+          this.getCoupons()
+          this.$refs.couponModal.hideModal()
+        })
       }
     },
     delCoupon () {

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <LoadingPage v-if="isLoading"/>
+    <LoadingPage v-if="isLoading" />
     <div class="bg-color--white">
       <div class="container u-pt-48 u-pb-68">
         <table style="width: 100%" class="do-table">
@@ -30,7 +30,9 @@
                   </li>
                 </ol>
               </td>
-              <td style="width: 20%">NT${{ $filters.currency(Math.round(item.total)) }}</td>
+              <td style="width: 20%">
+                NT${{ $filters.currency(Math.round(item.total)) }}
+              </td>
               <td style="width: 10%">
                 <button
                   type="button"
@@ -91,13 +93,12 @@ export default {
       this.currentPage = currentPage
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/orders?page=${currentPage}`
       this.isLoading = true
-      this.$http.get(api, this.tempProduct)
-        .then((res) => {
-          this.orders = res.data.orders
-          this.pagination = res.data.pagination
-          this.isLoading = false
-          console.log(res)
-        })
+      this.$http.get(api, this.tempProduct).then((res) => {
+        this.orders = res.data.orders
+        this.pagination = res.data.pagination
+        this.isLoading = false
+        console.log(res)
+      })
     },
     openOrderModal (item) {
       this.tempOrder = { ...item }
@@ -116,22 +117,20 @@ export default {
       const paid = {
         is_paid: item.is_paid
       }
-      this.$http.put(api, { data: paid })
-        .then((res) => {
-          this.isLoading = false
-          this.getOrders(this.currentPage)
-        })
+      this.$http.put(api, { data: paid }).then((res) => {
+        this.isLoading = false
+        this.getOrders(this.currentPage)
+      })
     },
     delOrder () {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/order/${this.tempOrder.id}`
       this.isLoading = true
-      this.$http.delete(url)
-        .then((res) => {
-          console.log(res)
-          const delComponent = this.$refs.delModal
-          delComponent.hideModal()
-          this.getOrders(this.currentPage)
-        })
+      this.$http.delete(url).then((res) => {
+        console.log(res)
+        const delComponent = this.$refs.delModal
+        delComponent.hideModal()
+        this.getOrders(this.currentPage)
+      })
     }
   },
   created () {
@@ -166,8 +165,8 @@ tr {
 .do-body:hover {
   background-color: #fef7e9;
 }
-.do-litems{
-  display:flex;
+.do-litems {
+  display: flex;
   text-align: left;
   padding-left: 40px;
 }

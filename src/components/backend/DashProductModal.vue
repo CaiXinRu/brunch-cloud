@@ -1,5 +1,5 @@
 <template>
-  <LoadingPage v-if="isLoading"/>
+  <LoadingPage v-if="isLoading" />
   <div
     class="modal fade"
     id="dashProductModal"
@@ -50,7 +50,11 @@
               <img class="img-fluid" :src="tempProduct.imageUrl" alt="" />
               <!-- 延伸技巧，多圖 -->
               <div class="mt-5" v-if="tempProduct.images">
-                <div v-for="(image, key) in tempProduct.images" class="mb-3 input-group" :key="key">
+                <div
+                  v-for="(image, key) in tempProduct.images"
+                  class="mb-3 input-group"
+                  :key="key"
+                >
                   <input
                     type="url"
                     class="form-control form-control"
@@ -67,7 +71,8 @@
                 </div>
                 <div
                   v-if="
-                    tempProduct.images[tempProduct.images.length - 1] || !tempProduct.images.length
+                    tempProduct.images[tempProduct.images.length - 1] ||
+                    !tempProduct.images.length
                   "
                 >
                   <button
@@ -175,7 +180,11 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+          <button
+            type="button"
+            class="btn btn-outline-secondary"
+            data-bs-dismiss="modal"
+          >
             取消
           </button>
           <button
@@ -198,7 +207,9 @@ export default {
   props: {
     product: {
       type: Object,
-      default () { return {} }
+      default () {
+        return {}
+      }
     }
   },
   components: {
@@ -233,14 +244,13 @@ export default {
       const formData = new FormData()
       formData.append('file-to-upload', uploadedFile)
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/upload`
-      this.$http.post(api, formData)
-        .then((res) => {
-          if (res.data.success) {
-            console.log(res)
-            this.tempProduct.imageUrl = res.data.imageUrl
-          }
-          this.isLoading = false
-        })
+      this.$http.post(api, formData).then((res) => {
+        if (res.data.success) {
+          console.log(res)
+          this.tempProduct.imageUrl = res.data.imageUrl
+        }
+        this.isLoading = false
+      })
     },
     confirm (tempProduct) {
       const fileInput = document.getElementById('customFile')

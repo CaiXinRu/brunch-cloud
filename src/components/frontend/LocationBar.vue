@@ -2,10 +2,10 @@
   <div class="location-bar">
     <div class="location-element">
       <font-awesome-icon
-          class="location-text"
-          icon="fa-solid fa-location-dot"
-          bounce
-        />
+        class="location-text"
+        icon="fa-solid fa-location-dot"
+        bounce
+      />
       <div class="location-text">LOCATIONS</div>
     </div>
   </div>
@@ -33,8 +33,8 @@
 }
 .location-text {
   font-size: 28px;
-  color: #669AFA;
-  font-family: 'Aclonica', "Helvetica", sans-serif;
+  color: #669afa;
+  font-family: 'Aclonica', 'Helvetica', sans-serif;
   display: flex;
   flex-direction: row;
   margin: 0 4px;
@@ -42,27 +42,27 @@
 }
 
 /* RWD */
-@media (max-width: 413px){
-  .location-bar{
+@media (max-width: 413px) {
+  .location-bar {
     width: 100%;
   }
-  .location-text{
+  .location-text {
     font-size: 18px;
   }
-  .location-text-font{
+  .location-text-font {
     font-size: 28px;
   }
 }
 @media (min-width: 414px) and (max-width: 575px) {
-  .location-bar{
+  .location-bar {
     width: 100%;
   }
-  .location-text{
+  .location-text {
     font-size: 24px;
   }
 }
 @media (min-width: 576px) and (max-width: 767px) {
-  .location-bar{
+  .location-bar {
     width: 100%;
   }
 }

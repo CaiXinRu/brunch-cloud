@@ -1,5 +1,5 @@
 <template>
-  <LoadingPage v-if="isLoading"/>
+  <LoadingPage v-if="isLoading" />
   <div class="bg-color--white">
     <div class="container u-pt-48 u-pb-48">
       <div class="co-stepbar">
@@ -97,7 +97,7 @@ export default {
   display: flex;
   justify-content: space-between;
 }
-.co-step-sm{
+.co-step-sm {
   flex-direction: column;
   align-items: center;
 }
@@ -171,7 +171,7 @@ export default {
   height: auto;
   width: 100%;
 }
-.cp-text-sm{
+.cp-text-sm {
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -203,107 +203,107 @@ export default {
   box-shadow: 5px 5px 0px var(--color--primary);
 }
 @media (max-width: 575px) {
-  .co-stepbar{
+  .co-stepbar {
     justify-content: center;
   }
-  .co-step{
+  .co-step {
     display: none;
   }
-  .co-step-sm{
+  .co-step-sm {
     display: flex;
   }
-  .cs-bar{
+  .cs-bar {
     width: 120px;
   }
-  .cp-text{
+  .cp-text {
     display: none;
   }
-  .cp-text-sm{
+  .cp-text-sm {
     display: flex;
   }
 }
 @media (min-width: 576px) and (max-width: 767px) {
-  .co-stepbar{
+  .co-stepbar {
     width: 100%;
   }
-  .cs-bar{
+  .cs-bar {
     width: 120px;
   }
-  .co-step-sm{
+  .co-step-sm {
     display: none;
   }
-  .cp-text{
+  .cp-text {
     display: block;
   }
-  .cp-text-sm{
+  .cp-text-sm {
     display: none;
   }
 }
 @media (min-width: 768px) and (max-width: 991px) {
-  .co-stepbar{
+  .co-stepbar {
     width: 80%;
   }
-  .cs-bar{
+  .cs-bar {
     width: 130px;
   }
-  .co-step-sm{
+  .co-step-sm {
     display: none;
   }
-  .cp-text{
+  .cp-text {
     display: block;
   }
-  .cp-text-sm{
+  .cp-text-sm {
     display: none;
   }
 }
 @media (min-width: 992px) and (max-width: 1199px) {
-  .co-stepbar{
+  .co-stepbar {
     width: 60%;
   }
-  .cs-bar{
+  .cs-bar {
     width: 130px;
   }
-  .co-step-sm{
+  .co-step-sm {
     display: none;
   }
-  .cp-text{
+  .cp-text {
     display: block;
   }
-  .cp-text-sm{
+  .cp-text-sm {
     display: none;
   }
 }
 @media (min-width: 1200px) and (max-width: 1399px) {
-  .co-stepbar{
+  .co-stepbar {
     width: 50%;
   }
-  .cs-bar{
+  .cs-bar {
     width: 130px;
   }
-  .co-step-sm{
+  .co-step-sm {
     display: none;
   }
-  .cp-text{
+  .cp-text {
     display: block;
   }
-  .cp-text-sm{
+  .cp-text-sm {
     display: none;
   }
 }
 @media (min-width: 1400px) {
-  .co-stepbar{
+  .co-stepbar {
     width: 50%;
   }
-  .cs-bar{
+  .cs-bar {
     width: 150px;
   }
-  .co-step-sm{
+  .co-step-sm {
     display: none;
   }
-  .cp-text{
+  .cp-text {
     display: block;
   }
-  .cp-text-sm{
+  .cp-text-sm {
     display: none;
   }
 }

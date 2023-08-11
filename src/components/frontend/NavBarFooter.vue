@@ -3,22 +3,26 @@
     <nav>
       <ul>
         <router-link to="/favorites" class="nf-link">
-            <li>
-                <span>
-                    <font-awesome-icon icon="fa-solid fa-heart" />
-                    <div v-if="filteredLikes.length > 0" class="number-cart">{{ filteredLikes.length }}</div>
-                </span>
-                <span>我的最愛</span>
-            </li>
+          <li>
+            <span>
+              <font-awesome-icon icon="fa-solid fa-heart" />
+              <div v-if="filteredLikes.length > 0" class="number-cart">
+                {{ filteredLikes.length }}
+              </div>
+            </span>
+            <span>我的最愛</span>
+          </li>
         </router-link>
         <div @click="showModal" class="nf-link">
-            <li>
-                <span>
-                    <font-awesome-icon icon="fa-solid fa-cart-shopping" />
-                    <div v-if="cart?.carts?.length" class="number-cart">{{ this.cart?.carts?.length }}</div>
-                </span>
-                <span>購物清單</span>
-            </li>
+          <li>
+            <span>
+              <font-awesome-icon icon="fa-solid fa-cart-shopping" />
+              <div v-if="cart?.carts?.length" class="number-cart">
+                {{ this.cart?.carts?.length }}
+              </div>
+            </span>
+            <span>購物清單</span>
+          </li>
         </div>
       </ul>
     </nav>
@@ -55,13 +59,8 @@ export default {
     ...mapState(useCartStore, ['cart'])
   },
   methods: {
-    ...mapActions(useCartStore, [
-      'getCart'
-    ]),
-    ...mapActions(productStore, [
-      'getProducts',
-      'toggleLike'
-    ]),
+    ...mapActions(useCartStore, ['getCart']),
+    ...mapActions(productStore, ['getProducts', 'toggleLike']),
     showModal () {
       this.isCartBarOpen = true
       const modal = document.getElementById('cartModalNavBarFooter')
@@ -92,9 +91,9 @@ export default {
   justify-content: space-around;
   align-items: center;
 }
-.nf-link{
-    width: 100%;
-    cursor: pointer;
+.nf-link {
+  width: 100%;
+  cursor: pointer;
 }
 li {
   list-style-type: none;
@@ -125,7 +124,7 @@ li > span:nth-child(2) {
 li:hover span {
   transform: translateY(-100%);
 }
-.number-cart{
+.number-cart {
   line-height: 20px;
   background-color: var(--color--light-brown);
   border: 3px solid var(--color--primary);

@@ -1,5 +1,5 @@
 <template>
-  <LoadingPage v-if="isLoading"/>
+  <LoadingPage v-if="isLoading" />
   <div
     class="modal fade"
     id="sandwichModal"
@@ -135,7 +135,14 @@ export default {
       status: {
         loadingItem: ''
       },
-      customType: ['我不挑食', '不加生菜', '不加番茄', '不加美奶滋', '不加美生菜', '不加小黃瓜'],
+      customType: [
+        '我不挑食',
+        '不加生菜',
+        '不加番茄',
+        '不加美奶滋',
+        '不加美生菜',
+        '不加小黃瓜'
+      ],
       custom: [],
       ice: '',
       sugar: '',
@@ -143,9 +150,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(useCartStore, [
-      'getCart'
-    ]),
+    ...mapActions(useCartStore, ['getCart']),
     showModal () {
       this.modal.show()
     },

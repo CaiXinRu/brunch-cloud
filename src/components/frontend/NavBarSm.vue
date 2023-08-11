@@ -3,7 +3,7 @@
     <div class="navbar-sm bg-color--secondary">
       <div class="container">
         <router-link to="/" class="logo">
-            <img src="@/assets/img/logo/logo+word_hor.png" alt="雲端早午安"/>
+          <img src="@/assets/img/logo/logo+word_hor.png" alt="雲端早午安" />
         </router-link>
         <div class="list-bar">
           <ul class="list">
@@ -32,16 +32,27 @@
             </li>
           </ul>
         </div>
-        <div id="popup-list" :class="{'list-bar-sm': true, 'popup-open':isPopupListOpen} ">
-          <div class="list-close-sm" @click="isPopupListOpen=false">
+        <div
+          id="popup-list"
+          :class="{ 'list-bar-sm': true, 'popup-open': isPopupListOpen }"
+        >
+          <div class="list-close-sm" @click="isPopupListOpen = false">
             <font-awesome-icon icon="fa-solid fa-circle-xmark" />
           </div>
           <ul class="list-sm">
             <li>
-              <img class="list-img-sm" src="@/assets/img/logo/logo+word_hor.png" alt="雲端早午安"/>
+              <img
+                class="list-img-sm"
+                src="@/assets/img/logo/logo+word_hor.png"
+                alt="雲端早午安"
+              />
             </li>
             <li>
-              <router-link to="/menu" class="main-font-sm" date-link-alt="MENU" @click="isPopupListOpen=false"
+              <router-link
+                to="/menu"
+                class="main-font-sm"
+                date-link-alt="MENU"
+                @click="isPopupListOpen = false"
                 ><span>雲端美味</span></router-link
               >
             </li>
@@ -50,7 +61,7 @@
                 to="/promotions"
                 class="main-font-sm"
                 date-link-alt="PROMOTIONS"
-                @click="isPopupListOpen=false"
+                @click="isPopupListOpen = false"
                 ><span>促銷優惠</span></router-link
               >
             </li>
@@ -59,7 +70,7 @@
                 to="/locations"
                 class="main-font-sm"
                 date-link-alt="LOCATIONS"
-                @click="isPopupListOpen=false"
+                @click="isPopupListOpen = false"
                 ><span>門市據點</span></router-link
               >
             </li>
@@ -71,7 +82,9 @@
               <li>
                 <span>
                   <font-awesome-icon icon="fa-solid fa-heart" />
-                  <div v-if="filteredLikes.length > 0" class="number-cart">{{ filteredLikes.length }}</div>
+                  <div v-if="filteredLikes.length > 0" class="number-cart">
+                    {{ filteredLikes.length }}
+                  </div>
                 </span>
                 <span>
                   <router-link to="/favorites">我的最愛</router-link>
@@ -80,7 +93,9 @@
               <li>
                 <span>
                   <font-awesome-icon icon="fa-solid fa-cart-shopping" />
-                  <div v-if="cart?.carts?.length" class="number-cart">{{ this.cart?.carts?.length }}</div>
+                  <div v-if="cart?.carts?.length" class="number-cart">
+                    {{ this.cart?.carts?.length }}
+                  </div>
                 </span>
                 <span>
                   <a @click="showModal()">購物清單</a>
@@ -89,12 +104,20 @@
             </ul>
           </nav>
         </div>
-        <a class="list-toggle" @click="isPopupListOpen=true">
+        <a class="list-toggle" @click="isPopupListOpen = true">
           <font-awesome-icon icon="fa-solid fa-bars" />
         </a>
       </div>
     </div>
-    <CartBar id="cartModalNavBarSm" :modelValue="isCartBarOpen" @update:modelValue="(val)=>{isCartBarOpen = val}"/>
+    <CartBar
+      id="cartModalNavBarSm"
+      :modelValue="isCartBarOpen"
+      @update:modelValue="
+        (val) => {
+          isCartBarOpen = val
+        }
+      "
+    />
   </header>
 </template>
 
@@ -121,13 +144,8 @@ export default {
     ...mapState(useCartStore, ['cart'])
   },
   methods: {
-    ...mapActions(useCartStore, [
-      'getCart'
-    ]),
-    ...mapActions(productStore, [
-      'getProducts',
-      'toggleLike'
-    ]),
+    ...mapActions(useCartStore, ['getCart']),
+    ...mapActions(productStore, ['getProducts', 'toggleLike']),
     showModal () {
       this.isCartBarOpen = true
       const modal = document.getElementById('cartModalNavBarSm')
@@ -141,7 +159,7 @@ export default {
 </script>
 
 <style scoped>
-.navbar-sm{
+.navbar-sm {
   height: 80px;
   display: flex;
 }
@@ -213,7 +231,7 @@ export default {
   top: 0;
   opacity: 1;
 }
-.list-bar-sm{
+.list-bar-sm {
   position: fixed;
   width: 100vw;
   height: 100vh;
@@ -224,15 +242,15 @@ export default {
   z-index: 5;
   transition: all 1s ease;
 }
-.list-bar-sm.popup-open{
+.list-bar-sm.popup-open {
   top: 0;
 }
-.list-img-sm{
+.list-img-sm {
   width: 400px;
   overflow: hidden;
   top: 30px;
 }
-.list-close-sm{
+.list-close-sm {
   font-size: 48px;
   position: absolute;
   top: 5%;
@@ -247,7 +265,7 @@ export default {
 .list-close-sm:active {
   color: var(--color--light-brown);
 }
-.list-sm{
+.list-sm {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -335,7 +353,7 @@ li:hover span {
 .top-right-btn a:hover {
   color: var(--color--secondary);
 }
-.number-cart{
+.number-cart {
   line-height: 20px;
   background-color: var(--color--light-brown);
   border: 3px solid var(--color--primary);
@@ -349,7 +367,7 @@ li:hover span {
   top: 25px;
   font-size: 12px;
 }
-.list-toggle{
+.list-toggle {
   color: var(--color--light-brown);
   font-size: 32px;
   position: absolute;
@@ -358,10 +376,10 @@ li:hover span {
   z-index: 1;
   display: none;
 }
-.list-toggle:hover{
+.list-toggle:hover {
   color: var(--color--primary);
 }
-.list-toggle:focus{
+.list-toggle:focus {
   color: var(--color--primary);
 }
 CartBar::backdrop {
@@ -369,47 +387,47 @@ CartBar::backdrop {
 }
 
 @media (max-width: 575px) {
-  .list-toggle{
+  .list-toggle {
     display: inline-block;
   }
-  .list-bar{
+  .list-bar {
     display: none;
   }
-  #popup-list:target{
+  #popup-list:target {
     top: 0;
   }
-  .list-img-sm{
+  .list-img-sm {
     width: 250px;
   }
-  .top-right-btn{
+  .top-right-btn {
     display: none;
   }
 }
 @media (min-width: 576px) and (max-width: 767px) {
-  .list-toggle{
+  .list-toggle {
     display: inline-block;
   }
-  .list-bar{
+  .list-bar {
     display: none;
   }
-  #popup-list:target{
+  #popup-list:target {
     top: 0;
   }
-  .top-right-btn{
+  .top-right-btn {
     display: none;
   }
 }
 @media (min-width: 768px) and (max-width: 991px) {
-  .list-toggle{
+  .list-toggle {
     display: inline-block;
   }
-  .list-bar{
+  .list-bar {
     display: none;
   }
-  #popup-list:target{
+  #popup-list:target {
     top: 0;
   }
-  .top-right-btn{
+  .top-right-btn {
     display: none;
   }
 }
@@ -426,17 +444,17 @@ CartBar::backdrop {
   .logo img {
     width: 180px;
   }
-  .top-right-btn{
+  .top-right-btn {
     display: none;
   }
 }
 @media (min-width: 1200px) and (max-width: 1399px) {
-  .top-right-btn{
+  .top-right-btn {
     display: flex;
   }
 }
 @media (min-width: 1400px) {
-  .top-right-btn{
+  .top-right-btn {
     display: flex;
   }
 }

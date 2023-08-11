@@ -1,17 +1,9 @@
 <template>
   <div class="menu-bar">
     <div class="menu-element">
-      <font-awesome-icon
-          class="menu-text"
-          icon="fa-solid fa-utensils"
-          bounce
-        />
+      <font-awesome-icon class="menu-text" icon="fa-solid fa-utensils" bounce />
       <div class="menu-text">MENU</div>
-      <font-awesome-icon
-          class="menu-text"
-          icon="fa-solid fa-utensils"
-          bounce
-        />
+      <font-awesome-icon class="menu-text" icon="fa-solid fa-utensils" bounce />
     </div>
   </div>
 </template>
@@ -38,8 +30,8 @@
 }
 .menu-text {
   font-size: 28px;
-  color: #669AFA;
-  font-family: 'Aclonica', "Helvetica", sans-serif;
+  color: #669afa;
+  font-family: 'Aclonica', 'Helvetica', sans-serif;
   display: flex;
   flex-direction: row;
   margin: 0 10px;
@@ -47,24 +39,24 @@
 }
 
 /* RWD */
-@media (max-width: 413px){
-  .menu-bar{
+@media (max-width: 413px) {
+  .menu-bar {
     width: 100%;
   }
-  .menu-text{
+  .menu-text {
     font-size: 18px;
   }
 }
 @media (min-width: 414px) and (max-width: 575px) {
-  .menu-bar{
+  .menu-bar {
     width: 100%;
   }
-  .menu-text{
+  .menu-text {
     font-size: 24px;
   }
 }
 @media (min-width: 576px) and (max-width: 767px) {
-  .menu-bar{
+  .menu-bar {
     width: 100%;
   }
 }

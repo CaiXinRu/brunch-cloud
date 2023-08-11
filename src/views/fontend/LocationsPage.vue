@@ -1,7 +1,7 @@
 <template>
   <div class="bg-color--white">
     <div class="container u-pt-48 u-pb-68">
-      <LocationBar id="locationTop"/>
+      <LocationBar id="locationTop" />
       <div class="location-area">
         <button
           type="button"
@@ -45,9 +45,10 @@
         </button>
       </div>
       <div class="dropdown">
-        <button
-          type="button" class="dropbtn" @click="toggleDropdown">請選擇區域<span>▼</span></button>
-        <div :class="{ 'dropdown-content': true, 'show': isDropdownOpen }">
+        <button type="button" class="dropbtn" @click="toggleDropdown">
+          請選擇區域<span>▼</span>
+        </button>
+        <div :class="{ 'dropdown-content': true, show: isDropdownOpen }">
           <div
             data-area="north"
             class="dropdown-btn"
@@ -120,14 +121,18 @@
             :key="index"
           >
             <td style="width: 100%; display: flex; flex-direction: column">
-              <div style="color:var(--color--dark-brown); margin: 2px 0">{{ location.store }}</div>
+              <div style="color: var(--color--dark-brown); margin: 2px 0">
+                {{ location.store }}
+              </div>
               <div style="margin: 2px 0">{{ location.tel }}</div>
               <div style="margin: 2px 0">{{ location.address }}</div>
             </td>
           </tr>
         </tbody>
       </table>
-      <div class="location-arrow" @click="goToTop"><font-awesome-icon icon="fa-solid fa-circle-up" /></div>
+      <div class="location-arrow" @click="goToTop">
+        <font-awesome-icon icon="fa-solid fa-circle-up" />
+      </div>
     </div>
   </div>
 </template>
@@ -319,8 +324,17 @@ export default {
   mounted () {
     window.addEventListener('click', this.closeDropdown)
     setTimeout(() => {
-      if (window.location.hash && window.location.hash !== '' && window.location.hash.split('#').length > 2) {
-        const el = document.querySelector('#' + window.location.hash.split('#')[window.location.hash.split('#').length - 1])
+      if (
+        window.location.hash &&
+        window.location.hash !== '' &&
+        window.location.hash.split('#').length > 2
+      ) {
+        const el = document.querySelector(
+          '#' +
+            window.location.hash.split('#')[
+              window.location.hash.split('#').length - 1
+            ]
+        )
         if (el !== null) {
           el.scrollIntoView({ behavior: 'smooth' })
         }
@@ -442,7 +456,7 @@ export default {
   background-color: var(--color--light-brown);
   width: 100%;
   overflow: auto;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 .dropdown-btn {
@@ -456,7 +470,7 @@ export default {
 .dropdown-btn:hover {
   background-color: var(--color--white);
 }
-.show{
+.show {
   display: block;
 }
 
@@ -487,140 +501,140 @@ th {
   font-size: 20px;
   border-bottom: 3px solid #fac664;
 }
-.location-arrow{
+.location-arrow {
   font-size: 50px;
   color: var(--color--primary);
   align-self: flex-end;
   cursor: pointer;
 }
 
-@media (max-width: 991px){
-  .location-table2{
-    display: table
+@media (max-width: 991px) {
+  .location-table2 {
+    display: table;
   }
-  .location-table{
-    display: none
-  }
-  .location-area{
+  .location-table {
     display: none;
   }
-  .dropdown{
+  .location-area {
+    display: none;
+  }
+  .dropdown {
     display: inline-block;
   }
 }
-@media (min-width: 992px) and (max-width: 1199px){
-  .location-table2{
-    display: none
+@media (min-width: 992px) and (max-width: 1199px) {
+  .location-table2 {
+    display: none;
   }
-  .location-table{
-    display: talbe
+  .location-table {
+    display: talbe;
   }
-  .th-25{
-    width: 25%
+  .th-25 {
+    width: 25%;
   }
-  .th-50{
-    width: 50%
+  .th-50 {
+    width: 50%;
   }
-  .location-btn{
+  .location-btn {
     min-width: 5em;
     font-size: 1.2rem;
   }
-  .location-btn:before{
+  .location-btn:before {
     width: 3.1em;
     height: 3.1em;
   }
-  .location-btn:hover:before{
+  .location-btn:hover:before {
     left: 12%;
   }
-  .location-btn:after{
+  .location-btn:after {
     width: 3.1em;
     height: 3.1em;
   }
-  .location-btn:hover:after{
+  .location-btn:hover:after {
     right: 9%;
     top: -50%;
   }
-  .location-area{
+  .location-area {
     display: flex;
   }
-  .dropdown{
+  .dropdown {
     display: none;
   }
 }
-@media (min-width: 1200px) and (max-width: 1399px){
-  .location-table2{
-    display: none
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .location-table2 {
+    display: none;
   }
-  .location-table{
-    display: talbe
+  .location-table {
+    display: talbe;
   }
-  .th-20{
-    width: 20%
+  .th-20 {
+    width: 20%;
   }
-  .th-60{
-    width: 60%
+  .th-60 {
+    width: 60%;
   }
-  .location-btn{
+  .location-btn {
     min-width: 6.23em;
     font-size: 1.25rem;
   }
-  .location-btn:before{
+  .location-btn:before {
     width: 3.2em;
     height: 3.2em;
   }
-  .location-btn:hover:before{
+  .location-btn:hover:before {
     left: 13%;
   }
-  .location-btn:after{
+  .location-btn:after {
     width: 3em;
     height: 3em;
   }
-  .location-btn:hover:after{
+  .location-btn:hover:after {
     right: 9%;
     top: -50%;
   }
-  .location-area{
+  .location-area {
     display: flex;
   }
-  .dropdown{
+  .dropdown {
     display: none;
   }
 }
-@media (min-width: 1400px){
-  .location-table2{
-    display: none
+@media (min-width: 1400px) {
+  .location-table2 {
+    display: none;
   }
-  .location-table{
-    display: talbe
+  .location-table {
+    display: talbe;
   }
-  .th-20{
-    width: 20%
+  .th-20 {
+    width: 20%;
   }
-  .th-60{
-    width: 60%
+  .th-60 {
+    width: 60%;
   }
-  .location-btn{
+  .location-btn {
     min-width: 7.23em;
     font-size: 1.25rem;
   }
-  .location-btn:before{
+  .location-btn:before {
     width: 3.2em;
     height: 3.2em;
   }
-  .location-btn:hover:before{
+  .location-btn:hover:before {
     left: 13%;
   }
-  .location-btn:after{
+  .location-btn:after {
     width: 3.8em;
     height: 3.8em;
   }
-  .location-btn:hover:after{
+  .location-btn:hover:after {
     right: 10%;
   }
-  .location-area{
+  .location-area {
     display: flex;
   }
-  .dropdown{
+  .dropdown {
     display: none;
   }
 }

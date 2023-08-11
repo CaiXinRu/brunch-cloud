@@ -1,10 +1,13 @@
 <template>
-  <LoadingPage v-if="isLoading"/>
+  <LoadingPage v-if="isLoading" />
   <div class="bg-color--white">
     <div class="container">
       <div class="login-row login-column-sm">
         <router-link to="/" class="login-element-left">
-          <img src="@/assets/img/logo/logo+word--light-brown_ver.png" alt="雲端早午安"/>
+          <img
+            src="@/assets/img/logo/logo+word--light-brown_ver.png"
+            alt="雲端早午安"
+          />
         </router-link>
         <div class="login-element-right">
           <table style="width: 100%">
@@ -197,20 +200,20 @@ button {
 
 /* RWD */
 
-@media (max-width: 991px){
-  .container{
+@media (max-width: 991px) {
+  .container {
     padding: 0;
   }
-  .login-column-sm{
+  .login-column-sm {
     flex-direction: column;
   }
-  .login-element-left{
+  .login-element-left {
     width: 100%;
   }
-  .login-element-left img{
+  .login-element-left img {
     width: 240px;
   }
-  .login-element-right{
+  .login-element-right {
     width: 100%;
   }
 }

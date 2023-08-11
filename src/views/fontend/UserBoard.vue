@@ -1,10 +1,10 @@
 <template>
   <div class="sticky-footer">
-    <NavBarSm class="sticky-top" :style="{top: navbarTop}"/>
-    <NavBar/>
+    <NavBarSm class="sticky-top" :style="{ top: navbarTop }" />
+    <NavBar />
     <router-view />
-    <FooterBar class="sticky-footer-bar"/>
-    <NavBarFooter/>
+    <FooterBar class="sticky-footer-bar" />
+    <NavBarFooter />
   </div>
 </template>
 

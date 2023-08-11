@@ -1,7 +1,7 @@
 <template>
   <div class="bg-color--white">
     <div class="container u-pt-48 u-pb-68">
-      <NewsBar id="newsTop"/>
+      <NewsBar id="newsTop" />
       <div class="promo-type">
         <button
           type="button"
@@ -28,13 +28,16 @@
           爽領八折碼
         </button>
         <button
-          type="button" data-type="east" class="promo-btn" @click="filterPromos('all')">
+          type="button"
+          data-type="east"
+          class="promo-btn"
+          @click="filterPromos('all')"
+        >
           最完整促銷
         </button>
       </div>
       <div class="dropdown">
-        <button
-          type="button" class="dropbtn" @click="toggleDropdown">
+        <button type="button" class="dropbtn" @click="toggleDropdown">
           請選擇類別<span>▼</span>
         </button>
         <div :class="{ 'dropdown-content': true, show: isDropdownOpen }">
@@ -83,7 +86,9 @@
           />
           <p class="sub u-mt-16 u-mb-4">{{ promo.time }}</p>
           <hr class="news-hr" />
-          <div class="news-text" @click.prevent="showModal(promo.id)">{{ promo.event }}</div>
+          <div class="news-text" @click.prevent="showModal(promo.id)">
+            {{ promo.event }}
+          </div>
         </div>
       </div>
       <div class="news-arrow" @click="goToTop">
@@ -99,7 +104,8 @@
       (val) => {
         isModalVisible = val
       }
-    "/>
+    "
+  />
 </template>
 
 <script>
@@ -116,7 +122,8 @@ export default {
           time: '2023 JUL. / AUG.',
           timeC: '2023年 7/1（六）～8/31（四）',
           event: '暑期雲端全面打九折！',
-          detail: '活動期間，凡購買雲端餐點品項，一律九折！（此活動可與其他優惠合併使用。）',
+          detail:
+            '活動期間，凡購買雲端餐點品項，一律九折！（此活動可與其他優惠合併使用。）',
           img: 'A.jpeg',
           id: 'discount1'
         },
@@ -126,7 +133,8 @@ export default {
           time: '2023 JUL.',
           timeC: '2023年 7/1（六）～7/31（二）',
           event: '限量！滿五佰送雲端手提袋',
-          detail: '活動期間，凡購買雲端餐點品項額滿NT$500，即送「雲端早午安」特製環保手提袋！（限600件，恕無法指定或挑選樣式及顏色。此活動可與其他優惠合併使用。）',
+          detail:
+            '活動期間，凡購買雲端餐點品項額滿NT$500，即送「雲端早午安」特製環保手提袋！（限600件，恕無法指定或挑選樣式及顏色。此活動可與其他優惠合併使用。）',
           img: 'D.jpeg',
           id: 'gift1'
         },
@@ -136,7 +144,8 @@ export default {
           time: '2023 JUL. / AUG.',
           timeC: '2023年 7/1（六）～8/31（四）',
           event: 'X呱吉：本名筆畫字數？',
-          detail: '呱吉也來支持「雲端早午安」！凡在活動期間，答出優惠碼（如圖提示），結帳時主動輸入，即可再享八折優惠。（此活動可與其他優惠合併使用。）',
+          detail:
+            '呱吉也來支持「雲端早午安」！凡在活動期間，答出優惠碼（如圖提示），結帳時主動輸入，即可再享八折優惠。（此活動可與其他優惠合併使用。）',
           img: 'G.jpeg',
           id: 'code1'
         },
@@ -146,7 +155,8 @@ export default {
           time: '2023 JUN.',
           timeC: '2023年 6/1（四）～6/30（五）',
           event: 'Google五星好評折50',
-          detail: '活動期間，至「雲端早午安」Google商店留下五星好評，總餐點價格立折NT$50！（訂單需滿百元即可享折扣。乙件訂單限折乙次。此活動可與其他優惠合併使用。）',
+          detail:
+            '活動期間，至「雲端早午安」Google商店留下五星好評，總餐點價格立折NT$50！（訂單需滿百元即可享折扣。乙件訂單限折乙次。此活動可與其他優惠合併使用。）',
           img: 'B.jpeg',
           id: 'discount2'
         },
@@ -156,7 +166,8 @@ export default {
           time: '2023 JUN.',
           timeC: '2023年 6/1（四）～6/30（五）',
           event: '限量！滿兩佰送雲端Ｑ徽章',
-          detail: '活動期間，凡購買雲端餐點品項額滿NT$200，即送「雲端早午安」特製Q版徽章！（限700件，恕無法指定或挑選樣式及顏色）',
+          detail:
+            '活動期間，凡購買雲端餐點品項額滿NT$200，即送「雲端早午安」特製Q版徽章！（限700件，恕無法指定或挑選樣式及顏色）',
           img: 'E.jpeg',
           id: 'gift2'
         },
@@ -166,7 +177,8 @@ export default {
           time: '2023 JUN.',
           timeC: '2023年 6/1（四）～6/30（五）',
           event: 'X百靈果：成立時間？',
-          detail: '百靈果也來支持「雲端早午安」！凡在活動期間，答出優惠碼（如圖提示），結帳時主動輸入，即可再享八折優惠。（此活動可與其他優惠合併使用。）',
+          detail:
+            '百靈果也來支持「雲端早午安」！凡在活動期間，答出優惠碼（如圖提示），結帳時主動輸入，即可再享八折優惠。（此活動可與其他優惠合併使用。）',
           img: 'H.jpeg',
           id: 'code2'
         },
@@ -176,7 +188,8 @@ export default {
           time: '2023 MAY.',
           timeC: '2023年 5/1（一）～5/31（三）',
           event: '四人有「雲」一人免錢',
-          detail: '活動期間，如姓名有「ㄩㄣˊ」字，並購買四種以上的主食餐點品項（漢堡、三明治、飯麵），一份主食餐點即可免費！（免費餐點由低價折扣。此活動可與其他優惠合併使用。）',
+          detail:
+            '活動期間，如姓名有「ㄩㄣˊ」字，並購買四種以上的主食餐點品項（漢堡、三明治、飯麵），一份主食餐點即可免費！（免費餐點由低價折扣。此活動可與其他優惠合併使用。）',
           img: 'C.jpeg',
           id: 'discount3'
         },
@@ -186,7 +199,8 @@ export default {
           time: '2023 MAY.',
           timeC: '2023年 5/1（一）～5/31（三）',
           event: '限量！滿仟送雲端餐具',
-          detail: '活動期間，凡購買雲端餐點品項額滿NT$1,000，即送「雲端早午安」特製餐具套組！（限500件，恕無法指定或挑選樣式及顏色）',
+          detail:
+            '活動期間，凡購買雲端餐點品項額滿NT$1,000，即送「雲端早午安」特製餐具套組！（限500件，恕無法指定或挑選樣式及顏色）',
           img: 'F.jpeg',
           id: 'gift3'
         },
@@ -196,7 +210,8 @@ export default {
           time: '2023 MAY.',
           timeC: '2023年 5/1（一）～5/31（三）',
           event: 'X股癌：第一本書？',
-          detail: '癌大也來支持「雲端早午安」！凡在活動期間，答出優惠碼（如圖提示），結帳時主動輸入，即可再享八折優惠。（此活動可與其他優惠合併使用。）',
+          detail:
+            '癌大也來支持「雲端早午安」！凡在活動期間，答出優惠碼（如圖提示），結帳時主動輸入，即可再享八折優惠。（此活動可與其他優惠合併使用。）',
           img: 'I.jpeg',
           id: 'code3'
         }
@@ -248,8 +263,17 @@ export default {
   mounted () {
     window.addEventListener('click', this.closeDropdown)
     setTimeout(() => {
-      if (window.location.hash && window.location.hash !== '' && window.location.hash.split('#').length > 2) {
-        const el = document.querySelector('#' + window.location.hash.split('#')[window.location.hash.split('#').length - 1])
+      if (
+        window.location.hash &&
+        window.location.hash !== '' &&
+        window.location.hash.split('#').length > 2
+      ) {
+        const el = document.querySelector(
+          '#' +
+            window.location.hash.split('#')[
+              window.location.hash.split('#').length - 1
+            ]
+        )
         if (el !== null) {
           el.scrollIntoView({ behavior: 'smooth' })
         }
@@ -429,7 +453,7 @@ export default {
   letter-spacing: -0.02em;
   cursor: pointer;
 }
-.news-text:hover{
+.news-text:hover {
   color: var(--color--secondary);
 }
 .news-arrow {

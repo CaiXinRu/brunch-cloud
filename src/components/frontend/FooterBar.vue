@@ -5,20 +5,21 @@
         <div class="container">
           <div class="footer">
             <div class="logo">
-              <img src="@/assets/img/logo/logo+word_ver.png" alt="雲端早午安"/>
+              <img src="@/assets/img/logo/logo+word_ver.png" alt="雲端早午安" />
             </div>
             <div class="footer-content">
               <div class="footer-text color--secondary">
                 營業時間 05:30~14:30 (最後點餐時間14:15)
               </div>
-              <div class="footer-text color--secondary">加盟專線 0975-173513</div>
+              <div class="footer-text color--secondary">
+                加盟專線 0975-173513
+              </div>
               <div class="footer-text color--secondary">
                 電子郵件 brunchincloud@gmail.com
               </div>
               <div class="footer-text color--brown">
                 本網站僅供個人作品使用，無作任何商業用途｜
-                <router-link
-                  to="/login" class="footer-login"
+                <router-link to="/login" class="footer-login"
                   >登入後台</router-link
                 >
               </div>
@@ -27,16 +28,17 @@
               <div class="footer-text color--secondary">
                 營業時間&nbsp;<span>05:30~14:30 (最後點餐時間14:15)</span>
               </div>
-              <div class="footer-text color--secondary">加盟專線&nbsp;<span>0975-173513</span></div>
+              <div class="footer-text color--secondary">
+                加盟專線&nbsp;<span>0975-173513</span>
+              </div>
               <div class="footer-text color--secondary">
                 電子郵件&nbsp;<span>brunchincloud@gmail.com</span>
               </div>
               <div class="footer-text color--brown">
                 本網站僅供個人作品使用，<span>無作任何商業用途</span>
               </div>
-              <router-link
-                  to="/login" class="footer-text footer-login"
-                  >｜登入後台｜
+              <router-link to="/login" class="footer-text footer-login"
+                >｜登入後台｜
               </router-link>
               <div class="footer-icons-sm">
                 <div>
@@ -115,7 +117,7 @@
 </template>
 
 <style scoped>
-.container{
+.container {
   padding: 16px 0;
 }
 .footer {
@@ -123,7 +125,7 @@
   flex-direction: row;
   align-items: center;
 }
-.logo{
+.logo {
   overflow: hidden;
   display: flex;
   position: absolute;
@@ -144,10 +146,10 @@
 .footer-login {
   color: #c0b5a0;
 }
-.footer-login:hover{
+.footer-login:hover {
   color: #fac664;
 }
-.footer-login:active{
+.footer-login:active {
   color: #e3bac6;
 }
 .footer-icons {
@@ -164,8 +166,8 @@
   font-size: 34px;
 }
 
-@media (max-width: 575px){
-  .container{
+@media (max-width: 575px) {
+  .container {
     padding-top: 0;
   }
   .footer {
@@ -178,72 +180,72 @@
     position: relative;
     left: -5px;
     bottom: -15px;
-}
-  .footer-content {
-    display:none;
   }
-  .footer-content-sm{
+  .footer-content {
+    display: none;
+  }
+  .footer-content-sm {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-  .footer-text{
+  .footer-text {
     font-size: 16px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-  .footer-text span{
+  .footer-text span {
     display: block;
   }
-  .footer-login{
+  .footer-login {
     font-size: 20px;
   }
-  .footer-icons-sm{
+  .footer-icons-sm {
     display: flex;
   }
-  .footer-icon-1{
+  .footer-icon-1 {
     margin: 0px;
   }
-  .footer-icons{
+  .footer-icons {
     display: none;
   }
 }
-@media (min-width: 576px) and (max-width: 767px){
+@media (min-width: 576px) and (max-width: 767px) {
   .footer {
     justify-content: flex-start;
   }
-  .logo{
+  .logo {
     left: -5%;
   }
   .logo img {
     width: 160px;
   }
   .footer-content {
-    display:none;
+    display: none;
   }
-  .footer-content-sm{
+  .footer-content-sm {
     display: block;
     margin: 0 0 0 130px;
     flex: 1;
   }
-  .footer-icons-sm{
+  .footer-icons-sm {
     display: flex;
   }
-  .footer-icon-1{
+  .footer-icon-1 {
     margin: 0px;
   }
-  .footer-icons{
+  .footer-icons {
     display: none;
   }
 }
-@media (min-width: 768px) and (max-width: 991px){
+@media (min-width: 768px) and (max-width: 991px) {
   .footer {
     justify-content: center;
   }
-  .logo{
+  .logo {
     left: -4%;
   }
   .logo img {
@@ -253,16 +255,16 @@
     display: block;
     margin: 0 0px 0 16px;
   }
-  .footer-content-sm{
+  .footer-content-sm {
     display: none;
   }
-  .footer-icons-sm{
+  .footer-icons-sm {
     display: none;
   }
-  .footer-icon-1{
+  .footer-icon-1 {
     margin-left: 8px;
   }
-  .footer-icons{
+  .footer-icons {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -270,81 +272,81 @@
     width: 10%;
   }
 }
-@media (min-width: 992px) and (max-width: 1199px){
+@media (min-width: 992px) and (max-width: 1199px) {
   .footer {
     justify-content: center;
   }
-  .logo{
+  .logo {
     left: 0%;
   }
   .footer-content {
     display: block;
     margin: 0 55px 0 16px;
   }
-  .footer-content-sm{
+  .footer-content-sm {
     display: none;
   }
-  .footer-icons-sm{
+  .footer-icons-sm {
     display: none;
   }
-  .footer-icon-1{
+  .footer-icon-1 {
     margin-left: 8px;
   }
-  .footer-icons{
+  .footer-icons {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     align-items: flex-end;
   }
 }
-@media (min-width: 1200px) and (max-width: 1399px){
+@media (min-width: 1200px) and (max-width: 1399px) {
   .footer {
     justify-content: center;
   }
-  .logo{
+  .logo {
     left: 5%;
   }
   .footer-content {
     display: block;
     margin: 0 120px 0 16px;
   }
-  .footer-content-sm{
+  .footer-content-sm {
     display: none;
   }
-  .footer-icons-sm{
+  .footer-icons-sm {
     display: none;
   }
-  .footer-icon-1{
+  .footer-icon-1 {
     margin-left: 8px;
   }
-  .footer-icons{
+  .footer-icons {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     align-items: flex-end;
   }
 }
-@media (min-width: 1400px){
+@media (min-width: 1400px) {
   .footer {
     justify-content: center;
   }
-  .logo{
+  .logo {
     left: 11%;
   }
   .footer-content {
     display: block;
     margin: 0 120px 0 16px;
   }
-  .footer-content-sm{
+  .footer-content-sm {
     display: none;
   }
-  .footer-icons-sm{
+  .footer-icons-sm {
     display: none;
   }
-  .footer-icon-1{
+  .footer-icon-1 {
     margin-left: 8px;
   }
-  .footer-icons{
+  .footer-icons {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;

@@ -3,7 +3,10 @@
     <div style="height: max-content" class="bg-color--secondary">
       <div class="container">
         <router-link to="/" class="dnb-img"
-          ><img style="height: 120px" src="@/assets/img/logo/logo+word--light-brown_ver.png" alt="雲端早午安"
+          ><img
+            style="height: 120px"
+            src="@/assets/img/logo/logo+word--light-brown_ver.png"
+            alt="雲端早午安"
         /></router-link>
         <div class="list-bar">
           <ul class="list">
@@ -17,7 +20,10 @@
             </li>
             <li><p class="color--light-brown main-font-1">｜</p></li>
             <li>
-              <router-link to="/dashboard/orders" class="main-font" date-link-alt="ORDERLIST"
+              <router-link
+                to="/dashboard/orders"
+                class="main-font"
+                date-link-alt="ORDERLIST"
                 ><span>訂單列表</span></router-link
               >
             </li>

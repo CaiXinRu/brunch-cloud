@@ -77,7 +77,11 @@
                 </div>
               </div>
               <div class="about-item">
-                <img class="about-img" src="@/assets/img/pics/home/C_quality_a.jpg" alt="嚴選製程的卓越雲端"/>
+                <img
+                  class="about-img"
+                  src="@/assets/img/pics/home/C_quality_a.jpg"
+                  alt="嚴選製程的卓越雲端"
+                />
                 <img
                   class="about-img-sm"
                   src="@/assets/img/pics/home/C_quality_b.jpg"
@@ -106,10 +110,10 @@
           <h2>必點首選</h2>
           <h4 class="sub-border">MUST-TRY IN THE CLOUD</h4>
         </div>
-        <MoreFood/>
+        <MoreFood />
         <div class="try-lists">
           <div class="try-list" v-for="(item, index) in foods" :key="index">
-            <img class="try-img" :src="Foods[item.img]" :alt="item.food"/>
+            <img class="try-img" :src="Foods[item.img]" :alt="item.food" />
             <h3 class="u-text-center color--black">{{ item.food }}</h3>
             <router-link :to="`/menu#${item.hashtag}`">
               <h6 class="try-btn">{{ item.categoryC }}</h6>
@@ -124,15 +128,19 @@
           <h2>最新消息</h2>
           <h4 class="sub-border">NEWS IN THE CLOUD</h4>
         </div>
-        <MoreNews/>
+        <MoreNews />
         <div class="news-lists">
           <div class="news-list" v-for="(promo, index) in promos" :key="index">
             <div class="news-type">{{ promo.typeC }}</div>
-            <img class="news-img" :src="Promotions[promo.img]" :alt="promo.event"/>
+            <img
+              class="news-img"
+              :src="Promotions[promo.img]"
+              :alt="promo.event"
+            />
             <p class="sub u-mt-16 u-mb-4">{{ promo.time }}</p>
             <hr class="news-hr" />
-            <div
-              ><h3 class="u-mt-16 u-mb-16">{{ promo.event }}</h3>
+            <div>
+              <h3 class="u-mt-16 u-mb-16">{{ promo.event }}</h3>
             </div>
           </div>
         </div>
@@ -446,10 +454,10 @@ export default {
     margin-bottom: 16px;
   }
   p {
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 20px;
-  letter-spacing: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0;
   }
   .about-lists {
     height: 430px;

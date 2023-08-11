@@ -1,5 +1,5 @@
 <template>
-  <Lodingpage v-if="isLoading"/>
+  <Lodingpage v-if="isLoading" />
   <div class="bg-color--white">
     <div class="container u-pt-48 u-pb-48">
       <div class="co-stepbar">
@@ -88,7 +88,11 @@
               <div v-else>NT${{ $filters.currency(item.total) }}</div>
             </td>
             <td style="width: 10%">
-              <button type="button" class="cl-delete" @click="removeCartItem(item.id)">
+              <button
+                type="button"
+                class="cl-delete"
+                @click="removeCartItem(item.id)"
+              >
                 <font-awesome-icon icon="fa-solid fa-trash-can" />
               </button>
             </td>
@@ -154,7 +158,11 @@
               <div v-else>NT${{ $filters.currency(item.total) }}</div>
             </td>
             <td style="width: 5%">
-              <button type="button" class="cl-delete" @click="removeCartItem(item.id)">
+              <button
+                type="button"
+                class="cl-delete"
+                @click="removeCartItem(item.id)"
+              >
                 <font-awesome-icon icon="fa-solid fa-trash-can" />
               </button>
             </td>
@@ -205,7 +213,9 @@
                   $filters.currency(item.final_total)
                 }}
               </div>
-              <div class="cl-total-sm" v-else>小計NT${{ $filters.currency(item.total) }}</div>
+              <div class="cl-total-sm" v-else>
+                小計NT${{ $filters.currency(item.total) }}
+              </div>
             </td>
             <td style="width: 10%">
               <div class="cl-delete" @click="removeCartItem(item.id)">
@@ -245,7 +255,13 @@
           </tr>
           <tr>
             <td style="width: 100%">
-              <router-link to="/checkinfo" class="cl-checkBtn" type="submit" @click="clearCheckList">送出訂單</router-link>
+              <router-link
+                to="/checkinfo"
+                class="cl-checkBtn"
+                type="submit"
+                @click="clearCheckList"
+                >送出訂單</router-link
+              >
             </td>
           </tr>
         </table>
@@ -315,7 +331,7 @@ export default {
   flex-direction: column;
   align-items: center;
 }
-.co-step-sm{
+.co-step-sm {
   flex-direction: column;
   align-items: center;
 }
@@ -401,7 +417,7 @@ tr {
 .cl-delete:hover {
   color: var(--color--primary);
 }
-.cl-total-sm{
+.cl-total-sm {
   font-size: 16px;
   color: var(--color--brown);
 }
@@ -478,32 +494,32 @@ tr {
 }
 
 @media (max-width: 413px) {
-  .co-stepbar{
+  .co-stepbar {
     justify-content: center;
   }
-  .co-step{
+  .co-step {
     display: none;
   }
-  .co-step-sm{
+  .co-step-sm {
     display: flex;
   }
-  .cs-bar{
+  .cs-bar {
     width: 120px;
   }
-  .cl-table{
+  .cl-table {
     display: none;
   }
-  .cl-table-md{
+  .cl-table-md {
     display: none;
   }
 
-  .cl-table-sm{
+  .cl-table-sm {
     display: table;
   }
-  .cl-body{
+  .cl-body {
     font-size: 16px;
   }
-  .cl-count{
+  .cl-count {
     font-size: 24px;
   }
   .cl-count-num {
@@ -514,52 +530,52 @@ tr {
     display: flex;
     justify-content: flex-start;
   }
-  .cl-bottom table{
+  .cl-bottom table {
     width: 100%;
   }
-  .clc-input{
+  .clc-input {
     width: 60%;
   }
-  .clc-btn-sm{
+  .clc-btn-sm {
     width: 40%;
   }
-  .clc-btn{
+  .clc-btn {
     width: 100%;
   }
-  .cl-toal-text{
+  .cl-toal-text {
     width: 60%;
   }
-  .cl-total-num{
+  .cl-total-num {
     width: 40%;
   }
-  .cl-checkBtn{
+  .cl-checkBtn {
     width: 100%;
   }
-  .cl-total{
+  .cl-total {
     font-size: 26px;
   }
 }
 @media (min-width: 414px) and (max-width: 575px) {
-  .co-stepbar{
+  .co-stepbar {
     justify-content: center;
   }
-  .co-step{
+  .co-step {
     display: none;
   }
-  .co-step-sm{
+  .co-step-sm {
     display: flex;
   }
-  .cs-bar{
+  .cs-bar {
     width: 120px;
   }
-  .cl-table{
+  .cl-table {
     display: none;
   }
-  .cl-table-md{
+  .cl-table-md {
     display: none;
   }
 
-  .cl-table-sm{
+  .cl-table-sm {
     display: table;
   }
   .cl-count-num {
@@ -569,94 +585,93 @@ tr {
     display: flex;
     justify-content: flex-start;
   }
-  .cl-bottom table{
+  .cl-bottom table {
     width: 100%;
   }
-  .clc-input{
+  .clc-input {
     width: 60%;
   }
-  .clc-btn-sm{
+  .clc-btn-sm {
     width: 40%;
   }
-  .clc-btn{
+  .clc-btn {
     width: 100%;
   }
-  .cl-toal-text{
+  .cl-toal-text {
     width: 60%;
   }
-  .cl-total-num{
+  .cl-total-num {
     width: 40%;
   }
-  .cl-checkBtn{
+  .cl-checkBtn {
     width: 100%;
   }
 }
 @media (min-width: 576px) and (max-width: 767px) {
-  .co-stepbar{
+  .co-stepbar {
     width: 100%;
   }
-  .cs-bar{
+  .cs-bar {
     width: 120px;
   }
-  .co-step-sm{
+  .co-step-sm {
     display: none;
   }
-  .cl-table{
+  .cl-table {
     display: none;
   }
-  .cl-table-md{
+  .cl-table-md {
     display: none;
   }
-  .cl-table-sm{
+  .cl-table-sm {
     display: table;
   }
   .cl-count-num {
     margin: 0 32px;
   }
-  .cl-bottom table{
+  .cl-bottom table {
     width: 100%;
   }
-  .clc-input{
+  .clc-input {
     width: 60%;
   }
-  .clc-btn-sm{
+  .clc-btn-sm {
     width: 40%;
   }
-  .clc-btn{
+  .clc-btn {
     width: 100%;
   }
-  .cl-toal-text{
+  .cl-toal-text {
     width: 60%;
   }
-  .cl-total-num{
+  .cl-total-num {
     width: 40%;
   }
-  .cl-checkBtn{
+  .cl-checkBtn {
     width: 100%;
   }
   .cl-delete {
     display: flex;
     justify-content: flex-start;
   }
-
 }
 @media (min-width: 768px) and (max-width: 991px) {
-  .co-stepbar{
+  .co-stepbar {
     width: 80%;
   }
-  .cs-bar{
+  .cs-bar {
     width: 130px;
   }
-  .co-step-sm{
+  .co-step-sm {
     display: none;
   }
-  .cl-table{
+  .cl-table {
     display: none;
   }
-  .cl-table-md{
+  .cl-table-md {
     display: table;
   }
-  .cl-table-sm{
+  .cl-table-sm {
     display: none;
   }
   .cl-count-num {
@@ -668,22 +683,22 @@ tr {
   }
 }
 @media (min-width: 992px) and (max-width: 1199px) {
-  .co-stepbar{
+  .co-stepbar {
     width: 60%;
   }
-  .cs-bar{
+  .cs-bar {
     width: 130px;
   }
-  .co-step-sm{
+  .co-step-sm {
     display: none;
   }
-  .cl-table{
+  .cl-table {
     display: table;
   }
-  .cl-table-md{
+  .cl-table-md {
     display: none;
   }
-  .cl-table-sm{
+  .cl-table-sm {
     display: none;
   }
   .cl-count-num {
@@ -691,22 +706,22 @@ tr {
   }
 }
 @media (min-width: 1200px) and (max-width: 1399px) {
-  .co-stepbar{
+  .co-stepbar {
     width: 50%;
   }
-  .cs-bar{
+  .cs-bar {
     width: 130px;
   }
-  .co-step-sm{
+  .co-step-sm {
     display: none;
   }
-  .cl-table{
+  .cl-table {
     display: table;
   }
-  .cl-table-md{
+  .cl-table-md {
     display: none;
   }
-  .cl-table-sm{
+  .cl-table-sm {
     display: none;
   }
   .cl-count-num {
@@ -714,22 +729,22 @@ tr {
   }
 }
 @media (min-width: 1400px) {
-  .co-stepbar{
+  .co-stepbar {
     width: 50%;
   }
-  .cs-bar{
+  .cs-bar {
     width: 150px;
   }
-  .co-step-sm{
+  .co-step-sm {
     display: none;
   }
-  .cl-table{
+  .cl-table {
     display: table;
   }
-  .cl-table-md{
+  .cl-table-md {
     display: none;
   }
-  .cl-table-sm{
+  .cl-table-sm {
     display: none;
   }
   .cl-count-num {

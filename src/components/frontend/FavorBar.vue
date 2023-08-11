@@ -1,7 +1,10 @@
 <template>
   <div class="favor-bar">
     <div class="favor-element">
-      <div class="favor-text" style="transform: rotate(347deg) translateY(-4px); font-size: 32px; ">
+      <div
+        class="favor-text"
+        style="transform: rotate(347deg) translateY(-4px); font-size: 32px"
+      >
         <font-awesome-icon icon="fa-solid fa-heart-circle-check" bounce />
       </div>
       <div class="favor-text">FAVORITES</div>

@@ -3,9 +3,9 @@
     <dialog
       :id="id"
       ref="cartModal"
-      :class="{ 'show-modal': modelValue, 'cartModal': true }"
+      :class="{ 'show-modal': modelValue, cartModal: true }"
     >
-      <LodingPageModal v-if="isLoading"/>
+      <LodingPageModal v-if="isLoading" />
       <div class="cb-container">
         <div class="cb-head">
           <div class="cbh-close" @click="closeModal()">
@@ -65,7 +65,11 @@
                   </div>
                 </td>
                 <td style="width: 10%">
-                  <button type="button" class="cb-delete" @click="removeCartItem(item.id)">
+                  <button
+                    type="button"
+                    class="cb-delete"
+                    @click="removeCartItem(item.id)"
+                  >
                     <font-awesome-icon icon="fa-solid fa-trash-can" />
                   </button>
                 </td>
@@ -74,7 +78,12 @@
           </table>
         </div>
         <div class="cb-content2" v-if="!cart?.carts?.length">
-          <font-awesome-icon class="color--secondary" style="font-size: 70px; margin-bottom: 10px" icon="fa-solid fa-cloud" bounce />
+          <font-awesome-icon
+            class="color--secondary"
+            style="font-size: 70px; margin-bottom: 10px"
+            icon="fa-solid fa-cloud"
+            bounce
+          />
           <div>您尚未選取任何餐點喔！</div>
         </div>
         <tfoot v-if="cart?.carts?.length">
@@ -163,7 +172,7 @@ dialog {
   margin: 19px auto;
   user-select: none;
 }
-dialog:focus-visible{
+dialog:focus-visible {
   outline: none;
 }
 .cartModal {
@@ -215,15 +224,15 @@ dialog::backdrop {
   height: max-content;
   flex: 1;
 }
-.cb-content2{
+.cb-content2 {
   overflow: auto;
   flex: 1;
-  display:flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   font-size: 22px;
-  color: var(--color--dark-brown)
+  color: var(--color--dark-brown);
 }
 tr {
   display: flex;
@@ -313,7 +322,7 @@ tfoot tr {
   box-shadow: 5px 5px 0px var(--color--secondary);
 }
 @media (max-width: 991px) {
-  dialog{
+  dialog {
     width: 99vw;
   }
   .cartModal.show-modal {
@@ -321,7 +330,7 @@ tfoot tr {
   }
 }
 @media (min-width: 992px) and (max-width: 1199px) {
-  dialog{
+  dialog {
     width: 50vw;
   }
   .cartModal.show-modal {
@@ -329,7 +338,7 @@ tfoot tr {
   }
 }
 @media (min-width: 1200px) and (max-width: 1399px) {
-  dialog{
+  dialog {
     width: 38vw;
   }
   .cartModal.show-modal {
@@ -337,7 +346,7 @@ tfoot tr {
   }
 }
 @media (min-width: 1400px) {
-  dialog{
+  dialog {
     width: 35vw;
   }
   .cartModal.show-modal {

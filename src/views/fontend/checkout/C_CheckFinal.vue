@@ -1,5 +1,5 @@
 <template>
-  <LoadingPage v-if="isLoading"/>
+  <LoadingPage v-if="isLoading" />
   <div class="bg-color--white">
     <div class="container u-pt-48 u-pb-48">
       <div class="co-stepbar">
@@ -157,20 +157,10 @@
         </tbody>
       </table>
       <div class="cf-submit-container" v-if="!order?.is_paid">
-        <div
-          class="cf-submit"
-          type="submit"
-          @click="payOrder"
-        >
-          進行付款
-        </div>
+        <div class="cf-submit" type="submit" @click="payOrder">進行付款</div>
       </div>
       <div class="cf-submit-container" v-if="order?.is_paid">
-        <router-link
-          to="/menu"
-          class="cf-submit"
-          type="submit"
-        >
+        <router-link to="/menu" class="cf-submit" type="submit">
           繼續點餐
         </router-link>
       </div>
@@ -199,9 +189,7 @@ export default {
     ...mapState(useCartStore, ['isLoading', 'cart', 'status'])
   },
   methods: {
-    ...mapActions(useCartStore, [
-      'getCart'
-    ]),
+    ...mapActions(useCartStore, ['getCart']),
     async getOrder () {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/order/${this.orderId}`
       this.isLoading = true
@@ -243,7 +231,7 @@ export default {
   display: flex;
   justify-content: space-between;
 }
-.co-step-sm{
+.co-step-sm {
   flex-direction: column;
   align-items: center;
 }
@@ -337,100 +325,100 @@ tr {
   box-shadow: 5px 5px 0px var(--color--primary);
 }
 @media (max-width: 413px) {
-  .co-stepbar{
+  .co-stepbar {
     justify-content: center;
   }
-  .co-step{
+  .co-step {
     display: none;
   }
-  .co-step-sm{
+  .co-step-sm {
     display: flex;
   }
-  .cs-bar{
+  .cs-bar {
     width: 120px;
   }
-  .cf-body{
+  .cf-body {
     font-size: 18px;
   }
-  .cf-submit{
+  .cf-submit {
     width: 100%;
   }
 }
 @media (min-width: 414px) and (max-width: 575px) {
-  .co-stepbar{
+  .co-stepbar {
     justify-content: center;
   }
-  .co-step{
+  .co-step {
     display: none;
   }
-  .co-step-sm{
+  .co-step-sm {
     display: flex;
   }
-  .cs-bar{
+  .cs-bar {
     width: 120px;
   }
-  .cf-submit{
+  .cf-submit {
     width: 100%;
   }
 }
 @media (min-width: 576px) and (max-width: 767px) {
-  .co-stepbar{
+  .co-stepbar {
     width: 100%;
   }
-  .cs-bar{
+  .cs-bar {
     width: 120px;
   }
-  .co-step-sm{
+  .co-step-sm {
     display: none;
   }
-  .cf-submit{
+  .cf-submit {
     width: 100%;
   }
 }
 @media (min-width: 768px) and (max-width: 991px) {
-  .co-stepbar{
+  .co-stepbar {
     width: 80%;
   }
-  .cs-bar{
+  .cs-bar {
     width: 130px;
   }
-  .co-step-sm{
+  .co-step-sm {
     display: none;
   }
-  .cf-submit{
+  .cf-submit {
     width: 100%;
   }
 }
 @media (min-width: 992px) and (max-width: 1199px) {
-  .co-stepbar{
+  .co-stepbar {
     width: 60%;
   }
-  .cs-bar{
+  .cs-bar {
     width: 130px;
   }
-  .co-step-sm{
+  .co-step-sm {
     display: none;
   }
 }
 @media (min-width: 1200px) and (max-width: 1399px) {
-  .co-stepbar{
+  .co-stepbar {
     width: 50%;
   }
-  .cs-bar{
+  .cs-bar {
     width: 130px;
   }
-  .co-step-sm{
+  .co-step-sm {
     display: none;
   }
 }
 @media (min-width: 1400px) {
-  .co-stepbar{
+  .co-stepbar {
     width: 50%;
   }
-  .cs-bar{
+  .cs-bar {
     width: 150px;
   }
-  .co-step-sm{
+  .co-step-sm {
     display: none;
   }
 }

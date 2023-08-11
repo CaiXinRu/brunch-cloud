@@ -1,17 +1,21 @@
 <template>
   <div>
-    <dialog id="promoModal" ref="promoModal" :class="{ 'show-modal': isLanding }">
-        <a class="promo-close" @click="closeModal()">
-            <font-awesome-icon icon="fa-solid fa-circle-xmark" />
-        </a>
-        <div class="promo-container">
-            <img class="im-pic" :src="Promotions[promo.img]" :alt="promo.detail"/>
-            <br>
-            <div class="promo-title">▎活動時間:</div>
-            <div class="promo-text">{{ promo.timeC }}</div>
-            <div class="promo-title">▎活動說明：</div>
-            <div class="promo-text">{{ promo.detail }}</div>
-        </div>
+    <dialog
+      id="promoModal"
+      ref="promoModal"
+      :class="{ 'show-modal': isLanding }"
+    >
+      <a class="promo-close" @click="closeModal()">
+        <font-awesome-icon icon="fa-solid fa-circle-xmark" />
+      </a>
+      <div class="promo-container">
+        <img class="im-pic" :src="Promotions[promo.img]" :alt="promo.detail" />
+        <br />
+        <div class="promo-title">▎活動時間:</div>
+        <div class="promo-text">{{ promo.timeC }}</div>
+        <div class="promo-title">▎活動說明：</div>
+        <div class="promo-text">{{ promo.detail }}</div>
+      </div>
     </dialog>
   </div>
 </template>
@@ -41,13 +45,10 @@ export default {
       Promotions: Promotions
     }
   },
-  components: {
-  },
+  components: {},
   methods: {
     async getPromo () {
-      this.promo = this.promos.find(promo =>
-        promo.id === this.id
-      )
+      this.promo = this.promos.find((promo) => promo.id === this.id)
       console.log(this.promo)
       const modal = this.$refs.promoModal
       modal.showModal()
@@ -80,7 +81,7 @@ dialog {
   z-index: 20;
 }
 dialog:focus-visible {
-    outline: none;
+  outline: none;
 }
 #promoModal {
   opacity: 0.5;
@@ -117,19 +118,19 @@ dialog::backdrop {
   height: 100%;
   width: 100%;
 }
-.im-pic{
-    height: 510px;
-    align-self: center;
+.im-pic {
+  height: 510px;
+  align-self: center;
 }
-.promo-title{
-    font-size: 24px;
-    color: var(--color--dark-brown);
-    line-height: 35px;
+.promo-title {
+  font-size: 24px;
+  color: var(--color--dark-brown);
+  line-height: 35px;
 }
-.promo-text{
-    font-size: 22px;
-    color: var(--color--black);
-    line-height: 30px;
+.promo-text {
+  font-size: 22px;
+  color: var(--color--black);
+  line-height: 30px;
 }
 
 // RWD
@@ -137,10 +138,10 @@ dialog::backdrop {
   dialog {
     width: 100vw;
   }
-  .promo-container{
+  .promo-container {
     padding: 60px 0px 0px 0px;
   }
-  .im-pic{
+  .im-pic {
     height: 180px;
   }
 }
@@ -148,10 +149,10 @@ dialog::backdrop {
   dialog {
     width: 100vw;
   }
-  .promo-container{
+  .promo-container {
     padding: 60px 0px 0px 0px;
   }
-  .im-pic{
+  .im-pic {
     height: 275px;
   }
 }
@@ -159,10 +160,10 @@ dialog::backdrop {
   dialog {
     width: 100vw;
   }
-  .promo-container{
+  .promo-container {
     padding: 60px 0px 0px 0px;
   }
-  .im-pic{
+  .im-pic {
     height: 390px;
   }
 }
@@ -170,7 +171,7 @@ dialog::backdrop {
   dialog {
     width: 100vw;
   }
-  .im-pic{
+  .im-pic {
     height: 480px;
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <LoadingPage v-if="isLoading"/>
+  <LoadingPage v-if="isLoading" />
   <div
     class="modal fade"
     id="burgerModal"
@@ -117,7 +117,9 @@ export default {
     },
     tempProduct: {
       type: Object,
-      default () { return {} }
+      default () {
+        return {}
+      }
     }
   },
   emits: ['update:modelValue'],
@@ -143,9 +145,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(useCartStore, [
-      'getCart'
-    ]),
+    ...mapActions(useCartStore, ['getCart']),
     showModal () {
       this.modal.show()
     },
@@ -191,8 +191,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.modal-content{
-    background-color: var(--color--light-brown);
+.modal-content {
+  background-color: var(--color--light-brown);
 }
 .im-close {
   font-size: 40px;
@@ -317,7 +317,7 @@ export default {
   flex-direction: row;
   align-items: center;
 }
-.im-count-container{
+.im-count-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -363,93 +363,92 @@ export default {
 }
 
 // RWD
-@media (max-width: 575px){
+@media (max-width: 575px) {
   .modal-xl {
     --bs-modal-width: 100vw;
   }
-  .im-pic{
+  .im-pic {
     display: none;
   }
-  .im-content h2{
+  .im-content h2 {
     font-size: 36px;
   }
-  .im-number-column{
+  .im-number-column {
     flex-direction: column;
   }
-  .im-count{
+  .im-count {
     margin: 0;
   }
-  .im-count-num{
+  .im-count-num {
     margin: 0 30px;
   }
-  .im-confirmed{
+  .im-confirmed {
     padding: 18px 16px;
     margin: 16px 0 0 0;
   }
 }
-@media (min-width: 576px) and (max-width: 767px){
+@media (min-width: 576px) and (max-width: 767px) {
   .modal-xl {
     --bs-modal-width: 100vw;
   }
-  .im-pic{
+  .im-pic {
     display: none;
   }
-  .im-number{
+  .im-number {
     justify-content: center;
   }
-  .im-confirmed{
+  .im-confirmed {
     padding: 18px 16px;
   }
-
 }
-@media (min-width: 768px) and (max-width: 991px){
+@media (min-width: 768px) and (max-width: 991px) {
   .modal-xl {
     --bs-modal-width: 80vw;
   }
-  .im-pic{
+  .im-pic {
     display: none;
   }
-  .im-number{
+  .im-number {
     justify-content: center;
   }
-  .im-confirmed{
+  .im-confirmed {
     padding: 18px 16px;
   }
 }
-@media (min-width: 992px) and (max-width: 1199px){
+@media (min-width: 992px) and (max-width: 1199px) {
   .modal-xl {
     --bs-modal-width: 90vw;
   }
-  .im-pic-sm{
+  .im-pic-sm {
     display: none;
   }
-  .im-number-column{
+  .im-number-column {
     flex-direction: column;
   }
-  .im-count{
+  .im-count {
     margin: 0;
   }
-  .im-count-num{
+  .im-count-num {
     margin: 0 30px;
   }
-  .im-confirmed{
+  .im-confirmed {
     padding: 18px 16px;
     margin: 16px 0 0 0;
   }
 }
-@media (min-width: 1200px) and (max-width: 1399px){
+@media (min-width: 1200px) and (max-width: 1399px) {
   .modal-xl {
     --bs-modal-width: 90vw;
   }
-  .im-pic-sm{
+  .im-pic-sm {
     display: none;
   }
 }
-@media (min-width: 1400px){
+@media (min-width: 1400px) {
   .modal-xl {
     --bs-modal-width: 80vw;
   }
-  .im-pic-sm{
+  .im-pic-sm {
     display: none;
   }
 }

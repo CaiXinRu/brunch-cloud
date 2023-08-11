@@ -1,5 +1,5 @@
 <template>
-  <LodingPage v-if="isLoading"/>
+  <LodingPage v-if="isLoading" />
   <div class="item-list">
     <div v-for="item in filteredProducts" :key="item.id" class="item-per">
       <font-awesome-icon
@@ -68,10 +68,7 @@ export default {
     ...mapState(productStore, ['isLoading', 'products', 'filteredLikes'])
   },
   methods: {
-    ...mapActions(productStore, [
-      'getProducts',
-      'toggleLike'
-    ]),
+    ...mapActions(productStore, ['getProducts', 'toggleLike']),
     openModal (item) {
       this.tempProduct = { ...item }
       this.isModalVisible = true
@@ -174,7 +171,7 @@ export default {
   color: #e3bac6;
 }
 
-@media (max-width: 575px){
+@media (max-width: 575px) {
   .item-list {
     grid-template-columns: repeat(1, 1fr);
     width: 80%;
@@ -183,7 +180,7 @@ export default {
     height: 250px;
   }
 }
-@media (min-width: 576px) and (max-width: 767px){
+@media (min-width: 576px) and (max-width: 767px) {
   .item-list {
     grid-template-columns: repeat(2, 1fr);
     width: 100%;
@@ -192,7 +189,7 @@ export default {
     height: 180px;
   }
 }
-@media (min-width: 768px) and (max-width: 991px){
+@media (min-width: 768px) and (max-width: 991px) {
   .item-list {
     grid-template-columns: repeat(2, 1fr);
     width: 100%;
@@ -201,7 +198,7 @@ export default {
     height: 180px;
   }
 }
-@media (min-width: 992px) and (max-width: 1199px){
+@media (min-width: 992px) and (max-width: 1199px) {
   .item-list {
     grid-template-columns: repeat(3, 1fr);
     width: 100%;
@@ -210,7 +207,7 @@ export default {
     height: 180px;
   }
 }
-@media (min-width: 1200px) and (max-width: 1399px){
+@media (min-width: 1200px) and (max-width: 1399px) {
   .item-list {
     grid-template-columns: repeat(4, 1fr);
     width: 100%;
@@ -219,7 +216,7 @@ export default {
     height: 180px;
   }
 }
-@media (min-width: 1400px){
+@media (min-width: 1400px) {
   .item-list {
     grid-template-columns: repeat(4, 1fr);
     width: 100%;

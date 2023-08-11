@@ -3,10 +3,12 @@
     <div class="navbar bg-color--secondary">
       <div class="container">
         <div class="logo">
-          <router-link to="/"><img src="@/assets/img/logo/logo_light-brown.png" alt="雲端早午安"/></router-link>
+          <router-link to="/"
+            ><img src="@/assets/img/logo/logo_light-brown.png" alt="雲端早午安"
+          /></router-link>
         </div>
         <div class="list-toggle-sm">
-          <div class="list-toggle" @click="isPopupListOpen=true">
+          <div class="list-toggle" @click="isPopupListOpen = true">
             <div class="list-sub">See More</div>
             <font-awesome-icon class="list-icon" icon="fa-solid fa-angles-up" />
           </div>
@@ -38,16 +40,27 @@
             </li>
           </ul>
         </div>
-        <div id="popup-list" :class="{'list-bar-sm': true, 'popup-open':isPopupListOpen} ">
-          <a class="list-close-sm" @click="isPopupListOpen=false">
+        <div
+          id="popup-list"
+          :class="{ 'list-bar-sm': true, 'popup-open': isPopupListOpen }"
+        >
+          <a class="list-close-sm" @click="isPopupListOpen = false">
             <font-awesome-icon icon="fa-solid fa-circle-xmark" />
           </a>
           <ul class="list-sm">
             <li>
-              <img class="list-img-sm" src="@/assets/img/logo/logo+word_hor.png" alt="雲端早午安"/>
+              <img
+                class="list-img-sm"
+                src="@/assets/img/logo/logo+word_hor.png"
+                alt="雲端早午安"
+              />
             </li>
             <li>
-              <router-link to="/menu" class="main-font-sm" date-link-alt="MENU" @click="isPopupListOpen=false"
+              <router-link
+                to="/menu"
+                class="main-font-sm"
+                date-link-alt="MENU"
+                @click="isPopupListOpen = false"
                 ><span>雲端美味</span></router-link
               >
             </li>
@@ -56,7 +69,7 @@
                 to="/promotions"
                 class="main-font-sm"
                 date-link-alt="PROMOTIONS"
-                @click="isPopupListOpen=false"
+                @click="isPopupListOpen = false"
                 ><span>促銷優惠</span></router-link
               >
             </li>
@@ -65,7 +78,7 @@
                 to="/locations"
                 class="main-font-sm"
                 date-link-alt="LOCATIONS"
-                @click="isPopupListOpen=false"
+                @click="isPopupListOpen = false"
                 ><span>門市據點</span></router-link
               >
             </li>
@@ -77,7 +90,9 @@
               <li>
                 <span>
                   <font-awesome-icon icon="fa-solid fa-heart" />
-                  <div v-if="filteredLikes.length > 0" class="number-cart">{{ filteredLikes.length }}</div>
+                  <div v-if="filteredLikes.length > 0" class="number-cart">
+                    {{ filteredLikes.length }}
+                  </div>
                 </span>
                 <span>
                   <router-link to="/favorites">我的最愛</router-link>
@@ -86,7 +101,9 @@
               <li>
                 <span>
                   <font-awesome-icon icon="fa-solid fa-cart-shopping" />
-                  <div v-if="cart?.carts?.length" class="number-cart">{{ this.cart?.carts?.length }}</div>
+                  <div v-if="cart?.carts?.length" class="number-cart">
+                    {{ this.cart?.carts?.length }}
+                  </div>
                 </span>
                 <span>
                   <a @click="showModal()">購物清單</a>
@@ -97,7 +114,15 @@
         </div>
       </div>
     </div>
-    <CartBar id="cartModalNavBar" :modelValue="isCartBarOpen" @update:modelValue="(val)=>{isCartBarOpen = val}"/>
+    <CartBar
+      id="cartModalNavBar"
+      :modelValue="isCartBarOpen"
+      @update:modelValue="
+        (val) => {
+          isCartBarOpen = val
+        }
+      "
+    />
   </header>
 </template>
 
@@ -123,13 +148,8 @@ export default {
     ...mapState(useCartStore, ['cart'])
   },
   methods: {
-    ...mapActions(useCartStore, [
-      'getCart'
-    ]),
-    ...mapActions(productStore, [
-      'getProducts',
-      'toggleLike'
-    ]),
+    ...mapActions(useCartStore, ['getCart']),
+    ...mapActions(productStore, ['getProducts', 'toggleLike']),
     showModal () {
       this.isCartBarOpen = true
       const modal = document.getElementById('cartModalNavBar')
@@ -206,11 +226,11 @@ export default {
   top: 0;
   opacity: 1;
 }
-.list-toggle-sm{
+.list-toggle-sm {
   width: 100%;
   justify-content: center;
 }
-.list-toggle{
+.list-toggle {
   color: var(--color--light-brown);
   font-size: 32px;
   cursor: pointer;
@@ -224,20 +244,20 @@ export default {
   justify-content: center;
   font-size: 16px;
 }
-.list-toggle:hover{
+.list-toggle:hover {
   color: var(--color--primary);
 }
-.list-toggle:focus{
+.list-toggle:focus {
   color: var(--color--primary);
 }
-.list-sub{
-  font-family: 'Aclonica', "Helvetica", sans-serif;
+.list-sub {
+  font-family: 'Aclonica', 'Helvetica', sans-serif;
 }
-.list-icon{
+.list-icon {
   margin: 5px 0 0 0;
 }
 
-.list-bar-sm{
+.list-bar-sm {
   position: fixed;
   width: 100vw;
   height: 100vh;
@@ -248,18 +268,18 @@ export default {
   z-index: 15;
   transition: all 1s ease;
 }
-.list-bar-sm.popup-open{
+.list-bar-sm.popup-open {
   top: 0;
 }
-.list-bar-sm.popup-open{
+.list-bar-sm.popup-open {
   top: 0;
 }
-.list-img-sm{
+.list-img-sm {
   width: 400px;
   overflow: hidden;
   top: 30px;
 }
-.list-close-sm{
+.list-close-sm {
   font-size: 48px;
   position: absolute;
   top: 5%;
@@ -274,7 +294,7 @@ export default {
 .list-close-sm:active {
   color: var(--color--light-brown);
 }
-.list-sm{
+.list-sm {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -322,8 +342,8 @@ export default {
   right: 0%;
 }
 .top-right-btn nav {
-    width: 18vw;
-  }
+  width: 18vw;
+}
 .top-right-btn ul {
   padding: 0;
   display: flex;
@@ -364,7 +384,7 @@ li:hover span {
 .top-right-btn a:hover {
   color: var(--color--secondary);
 }
-.number-cart{
+.number-cart {
   line-height: 20px;
   background-color: var(--color--light-brown);
   border: 3px solid var(--color--primary);
@@ -384,71 +404,71 @@ CartBar::backdrop {
 
 /* RWD */
 @media (max-width: 575px) {
-  .list-bar{
+  .list-bar {
     display: none;
   }
-  .list-toggle-sm{
+  .list-toggle-sm {
     display: flex;
   }
-  .list-img-sm{
+  .list-img-sm {
     width: 250px;
   }
-  .top-right-btn{
+  .top-right-btn {
     display: none;
   }
 }
 @media (min-width: 576px) and (max-width: 767px) {
-  .list-bar{
+  .list-bar {
     display: none;
   }
-  .list-toggle-sm{
+  .list-toggle-sm {
     display: flex;
   }
-  .top-right-btn{
+  .top-right-btn {
     display: none;
   }
 }
 @media (min-width: 768px) and (max-width: 991px) {
-  .list-bar{
+  .list-bar {
     display: flex;
   }
-  .list-toggle-sm{
+  .list-toggle-sm {
     display: none;
   }
-  .top-right-btn{
+  .top-right-btn {
     display: none;
   }
 }
 @media (min-width: 992px) and (max-width: 1199px) {
-  .list-bar{
+  .list-bar {
     display: flex;
   }
-  .list-toggle-sm{
+  .list-toggle-sm {
     display: none;
   }
-  .top-right-btn{
+  .top-right-btn {
     display: none;
   }
 }
 @media (min-width: 1200px) and (max-width: 1399px) {
-  .list-bar{
+  .list-bar {
     display: flex;
   }
-  .list-toggle-sm{
+  .list-toggle-sm {
     display: none;
   }
-  .top-right-btn{
+  .top-right-btn {
     display: flex;
   }
 }
 @media (min-width: 1400px) {
-  .list-bar{
+  .list-bar {
     display: flex;
   }
-  .list-toggle-sm{
+  .list-toggle-sm {
     display: none;
   }
-  .top-right-btn{
+  .top-right-btn {
     display: flex;
   }
 }

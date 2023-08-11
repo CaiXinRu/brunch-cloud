@@ -1,5 +1,5 @@
 <template>
-  <LodingPage v-if="isLoading"/>
+  <LodingPage v-if="isLoading" />
   <div class="item-list">
     <div v-for="item in filteredProducts" :key="item.id" class="item-per">
       <font-awesome-icon
@@ -67,10 +67,7 @@ export default {
     ...mapState(productStore, ['isLoading', 'products', 'filteredLikes'])
   },
   methods: {
-    ...mapActions(productStore, [
-      'getProducts',
-      'toggleLike'
-    ]),
+    ...mapActions(productStore, ['getProducts', 'toggleLike']),
     openModal (item) {
       this.tempProduct = { ...item }
       this.isModalVisible = true

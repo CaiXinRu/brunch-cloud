@@ -1,7 +1,7 @@
 <template>
-  <div class="bg-color--white" style="min-height: calc(100vh - 323px);">
+  <div class="bg-color--white" style="min-height: calc(100vh - 323px)">
     <div class="container u-pt-48 u-pb-68">
-      <FavorBar id="fevorTop"/>
+      <FavorBar id="fevorTop" />
       <div v-if="filteredLikes?.length > 0" class="menu-category">
         <button
           type="button"
@@ -53,8 +53,7 @@
         </button>
       </div>
       <div v-if="filteredLikes?.length > 0" class="dropdown">
-        <button
-          type="button" class="dropbtn" @click="toggleDropdown">
+        <button type="button" class="dropbtn" @click="toggleDropdown">
           請選擇雲端種類<span>▼</span>
         </button>
         <div :class="{ 'dropdown-content': true, show: isDropdownOpen }">
@@ -104,17 +103,21 @@
       </div>
 
       <div v-if="filteredLikes?.length > 0" style="width: 100%">
-
         <!-- Burger -->
-        <ITBurger
-          v-if="filteredMeals.includes('ITBurger')"
-          ref="ITBurger"
-        />
+        <ITBurger v-if="filteredMeals.includes('ITBurger')" ref="ITBurger" />
         <ILBurgerLike
           v-if="filteredMeals.includes('ILBurger')"
           ref="ILBurger"
         />
-        <div v-if="filteredBurgerLikes?.length==0 && filteredMeals.includes('ILBurger')" class="menu-item-text">您尚未儲存任何太空漢堡品項！</div>
+        <div
+          v-if="
+            filteredBurgerLikes?.length == 0 &&
+            filteredMeals.includes('ILBurger')
+          "
+          class="menu-item-text"
+        >
+          您尚未儲存任何太空漢堡品項！
+        </div>
         <div
           class="menu-arrow"
           @click="goToTop"
@@ -132,7 +135,15 @@
           v-if="filteredMeals.includes('ILSandwich')"
           ref="ILSandwich"
         />
-        <div v-if="filteredSandwichLikes?.length==0 && filteredMeals.includes('ILSandwich')" class="menu-item-text">您尚未儲存任何飄浮吐司品項！</div>
+        <div
+          v-if="
+            filteredSandwichLikes?.length == 0 &&
+            filteredMeals.includes('ILSandwich')
+          "
+          class="menu-item-text"
+        >
+          您尚未儲存任何飄浮吐司品項！
+        </div>
         <div
           class="menu-arrow"
           @click="goToTop"
@@ -150,7 +161,15 @@
           v-if="filteredMeals.includes('ILRiceNoodles')"
           ref="ILRiceNoodles"
         />
-        <div v-if="filteredRiceNoodlesLikes?.length==0 && filteredMeals.includes('ITRiceNoodles')" class="menu-item-text">您尚未儲存任何柔情飯麵品項！</div>
+        <div
+          v-if="
+            filteredRiceNoodlesLikes?.length == 0 &&
+            filteredMeals.includes('ITRiceNoodles')
+          "
+          class="menu-item-text"
+        >
+          您尚未儲存任何柔情飯麵品項！
+        </div>
         <div
           class="menu-arrow"
           @click="goToTop"
@@ -160,15 +179,16 @@
         </div>
 
         <!-- Snack -->
-        <ITSnack
-          v-if="filteredMeals.includes('ITSnack')"
-          ref="ITSnack"
-        />
-        <ILSnackLike
-          v-if="filteredMeals.includes('ILSnack')"
-          ref="ILSnack"
-        />
-        <div v-if="filteredSnackLikes?.length==0 && filteredMeals.includes('ILSnack')" class="menu-item-text">您尚未儲存任何輕盈小點品項！</div>
+        <ITSnack v-if="filteredMeals.includes('ITSnack')" ref="ITSnack" />
+        <ILSnackLike v-if="filteredMeals.includes('ILSnack')" ref="ILSnack" />
+        <div
+          v-if="
+            filteredSnackLikes?.length == 0 && filteredMeals.includes('ILSnack')
+          "
+          class="menu-item-text"
+        >
+          您尚未儲存任何輕盈小點品項！
+        </div>
         <div
           class="menu-arrow"
           @click="goToTop"
@@ -178,15 +198,20 @@
         </div>
 
         <!-- Drinks -->
-        <ITDrinks
-          v-if="filteredMeals.includes('ITDrinks')"
-          ref="ITDrinks"
-        />
+        <ITDrinks v-if="filteredMeals.includes('ITDrinks')" ref="ITDrinks" />
         <ILDrinksLike
           v-if="filteredMeals.includes('ILDrinks')"
           ref="ILDrinks"
         />
-        <div v-if="filteredDrinksLikes?.length==0 && filteredMeals.includes('ILDrinks')" class="menu-item-text">您尚未儲存任何沁涼飲品品項！</div>
+        <div
+          v-if="
+            filteredDrinksLikes?.length == 0 &&
+            filteredMeals.includes('ILDrinks')
+          "
+          class="menu-item-text"
+        >
+          您尚未儲存任何沁涼飲品品項！
+        </div>
         <div
           class="menu-arrow"
           @click="goToTop"
@@ -258,7 +283,16 @@ export default {
     }
   },
   computed: {
-    ...mapState(productStore, ['isLoading', 'products', 'filteredLikes', 'filteredBurgerLikes', 'filteredSandwichLikes', 'filteredRiceNoodlesLikes', 'filteredSnackLikes', 'filteredDrinksLikes']),
+    ...mapState(productStore, [
+      'isLoading',
+      'products',
+      'filteredLikes',
+      'filteredBurgerLikes',
+      'filteredSandwichLikes',
+      'filteredRiceNoodlesLikes',
+      'filteredSnackLikes',
+      'filteredDrinksLikes'
+    ]),
     filteredMeals () {
       if (this.selectedCategory === 'all') {
         return [
@@ -295,8 +329,17 @@ export default {
     this.getProducts()
     window.addEventListener('click', this.closeDropdown)
     setTimeout(() => {
-      if (window.location.hash && window.location.hash !== '' && window.location.hash.split('#').length > 2) {
-        const el = document.querySelector('#' + window.location.hash.split('#')[window.location.hash.split('#').length - 1])
+      if (
+        window.location.hash &&
+        window.location.hash !== '' &&
+        window.location.hash.split('#').length > 2
+      ) {
+        const el = document.querySelector(
+          '#' +
+            window.location.hash.split('#')[
+              window.location.hash.split('#').length - 1
+            ]
+        )
         if (el !== null) {
           el.scrollIntoView({ behavior: 'smooth' })
         }
@@ -442,14 +485,14 @@ export default {
   display: flex;
   justify-content: end;
 }
-.menu-text{
+.menu-text {
   font-size: 24px;
   height: 40vh;
   align-items: center;
   display: flex;
   color: var(--color--dark-brown);
 }
-.menu-item-text{
+.menu-item-text {
   height: 15vh;
   display: flex;
   justify-content: center;

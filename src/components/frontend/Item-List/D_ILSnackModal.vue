@@ -1,5 +1,5 @@
 <template>
-  <LoadingPage v-if="isLoading"/>
+  <LoadingPage v-if="isLoading" />
   <div
     class="modal fade"
     id="snackModal"
@@ -141,9 +141,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(useCartStore, [
-      'getCart'
-    ]),
+    ...mapActions(useCartStore, ['getCart']),
     showModal () {
       this.modal.show()
     },

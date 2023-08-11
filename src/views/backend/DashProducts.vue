@@ -1,5 +1,5 @@
 <template>
-  <LoadingPage v-if="isLoading"/>
+  <LoadingPage v-if="isLoading" />
   <div class="bg-color--white">
     <div class="container u-pt-48 u-pb-32">
       <div class="dp-button" @click="openModal(true)">
@@ -38,12 +38,20 @@
               <span class="color--negative" v-else>未啟用</span>
             </td>
             <td style="width: 20%">
-              <button type="button" class="color--dark-brown" @click="openModal(false, item)">
+              <button
+                type="button"
+                class="color--dark-brown"
+                @click="openModal(false, item)"
+              >
                 <font-awesome-icon icon="fa-solid fa-pen-to-square" />
               </button>
             </td>
             <td style="width: 20%">
-              <button type="button" class="color--dark-brown" @click="openDelModal(item)">
+              <button
+                type="button"
+                class="color--dark-brown"
+                @click="openDelModal(item)"
+              >
                 <font-awesome-icon icon="fa-solid fa-trash-can" />
               </button>
             </td>
@@ -52,17 +60,13 @@
       </table>
     </div>
   </div>
-  <PaginationPage :pages="pagination" @emit-pages="getProducts"/>
+  <PaginationPage :pages="pagination" @emit-pages="getProducts" />
   <DashProductModal
     ref="dashProductModal"
     :product="tempProduct"
     @update-product="updateProduct"
   />
-  <DashDelModal
-    ref="dashDelModal"
-    :item="tempProduct"
-    @del-item="delProduct"
-  />
+  <DashDelModal ref="dashDelModal" :item="tempProduct" @del-item="delProduct" />
 </template>
 
 <script>
@@ -117,12 +121,11 @@ export default {
         httpMethod = 'put'
       }
       this.isLoading = true
-      this.$http[httpMethod](api, { data: this.tempProduct })
-        .then((res) => {
-          this.$refs.dashProductModal.hideModal()
-          this.getProducts()
-          this.isLoading = false
-        })
+      this.$http[httpMethod](api, { data: this.tempProduct }).then((res) => {
+        this.$refs.dashProductModal.hideModal()
+        this.getProducts()
+        this.isLoading = false
+      })
     },
     openDelModal (item) {
       this.tempProduct = { ...item }
