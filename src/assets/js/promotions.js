@@ -1,21 +1,21 @@
-import pic1 from '@/assets/promotions/1.jpeg'
-import pic2 from '@/assets/promotions/2.jpeg'
-import pic3 from '@/assets/promotions/3.jpeg'
-import pic4 from '@/assets/promotions/4.jpeg'
-import pic5 from '@/assets/promotions/5.jpeg'
-import pic6 from '@/assets/promotions/6.jpeg'
-import pic7 from '@/assets/promotions/7.jpeg'
-import pic8 from '@/assets/promotions/8.jpeg'
-import pic9 from '@/assets/promotions/9.jpeg'
+import pic1 from '@/assets/img/promotions/A.jpeg'
+import pic2 from '@/assets/img/promotions/B.jpeg'
+import pic3 from '@/assets/img/promotions/C.jpeg'
+import pic4 from '@/assets/img/promotions/D.jpeg'
+import pic5 from '@/assets/img/promotions/E.jpeg'
+import pic6 from '@/assets/img/promotions/F.jpeg'
+import pic7 from '@/assets/img/promotions/G.jpeg'
+import pic8 from '@/assets/img/promotions/H.jpeg'
+import pic9 from '@/assets/img/promotions/I.jpeg'
 
 export default {
-  '1.jpeg': pic1,
-  '2.jpeg': pic2,
-  '3.jpeg': pic3,
-  '4.jpeg': pic4,
-  '5.jpeg': pic5,
-  '6.jpeg': pic6,
-  '7.jpeg': pic7,
-  '8.jpeg': pic8,
-  '9.jpeg': pic9
+  'A.jpeg': pic1,
+  'B.jpeg': pic2,
+  'C.jpeg': pic3,
+  'D.jpeg': pic4,
+  'E.jpeg': pic5,
+  'F.jpeg': pic6,
+  'G.jpeg': pic7,
+  'H.jpeg': pic8,
+  'I.jpeg': pic9
 }

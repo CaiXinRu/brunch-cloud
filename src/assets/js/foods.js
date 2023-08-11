@@ -1,11 +1,11 @@
-import burger from '@/assets/foods/1_burger.jpg'
-import sandwich from '@/assets/foods/2_sandwich.png'
-import ricenoodles from '@/assets/foods/3_ricenoodles.png'
-import drink from '@/assets/foods/4_drink.png'
+import burger from '@/assets/img/foods/A_burger.jpg'
+import sandwich from '@/assets/img/foods/B_sandwich.png'
+import ricenoodles from '@/assets/img/foods/C_ricenoodles.png'
+import drink from '@/assets/img/foods/D_drink.png'
 
 export default {
-  '1_burger.jpg': burger,
-  '2_sandwich.png': sandwich,
-  '3_ricenoodles.png': ricenoodles,
-  '4_drink.png': drink
+  'A_burger.jpg': burger,
+  'B_sandwich.png': sandwich,
+  'C_ricenoodles.png': ricenoodles,
+  'D_drink.png': drink
 }

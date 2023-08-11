@@ -33,12 +33,12 @@
               <div class="about-item">
                 <img
                   class="about-img"
-                  src="@/assets/pics/home/1-delicious.jpg"
+                  src="@/assets/img/pics/home/A_delicious_a.jpg"
                   alt="數不盡的雲端獨特"
                 />
                 <img
                   class="about-img-sm"
-                  src="@/assets/pics/home/1-delicious-2.jpg"
+                  src="@/assets/img/pics/home/A_delicious_b.jpg"
                   alt="數不盡的雲端獨特"
                 />
                 <div class="about-text">無限美味</div>
@@ -56,12 +56,12 @@
               <div class="about-item">
                 <img
                   class="about-img"
-                  src="@/assets/pics/home/2-vegetable.jpg"
+                  src="@/assets/img/pics/home/B_vegetable_a.jpg"
                   alt="營養豐富的雲端饗宴"
                 />
                 <img
                   class="about-img-sm"
-                  src="@/assets/pics/home/2-vegetable-2.jpg"
+                  src="@/assets/img/pics/home/B_vegetable_b.jpg"
                   alt="營養豐富的雲端饗宴"
                 />
                 <div class="about-text">新鮮健康</div>
@@ -77,10 +77,10 @@
                 </div>
               </div>
               <div class="about-item">
-                <img class="about-img" src="@/assets/pics/home/3-quality.jpg" alt="嚴選製程的卓越雲端"/>
+                <img class="about-img" src="@/assets/img/pics/home/C_quality_a.jpg" alt="嚴選製程的卓越雲端"/>
                 <img
                   class="about-img-sm"
-                  src="@/assets/pics/home/3-quality-2.jpg"
+                  src="@/assets/img/pics/home/C_quality_b.jpg"
                   alt="嚴選製程的卓越雲端"
                 />
                 <div class="about-text">扎實品質</div>

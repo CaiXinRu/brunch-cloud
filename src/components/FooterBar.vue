@@ -5,7 +5,7 @@
         <div class="container">
           <div class="footer">
             <div class="logo">
-              <img src="@/assets/logo/logo+word_ver.png" alt="雲端早午安"/>
+              <img src="@/assets/img/logo/logo+word_ver.png" alt="雲端早午安"/>
             </div>
             <div class="footer-content">
               <div class="footer-text color--secondary">
