@@ -159,21 +159,21 @@ export default {
           typeC: '超瞎趴活動',
           time: '2023 JUL. / AUG.',
           event: '暑期雲端全面打九折！',
-          img: '1.jpeg'
+          img: 'A.jpeg'
         },
         {
           type: 'gift',
           typeC: '滿X佰就送',
           time: '2023 JUL.',
           event: '限量！滿五佰送雲端手提袋',
-          img: '4.jpeg'
+          img: 'D.jpeg'
         },
         {
           type: 'code',
           typeC: '爽領八折碼',
           time: '2023 JUL.',
           event: 'X呱吉：本名筆畫字數？',
-          img: '7.jpeg'
+          img: 'G.jpeg'
         }
       ],
       foods: [
@@ -181,25 +181,25 @@ export default {
           categoryC: '太空漢堡系列',
           food: '爆炸鮮蝦和牛漢堡',
           hashtag: 'menuTop',
-          img: '1_burger.jpg'
+          img: 'A_burger.jpg'
         },
         {
           categoryC: '飄浮吐司系列',
           food: '彩虹辣雞吐司',
           hashtag: 'beforeSandwich',
-          img: '2_sandwich.png'
+          img: 'B_sandwich.png'
         },
         {
           categoryC: '柔情飯麵系列',
           food: '青醬天婦羅燉飯',
           hashtag: 'beforeRiceNoodles',
-          img: '3_ricenoodles.png'
+          img: 'C_ricenoodles.png'
         },
         {
           categoryC: '沁涼飲料系列',
           food: '朵朵椪糖奶花歐蕾',
           hashtag: 'beforeDrinks',
-          img: '4_drink.png'
+          img: 'D_drink.png'
         }
       ],
       Foods: Foods,
