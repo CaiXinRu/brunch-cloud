@@ -24,8 +24,8 @@
             <tr
               style="height: 50px"
               class="color--dark-brown dc-body"
-              v-for="(item, key) in coupons"
-              :key="key"
+              v-for="item in coupons"
+              :key="item.id"
             >
               <td style="width: 20%">{{ item.title }}</td>
               <td style="width: 20%">{{ item.percent / 10 }}折</td>
@@ -113,7 +113,7 @@ export default {
       this.$http.get(url, this.tempProduct).then((response) => {
         this.coupons = response.data.coupons
         this.isLoading = false
-        console.log(response)
+        console.log(this.coupons)
       })
     },
     updateCoupon (tempCoupon) {

@@ -25,7 +25,7 @@
               <td style="width: 30%">{{ item.user.email }}</td>
               <td style="width: 30%" class="do-litems">
                 <ol>
-                  <li v-for="(product, i) in item.products" :key="i">
+                  <li v-for="product in item.products" :key="product.id">
                     {{ product.product.title }}：{{ product.qty }} 份
                   </li>
                 </ol>
@@ -95,6 +95,7 @@ export default {
       this.isLoading = true
       this.$http.get(api, this.tempProduct).then((res) => {
         this.orders = res.data.orders
+        console.log(this.orders)
         this.pagination = res.data.pagination
         this.isLoading = false
         console.log(res)

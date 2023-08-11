@@ -74,8 +74,8 @@
       <div class="news-lists">
         <div
           class="news-list"
-          v-for="(promo, index) in filteredPromos"
-          :key="index"
+          v-for="promo in filteredPromos"
+          :key="promo.id"
         >
           <div class="news-type">{{ promo.typeC }}</div>
           <img
