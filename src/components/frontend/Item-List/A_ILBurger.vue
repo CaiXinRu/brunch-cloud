@@ -49,7 +49,7 @@
 
 <script>
 import ILBurgerModal from './A_ILBurgerModal.vue'
-import LodingPage from '../LodingPage.vue'
+import LodingPage from '@/components/LodingPage.vue'
 import { mapState, mapActions } from 'pinia'
 import productStore from '@/stores/likes.js'
 export default {
@@ -81,10 +81,11 @@ export default {
   watch: {
     products: {
       handler () {
-        this.filteredProducts = this.filteredLikes.filter(
+        this.filteredProducts = this.products.filter(
           (item) => item.category === '太空漢堡'
         )
-      }
+      },
+      deep: true
     },
     immediate: true
   },
@@ -97,6 +98,7 @@ export default {
 <style>
 .item-list {
   display: grid;
+  grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: minmax(auto, max-content);
   grid-gap: 10px;
   justify-items: start;
@@ -174,7 +176,7 @@ export default {
   color: #e3bac6;
 }
 
-@media (max-width: 575px){
+@media (max-width: 575px) {
   .item-list {
     grid-template-columns: repeat(1, 1fr);
     width: 80%;
@@ -183,7 +185,7 @@ export default {
     height: 250px;
   }
 }
-@media (min-width: 576px) and (max-width: 767px){
+@media (min-width: 576px) and (max-width: 767px) {
   .item-list {
     grid-template-columns: repeat(2, 1fr);
     width: 100%;
@@ -192,7 +194,7 @@ export default {
     height: 180px;
   }
 }
-@media (min-width: 768px) and (max-width: 991px){
+@media (min-width: 768px) and (max-width: 991px) {
   .item-list {
     grid-template-columns: repeat(2, 1fr);
     width: 100%;
@@ -201,7 +203,7 @@ export default {
     height: 180px;
   }
 }
-@media (min-width: 992px) and (max-width: 1199px){
+@media (min-width: 992px) and (max-width: 1199px) {
   .item-list {
     grid-template-columns: repeat(3, 1fr);
     width: 100%;
@@ -210,7 +212,7 @@ export default {
     height: 180px;
   }
 }
-@media (min-width: 1200px) and (max-width: 1399px){
+@media (min-width: 1200px) and (max-width: 1399px) {
   .item-list {
     grid-template-columns: repeat(4, 1fr);
     width: 100%;
@@ -219,7 +221,7 @@ export default {
     height: 180px;
   }
 }
-@media (min-width: 1400px){
+@media (min-width: 1400px) {
   .item-list {
     grid-template-columns: repeat(4, 1fr);
     width: 100%;

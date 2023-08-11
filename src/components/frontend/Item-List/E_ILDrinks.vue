@@ -49,7 +49,7 @@
 
 <script>
 import ILDrinksModal from './E_ILDrinksModal.vue'
-import LodingPage from '../LodingPage.vue'
+import LodingPage from '@/components/LodingPage.vue'
 import { mapState, mapActions } from 'pinia'
 import productStore from '@/stores/likes.js'
 export default {
@@ -81,10 +81,11 @@ export default {
   watch: {
     products: {
       handler () {
-        this.filteredProducts = this.filteredLikes.filter(
+        this.filteredProducts = this.products.filter(
           (item) => item.category === '沁涼飲品'
         )
-      }
+      },
+      deep: true
     },
     immediate: true
   },
@@ -97,6 +98,7 @@ export default {
 <style>
 .item-list {
   display: grid;
+  grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: minmax(auto, max-content);
   grid-gap: 10px;
   justify-items: start;

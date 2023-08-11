@@ -204,17 +204,17 @@
 <script>
 import { mapState, mapActions } from 'pinia'
 import productStore from '@/stores/likes.js'
-import FavorBar from '@/components/FavorBar.vue'
-import ITBurger from '@/components/Item-Title/A_ITBurger.vue'
-import ITSandwich from '@/components/Item-Title/B_ITSandwich.vue'
-import ITRiceNoodles from '@/components/Item-Title/C_ITRiceNoodles.vue'
-import ITSnack from '@/components/Item-Title/D_ITSnack.vue'
-import ITDrinks from '@/components/Item-Title/E_ITDrinks.vue'
-import ILBurgerLike from '@/components/Item-List/A_ILBurgerLike.vue'
-import ILSandwichLike from '@/components/Item-List/B_ILSandwichLike.vue'
-import ILRiceNoodlesLike from '@/components/Item-List/C_ILRiceNoodlesLike.vue'
-import ILSnackLike from '@/components/Item-List/D_ILSnackLike.vue'
-import ILDrinksLike from '@/components/Item-List/E_ILDrinksLike.vue'
+import FavorBar from '@/components/frontend/FavorBar.vue'
+import ITBurger from '@/components/frontend/Item-Title/A_ITBurger.vue'
+import ITSandwich from '@/components/frontend/Item-Title/B_ITSandwich.vue'
+import ITRiceNoodles from '@/components/frontend/Item-Title/C_ITRiceNoodles.vue'
+import ITSnack from '@/components/frontend/Item-Title/D_ITSnack.vue'
+import ITDrinks from '@/components/frontend/Item-Title/E_ITDrinks.vue'
+import ILBurgerLike from '@/components/frontend/Item-List/A_ILBurgerLike.vue'
+import ILSandwichLike from '@/components/frontend/Item-List/B_ILSandwichLike.vue'
+import ILRiceNoodlesLike from '@/components/frontend/Item-List/C_ILRiceNoodlesLike.vue'
+import ILSnackLike from '@/components/frontend/Item-List/D_ILSnackLike.vue'
+import ILDrinksLike from '@/components/frontend/Item-List/E_ILDrinksLike.vue'
 
 export default {
   data () {

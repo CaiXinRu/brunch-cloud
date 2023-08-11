@@ -103,8 +103,8 @@
 </template>
 
 <script>
-import NewsBar from '@/components/NewsBar'
-import PromotionModal from '@/components/PromotionModal.vue'
+import NewsBar from '@/components/frontend/NewsBar'
+import PromotionModal from '@/components/frontend/PromotionModal.vue'
 import Promotions from '@/assets/js/promotions.js'
 export default {
   data () {

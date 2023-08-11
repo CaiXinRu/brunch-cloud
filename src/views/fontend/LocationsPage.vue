@@ -133,7 +133,7 @@
 </template>
 
 <script>
-import LocationBar from '@/components/LocationBar.vue'
+import LocationBar from '@/components/frontend/LocationBar.vue'
 export default {
   data () {
     return {

@@ -35,8 +35,8 @@
       </ul>
     </div>
   </div>
-  <ILDrinksModal
-    ref="drinksModal"
+  <ILRiceNoodlesModal
+    ref="ricenoodlesModal"
     :tempProduct="tempProduct"
     :modelValue="isModalVisible"
     @update:modelValue="
@@ -48,8 +48,8 @@
 </template>
 
 <script>
-import ILDrinksModal from './E_ILDrinksModal.vue'
-import LodingPage from '../LodingPage.vue'
+import ILRiceNoodlesModal from './C_ILRiceNoodlesModal.vue'
+import LodingPage from '@/components/LodingPage.vue'
 import { mapState, mapActions } from 'pinia'
 import productStore from '@/stores/likes.js'
 export default {
@@ -61,7 +61,7 @@ export default {
     }
   },
   components: {
-    ILDrinksModal,
+    ILRiceNoodlesModal,
     LodingPage
   },
   computed: {
@@ -75,17 +75,16 @@ export default {
     openModal (item) {
       this.tempProduct = { ...item }
       this.isModalVisible = true
-      this.$refs.drinksModal.showModal()
+      this.$refs.ricenoodlesModal.showModal()
     }
   },
   watch: {
     products: {
       handler () {
-        this.filteredProducts = this.products.filter(
-          (item) => item.category === '沁涼飲品'
+        this.filteredProducts = this.filteredLikes.filter(
+          (item) => item.category === '柔情飯麵'
         )
-      },
-      deep: true
+      }
     },
     immediate: true
   },
@@ -98,12 +97,10 @@ export default {
 <style>
 .item-list {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: minmax(auto, max-content);
   grid-gap: 10px;
   justify-items: start;
 }
-
 .item-per {
   background-color: #fef7e9;
   padding: 80px 25px 28px 25px;

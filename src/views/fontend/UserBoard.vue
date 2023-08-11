@@ -9,10 +9,10 @@
 </template>
 
 <script>
-import NavBar from '@/components/NavBar.vue'
-import NavBarSm from '@/components/NavBarSm.vue'
-import FooterBar from '@/components/FooterBar.vue'
-import NavBarFooter from '@/components/NavBarFooter.vue'
+import NavBar from '@/components/frontend/NavBar.vue'
+import NavBarSm from '@/components/frontend/NavBarSm.vue'
+import FooterBar from '@/components/frontend/FooterBar.vue'
+import NavBarFooter from '@/components/frontend/NavBarFooter.vue'
 
 export default {
   data () {

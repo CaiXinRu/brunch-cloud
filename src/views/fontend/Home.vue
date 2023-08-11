@@ -143,8 +143,8 @@
 
 <script>
 import LoadingPage from '@/components/LodingPage.vue'
-import MoreFood from '@/components/MoreFood.vue'
-import MoreNews from '@/components/MoreNews.vue'
+import MoreFood from '@/components/frontend/MoreFood.vue'
+import MoreNews from '@/components/frontend/MoreNews.vue'
 import Foods from '@/assets/js/foods.js'
 import Promotions from '@/assets/js/promotions.js'
 

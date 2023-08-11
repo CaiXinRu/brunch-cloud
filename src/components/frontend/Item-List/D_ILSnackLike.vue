@@ -35,10 +35,9 @@
       </ul>
     </div>
   </div>
-  <ILSandwichModal
-    ref="sandwichModal"
+  <ILSnackModal
+    ref="snackModal"
     :tempProduct="tempProduct"
-    :modelValue="isModalVisible"
     @update:modelValue="
       (val) => {
         isModalVisible = val
@@ -48,8 +47,8 @@
 </template>
 
 <script>
-import ILSandwichModal from './B_ILSandwichModal.vue'
-import LodingPage from '../LodingPage.vue'
+import ILSnackModal from './D_ILSnackModal.vue'
+import LodingPage from '@/components/LodingPage.vue'
 import { mapState, mapActions } from 'pinia'
 import productStore from '@/stores/likes.js'
 export default {
@@ -61,7 +60,7 @@ export default {
     }
   },
   components: {
-    ILSandwichModal,
+    ILSnackModal,
     LodingPage
   },
   computed: {
@@ -75,17 +74,16 @@ export default {
     openModal (item) {
       this.tempProduct = { ...item }
       this.isModalVisible = true
-      this.$refs.sandwichModal.showModal()
+      this.$refs.snackModal.showModal()
     }
   },
   watch: {
     products: {
       handler () {
-        this.filteredProducts = this.products.filter(
-          (item) => item.category === '飄浮吐司'
+        this.filteredProducts = this.filteredLikes.filter(
+          (item) => item.category === '輕盈小點'
         )
-      },
-      deep: true
+      }
     },
     immediate: true
   },
@@ -98,7 +96,6 @@ export default {
 <style>
 .item-list {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: minmax(auto, max-content);
   grid-gap: 10px;
   justify-items: start;
@@ -174,24 +171,6 @@ export default {
 }
 .item-add-icon:active {
   color: #e3bac6;
-}
-
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 9999;
-}
-
-.modal-container {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10000;
 }
 
 @media (max-width: 575px) {

@@ -66,8 +66,8 @@
 </template>
 
 <script>
-import DashProductModal from '@/components/DashProductModal.vue'
-import DashDelModal from '@/components/DashDelModal.vue'
+import DashProductModal from '@/components/backend/DashProductModal.vue'
+import DashDelModal from '@/components/backend/DashDelModal.vue'
 import LoadingPage from '@/components/LodingPage.vue'
 import PaginationPage from '@/components/PaginationPage.vue'
 export default {

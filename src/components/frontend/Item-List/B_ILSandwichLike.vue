@@ -48,7 +48,7 @@
 
 <script>
 import ILSandwichModal from './B_ILSandwichModal.vue'
-import LodingPage from '../LodingPage.vue'
+import LodingPage from '@/components/LodingPage.vue'
 import { mapState, mapActions } from 'pinia'
 import productStore from '@/stores/likes.js'
 export default {

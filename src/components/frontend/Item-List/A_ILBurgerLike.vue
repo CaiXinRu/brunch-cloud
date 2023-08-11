@@ -35,8 +35,8 @@
       </ul>
     </div>
   </div>
-  <ILRiceNoodlesModal
-    ref="ricenoodlesModal"
+  <ILBurgerModal
+    ref="burgerModal"
     :tempProduct="tempProduct"
     :modelValue="isModalVisible"
     @update:modelValue="
@@ -48,8 +48,8 @@
 </template>
 
 <script>
-import ILRiceNoodlesModal from './C_ILRiceNoodlesModal.vue'
-import LodingPage from '../LodingPage.vue'
+import ILBurgerModal from './A_ILBurgerModal.vue'
+import LodingPage from '@/components//LodingPage.vue'
 import { mapState, mapActions } from 'pinia'
 import productStore from '@/stores/likes.js'
 export default {
@@ -61,7 +61,7 @@ export default {
     }
   },
   components: {
-    ILRiceNoodlesModal,
+    ILBurgerModal,
     LodingPage
   },
   computed: {
@@ -75,14 +75,14 @@ export default {
     openModal (item) {
       this.tempProduct = { ...item }
       this.isModalVisible = true
-      this.$refs.ricenoodlesModal.showModal()
+      this.$refs.burgerModal.showModal()
     }
   },
   watch: {
     products: {
       handler () {
         this.filteredProducts = this.filteredLikes.filter(
-          (item) => item.category === '柔情飯麵'
+          (item) => item.category === '太空漢堡'
         )
       }
     },
@@ -101,6 +101,7 @@ export default {
   grid-gap: 10px;
   justify-items: start;
 }
+
 .item-per {
   background-color: #fef7e9;
   padding: 80px 25px 28px 25px;
@@ -173,7 +174,7 @@ export default {
   color: #e3bac6;
 }
 
-@media (max-width: 575px) {
+@media (max-width: 575px){
   .item-list {
     grid-template-columns: repeat(1, 1fr);
     width: 80%;
@@ -182,7 +183,7 @@ export default {
     height: 250px;
   }
 }
-@media (min-width: 576px) and (max-width: 767px) {
+@media (min-width: 576px) and (max-width: 767px){
   .item-list {
     grid-template-columns: repeat(2, 1fr);
     width: 100%;
@@ -191,7 +192,7 @@ export default {
     height: 180px;
   }
 }
-@media (min-width: 768px) and (max-width: 991px) {
+@media (min-width: 768px) and (max-width: 991px){
   .item-list {
     grid-template-columns: repeat(2, 1fr);
     width: 100%;
@@ -200,7 +201,7 @@ export default {
     height: 180px;
   }
 }
-@media (min-width: 992px) and (max-width: 1199px) {
+@media (min-width: 992px) and (max-width: 1199px){
   .item-list {
     grid-template-columns: repeat(3, 1fr);
     width: 100%;
@@ -209,7 +210,7 @@ export default {
     height: 180px;
   }
 }
-@media (min-width: 1200px) and (max-width: 1399px) {
+@media (min-width: 1200px) and (max-width: 1399px){
   .item-list {
     grid-template-columns: repeat(4, 1fr);
     width: 100%;
@@ -218,7 +219,7 @@ export default {
     height: 180px;
   }
 }
-@media (min-width: 1400px) {
+@media (min-width: 1400px){
   .item-list {
     grid-template-columns: repeat(4, 1fr);
     width: 100%;

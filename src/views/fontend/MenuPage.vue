@@ -193,17 +193,17 @@
 
 <script>
 import LoadingPage from '@/components/LodingPage.vue'
-import MenuBar from '@/components/MenuBar.vue'
-import ITBurger from '@/components/Item-Title/A_ITBurger.vue'
-import ITSandwich from '@/components/Item-Title/B_ITSandwich.vue'
-import ITRiceNoodles from '@/components/Item-Title/C_ITRiceNoodles.vue'
-import ITSnack from '@/components/Item-Title/D_ITSnack.vue'
-import ITDrinks from '@/components/Item-Title/E_ITDrinks.vue'
-import ILBurger from '@/components/Item-List/A_ILBurger.vue'
-import ILSandwich from '@/components/Item-List/B_ILSandwich.vue'
-import ILRiceNoodles from '@/components/Item-List/C_ILRiceNoodles.vue'
-import ILSnack from '@/components/Item-List/D_ILSnack.vue'
-import ILDrinks from '@/components/Item-List/E_ILDrinks.vue'
+import MenuBar from '@/components/frontend/MenuBar.vue'
+import ITBurger from '@/components/frontend/Item-Title/A_ITBurger.vue'
+import ITSandwich from '@/components/frontend/Item-Title/B_ITSandwich.vue'
+import ITRiceNoodles from '@/components/frontend/Item-Title/C_ITRiceNoodles.vue'
+import ITSnack from '@/components/frontend/Item-Title/D_ITSnack.vue'
+import ITDrinks from '@/components/frontend/Item-Title/E_ITDrinks.vue'
+import ILBurger from '@/components/frontend/Item-List/A_ILBurger.vue'
+import ILSandwich from '@/components/frontend/Item-List/B_ILSandwich.vue'
+import ILRiceNoodles from '@/components/frontend/Item-List/C_ILRiceNoodles.vue'
+import ILSnack from '@/components/frontend/Item-List/D_ILSnack.vue'
+import ILDrinks from '@/components/frontend/Item-List/E_ILDrinks.vue'
 
 export default {
   data () {

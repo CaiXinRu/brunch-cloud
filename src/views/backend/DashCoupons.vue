@@ -69,8 +69,8 @@
 </template>
 
 <script>
-import DashCouponModal from '@/components/DashCouponModal.vue'
-import DashDelModal from '@/components/DashDelModal.vue'
+import DashCouponModal from '@/components/backend/DashCouponModal.vue'
+import DashDelModal from '@/components/backend/DashDelModal.vue'
 import LoadingPage from '@/components/LodingPage.vue'
 export default {
   components: { DashCouponModal, DashDelModal, LoadingPage },

@@ -35,8 +35,8 @@
       </ul>
     </div>
   </div>
-  <ILRiceNoodlesModal
-    ref="ricenoodlesModal"
+  <ILSandwichModal
+    ref="sandwichModal"
     :tempProduct="tempProduct"
     :modelValue="isModalVisible"
     @update:modelValue="
@@ -48,8 +48,8 @@
 </template>
 
 <script>
-import ILRiceNoodlesModal from './C_ILRiceNoodlesModal.vue'
-import LodingPage from '../LodingPage.vue'
+import ILSandwichModal from './B_ILSandwichModal.vue'
+import LodingPage from '@/components/LodingPage.vue'
 import { mapState, mapActions } from 'pinia'
 import productStore from '@/stores/likes.js'
 export default {
@@ -61,7 +61,7 @@ export default {
     }
   },
   components: {
-    ILRiceNoodlesModal,
+    ILSandwichModal,
     LodingPage
   },
   computed: {
@@ -75,14 +75,14 @@ export default {
     openModal (item) {
       this.tempProduct = { ...item }
       this.isModalVisible = true
-      this.$refs.ricenoodlesModal.showModal()
+      this.$refs.sandwichModal.showModal()
     }
   },
   watch: {
     products: {
       handler () {
         this.filteredProducts = this.products.filter(
-          (item) => item.category === '柔情飯麵'
+          (item) => item.category === '飄浮吐司'
         )
       },
       deep: true
@@ -174,6 +174,24 @@ export default {
 }
 .item-add-icon:active {
   color: #e3bac6;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+
+.modal-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10000;
 }
 
 @media (max-width: 575px) {

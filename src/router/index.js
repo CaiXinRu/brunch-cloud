@@ -15,71 +15,71 @@ const routes = [
   {
     path: '/dashboard',
     name: 'dashboard',
-    component: () => import('../views/DashBoard.vue'),
+    component: () => import('../views/backend/DashBoard.vue'),
     children: [
       {
         path: 'products',
-        component: () => import('../views/DashProducts.vue')
+        component: () => import('../views/backend/DashProducts.vue')
       },
       {
         path: 'coupons',
-        component: () => import('../views/DashCoupons.vue')
+        component: () => import('../views/backend/DashCoupons.vue')
       },
       {
         path: 'orders',
-        component: () => import('../views/DashOrder.vue')
+        component: () => import('../views/backend/DashOrder.vue')
       }
     ]
   },
   {
     path: '/',
     name: 'userboard',
-    component: () => import('../views/UserBoard.vue'),
+    component: () => import('../views/fontend/UserBoard.vue'),
     children: [
       {
         path: '',
         name: 'home',
-        component: () => import('../views/Home.vue')
+        component: () => import('../views/fontend/Home.vue')
       },
       {
         path: 'menu',
         name: 'menu',
-        component: () => import('../views/MenuPage.vue')
+        component: () => import('../views/fontend/MenuPage.vue')
       },
       {
         path: 'checklist',
         name: 'checklist',
-        component: () => import('../views/checkout/A_CheckList.vue')
+        component: () => import('../views/fontend/checkout/A_CheckList.vue')
       },
       {
         path: 'checkinfo',
         name: 'checkinfo',
-        component: () => import('../views/checkout/B_CheckCustomer.vue')
+        component: () => import('../views/fontend/checkout/B_CheckCustomer.vue')
       },
       {
         path: 'checkout/:orderId',
         name: 'checkout',
-        component: () => import('../views/checkout/C_CheckFinal.vue')
+        component: () => import('../views/fontend/checkout/C_CheckFinal.vue')
       },
       {
         path: 'checkpay/:orderId',
         name: 'checkpay',
-        component: () => import('../views/checkout/D_CheckPay.vue')
+        component: () => import('../views/fontend/checkout/D_CheckPay.vue')
       },
       {
         path: 'locations',
         name: 'locations',
-        component: () => import('../views/LocationsPage.vue')
+        component: () => import('../views/fontend/LocationsPage.vue')
       },
       {
         path: 'promotions',
         name: 'promotions',
-        component: () => import('../views/PromotionNews.vue')
+        component: () => import('../views/fontend/PromotionNews.vue')
       },
       {
         path: 'favorites',
         name: 'favorites',
-        component: () => import('../views/MyFavorites.vue')
+        component: () => import('../views/fontend/MyFavorites.vue')
       }
     ]
   }

@@ -64,8 +64,8 @@
 </template>
 
 <script>
-import DashOrderModal from '@/components/DashOrderModal.vue'
-import DashDelModal from '@/components/DashDelModal.vue'
+import DashOrderModal from '@/components/backend/DashOrderModal.vue'
+import DashDelModal from '@/components/backend/DashDelModal.vue'
 import LoadingPage from '@/components/LodingPage.vue'
 export default {
   components: {
