@@ -8,7 +8,7 @@
       <LodingPageModal v-if="isLoading" />
       <div class="cb-container">
         <div class="cb-head">
-          <div class="cbh-close" @click="closeModal()">
+          <div class="cbh-close" @click="closeModal">
             <font-awesome-icon icon="fa-solid fa-angle-right" />
           </div>
           <div class="cbh-text">購物清單</div>
@@ -96,7 +96,7 @@
           <router-link
             to="/checklist"
             class="cb-checkout"
-            @click="closeModal()"
+            @click="closeModal"
           >
             訂單結帳
           </router-link>

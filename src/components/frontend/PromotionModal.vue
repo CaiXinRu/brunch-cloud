@@ -5,7 +5,7 @@
       ref="promoModal"
       :class="{ 'show-modal': isLanding }"
     >
-      <a class="promo-close" @click="closeModal()">
+      <a class="promo-close" @click="closeModal">
         <font-awesome-icon icon="fa-solid fa-circle-xmark" />
       </a>
       <div class="promo-container">

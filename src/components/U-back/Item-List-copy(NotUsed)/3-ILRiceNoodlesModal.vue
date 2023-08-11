@@ -5,7 +5,7 @@
       ref="RiceNoodlesModal"
       :class="{ 'show-modal': isLanding }"
     >
-      <a class="im-close" @click="closeModal()">
+      <a class="im-close" @click="closeModal">
         <font-awesome-icon icon="fa-solid fa-circle-xmark" />
       </a>
       <div class="im-container">

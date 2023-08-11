@@ -1,7 +1,7 @@
 <template>
   <div>
     <dialog id="drinksModal" ref="drinksModal" :class="{ 'show-modal': isLanding }">
-      <a class="im-close" @click="closeModal()">
+      <a href="#" class="im-close" @click="closeModal">
         <font-awesome-icon icon="fa-solid fa-circle-xmark" />
       </a>
       <div class="im-container">
@@ -84,13 +84,13 @@
               <font-awesome-icon
                 class="im-count"
                 icon="fa-regular fa-square-plus"
-                @click="plusCount()"
+                @click="plusCount"
               />
               <div class="im-count-num">{{ count }}</div>
               <font-awesome-icon
                 class="im-count"
                 icon="fa-regular fa-square-minus"
-                @click="minusCount()"
+                @click="minusCount"
               />
             </div>
             <button

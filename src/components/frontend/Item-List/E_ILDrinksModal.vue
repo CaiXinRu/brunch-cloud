@@ -10,7 +10,7 @@
   >
     <div class="modal-dialog modal-xl" role="document">
       <div class="modal-content border-0">
-        <a class="im-close" @click="hideModal()">
+        <a class="im-close" @click="hideModal">
           <font-awesome-icon icon="fa-solid fa-circle-xmark" />
         </a>
         <div class="im-container">
@@ -92,13 +92,13 @@
                 <font-awesome-icon
                   class="im-count"
                   icon="fa-regular fa-square-plus"
-                  @click="plusCount()"
+                  @click="plusCount"
                 />
                 <div class="im-count-num">{{ count }}</div>
                 <font-awesome-icon
                   class="im-count"
                   icon="fa-regular fa-square-minus"
-                  @click="minusCount()"
+                  @click="minusCount"
                 />
               </div>
               <button

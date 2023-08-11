@@ -106,7 +106,7 @@
                   </div>
                 </span>
                 <span>
-                  <a @click="showModal()">購物清單</a>
+                  <a @click="showModal">購物清單</a>
                 </span>
               </li>
             </ul>
