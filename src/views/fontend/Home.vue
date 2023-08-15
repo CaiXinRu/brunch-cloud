@@ -398,6 +398,7 @@ export default {
   font-weight: 600;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 .try-btn:hover {
   background-color: var(--color--secondary);

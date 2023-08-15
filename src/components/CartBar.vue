@@ -85,6 +85,7 @@
             bounce
           />
           <div>您尚未選取任何餐點喔！</div>
+          <router-link to="/menu" class="order-btn" @click="closeModal">點我立即點餐</router-link>
         </div>
         <tfoot v-if="cart?.carts?.length">
           <tr>
@@ -233,6 +234,27 @@ dialog::backdrop {
   align-items: center;
   font-size: 22px;
   color: var(--color--dark-brown);
+}
+.order-btn {
+  margin-top: 10px;
+  display: flex;
+  height: 50px;
+  width: 80%;
+  background-color: #fac664;
+  color: #644536;
+  font-size: 20px;
+  font-weight: 600;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.order-btn:hover {
+  background-color: var(--color--secondary);
+  color: var(--color--light-brown);
+  box-shadow: 5px 5px 0px var(--color--primary);
+}
+.order-btn:focus-visible{
+  outline: none;
 }
 tr {
   display: flex;
