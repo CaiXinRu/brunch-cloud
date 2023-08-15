@@ -85,7 +85,7 @@
             bounce
           />
           <div>您尚未選取任何餐點喔！</div>
-          <router-link to="/menu" class="order-btn" @click="closeModal">點我立即點餐</router-link>
+          <router-link to="/menu" class="order-btn" @click="closeModal">點我立即看菜單</router-link>
         </div>
         <tfoot v-if="cart?.carts?.length">
           <tr>
