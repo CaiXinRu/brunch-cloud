@@ -17,7 +17,7 @@
           <ul class="list">
             <li>
               <router-link to="/menu" class="main-font" date-link-alt="MENU"
-                ><span>雲端美味</span></router-link
+                ><span>立即點餐</span></router-link
               >
             </li>
             <li><p class="color--light-brown main-font-1">｜</p></li>
@@ -61,7 +61,7 @@
                 class="main-font-sm"
                 date-link-alt="MENU"
                 @click="isPopupListOpen = false"
-                ><span>雲端美味</span></router-link
+                ><span>立即點餐</span></router-link
               >
             </li>
             <li>

@@ -2,7 +2,7 @@
   <LoadingPage v-if="isLoading" />
   <div class="wrapper">
     <div class="bg-color--white">
-      <div class="container u-pt-68 u-pb-68">
+      <div class="container">
         <div class="about">
           <div class="about-main">
             <h2>關於 雲端早午安</h2>
@@ -105,7 +105,7 @@
       </div>
     </div>
     <div class="bg-color--light-brown">
-      <div class="container u-pt-48 u-pb-68">
+      <div class="container">
         <div class="u-text-center u-mb-48">
           <h2>必點首選</h2>
           <h4 class="sub-border">MUST-TRY IN THE CLOUD</h4>
@@ -113,7 +113,9 @@
         <MoreFood />
         <div class="try-lists">
           <div class="try-list" v-for="(item, index) in foods" :key="index">
-            <img class="try-img" :src="Foods[item.img]" :alt="item.food" />
+            <router-link :to="`/menu#${item.hashtag}`">
+              <img class="try-img" :src="Foods[item.img]" :alt="item.food" />
+            </router-link>
             <h3 class="u-text-center color--black">{{ item.food }}</h3>
             <router-link :to="`/menu#${item.hashtag}`">
               <h6 class="try-btn">{{ item.categoryC }}</h6>
@@ -123,7 +125,7 @@
       </div>
     </div>
     <div class="bg-color--white">
-      <div class="container u-pt-48 u-pb-56">
+      <div class="container">
         <div class="news-title-sm">
           <h2>最新消息</h2>
           <h4 class="sub-border">NEWS IN THE CLOUD</h4>
@@ -229,6 +231,10 @@ export default {
 </script>
 
 <style scoped>
+.container {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
 .about {
   width: 100%;
   height: auto;
@@ -357,7 +363,7 @@ export default {
   width: 100%;
   height: auto;
   border: 2px solid #fac664;
-  padding: 40px 25px;
+  padding: 40px 5px;
   margin: 0px 1px;
   background-color: hsl(40, 91%, 95%);
   border-radius: 50px;
@@ -374,6 +380,10 @@ export default {
   background-position: center;
   width: 235px;
   height: 190px;
+  cursor: pointer;
+}
+.try-img:hover{
+  filter:drop-shadow(10px -5px 2px var(--color--primary));
 }
 .try-btn {
   left: 50%;
@@ -441,7 +451,6 @@ export default {
     width: 100%;
     align-items: center;
     text-align: center;
-    margin-top: 30px;
   }
   h2 {
     font-size: 40px;
@@ -527,7 +536,6 @@ export default {
     width: 100%;
     align-items: center;
     text-align: center;
-    margin-top: 30px;
   }
   .about-main-textsm {
     margin-bottom: 16px;
@@ -585,7 +593,6 @@ export default {
     width: 100%;
     align-items: center;
     text-align: center;
-    margin-top: 30px;
   }
   .about-main-textsm {
     margin-bottom: 16px;
@@ -609,15 +616,18 @@ export default {
 
   /* More Food */
   .try-lists {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     margin-top: 0;
     margin-bottom: 24px;
   }
-  .try-list h3 {
-    font-size: 27px;
+  .try-list {
+    width: 80%;
   }
 
   /* More News */
+  .news-title-sm {
+    text-align: center;
+  }
   .news-lists {
     grid-template-columns: repeat(1, 1fr);
     margin-top: 0;
@@ -637,7 +647,6 @@ export default {
     width: 100%;
     align-items: center;
     text-align: center;
-    margin-top: 30px;
   }
   .about-main-textsm {
     margin-bottom: 16px;
@@ -666,6 +675,9 @@ export default {
     margin-bottom: 24px;
   }
   /* More News */
+  .news-title-sm {
+    text-align: center;
+  }
   .news-lists {
     grid-template-columns: repeat(1, 1fr);
   }
@@ -683,7 +695,6 @@ export default {
     width: 100%;
     align-items: center;
     text-align: center;
-    margin-top: 30px;
   }
   .about-main-textsm {
     margin-bottom: 16px;

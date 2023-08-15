@@ -103,28 +103,28 @@
 @media (max-width: 575px) {
   .e-button {
     left: 50%;
-    bottom: -1.5%;
+    bottom: -0.5%;
     transform: translateX(-50%);
   }
 }
 @media (min-width: 576px) and (max-width: 767px) {
   .e-button {
     left: 50%;
-    bottom: -3%;
+    bottom: 0%;
     transform: translateX(-50%);
   }
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .e-button {
     left: 50%;
-    bottom: -3%;
+    bottom: 0%;
     transform: translateX(-50%);
   }
 }
 @media (min-width: 992px) and (max-width: 1199px) {
   .e-button {
     left: 50%;
-    bottom: -3%;
+    bottom: 0%;
     transform: translateX(-50%);
   }
 }

@@ -102,20 +102,22 @@
 @media (max-width: 575px) {
   .s-button {
     left: 50%;
-    bottom: -1.5%;
+    bottom: 0%;
     transform: translateX(-50%);
   }
 }
 @media (min-width: 576px) and (max-width: 767px) {
   .s-button {
-    left: 60%;
-    bottom: -1.5%;
+    left: 50%;
+    bottom: 0%;
+    transform: translateX(-50%);
   }
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .s-button {
-    top: 5%;
-    left: 73%;
+    left: 50%;
+    bottom: 0%;
+    transform: translateX(-50%);
   }
 }
 @media (min-width: 992px) and (max-width: 1199px) {
