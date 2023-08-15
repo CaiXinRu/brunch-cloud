@@ -125,15 +125,6 @@
   flex-direction: row;
   align-items: center;
 }
-.logo {
-  overflow: hidden;
-  display: flex;
-  position: absolute;
-  left: 11%;
-  z-index: 1;
-  align-items: center;
-  justify-content: center;
-}
 .logo img {
   width: 151px;
 }
@@ -174,7 +165,7 @@
     flex-direction: column;
     justify-content: flex-start;
   }
-  .logo[data-v-f906bf10] {
+  .logo {
     overflow: hidden;
     display: flex;
     position: relative;
@@ -218,7 +209,13 @@
     justify-content: flex-start;
   }
   .logo {
+    overflow: hidden;
+    display: flex;
+    position: absolute;
     left: -5%;
+    z-index: 1;
+    align-items: center;
+    justify-content: center;
   }
   .logo img {
     width: 160px;
@@ -246,7 +243,13 @@
     justify-content: center;
   }
   .logo {
+    overflow: hidden;
+    display: flex;
+    position: absolute;
     left: -4%;
+    z-index: 1;
+    align-items: center;
+    justify-content: center;
   }
   .logo img {
     width: 140px;
@@ -277,7 +280,13 @@
     justify-content: center;
   }
   .logo {
+    overflow: hidden;
+    display: flex;
+    position: absolute;
     left: 0%;
+    z-index: 1;
+    align-items: center;
+    justify-content: center;
   }
   .footer-content {
     display: block;
@@ -304,7 +313,13 @@
     justify-content: center;
   }
   .logo {
+    overflow: hidden;
+    display: flex;
+    position: absolute;
     left: 5%;
+    z-index: 1;
+    align-items: center;
+    justify-content: center;
   }
   .footer-content {
     display: block;
@@ -331,7 +346,13 @@
     justify-content: center;
   }
   .logo {
+    overflow: hidden;
+    display: flex;
+    position: absolute;
     left: 11%;
+    z-index: 1;
+    align-items: center;
+    justify-content: center;
   }
   .footer-content {
     display: block;
