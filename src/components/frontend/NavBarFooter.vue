@@ -20,6 +20,9 @@
               <div v-if="cart?.carts?.length" class="number-cart">
                 {{ this.cart?.carts?.length }}
               </div>
+              <div v-else class="number-cart">
+                !
+              </div>
             </span>
             <span>購物清單</span>
           </li>
@@ -97,7 +100,7 @@ export default {
 }
 li {
   list-style-type: none;
-  height: 50px;
+  height: 65px;
   width: 100%;
   overflow: hidden;
 }
@@ -134,7 +137,7 @@ li:hover span {
   border-radius: 50%;
   text-align: center;
   right: 6px;
-  top: 9px;
+  top: -15px;
   font-size: 12px;
 }
 CartBar::backdrop {

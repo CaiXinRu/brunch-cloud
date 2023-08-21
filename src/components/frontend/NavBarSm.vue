@@ -96,6 +96,9 @@
                   <div v-if="cart?.carts?.length" class="number-cart">
                     {{ this.cart?.carts?.length }}
                   </div>
+                  <div v-else class="number-cart">
+                    !
+                  </div>
                 </span>
                 <span>
                   <a href="#" @click.prevent="showModal">購物清單</a>
@@ -320,7 +323,7 @@ export default {
 }
 .top-right-btn li {
   list-style-type: none;
-  height: 50px;
+  height: 55px;
   width: 90px;
   overflow: hidden;
 }
@@ -363,7 +366,7 @@ li:hover span {
   text-align: center;
   position: absolute;
   right: 16px;
-  top: 25px;
+  top: 0px;
   font-size: 12px;
 }
 .list-toggle {

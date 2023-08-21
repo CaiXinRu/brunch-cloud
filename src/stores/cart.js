@@ -45,6 +45,8 @@ export default defineStore('cart', {
       if (item.qty > 1) {
         item.qty -= 1
         this.updateCart(item)
+      } else if (item.qty === 1) {
+        this.removeCartItem(item.id)
       }
     },
     removeCartItem (id) {
