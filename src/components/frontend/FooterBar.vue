@@ -12,10 +12,10 @@
                 營業時間 05:30~14:30 (最後點餐時間14:15)
               </div>
               <div class="footer-text color--secondary">
-                加盟專線 0975-173513
+                加盟專線&nbsp;<a href="tel:+0975173513" class="footer-a">0975-173513</a>
               </div>
               <div class="footer-text color--secondary">
-                電子郵件 brunchincloud@gmail.com
+                電子郵件&nbsp;<a href="mailto:brunchincloud@gmail.com" class="footer-a">brunchincloud@gmail.com</a>
               </div>
               <div class="footer-text color--brown">
                 本網站僅供個人作品使用，無作任何商業用途｜
@@ -29,10 +29,10 @@
                 營業時間&nbsp;<span>05:30~14:30 (最後點餐時間14:15)</span>
               </div>
               <div class="footer-text color--secondary">
-                加盟專線&nbsp;<span>0975-173513</span>
+                加盟專線&nbsp;<a href="tel:+0975173513" class="footer-a">0975-173513</a>
               </div>
               <div class="footer-text color--secondary">
-                電子郵件&nbsp;<span>brunchincloud@gmail.com</span>
+                電子郵件&nbsp;<a href="mailto:brunchincloud@gmail.com" class="footer-a">brunchincloud@gmail.com</a>
               </div>
               <div class="footer-text color--brown">
                 本網站僅供個人作品使用，<span>無作任何商業用途</span>
@@ -133,6 +133,12 @@
   margin: 8px 0;
   font-size: 18px;
   letter-spacing: 0.1em;
+}
+.footer-a {
+  color: var(--color--secondary)
+}
+.footer-a:hover{
+  color: var(--color--primary)
 }
 .footer-login {
   color: #c0b5a0;
