@@ -1,7 +1,7 @@
 <template>
   <router-link to="/menu" class="e-button">
     <div class="e-div">
-      <a class="more-food"></a>
+      <div class="more-food"></div>
     </div>
     <div class="e-text">More Food</div>
   </router-link>

@@ -4,7 +4,7 @@
     <div class="container u-pt-48 u-pb-32">
       <div class="dp-button" @click="openModal(true)">
         <div class="s-div">
-          <a class="dp-plus"> </a>
+          <div class="dp-plus"> </div>
         </div>
         <div class="dp-text">新增餐點品項</div>
       </div>

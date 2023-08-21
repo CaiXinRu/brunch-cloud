@@ -5,9 +5,9 @@
       ref="promoModal"
       :class="{ 'show-modal': isLanding }"
     >
-      <a class="promo-close" @click="closeModal">
+      <div class="promo-close" @click="closeModal">
         <font-awesome-icon icon="fa-solid fa-circle-xmark" />
-      </a>
+      </div>
       <div class="promo-container">
         <img class="im-pic" :src="Promotions[promo.img]" :alt="promo.detail" />
         <br />

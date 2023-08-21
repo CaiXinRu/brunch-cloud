@@ -54,7 +54,6 @@
 
 <script>
 export default {
-  name: 'DashNavbar',
   data: () => {
     return {}
   },

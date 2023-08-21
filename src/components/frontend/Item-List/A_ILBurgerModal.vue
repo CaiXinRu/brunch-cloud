@@ -10,7 +10,7 @@
   >
     <div class="modal-dialog modal-xl" role="document">
       <div class="modal-content border-0">
-        <a class="im-close" @click="hideModal">
+        <a href="#" class="im-close" @click.prevent="hideModal">
           <font-awesome-icon icon="fa-solid fa-circle-xmark" />
         </a>
         <div class="im-container">

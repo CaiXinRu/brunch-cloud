@@ -98,15 +98,15 @@
                   </div>
                 </span>
                 <span>
-                  <a @click="showModal">購物清單</a>
+                  <a href="#" @click.prevent="showModal">購物清單</a>
                 </span>
               </li>
             </ul>
           </nav>
         </div>
-        <a class="list-toggle" @click="isPopupListOpen = true">
+        <div class="list-toggle" @click="isPopupListOpen = true">
           <font-awesome-icon icon="fa-solid fa-bars" />
-        </a>
+        </div>
       </div>
     </div>
     <CartBar
@@ -129,7 +129,6 @@ import useCartStore from '@/stores/cart.js'
 import productStore from '@/stores/likes.js'
 
 export default {
-  name: 'NavBarSm',
   data: () => {
     return {
       isCartBarOpen: false,

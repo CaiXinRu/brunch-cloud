@@ -3,6 +3,7 @@
     <ul class="pagination justify-content-center">
       <li class="page-item" :class="{ disabled: pages.has_pre === false }">
         <a
+          href="#"
           class="page-link"
           aria-label="Previous"
           @click.prevent="updatePage(pages.current_page - 1)"
@@ -16,10 +17,11 @@
         :key="index"
         :class="{ active: page === pages.current_page }"
       >
-        <a class="page-link" @click.prevent="updatePage(page)">{{ page }}</a>
+        <a href="#" class="page-link" @click.prevent="updatePage(page)">{{ page }}</a>
       </li>
       <li class="page-item" :class="{ disabled: pages.has_next === false }">
         <a
+          href="#"
           class="page-link"
           aria-label="Next"
           @click.prevent="updatePage(pages.current_page + 1)"

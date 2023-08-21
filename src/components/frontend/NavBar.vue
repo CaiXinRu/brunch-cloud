@@ -44,9 +44,9 @@
           id="popup-list"
           :class="{ 'list-bar-sm': true, 'popup-open': isPopupListOpen }"
         >
-          <a class="list-close-sm" @click="isPopupListOpen = false">
+          <div class="list-close-sm" @click="isPopupListOpen = false">
             <font-awesome-icon icon="fa-solid fa-circle-xmark" />
-          </a>
+          </div>
           <ul class="list-sm">
             <li>
               <img
@@ -106,7 +106,7 @@
                   </div>
                 </span>
                 <span>
-                  <a @click="showModal">購物清單</a>
+                  <a href="#" @click.prevent="showModal">購物清單</a>
                 </span>
               </li>
             </ul>
@@ -133,7 +133,6 @@ import useCartStore from '@/stores/cart.js'
 import productStore from '@/stores/likes.js'
 
 export default {
-  name: 'NavBar',
   data: () => {
     return {
       isCartBarOpen: false,

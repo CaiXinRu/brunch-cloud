@@ -14,14 +14,14 @@
         icon="fa-regular fa-heart"
         class="heart"
       />
-      <a id="show" @click="openModal(item)"
+      <a href="#" id="show" @click.prevent="openModal(item)"
         ><div
           class="item-img"
           :style="{ backgroundImage: `url(${item.imageUrl})` }"
         ></div>
       </a>
       <span class="u-text-center item-text"
-        ><a @click="openModal(item)">{{ item.title }}</a></span
+        ><a href="#" @click.prevent="openModal(item)">{{ item.title }}</a></span
       >
       <ul>
         <li>

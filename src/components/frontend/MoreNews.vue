@@ -1,7 +1,7 @@
 <template>
   <router-link to="/promotions" class="s-button">
     <div class="s-div">
-      <a class="more-news"> </a>
+      <div class="more-news"> </div>
     </div>
     <div class="s-text">More News</div>
   </router-link>

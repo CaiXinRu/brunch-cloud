@@ -5,7 +5,7 @@
       <div class="container u-pt-48 u-pb-68">
         <div href="#" class="dc-button" @click="openCouponModal(true)">
           <div class="s-div">
-            <a class="dp-plus"> </a>
+            <div class="dp-plus"> </div>
           </div>
           <div class="dp-text">建立新的優惠券</div>
         </div>

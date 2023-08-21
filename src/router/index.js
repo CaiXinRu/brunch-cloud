@@ -19,14 +19,17 @@ const routes = [
     children: [
       {
         path: 'products',
+        name: 'products',
         component: () => import('../views/backend/DashProducts.vue')
       },
       {
         path: 'coupons',
+        name: 'coupons',
         component: () => import('../views/backend/DashCoupons.vue')
       },
       {
         path: 'orders',
+        name: 'orders',
         component: () => import('../views/backend/DashOrder.vue')
       }
     ]

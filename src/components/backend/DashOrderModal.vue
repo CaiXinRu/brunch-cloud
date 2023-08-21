@@ -127,7 +127,6 @@
 <script>
 import Modal from 'bootstrap/js/dist/modal'
 export default {
-  name: 'orderModal',
   props: {
     order: {
       type: Object,
