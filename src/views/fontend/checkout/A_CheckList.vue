@@ -39,7 +39,7 @@
             <th style="width: 10%"></th>
           </tr>
         </thead>
-        <tbody>
+        <tbody v-if="cart?.carts?.length">
           <tr
             style="height: 100px"
             class="color--dark-brown cl-body"
@@ -98,6 +98,18 @@
             </td>
           </tr>
         </tbody>
+        <tbody v-if="!cart?.carts?.length">
+          <tr class="color--dark-brown cl-nbody">
+            <font-awesome-icon
+              class="color--secondary"
+              style="font-size: 70px; margin-bottom: 10px"
+              icon="fa-solid fa-cloud"
+              bounce
+            />
+            <div>您尚未選取任何餐點喔！</div>
+            <router-link to="/menu" class="order-btn" @click="closeModal">點我立即看菜單</router-link>
+          </tr>
+        </tbody>
       </table>
       <table style="width: 100%" class="cl-table-md">
         <thead>
@@ -109,7 +121,7 @@
             <th style="width: 5%"></th>
           </tr>
         </thead>
-        <tbody>
+        <tbody v-if="cart?.carts?.length">
           <tr
             style="height: 100px"
             class="color--dark-brown cl-body"
@@ -168,6 +180,18 @@
             </td>
           </tr>
         </tbody>
+        <tbody v-if="!cart?.carts?.length">
+          <tr class="color--dark-brown cl-nbody">
+            <font-awesome-icon
+              class="color--secondary"
+              style="font-size: 70px; margin-bottom: 10px"
+              icon="fa-solid fa-cloud"
+              bounce
+            />
+            <div>您尚未選取任何餐點喔！</div>
+            <router-link to="/menu" class="order-btn" @click="closeModal">點我立即看菜單</router-link>
+          </tr>
+        </tbody>
       </table>
       <table style="width: 100%" class="cl-table-sm">
         <thead>
@@ -177,7 +201,7 @@
             <th style="width: 10%"></th>
           </tr>
         </thead>
-        <tbody>
+        <tbody v-if="cart?.carts?.length">
           <tr
             style="height: 100px"
             class="color--dark-brown cl-body"
@@ -224,8 +248,20 @@
             </td>
           </tr>
         </tbody>
+        <tbody v-if="!cart?.carts?.length">
+          <tr class="color--dark-brown cl-nbody">
+            <font-awesome-icon
+              class="color--secondary"
+              style="font-size: 70px; margin-bottom: 10px"
+              icon="fa-solid fa-cloud"
+              bounce
+            />
+            <div>您尚未選取任何餐點喔！</div>
+            <router-link to="/menu" class="order-btn" @click="closeModal">點我立即看菜單</router-link>
+          </tr>
+        </tbody>
       </table>
-      <div class="cl-bottom">
+      <div class="cl-bottom" v-if="cart?.carts?.length">
         <table>
           <tr>
             <td class="clc-input">
@@ -389,7 +425,36 @@ tr {
 .cl-body:hover {
   background-color: #fef7e9;
 }
+.cl-nbody {
+  font-size: 22px;
+  border-bottom: 3px solid #fac664;
+  border-right: 3px solid #fac664;
+  border-left: 3px solid #fac664;
 
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  height: 400px;
+}
+.order-btn {
+  margin-top: 10px;
+  display: flex;
+  height: 50px;
+  width: 50%;
+  background-color: #fac664;
+  color: #644536;
+  font-size: 20px;
+  font-weight: 600;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.order-btn:hover {
+  background-color: var(--color--secondary);
+  color: var(--color--light-brown);
+  box-shadow: 5px 5px 0px var(--color--primary);
+}
 .cl-count {
   font-size: 30px;
   user-select: none;
