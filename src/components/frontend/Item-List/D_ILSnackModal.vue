@@ -70,14 +70,14 @@
               <div class="im-count-container">
                 <font-awesome-icon
                   class="im-count"
-                  icon="fa-regular fa-square-plus"
-                  @click="plusCount"
+                  icon="fa-regular fa-square-minus"
+                  @click="minusCount"
                 />
                 <div class="im-count-num">{{ count }}</div>
                 <font-awesome-icon
                   class="im-count"
-                  icon="fa-regular fa-square-minus"
-                  @click="minusCount"
+                  icon="fa-regular fa-square-plus"
+                  @click="plusCount"
                 />
               </div>
               <button

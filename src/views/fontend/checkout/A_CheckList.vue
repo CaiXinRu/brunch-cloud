@@ -63,18 +63,18 @@
             <td style="width: 25%" class="cl-number">
               <div>
                 <font-awesome-icon
-                  icon="fa-regular fa-square-plus"
+                  icon="fa-regular fa-square-minus"
                   :class="{ disabled: status.loadingItem === item.id }"
-                  @click="plusCount(item)"
+                  @click="minusCount(item)"
                   class="cl-count"
                 />
               </div>
               <div class="u-ml-48 u-mr-48 cl-count-num">{{ item.qty }}</div>
               <div>
                 <font-awesome-icon
-                  icon="fa-regular fa-square-minus"
+                  icon="fa-regular fa-square-plus"
                   :class="{ disabled: status.loadingItem === item.id }"
-                  @click="minusCount(item)"
+                  @click="plusCount(item)"
                   class="cl-count"
                 />
               </div>
@@ -133,18 +133,18 @@
             <td style="width: 30%" class="cl-number">
               <div>
                 <font-awesome-icon
-                  icon="fa-regular fa-square-plus"
+                  icon="fa-regular fa-square-minus"
                   :class="{ disabled: status.loadingItem === item.id }"
-                  @click="plusCount(item)"
+                  @click="minusCount(item)"
                   class="cl-count"
                 />
               </div>
               <div class="cl-count-num">{{ item.qty }}</div>
               <div>
                 <font-awesome-icon
-                  icon="fa-regular fa-square-minus"
+                  icon="fa-regular fa-square-plus"
                   :class="{ disabled: status.loadingItem === item.id }"
-                  @click="minusCount(item)"
+                  @click="plusCount(item)"
                   class="cl-count"
                 />
               </div>
@@ -187,18 +187,18 @@
             <td style="width: 35%" class="cl-number">
               <div>
                 <font-awesome-icon
-                  icon="fa-regular fa-square-plus"
+                  icon="fa-regular fa-square-minus"
                   :class="{ disabled: status.loadingItem === item.id }"
-                  @click="plusCount(item)"
+                  @click="minusCount(item)"
                   class="cl-count"
                 />
               </div>
               <div class="cl-count-num">{{ item.qty }}</div>
               <div>
                 <font-awesome-icon
-                  icon="fa-regular fa-square-minus"
+                  icon="fa-regular fa-square-plus"
                   :class="{ disabled: status.loadingItem === item.id }"
-                  @click="minusCount(item)"
+                  @click="plusCount(item)"
                   class="cl-count"
                 />
               </div>

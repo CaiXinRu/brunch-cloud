@@ -128,6 +128,9 @@ export default {
   background-size: cover;
   background-position: center;
 }
+.item-img:hover{
+  filter:drop-shadow(10px -5px 2px var(--color--primary));
+}
 .item-text {
   display: block;
   font-family: 'Montserrat', 'cwTeXYen', 'Helvetica', 'Noto Sans TC', 'Roboto',
