@@ -6,6 +6,7 @@
       :class="{ 'show-modal': modelValue, cartModal: true }"
     >
       <LodingPageModal v-if="isLoading" />
+      <ToastMessages></ToastMessages>
       <div class="cb-container">
         <div class="cb-head">
           <div class="cbh-close" @click="closeModal">
@@ -111,6 +112,9 @@
 import LodingPageModal from '@/components/LodingPageModal.vue'
 import { mapState, mapActions } from 'pinia'
 import useCartStore from '@/stores/cart.js'
+import emitter from '@/methods/emitter'
+import ToastMessages from '@/components/ToastMessages.vue'
+
 export default {
   emits: ['update:modelValue'],
   props: {
@@ -127,7 +131,13 @@ export default {
     return {}
   },
   components: {
-    LodingPageModal
+    LodingPageModal,
+    ToastMessages
+  },
+  provide () {
+    return {
+      emitter
+    }
   },
   watch: {
     modelValue () {

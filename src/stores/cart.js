@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import axios from 'axios'
+import $httpMessageState from '@/methods/pushMessageState'
 
 export default defineStore('cart', {
   // 定義狀態初始值
@@ -8,7 +9,8 @@ export default defineStore('cart', {
     cart: {},
     status: {
       loadingItem: ''
-    }
+    },
+    $httpMessageState
   }),
   // 對狀態加工的 getters，如同 computed
   getters: {},
@@ -54,6 +56,7 @@ export default defineStore('cart', {
       this.isLoading = true
       axios.delete(api)
         .then((res) => {
+          this.$httpMessageState(res, '移除購物車品項')
           this.getCart()
           this.isLoading = false
         })

@@ -336,7 +336,7 @@ export default {
       }
       this.isLoading = true
       this.$http.post(api, { data: coupon }).then((res) => {
-        console.log(res)
+        this.$httpMessageState(res, '加入優惠券')
         this.coupon_code = ''
         this.getCart()
         this.isLoading = false

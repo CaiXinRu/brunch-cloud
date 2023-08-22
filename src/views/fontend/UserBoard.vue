@@ -2,6 +2,7 @@
   <div class="sticky-footer">
     <NavBarSm class="sticky-top" :style="{ top: navbarTop }" />
     <NavBar />
+    <ToastMessages></ToastMessages>
     <router-view />
     <FooterBar class="sticky-footer-bar" />
     <NavBarFooter />
@@ -13,6 +14,8 @@ import NavBar from '@/components/frontend/NavBar.vue'
 import NavBarSm from '@/components/frontend/NavBarSm.vue'
 import FooterBar from '@/components/frontend/FooterBar.vue'
 import NavBarFooter from '@/components/frontend/NavBarFooter.vue'
+import emitter from '@/methods/emitter'
+import ToastMessages from '@/components/ToastMessages.vue'
 
 export default {
   data () {
@@ -24,7 +27,13 @@ export default {
     NavBar,
     NavBarSm,
     FooterBar,
-    NavBarFooter
+    NavBarFooter,
+    ToastMessages
+  },
+  provide () {
+    return {
+      emitter
+    }
   },
   mounted () {
     window.addEventListener('scroll', this.scrollFunction)

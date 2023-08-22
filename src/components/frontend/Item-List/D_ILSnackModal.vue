@@ -166,7 +166,7 @@ export default {
         qty
       }
       this.$http.post(api, { data: cart }).then((res) => {
-        console.log(res)
+        this.$httpMessageState(res, '加入購物車')
         this.status.loadingItem = ''
         this.count = 1
         this.hideModal()

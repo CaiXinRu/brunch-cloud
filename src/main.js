@@ -21,6 +21,7 @@ import zhTW from '@vee-validate/i18n/dist/locale/zh_TW.json'
 import App from './App.vue'
 import router from './router'
 import { currency, date } from './methods/filters.js'
+import $httpMessageState from './methods/pushMessageState'
 
 // 載入順序很重要
 // import 'bootstrap/scss/bootstrap.scss'
@@ -145,6 +146,8 @@ app.component('Form', Form)
 // eslint-disable-next-line vue/multi-word-component-names
 app.component('Field', Field)
 app.component('ErrorMessage', ErrorMessage)
+
+app.config.globalProperties.$httpMessageState = $httpMessageState
 
 app.config.globalProperties.$filters = {
   currency,
