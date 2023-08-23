@@ -60,7 +60,6 @@
                     :id="'custom' + key"
                     :value="itemC"
                     v-model="custom"
-                    :disabled="shouldDisableCheckbox(itemC)"
                   />
                   <span class="im-checkmark"></span>
                   <span class="u-ml-4 u-mr-16">{{ itemC }}</span>
@@ -175,16 +174,16 @@ export default {
         this.hideModal()
         this.getCart()
       })
-    },
-    shouldDisableCheckbox (option) {
-      // If "我不挑食" is selected, disable other checkboxes
-      if (this.custom.includes('我不挑食') && option !== '我不挑食') {
-        this.custom = []
-        this.custom = ['我不挑食']
-        return true
-      }
-      return false
     }
+    // shouldDisableCheckbox (option) {
+    //   // If "我不挑食" is selected, disable other checkboxes
+    //   if (this.custom.includes('我不挑食') && option !== '我不挑食') {
+    //     this.custom = []
+    //     this.custom = ['我不挑食']
+    //     return true
+    //   }
+    //   return false
+    // }
   },
   watch: {
     tempProduct () {
