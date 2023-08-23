@@ -52,16 +52,16 @@
                   <div class="cb-number">
                     <font-awesome-icon
                       class="cb-count"
-                      icon="fa-regular fa-square-plus"
+                      icon="fa-regular fa-square-minus"
                       :class="{ disabled: status.loadingItem === item.id }"
-                      @click="plusCount(item)"
+                      @click="minusCount(item)"
                     />
                     <div class="cb-count-num">{{ item.qty }}</div>
                     <font-awesome-icon
                       class="cb-count"
-                      icon="fa-regular fa-square-minus"
+                      icon="fa-regular fa-square-plus"
                       :class="{ disabled: status.loadingItem === item.id }"
-                      @click="minusCount(item)"
+                      @click="plusCount(item)"
                     />
                   </div>
                 </td>
@@ -304,6 +304,12 @@ tbody tr:hover {
   margin: 0;
   padding: 0;
 }
+.cb-number {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
 .cb-count {
   font-size: 22px;
   user-select: none;
@@ -319,6 +325,7 @@ tbody tr:hover {
 .cb-count-num {
   font-size: 22px;
   user-select: none;
+  margin: 0 16px;
 }
 tfoot tr {
   display: flex;
@@ -371,18 +378,18 @@ tfoot tr {
 }
 @media (min-width: 1200px) and (max-width: 1399px) {
   dialog {
-    width: 38vw;
+    width: 40vw;
   }
   .cartModal.show-modal {
-    transform: translateX(81%);
+    transform: translateX(74%);
   }
 }
 @media (min-width: 1400px) {
   dialog {
-    width: 35vw;
+    width: 40vw;
   }
   .cartModal.show-modal {
-    transform: translateX(92%);
+    transform: translateX(74%);
   }
 }
 </style>
