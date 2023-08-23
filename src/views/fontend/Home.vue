@@ -134,16 +134,18 @@
         <div class="news-lists">
           <div class="news-list" v-for="(promo, index) in promos" :key="index">
             <div class="news-type">{{ promo.typeC }}</div>
-            <img
-              class="news-img"
-              :src="Promotions[promo.img]"
-              :alt="promo.event"
-            />
+            <router-link to="/promotions">
+                <img
+                class="news-img"
+                :src="Promotions[promo.img]"
+                :alt="promo.event"
+              />
+            </router-link>
             <p class="sub u-mt-16 u-mb-4">{{ promo.time }}</p>
             <hr class="news-hr" />
-            <div>
+            <router-link to="/promotions">
               <h3 class="u-mt-16 u-mb-16">{{ promo.event }}</h3>
-            </div>
+            </router-link>
           </div>
         </div>
       </div>
@@ -433,6 +435,9 @@ export default {
   background-position: center;
   width: 380px;
   height: 300px;
+}
+.news-img:hover{
+  filter:drop-shadow(10px -5px 2px var(--color--primary));
 }
 .news-hr {
   display: block;
