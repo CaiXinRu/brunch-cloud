@@ -97,3 +97,5 @@ const router = createRouter({
 })
 
 export default router
+
+// { path: '*', redirect: '/' }
