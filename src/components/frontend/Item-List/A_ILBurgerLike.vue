@@ -14,21 +14,21 @@
         icon="fa-regular fa-heart"
         class="heart"
       />
-      <div id="show" @click="openModal(item)"
+      <a href="#" id="show" @click.prevent="openModal(item)"
         ><div
           class="item-img"
           :style="{ backgroundImage: `url(${item.imageUrl})` }"
         ></div>
-      </div>
+      </a>
       <span class="u-text-center item-text"
-        ><div @click="openModal(item)">{{ item.title }}</div></span
+        ><a href="#" @click.prevent="openModal(item)">{{ item.title }}</a></span
       >
       <ul>
         <li>
           <span class="item-add">
-            <div class="item-add-icon" @click="openModal(item)"
+            <a href="#" class="item-add-icon" @click.prevent="openModal(item)"
               ><font-awesome-icon icon="fa-solid fa-cart-plus"
-            /></div>
+            /></a>
           </span>
           <span class="item-price">NT$ {{ item.origin_price }}</span>
         </li>

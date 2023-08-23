@@ -175,19 +175,15 @@ export default {
         this.hideModal()
         this.getCart()
       })
-    }
-  },
-  computed: {
-    shouldDisableCheckbox () {
-      return (option) => {
-        // If "我不挑食" is selected, disable other checkboxes
-        if (this.custom.includes('我不挑食') && option !== '我不挑食') {
-          this.custom = []
-          this.custom = ['我不挑食']
-          return true
-        }
-        return false
+    },
+    shouldDisableCheckbox (option) {
+      // If "我不挑食" is selected, disable other checkboxes
+      if (this.custom.includes('我不挑食') && option !== '我不挑食') {
+        this.custom = []
+        this.custom = ['我不挑食']
+        return true
       }
+      return false
     }
   },
   watch: {
