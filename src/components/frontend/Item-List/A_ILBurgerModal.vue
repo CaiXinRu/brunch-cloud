@@ -45,7 +45,7 @@
               >下訂單後，系統自動分配到離您居住地最近的雲端門市，20分鐘內完成餐點，一小時內完成送達，敬請等候。</span
             >
             <div class="im-line u-mt-8"></div>
-            <label class="im-choice-title">客製<br><span style="font-size: 16px">（可複選。預設為「我不挑食」，如想選擇其他選項，請先點掉預設選項。）</span></label>
+            <label class="im-choice-title">客製</label>
             <div class="im-box">
               <div
                 class="im-box-container"
@@ -327,9 +327,6 @@ export default {
 }
 .im-box-container .im-input:checked ~ .im-checkmark {
   background-color: #644536;
-}
-.im-box-container:hover .im-input:disabled ~ .im-checkmark {
-  background-color: #d9beb0;
 }
 .im-number {
   display: flex;
