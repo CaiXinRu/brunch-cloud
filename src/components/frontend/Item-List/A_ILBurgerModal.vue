@@ -60,6 +60,8 @@
                     :id="'custom' + key"
                     :value="itemC"
                     v-model="custom"
+                    :checked="custom.includes(itemC)"
+                    @click="toggleCustomOption(itemC)"
                   />
                   <span class="im-checkmark"></span>
                   <span class="u-ml-4 u-mr-16">{{ itemC }}</span>
@@ -137,8 +139,6 @@ export default {
       },
       customType: ['我不挑食', '不加番茄', '不加美生菜', '不加美奶滋'],
       custom: [],
-      ice: '',
-      sugar: '',
       count: 1
     }
   },
@@ -174,16 +174,25 @@ export default {
         this.hideModal()
         this.getCart()
       })
+    },
+    toggleCustomOption (option) {
+      if (option === '我不挑食') {
+        if (this.custom.includes(option)) {
+          this.custom = []
+        } else {
+          this.custom = [option]
+        }
+      } else {
+        const index = this.custom.indexOf('我不挑食')
+        if (index !== -1) {
+          this.custom.splice(index, 1)
+        }
+        const optionIndex = this.custom.indexOf(option)
+        if (optionIndex === -1) {
+          this.custom.push(option)
+        }
+      }
     }
-    // shouldDisableCheckbox (option) {
-    //   // If "我不挑食" is selected, disable other checkboxes
-    //   if (this.custom.includes('我不挑食') && option !== '我不挑食') {
-    //     this.custom = []
-    //     this.custom = ['我不挑食']
-    //     return true
-    //   }
-    //   return false
-    // }
   },
   watch: {
     tempProduct () {
