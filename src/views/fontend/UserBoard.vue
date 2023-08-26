@@ -1,10 +1,10 @@
 <template>
-  <div class="sticky-footer">
+  <div class="div-flex">
     <NavBarSm class="sticky-top" :style="{ top: navbarTop }" />
     <NavBar />
     <ToastMessages></ToastMessages>
     <router-view />
-    <FooterBar class="sticky-footer-bar" />
+    <FooterBar />
     <NavBarFooter />
   </div>
 </template>
@@ -57,7 +57,7 @@ export default {
 </script>
 
 <style scoped>
-.sticky-footer {
+.div-flex {
   display: flex;
   flex-direction: column;
   min-height: 100vh;

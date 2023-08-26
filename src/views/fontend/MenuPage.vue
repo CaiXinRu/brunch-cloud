@@ -107,9 +107,8 @@
       <ITBurger
         v-if="filteredMeals.includes('ITBurger')"
         id="ITBurger"
-        ref="ITBurger"
       />
-      <ILBurger v-if="filteredMeals.includes('ILBurger')" ref="ILBurger" />
+      <ILBurger v-if="filteredMeals.includes('ILBurger')"/>
       <div
         class="menu-arrow"
         @click="goToTop"
@@ -122,12 +121,10 @@
       <!-- Sandwich -->
       <ITSandwich
         v-if="filteredMeals.includes('ITSandwich')"
-        ref="ITSandwich"
         id="ITSandwich"
       />
       <ILSandwich
         v-if="filteredMeals.includes('ILSandwich')"
-        ref="ILSandwich"
       />
       <div
         class="menu-arrow"
@@ -141,12 +138,10 @@
       <!-- Rice & Noodles -->
       <ITRiceNoodles
         v-if="filteredMeals.includes('ITRiceNoodles')"
-        ref="ITRiceNoodles"
         id="ITRiceNoodles"
       />
       <ILRiceNoodles
         v-if="filteredMeals.includes('ILRiceNoodles')"
-        ref="ILRiceNoodles"
       />
       <div
         class="menu-arrow"
@@ -160,7 +155,6 @@
       <!-- Snack -->
       <ITSnack
         v-if="filteredMeals.includes('ITSnack')"
-        ref="ITSnack"
         id="ITSnack"
       />
       <ILSnack v-if="filteredMeals.includes('ILSnack')" ref="ILSnack" />
@@ -176,7 +170,6 @@
       <!-- Drinks -->
       <ITDrinks
         v-if="filteredMeals.includes('ITDrinks')"
-        ref="ITDrinks"
         id="ITDrinks"
       />
       <ILDrinks v-if="filteredMeals.includes('ILDrinks')" ref="ILDrinks" />

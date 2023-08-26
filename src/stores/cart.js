@@ -34,7 +34,6 @@ export default defineStore('cart', {
       }
       axios.put(api, { data: cart })
         .then((res) => {
-          // console.log(res)
           this.status.loadingItem = ''
           this.getCart()
         })

@@ -227,7 +227,7 @@ export default {
     this.isLoading = true
     setTimeout(() => {
       this.isLoading = false
-    }, 2000)
+    }, 5000)
   }
 }
 </script>

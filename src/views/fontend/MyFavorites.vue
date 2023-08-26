@@ -15,7 +15,7 @@
           type="button"
           data-category="toast"
           class="menu-btn"
-          @click="filterMeals('toast')"
+          @click="filterMeals('sandwich')"
         >
           飄浮吐司
         </button>
@@ -104,10 +104,9 @@
 
       <div v-if="filteredLikes?.length > 0" style="width: 100%">
         <!-- Burger -->
-        <ITBurger v-if="filteredMeals.includes('ITBurger')" ref="ITBurger" />
+        <ITBurger v-if="filteredMeals.includes('ITBurger')"/>
         <ILBurgerLike
           v-if="filteredMeals.includes('ILBurger')"
-          ref="ILBurger"
         />
         <div
           v-if="
@@ -129,11 +128,9 @@
         <!-- Sandwich -->
         <ITSandwich
           v-if="filteredMeals.includes('ITSandwich')"
-          ref="ITSandwich"
         />
         <ILSandwichLike
           v-if="filteredMeals.includes('ILSandwich')"
-          ref="ILSandwich"
         />
         <div
           v-if="
@@ -155,11 +152,9 @@
         <!-- Rice & Noodles -->
         <ITRiceNoodles
           v-if="filteredMeals.includes('ITRiceNoodles')"
-          ref="ITRiceNoodles"
         />
         <ILRiceNoodlesLike
           v-if="filteredMeals.includes('ILRiceNoodles')"
-          ref="ILRiceNoodles"
         />
         <div
           v-if="
@@ -179,8 +174,8 @@
         </div>
 
         <!-- Snack -->
-        <ITSnack v-if="filteredMeals.includes('ITSnack')" ref="ITSnack" />
-        <ILSnackLike v-if="filteredMeals.includes('ILSnack')" ref="ILSnack" />
+        <ITSnack v-if="filteredMeals.includes('ITSnack')" />
+        <ILSnackLike v-if="filteredMeals.includes('ILSnack')" />
         <div
           v-if="
             filteredSnackLikes?.length == 0 && filteredMeals.includes('ILSnack')
@@ -198,10 +193,9 @@
         </div>
 
         <!-- Drinks -->
-        <ITDrinks v-if="filteredMeals.includes('ITDrinks')" ref="ITDrinks" />
+        <ITDrinks v-if="filteredMeals.includes('ITDrinks')" />
         <ILDrinksLike
           v-if="filteredMeals.includes('ILDrinks')"
-          ref="ILDrinks"
         />
         <div
           v-if="
