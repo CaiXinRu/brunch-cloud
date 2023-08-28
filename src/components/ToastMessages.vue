@@ -32,7 +32,7 @@ export default {
 <style scoped>
 .toast-container{
     position: fixed;
-    right: 0;
-    top: 80px;
+    left: 0;
+    top: 90px;
 }
 </style>

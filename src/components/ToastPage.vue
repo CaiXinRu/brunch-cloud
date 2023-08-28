@@ -7,17 +7,17 @@
         ref="toast"
     >
         <div class="toast-header">
-        <span
-            :class="`bg-${msg.style}`"
-            class="p-2 rounded me-2 d-inline-block"
-        ></span>
-        <strong class="me-auto">{{ msg.title }}</strong>
-        <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="toast"
-            aria-label="Close"
-        ></button>
+          <span
+              :class="`bg-${msg.style}`"
+              class="p-2 rounded me-2 d-inline-block"
+          ></span>
+          <strong class="me-auto">{{ msg.title }}</strong>
+          <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="toast"
+              aria-label="Close"
+          ></button>
         </div>
         <div class="toast-body" v-if="msg.content">
         {{ msg.content }}
@@ -43,5 +43,11 @@ export default {
 .toast{
   --bs-toast-header-color: #634536 !important;
   --bs-toast-header-bg: #fde2b4 !important;
+}
+.toast-header{
+  justify-content: flex-end
+}
+.toast-body{
+  text-align: right;
 }
 </style>
