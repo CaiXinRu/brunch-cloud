@@ -38,7 +38,7 @@
         <thead>
           <tr class="cf-head">
             <th style="width: 40%">品名</th>
-            <th style="width: 30%">單價</th>
+            <th style="width: 30%">小計</th>
             <th style="width: 30%">數量</th>
           </tr>
         </thead>
