@@ -323,7 +323,7 @@ export default {
 }
 .top-right-btn li {
   list-style-type: none;
-  height: 55px;
+  height: 50px;
   width: 90px;
   overflow: hidden;
 }
