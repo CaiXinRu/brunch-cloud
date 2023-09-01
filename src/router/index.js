@@ -2,6 +2,12 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 // import Home from '../views/Home.vue'
 
 const routes = [
+  { path: '/:catchAll(.*)', redirect: '/404' },
+  {
+    path: '/404',
+    name: 'PageNotExist',
+    component: () => import('@/views/PageNotExist.vue')
+  },
   {
     path: '/guideline',
     name: 'guideline',
